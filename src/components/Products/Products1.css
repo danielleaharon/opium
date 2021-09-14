@@ -1,0 +1,207 @@
+.Products{
+
+    padding-top: 30px;
+    height: 700px;
+     font-family: 'Varela Round', sans-serif;
+     align-items: center;
+     text-align: center;
+     direction: rtl;
+color: black;
+     background-color: rgba(245, 245, 245, 0.856);
+ 
+     
+ }
+ .print-category a{
+     color: black;
+ }
+ 
+ .title{
+     margin: 5px;
+     font-size: 20px;
+ }
+ .Products .h2{
+    direction: rtl;
+    align-items: center;
+    font-family: 'Varela Round', sans-serif;
+
+
+}
+.Products h4{
+    direction: rtl;
+    align-items: center;
+    
+
+}
+#products-class{
+    direction: rtl;
+
+    margin-top: 35px;
+    font-family: 'Varela Round', sans-serif;
+    display: flex;
+    justify-content: center;
+  
+    margin-right: 10%;
+    /* align-items: center;
+    text-align: center; */
+
+}
+.price-form{
+    direction: rtl;
+    justify-content: center;
+    display: flex;
+
+    text-align: right;
+    /* align-items: center; */
+    width: 100%;
+}
+.button{
+    background-color: white; 
+    color: black; 
+    border: 2px solid #4CAF50;
+    padding: 4px;
+    font-family: 'Varela Round', sans-serif;
+    font-size: 15px;
+    margin-bottom: 50px;
+    /* margin-left: 15px; */
+    border-radius: 4px;
+    margin-top: 10px;
+    /* padding-left: 45px;
+    padding-right: 45px; */
+    width: 105%;
+}
+.button:hover {
+    background-color: #4CAF50;
+    color: white;
+  }
+.Categories h4{
+    direction: rtl;
+    align-items: center;
+    font-family: 'Varela Round', sans-serif;
+
+
+}
+.price{
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-family: 'Varela Round', sans-serif;
+    font-size: 17px;
+}
+.textarea2 {
+
+    font-size: 15px;
+    text-align: center;
+    align-items: center;
+    padding-top: 7px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #ffffff;
+    resize: none;
+    margin-bottom: 10px;
+    
+    margin-right: 5px;
+    /* margin-left: 15px; */
+  }
+.category{
+    background-color:rgba(234, 75, 75, 0.757)  ;
+    padding: 9px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border: rgba(234, 75, 75, 0.757) 3px solid;
+    border-radius: 9px;
+
+}
+#products-class h4{
+    margin-right: 7px; 
+    padding-top: 5px;
+
+    font-family: 'Varela Round', sans-serif;
+
+}
+.cube{
+    margin-left: 10%;
+    background-color: white;
+    border-radius: 4px;
+
+}
+#orange{
+   
+    border: rgba(232, 178, 103, 0.757) 3px solid;
+
+}
+#red{
+   
+    border: rgba(234, 75, 75, 0.757) 3px solid;
+
+}
+#pink{
+   
+    border: rgba(199, 97, 173, 0.757) 3px solid;
+
+}
+#purple{
+   
+    border: rgba(155, 99, 188, 0.757) 3px solid;
+
+}
+#green{
+   
+    border:  rgba(140, 207, 95, 0.757) 3px solid;
+
+}
+#blue{
+   
+    border: rgba(94, 148, 210, 0.757) 3px solid;
+
+}
+#products-class img{
+width: 200px;
+border-radius: 4px;
+}
+#products-class p{
+font-size: 14px;   
+margin-right: 135px; 
+padding-top: 5px;
+
+
+  
+
+    }
+    .product-details{
+        display: flex;
+        justify-content: right;  
+   
+    }
+    #orange-details{
+   
+        background-color: rgba(232, 178, 103, 0.757);
+    
+    }
+    #red-details{
+   
+        background-color: rgba(234, 75, 75, 0.757);
+    
+    }
+    #pink-details{
+   
+        background-color: rgba(199, 97, 173, 0.757);
+    
+    }
+    #purple-details{
+   
+        background-color: rgba(155, 99, 188, 0.757);
+    
+    }
+    #green-details{
+   
+        background-color: rgba(140, 207, 95, 0.757);
+    
+    }
+    #blue-details{
+   
+        background-color: rgba(94, 148, 210, 0.757);
+    
+    }
+
+   
+ 

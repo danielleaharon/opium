@@ -1,0 +1,16 @@
+.Icons{
+    font-size: 80px;
+    width: 110%;
+    /* display: flex; */
+    margin-top: 5px;
+}
+#red{
+ color:red;
+ border: none;
+}
+.icon-btn{
+    border: none;
+    background-color: transparent;
+    margin-left: 5px;
+    margin-right: 5px;
+}

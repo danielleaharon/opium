@@ -1,0 +1,35 @@
+.Error{
+
+    padding-top: 30px;
+     font-family: 'Varela Round', sans-serif;
+     align-items: center;
+     text-align: center;
+     direction: rtl;
+color: black;
+font-family: 'Varela Round', sans-serif;
+
+     background-color: rgba(245, 245, 245, 0.856);
+     padding: 165px;
+ 
+     
+ }
+ .title{
+    font-family: 'Varela Round', sans-serif;
+    font-weight: bold;
+    font-size: 40px;;
+    margin-top: 30px;
+
+ }
+ .error-a{
+     margin-top: 20px;
+ }
+ .error-a p{
+    font-weight: bold;
+
+    font-size: 20px;
+ }
+ .logo-error{
+     margin-top: 20px;
+    width: 17%;
+    padding-left: 23px;
+}

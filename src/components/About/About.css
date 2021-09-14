@@ -1,0 +1,58 @@
+.About{
+
+    padding-top: 30px;
+     font-family: 'Varela Round', sans-serif;
+     align-items: center;
+     text-align: center;
+     direction: rtl;
+     background-color: rgba(245, 245, 245, 0.856);
+     padding-bottom: 20px;
+    
+     
+ }
+ .About h3{
+    direction: rtl;
+    align-items: center;
+    font-family: 'Varela Round', sans-serif;
+
+
+}
+.about{
+    line-height: 1.6;
+    margin: 10px;
+    
+}
+@media only screen and (max-width: 768px) {
+    .About{
+
+        padding-top: 30px;
+         font-family: 'Varela Round', sans-serif;
+         align-items: center;
+         align-self: center;
+         align-content: center;
+         text-align: center;
+         direction: rtl;
+         background-color: rgba(245, 245, 245, 0.856);
+         padding-bottom: 20px;
+        
+         
+     }
+     .About h3{
+        direction: rtl;
+        align-items: center;
+        font-family: 'Varela Round', sans-serif;
+    
+    
+    }
+    .about{
+        line-height: 1.6;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        /* margin-left: 14px; */
+        margin-right: -5px;
+        font-size: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+        
+    }
+}

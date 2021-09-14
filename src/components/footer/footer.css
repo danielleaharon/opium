@@ -1,0 +1,59 @@
+.footer{
+    font-family: 'Varela Round', sans-serif;
+    font-size: 14px;
+    color: black;
+    direction: rtl;
+    align-items: center;
+    text-align: center;
+    /* margin-top: 40px;
+    margin-bottom: 50px; */
+
+}
+.footer img{
+    width: 20%;
+}
+
+.insta{
+   border: black 2px solid;
+ /* color:  radial-gradient(circle farthest-corner at 35% 90%, #fec564, transparent 50%), radial-gradient(circle farthest-corner at 0 140%, #fec564, transparent 50%), radial-gradient(ellipse farthest-corner at 0 -25%, #5258cf, transparent 50%), radial-gradient(ellipse farthest-corner at 20% -50%, #5258cf, transparent 50%), radial-gradient(ellipse farthest-corner at 100% 0, #893dc2, transparent 50%), radial-gradient(ellipse farthest-corner at 60% -20%, #893dc2, transparent 50%), radial-gradient(ellipse farthest-corner at 100% 100%, #d9317a, transparent), linear-gradient(#6559ca, #bc318f 30%, #e33f5f 50%, #f77638 70%, #fec66d 100%); */
+margin-left: 20px;
+    padding-top: 10px;
+    padding-left: 11px;
+    padding-right: 11px;
+    padding-bottom: 6px;
+
+    border-radius: 100px;
+}
+.icon{
+    margin-left: -40px;
+    background-color: rgba(245, 245, 245, 0.856);
+
+}
+.facebook{
+    /* background-color: #3C5A99; */
+    border:black 2px solid ;
+    padding-top: 8px;
+    padding-bottom: 5px;
+    margin-left: 20px;
+    color: #3C5A99;
+    padding-left: 13px;
+    padding-right: 13px;
+    border-radius: 100px;
+}
+.email{
+    border:black 2px solid ;
+    padding: 8px;
+    padding-left: 10px;
+    padding-right: 10px;
+color: white;
+    border-radius: 100px;
+}
+#insta {
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+    -webkit-background-clip: text;
+            /* Also define standard property for compatibility */
+            background-clip: text;
+    -webkit-text-fill-color: transparent;
+    
+    font-size: 200px; /* change this to change the size*/
+}

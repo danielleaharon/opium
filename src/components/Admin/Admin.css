@@ -1,0 +1,144 @@
+.admin-dashborad{
+
+    padding-top: 30px;
+     font-family: 'Varela Round', sans-serif;
+     align-items: center;
+     text-align: center;
+     direction: rtl;
+     justify-content: center;
+     justify-items: center;
+     background-color: rgba(245, 245, 245, 0.856);
+     padding-bottom: 20px;
+     display: flex;
+     flex-direction: column;
+    
+     
+ }
+ .miss-img{
+     margin-top: 10px;
+     font-size: 10px;
+     color: red;
+ }
+ #list1{
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+
+    /* grid-column-gap:10px;
+    grid-row-gap: 10px;
+    align-items: center;
+    align-self: center;
+    align-content: center;
+    grid-template-columns:repeat(1,50%); */
+ }
+ .product-list-category{
+     width: 100%;
+     text-align: right;
+     font-size: 18px;
+     border-bottom: 1px black solid;
+     margin-top: 50px;
+ }
+ #product-label-new{
+     position: absolute;
+     direction: rtl;
+     right:0px;
+     width: 20%; 
+    }
+    #product-label-old{
+        position: absolute;
+        direction: rtl;
+        right:0px;
+        width: 25%; 
+       }
+    #product-add-new-btn{
+        border: none;
+        background-color: rgb(173, 169, 169);
+        border-radius: 5px;
+        width: 30%;
+        margin-top: 20px;
+
+    }
+#card-product-new{
+    position: relative;
+
+    background-color: white;
+    border-radius: 20px;
+    width: 50%;
+    padding: 20px;
+    margin-top: 20px;
+
+}
+#form-product-new{
+    font-family: 'Varela Round', sans-serif;
+    display: grid;
+    justify-self: center;
+    justify-content: center;
+    text-align: right;
+    width: 100%;  
+    grid-column-gap:20px;
+
+      grid-row-gap: 10px;
+    grid-template-columns:repeat(1,60%);
+
+}
+
+/* image select */
+#product-list-title{
+    margin-top: 50px;
+    font-size: 25px;
+    font-weight: bold;
+}
+.product-add-img{
+position: block;
+    font-family: 'Varela Round', sans-serif;
+    display: grid;
+    grid-column-gap:20px;
+    justify-self: center;
+    justify-content: center;
+    text-align: right;
+    width: 100%;    
+    grid-row-gap: 15px;
+    grid-template-columns:repeat(1,60%);
+    background-color: rgba(219, 218, 218, 0.529);
+    border-radius: 10px;
+    padding: 10px 0px;
+
+}
+
+.product-add-img-input{
+    display: flex;
+    flex-direction: row;
+}
+.product-add-img-btn{
+    border: none;
+    background-color: rgb(194, 194, 194);
+    width: 50%;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+#form-event{
+    position: relative;
+}
+.product-color-helper-new{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    position: absolute;
+    left: 0;
+    top: 20px;
+}
+.product-color-helper-old{
+    display: inline-block;
+    /* width: 5px;
+    height: 5px; */
+    border-radius: 100%;
+    position: absolute;
+    left: 0;
+}
+
+
+
+@media only screen and (max-width: 768px) {
+    
+}

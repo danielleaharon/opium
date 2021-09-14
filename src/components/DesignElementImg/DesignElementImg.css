@@ -1,0 +1,342 @@
+.Design2{
+
+  font-family: 'Varela Round', sans-serif;
+  justify-content: right;
+  /* align-items: center; */
+  /* text-align: center; */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(245, 245, 245, 0.856);
+
+  
+}
+#back-button{
+  font-size: 22px;
+  /* background-image: url('../../Image/logoPic.png'); */
+  background-color: whitesmoke;
+  align-items: center;
+  text-align: center;
+  color: black;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  width: 45px;
+  height: 45px;
+  /* border-radius: 100px; */
+  text-shadow: rgba(11, 10, 10, 0.493) 1px 1px 3px;
+}
+#back-button:hover{
+  background-color: black;
+  color: whitesmoke;
+  text-shadow: rgba(228, 227, 227, 0.664) 1px 1px 3px;
+
+}
+div.menul
+{
+  float: left;
+  width: 880px;
+  
+  /* padding: 10px; */
+}
+div.menul .continued{
+  background-color: whitesmoke;
+  border: none;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+div.menul .continued:hover{
+  background-color: black;
+  border: none;
+  color: whitesmoke;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+div.menur
+{
+  position: absolute;
+  right: 0;
+  /* z-index: 999; */
+  /* width: 250px; */
+  /* padding: 10px; */
+  padding-top: 3px;
+  
+  margin-right: 5px;
+}
+#menu-design{
+  display: flex;
+  justify-content: right;
+  /* padding: 0px 30px; */
+  position: 'relative';
+  /* margin: 7px; */
+  cursor: pointer;
+  padding: 3px;
+  font-weight: bold;
+  font-size: 18px;
+  color: black;
+/* width: 100%; */
+  background-color: #fefefeb9;
+  border-bottom: #8e8e8ec9 0.5px solid;
+}
+#productSelect{
+  margin: 10px;
+  width: 350px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  display: inline-block;
+  position: relative;
+
+}
+.dot {
+  margin: 5px;
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  overflow: hidden;
+  /* align-items: center; */
+  justify-content: center;
+}
+
+
+
+#container {
+  display: inline-block;
+  cursor: nwse-resize;
+}
+.Design-cube{
+  /* justify-content: center; */
+  width: 100%;
+  /* text-align: center; */
+  direction: rtl;
+  display: flex;
+  font-family: 'Varela Round', sans-serif;
+
+  
+}
+#back-front{
+  position: absolute;
+  margin-top: 10px;
+margin-right: 73%; 
+padding-top: 5px;
+padding-bottom: 5px;
+font-size: 12px;
+border-radius: 3px;
+color: black;
+background-color: rgba(255, 255, 255, 0.605);
+border: black 1px solid;
+  width: 15%;
+}
+#back-front:hover{
+  background-color: black;
+  color: whitesmoke;
+ 
+}
+.titleEdit{
+  margin-top: 15px;
+}
+  .Design-cube1{
+    display: flex;
+    border-top: black 4px solid;
+    border-bottom: black 4px inset;
+align-items: center;
+text-align: center;
+    background-color: rgba(245, 245, 245, 0.475);
+
+  
+  }
+  h1{
+
+    font-family: 'Varela Round', sans-serif;
+
+  }
+  .edits{
+    /* background-color: rgba(236, 234, 234, 0.66); */
+    margin-left: 0.5px;
+    margin-top: 10px;
+    padding: 10px;
+    height: 800px;
+    width: 400px;
+    align-items: center;
+    align-items: center;
+    font-family: 'Varela Round', sans-serif;
+
+
+    
+  }
+  .buttonEditPick{
+    background-color:whitesmoke ; 
+    color: black; 
+    border: 2px solid rgba(76, 175, 79, 0);
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-family: 'Varela Round', sans-serif;
+    font-size: 13px;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+
+    width: 100%;
+  }
+  .buttonEdit{
+    background-color: black; 
+    color: whitesmoke; 
+    border: 2px solid rgba(76, 175, 79, 0);
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-family: 'Varela Round', sans-serif;
+    font-size: 13px;
+
+    width: 100%;
+  }
+  .buttonEdit:hover{
+    background-color: whitesmoke;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    color: black;
+  }
+  .buttons{
+    background-color: rgba(236, 234, 234, 0.66);
+    height: 825px;
+    justify-content: right;
+    background-color: black;
+
+
+  }
+  .font-piker{
+    width: 100%;
+    text-align: left;
+    margin-bottom: 10px;
+
+  }
+  
+  .Design-cube2{
+    margin-right: 8%;
+    padding-left: 100px;
+    padding-right: 100px;
+background-color: white;  
+/* border-radius: 9px; */
+position: relative;
+height: 828px;
+width: 950px;
+/* border: #4CAF50 2px solid; */
+  }
+ 
+.Design h3{
+    direction: rtl;
+    align-items: center;
+    font-family: 'Varela Round', sans-serif;
+
+
+
+}
+.shirt{
+  width: 100%;
+  height: 100%;
+  border-radius: 9px;
+
+}
+
+#heart {
+  position: absolute;
+  width: 100px;
+  height: 90px;
+  overflow: hidden;
+  background-image: url("../../Image/Design/men_back.png") ;
+  background-size: 100%;
+ }
+ .heart-shape:before{
+	color: url("../../Image/Design/men_back.png");
+	content: "❤";
+	font-size: 8em;
+	position: relative;
+	top: 100px;
+}
+ .heart-shape {
+  background: #f9e1ea none repeat scroll 0 0;
+  border-radius: 50%;
+  
+  display: run-in;
+  height: 200px;
+  margin: 5em auto 0;
+  text-align: center;
+  width: 200px;
+}
+ .img1{
+ 
+  position: absolute;
+  background-repeat:no-repeat; 
+
+  overflow:hidden;
+
+ }
+ .img2{
+width: 200px;
+height: 200px;
+
+ }
+
+ #wrap {
+  width: 80%;
+  margin: 1em auto;
+  padding: 1em 5%;
+  background: #fff;
+  position: relative;
+}
+#wrap:after {
+  content: "\f004"; 
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  text-decoration: inherit;
+  position: absolute;
+  font-size: 400px;
+  color: lightblue;
+  
+  top: 50%;
+  left: 50%;
+  margin: -300px 0 0 -200px;
+  z-index: 1;
+}
+ #heart:before
+ {
+   visibility: visible;
+  position: absolute;
+  content: url("../../Image/Design/men_back.png");
+  left: 50px;
+  top: 0;
+  width: 50px;
+  height: 80px;
+  border:'10px black solid';
+  background: rgba(187, 19, 19, 0.18);
+  -moz-border-radius: 50px 50px 0 0;
+  border-radius: 50px 50px 0 0;
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  -webkit-transform-origin: 0 100%;
+  -moz-transform-origin: 0 100%;
+  -ms-transform-origin: 0 100%;
+  -o-transform-origin: 0 100%;
+  transform-origin: 0 100%;
+ }
+ 
+ #heart:after {
+  left: 0;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+  -webkit-transform-origin: 100% 100%;
+  -moz-transform-origin: 100% 100%;
+  -ms-transform-origin: 100% 100%;
+  -o-transform-origin: 100% 100%;
+  transform-origin :100% 100%;
+ }

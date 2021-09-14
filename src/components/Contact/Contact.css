@@ -1,0 +1,221 @@
+.Contact{
+
+   padding-top: 30px;
+    font-family: 'Varela Round', sans-serif;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-top: 100px;
+
+    background-color: rgba(245, 245, 245, 0.856);
+
+    
+}
+/* .Contact-div{
+  display: flex;
+  align-self: center;
+  width: 100%;
+} */
+.Contact h3{
+    direction: rtl;
+    align-items: center;
+    margin-bottom: 25px;
+  font-weight: bold;
+    font-family: 'Varela Round', sans-serif;
+
+
+}
+.map_grid{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  padding-bottom: 50px;
+  padding-top: 10px;
+}
+#helper{
+  position: absolute;
+/* margin-top: 35px;  
+left: 50px; */
+  font-family: 'Alef', sans-serif;
+
+}
+
+
+  .submit {
+    background-color: white; 
+    color: black; 
+    border: 2px solid #4CAF50;
+    padding: 4px;
+    font-family: 'Varela Round', sans-serif;
+    font-size: 15px;
+    margin-left: 15px;
+    border-radius: 4px;
+    margin-bottom: 15px;
+
+    /* padding-left: 45px;
+    padding-right: 45px; */
+    width: 62%;
+
+
+
+  }
+  .map{
+    margin-right: 30px;
+    width: 30%;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    
+  }
+  .Contact-d{
+    direction: rtl;
+    display: grid;
+    width: 85%;
+    margin-bottom: 10px;
+    grid-column-gap:10px;
+    grid-row-gap: 10px;
+    grid-template-columns:repeat(4,20%);
+    justify-self: center;
+    text-align: right;
+    font-family: 'Varela Round', sans-serif;
+
+  }
+  #name{
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-top: -5px;
+    background-color: #ffffff;
+    /* position: relative; */
+    text-align: right;
+    background-size: cover;
+    position: relative;
+    font-family: 'Varela Round', sans-serif;
+
+  }
+  #lable{
+    /* margin-top: -2px; */
+    z-index: 10px;
+ position: absolute;
+ font-family: 'Varela Round', sans-serif;
+
+ right:24px;
+ width: 30%;
+
+ background-color: rgb(255, 255, 255);
+}
+  .map:hover{
+    width: 41%;
+  }
+  .mesaage{
+    color: #4CAF50;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  .submit:hover {
+    background-color: #4CAF50;
+    color: white;
+  }
+  .test-mailing{
+      direction: rtl;
+  }
+  .div-submit{
+    margin-top: 5px;
+    margin-bottom: 50px;
+
+}
+ 
+  p{
+    font-size: 15px;
+
+  }
+ .Contact .button-loction{
+    color: black; 
+    background-color: transparent;
+    border: 0px ;
+    /* padding-left: 45px;
+    padding-right: 45px; */
+     }
+     @media only screen and (max-width: 768px) {
+      .map{
+        margin-right: 0px;
+        width: 80%;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        cursor: pointer;
+        
+      }
+      #name{
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        margin-top: -5px;
+        background-color: #ffffff;
+        /* position: relative; */
+        text-align: right;
+        background-size: cover;
+        position: relative;
+        font-family: 'Varela Round', sans-serif;
+    
+      }
+      .Contact .h5{
+        font-size: 14px;
+        display: inline-block;
+        font-family: 'Varela Round', sans-serif;
+
+      }
+      .Contact p{
+      
+        font-size: 12px;
+        padding: 2px;
+
+        /* padding-left: 45px;
+        padding-right: 45px; */
+         }
+      .Contact .button-loction{
+        color: black; 
+        background-color: transparent;
+        border: 0px ;
+        font-size: 12px;
+
+        /* padding-left: 45px;
+        padding-right: 45px; */
+         }
+      #lable{
+        /* margin-top: -2px; */
+        z-index: 10px;
+     position: absolute;
+     font-family: 'Varela Round', sans-serif;
+    
+     right:24px;
+     width: 30%;
+    font-size: 12px;
+     background-color: rgb(255, 255, 255);
+    }
+    .Contact-d{
+      direction: rtl;
+      display: grid;
+      width: 87%;
+      margin-bottom: 10px;
+      grid-column-gap:10px;
+      grid-row-gap: 10px;
+      grid-template-columns:repeat(1,80%);
+      justify-self: center;
+      text-align: right;
+      font-family: 'Varela Round', sans-serif;
+  
+    }
+    .contact-div{
+      align-self: center;
+      width: 100%;
+    }
+    .map_grid{
+      justify-content: center;
+      text-align: center;
+      align-items: center;
+      padding-bottom: 50px;
+      padding-top: 10px;
+      width: 100%;
+      display: block;
+    }
+     }

@@ -3,12 +3,43 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^4.12.3",
+    "@material-ui/icons": "^4.11.2",
+    "@material-ui/lab": "^4.0.0-alpha.60",
+    "@syncfusion/ej2-react-diagrams": "^19.2.49",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
+    "axios": "^0.21.1",
+    "bootstrap": "^5.0.2",
+    "crypto-random-string": "^4.0.0",
+    "dom-to-image": "^2.6.0",
+    "exifr": "^7.1.2",
+    "file-saver": "^2.0.5",
+    "firebase": "^8.10.0",
+    "font-picker-react": "^3.5.2",
+    "google-map-react": "^2.1.10",
+    "hamburger-react": "^2.4.1",
+    "html-to-image": "^1.7.0",
     "react": "^17.0.2",
+    "react-alice-carousel": "^2.5.1",
+    "react-arc-text": "^1.0.5",
+    "react-color": "^2.19.3",
     "react-dom": "^17.0.2",
+    "react-draggable": "^4.4.3",
+    "react-dropdown": "^1.9.2",
+    "react-image-crop": "^8.6.12",
+    "react-redux": "^7.2.4",
+    "react-resizable-rotatable-draggable": "^0.2.0",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
+    "react-shapes": "^0.1.0",
+    "react-simple-image-slider": "^2.1.2",
+    "react-slideshow-image": "^3.5.0",
+    "reactstrap": "^8.9.0",
+    "semantic-ui-react": "^2.0.3",
+    "styled-components": "^5.3.0",
+    "tui-image-editor": "^3.15.0",
     "web-vitals": "^1.1.2"
   },
   "scripts": {
@@ -34,5 +65,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@iconify-icons/fluent": "^1.1.23",
+    "@iconify/react": "^1.1.4"
   }
 }
