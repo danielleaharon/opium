@@ -4,8 +4,8 @@ import Logo from '../../Image/opiumLogo3.png'
 
 import './footer.css';
 export default class footer extends Component {
-    constructor(props, context) {
-        super(props, context);
+    constructor(props) {
+        super(props);
         this.state={
             feedback:null,
         }
@@ -15,7 +15,7 @@ export default class footer extends Component {
       render() {
     return (
 
-        <div className='footer'>
+        <div className='footer' hidden={this.props.hide}>
                         <img src={Logo} alt='logo'/>
       <div className='icon'>
             <a href='https://www.facebook.com/swqwlb.hrzlyh' rel="noreferrer" target='_blank'className='facebook'>   <i class="fa fa-facebook-f" style={{fontSize:'24px' , color:'black'}}></i></a>

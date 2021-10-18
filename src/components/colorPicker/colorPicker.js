@@ -1,13 +1,39 @@
 import React from 'react'
 import reactCSS from 'reactcss'
 import { SketchPicker } from 'react-color'
+import './colorPicker.css';
+import { color } from '@mui/system';
+import { Icon } from '@iconify/react';
+import starIcon from '@iconify/icons-bi/star';
 
 class colorPicker extends React.Component {
-  state = {
+  constructor(props)
+  {
+    super(props)
+  this.state = {
     displayColorPicker: false,
     color: this.props.color,
+    textcolor: this.props.textcolor,
+    presetColors:['TRANSPARENT',this.props.color]
   };
-
+  }
+  componentDidMount(){
+    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(this.props.color);
+    if(result){
+        var r= parseInt(result[1], 16);
+        var g= parseInt(result[2], 16);
+        var b= parseInt(result[3], 16);
+        const rgb= r+","+g+","+b;//return 23,14,45 -> reformat if needed 
+        if(255-r<20)
+        {
+          this.setState({textcolor:'#000000b5'})
+        }
+        else{
+          this.setState({textcolor:'white'})
+    
+        }
+    } 
+  }
   handleClick = () => {
     this.setState({ displayColorPicker: !this.state.displayColorPicker })
   };
@@ -17,6 +43,20 @@ class colorPicker extends React.Component {
   };
 
   handleChange = (color) => {
+    
+    if(255-color.rgb.r<color.rgb.r)
+    {
+      this.setState({textcolor:'#000000b5'})
+    }
+    else{
+      this.setState({textcolor:'white'})
+
+    }
+    const arr=this.state.presetColors;
+    if(!arr.includes(color.hex )){
+    arr.push(color.hex )
+    this.setState({presetColors:arr})
+    }
     this.setState({ color: color.hex })
     this.props.setPaint(color.hex);
   };
@@ -25,15 +65,38 @@ class colorPicker extends React.Component {
 
     const styles = reactCSS({
       'default': {
-        color: {
-          width: '25px',
-          height: '25px',
-          borderRadius: '2px',
-          // background: 'url(https://api.iconify.design/teenyicons:paintbucket-solid.svg?color='+'red'+') no-repeat center center / contain',
-          backgroundColor:this.state.color,
 
-          marginTop:'5px',
+        colorIcon:{
+          color:this.props.color
+        },
+        color: {
+          // width: '25px',
+          // height: '25px',
+          borderRadius: '2px',
+          padding:'5px',
+          // fontSize:'20px',
+          // background: 'url(https://api.iconify.design/teenyicons:paintbucket-solid.svg?color='+'red'+') no-repeat center center / contain',
+          // marginTop:'5px',
           border:'none',
+          color:this.state.textcolor,
+          backgroundColor:this.state.color
+        //   background: `rgba(${ this.state.color.r }, ${ this.state.color.g }, ${ this.state.color.b }, ${ this.state.color.a })`,
+        },
+       
+        colorShape: {
+          // width: '25px',
+          // height: '25px',
+          borderRadius: '2px',
+          padding:'5px',
+          // fontSize:'20px',
+          // background: 'url(https://api.iconify.design/teenyicons:paintbucket-solid.svg?color='+'red'+') no-repeat center center / contain',
+          // marginTop:'5px',
+          border:'none',
+          color:this.state.textcolor,
+          borderRadius:'4px',
+
+          
+          backgroundColor:this.state.textcolor
         //   background: `rgba(${ this.state.color.r }, ${ this.state.color.g }, ${ this.state.color.b }, ${ this.state.color.a })`,
         },
         swatch: {
@@ -59,13 +122,17 @@ class colorPicker extends React.Component {
     });
 
     return (
-      <div className='paintPiker' style={{margin:'5px'}}>
+      <div className='paintPiker'>
         <div  style={ styles.swatch } onClick={ this.handleClick }>
-          <div style={ styles.color } />
+
+          <div style={ this.props.icon!==undefined? styles.color :styles.colorShape} >
+            {this.props.icon===undefined?<Icon color={this.state.color}  icon={this.props.iconShape} width='25px' />:this.props.icon}
+          {/* <span class="iconify" id='paint-icon' data-icon="fluent:color-background-24-filled"></span> */}
+        </div>
         </div>
         { this.state.displayColorPicker ? <div style={ styles.popover }>
           <div style={ styles.cover } onClick={ this.handleClose }/>
-          <SketchPicker color={ this.state.color } onChange={ this.handleChange } />
+          <SketchPicker presetColors={this.state.presetColors} color={ this.state.color } onChangeComplete={ this.handleChange } />
         </div> : null }
 
       </div>

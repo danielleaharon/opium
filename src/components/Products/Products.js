@@ -1,231 +1,325 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import CupCat from '../../Image/cupCat.png'
 import Office from '../../Image/office.png'
 import Kit from '../../Image/kit.png'
 import All from '../../Image/all.png'
 import Key from '../../Image/key.png'
-import Cap from '../../Image/cap.png'
-import Cup from '../../Image/cup.png'
-
-import Shot from '../../Image/shot.jpeg'
+import Cap from '../../Image/Cap.jpeg'
+import Cup from '../../Image/Cup.jpeg'
+import Gift from '../../Image/gift.jpeg'
+import Product from '../Product/Product'
+import axios from 'axios';
+import Config from '../../config/config';
 
 import 'react-alice-carousel/lib/alice-carousel.css';
 
 import './Products.css';
 export default class Products extends Component {
-    constructor(props, context) {
-        super(props, context);
-        this.state={
-          value: '',
-          Amount:null,
-          price:null
+  constructor(props) {
+    super(props);
+    this.state = {
+      category: 'all',
+      subCategory: null,
+      productList: [],
+      listClothing: [],
+      listElectronics: [],
+      listGift: [],
+      listCup: [],
+      listHat: [],
+      listBags: [],
+      listKitchen: [],
+      listImageProduct: [],
+
+
+
+    }
+    this.handleClick = this.handleClick.bind(this);
+    this.handleClickSubCategory = this.handleClickSubCategory.bind(this);
+    this.tempList = this.tempList.bind(this);
+
+  }
+  componentDidMount() {
+
+
+    axios.post(Config.getServerPath() + 'product/all')
+      .then(res => {
+        if (res.data.status === 400) {
+          console.log('error')
+          return
         }
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleChangeAmount = this.handleChangeAmount.bind(this);
-    }
-    handleChange(event) {
-      this.setState({value: event.target.value});
+        this.setState({ productList: res.data.productList })
+        const ListClothing = [];
+        const ListElectronics = [];
+        const ListGift = [];
+        const ListCup = [];
+        const ListHat = [];
+        const ListBags = [];
+        const ListKitchen = [];
+        const ListImageProduct = [];
 
-    }
-  
-    handleSubmit(event) {
-      this.setState({price:10*this.state.Amount})
-      event.preventDefault();
-    }
-    handleChangeAmount(event) {
-      
-      this.setState({Amount: event.target.value});
 
-    }
-  
-   
-      render() {
+        res.data.productList.map((item, index) => {
+          if (item.category === 'הלבשה') {
+            if (ListClothing.indexOf(item.Subcategory.name) === -1) {
+              ListClothing.push(item.Subcategory.name)
+            }
+
+          }
+          if (item.category === 'כובעים ומוצרי טקסטיל') {
+            if (ListHat.indexOf(item.Subcategory.name) === -1) {
+              ListHat.push(item.Subcategory.name)
+            }
+
+          }
+          if (item.category === 'תיקים ומוצרים למשרד') {
+            if (ListBags.indexOf(item.Subcategory.name) === -1) {
+              ListBags.push(item.Subcategory.name)
+            }
+
+          }
+          if (item.category === 'מוצרי מטבח ואירוח לבית') {
+            if (ListKitchen.indexOf(item.Subcategory.name) === -1) {
+              ListKitchen.push(item.Subcategory.name)
+            }
+
+          }
+          if (item.category === 'הדפסת תמונות מעוצבות') {
+            if (ListImageProduct.indexOf(item.Subcategory.name) === -1) {
+              ListImageProduct.push(item.Subcategory.name)
+            }
+
+          }
+          if (item.category === 'כוסות ספלים ובקבוקים') {
+            if (ListCup.indexOf(item.Subcategory.name) === -1) {
+              ListCup.push(item.Subcategory.name)
+            }
+
+          }
+          if (item.category === 'גאדגטים ואלקטרוניקה') {
+            if (ListElectronics.indexOf(item.Subcategory.name) === -1) {
+              ListElectronics.push(item.Subcategory.name)
+            }
+          }
+
+          if (item.category === 'מתנות בעיצוב') {
+            if (ListGift.indexOf(item.Subcategory.name) === -1) {
+              ListGift.push(item.Subcategory.name)
+            }
+
+          }
+
+        })
+
+        this.setState({ listClothing: ListClothing })
+        this.setState({ listElectronics: ListElectronics })
+        this.setState({ listCup: ListCup })
+        this.setState({ listHat: ListHat })
+        this.setState({ listBags: ListBags })
+        this.setState({ listKitchen: ListKitchen })
+        this.setState({ listImageProduct: ListImageProduct })
+        this.setState({ listGift: ListGift })
+
+
+
+      })
+      .catch(() => {
+        console.log('send')
+      });
+  }
+  handleClick(categorySelect) {
+    this.setState({ category: categorySelect });
+    this.setState({ subCategory: null });
+
+  }
+  handleClickSubCategory(categorySelect,subCategorySelect) {
+    this.setState({ category: categorySelect });
+    this.setState({ subCategory: subCategorySelect });
+
+  }
+  tempList() {
+
+  }
+
+  render() {
     return (
-        
-        <div className='Products'>
+
+      <div className='Products'>
+
+        <div className='print-category' >
+          <div  className='cubeC' >
+          {/* <button className=' cube-caps' onClick={() => this.handleClick('הלבשה')} id={this.state.category === 'הלבשה' ? 'clicked-red' : ''} > */}
+            {/* <img src={Shirt3} ></img> */}
+            {/* </button> */}
+
+            <div className='row1' >
+              <span className='text-all border-red' id={this.state.category === 'הלבשה' ? 'clicked-red' : ''} onClick={() => this.handleClick('הלבשה')}>הלבשה  <span class="iconify" id='icon-category' data-icon="ion:shirt-sharp"></span> </span>
+              <div className='category-dropdown dropdown-red'>
+                <div id="mask"></div>
+                { this.state.listClothing.map((item, index) => {
+                    return <button className='dropdown-btn' onClick={() => this.handleClickSubCategory('הלבשה',item)}>{item}<hr/></button>
+
+                  })}
+
+
+              </div>
+            </div>
        
-   
-       
-       <div className='print-category'>
-       <a   className='cubeC cube-caps' href='http://www.giftlogo.co.il/140/' target='_blank'>
-       <img src={Cap} ></img>
+          </div>
+         
+          <div className='cubeC'  >
+            {/* <img src={Electronics} ></img> */}
 
-         <div className='top-img'>
+            <div className='row2' >
+              <span onClick={() => this.handleClick('גאדגטים ואלקטרוניקה')} id={this.state.category === 'גאדגטים ואלקטרוניקה' ? 'clicked-redpink' : ''} className='text-all border-red-pink'> גאדגטים ואלקטרוניקה <span class="iconify" id='icon-category' data-icon="fa-solid:headphones"></span></span>
+              <div className='category-dropdown dropdown-redpink'>
+                <div id="mask"></div>
 
-         </div>
-         <span className='text'>  הלבשה נשים</span>
-          </a>  <a   className='cubeC cube-caps' href='http://www.giftlogo.co.il/140/' target='_blank'>
-       <img src={Cap} ></img>
+                {
+                  this.state.listElectronics.map((item, index) => {
 
-         <div className='top-img-center'>
-
-         </div>
-         <span className='text-center'>  הלבשה גברים</span>
-          </a>  <a   className='cubeC cube-caps' href='http://www.giftlogo.co.il/140/' target='_blank'>
-       <img src={Cap} ></img>
-
-         <div className='top-img-left'>
-
-         </div>
-         <span className='text-left'>  הלבשה ילדים</span>
-          </a>
+                    return <button className='dropdown-btn' onClick={() => this.handleClickSubCategory('גאדגטים ואלקטרוניקה', item)}>{item}</button>
 
 
-       <a   className='cubeC cube-caps' href='http://www.giftlogo.co.il/140/' target='_blank'>
-       <img src={Cap} ></img>
+                  })}
 
-         <div className='top-img-middel'>
 
-         </div>
-         <span className='text-middel'>כוסות ספלים ובקבוקים</span>
-          </a>
-          <a   className='cubeC cube-caps' href='http://www.giftlogo.co.il/140/' target='_blank'>
-       <img src={Cup} ></img>
+              </div>
 
-         <div className='top-img-center-middel'>
+            </div>
+          </div>
+          <div className='cubeC' >
 
-         </div>
-         <span className='text-center-middel'>  כובעים ומוצרי טקסטיל</span>
+            <div className='row3'>
+              <span className='text-all border-pink'  id={this.state.category === 'מתנות בעיצוב' ? 'clicked-pink' : ''} onClick={() => this.handleClick('מתנות בעיצוב')}> מתנות בעיצוב <span class="iconify" id='icon-category' data-icon="fa-solid:gift"></span></span>
+              <div className='category-dropdown dropdown-pink'>
+                <div id="mask"></div>
+                {
+                  this.state.listGift.map((item, index) => {
+                    return <button className='dropdown-btn' onClick={() => this.handleClickSubCategory('מתנות בעיצוב ', item)}>{item}</button>
 
-          </a>
-          <a   className='cubeC cube-caps' href='http://www.giftlogo.co.il/140/' target='_blank'>
-       <img src={Office} ></img>
 
-         <div className='top-img-left-middel'>
+                  })}
 
-         </div>
-         <span className='text-left-middel'>  תיקים ומוצרים למשרד</span>
 
-          </a>
-          <a   className='cubeC cube-caps' href='http://www.giftlogo.co.il/140/' target='_blank'>
-       <img src={Kit} ></img>
 
-         <div className='top-img-buttom'>
+              </div>
+            </div>
+          </div>
 
-         </div>
-         <span className='text-buttom'> מוצרי מטבח ואירוח לבית</span>
 
-          </a>
-          <a   className='cubeC cube-caps' href='http://www.giftlogo.co.il/140/' target='_blank'>
-       <img src={Key} ></img>
+          <div className='cubeC'  >
+            {/* <img src={Cup} ></img> */}
 
-         <div className='top-img-center-buttom'>
+            <div className='row4'>
+              <span className='text-all border-purple' id={this.state.category === 'כוסות ספלים ובקבוקים' ? 'clicked-purple' : ''} onClick={() => this.handleClick('כוסות ספלים ובקבוקים')}>כוסות ספלים ובקבוקים <span class="iconify" id='icon-category' data-icon="teenyicons:cup-solid"></span></span>
+              <div className='category-dropdown dropdown-purple'>
+                <div id="mask"></div>
+                {
+                  this.state.listCup.map((item, index) => {
+                    return <button className='dropdown-btn' onClick={() => this.handleClickSubCategory('כוסות ספלים ובקבוקים', item)}>{item}</button>
 
-         </div>
-         <span className='text-center-buttom'>  מחזיקי מפתחות מעוצבים</span>
 
-          </a>
-          <a   className='cubeC cube-caps' href='http://www.giftlogo.co.il/140/' target='_blank'>
-       <img src={All} ></img>
+                  })}
 
-         <div className='top-img-left-buttom'>
 
-         </div>
-         <span className='text-left-buttom'> כל המוצרים</span>
+              </div>
+            </div>
+          </div>
+          <div className='cubeC'>
 
-          </a>
-       {/* <div className='Categories'>
-       
-       <h4><b>חולצות</b></h4>
-       <div className='print-category'>
-       <a className='cube-orange-category' href='http://www.giftlogo.co.il/140/' target='_blank'> דרייפיט<br/><img src={CupCat}></img></a>
-       <a className='cube-red-category' href='http://www.giftlogo.co.il/198/' target='_blank'>חולצות גברים<br/><img src={CapCat}></img></a>
-       <a  className='cube-pink-category' href='http://www.giftlogo.co.il/102/'>חולצות נשים<br/><img src={ShirtCat}></img></a>
-       <a className='cube-purple-category'href='http://www.giftlogo.co.il/10/' target='_blank'>חולצות ילדים<br/><img src={CakeCat}></img></a>
-       <a className='cube-blue-category' href='http://www.giftlogo.co.il/170/' target='_blank'>חולצות בייבי <br/><img src={KeyCat}></img></a>
-       <a className='cube-green-category' href='http://www.giftlogo.co.il/' target='_blank'>לכל המוצרים</a>
-       </div>
-       <br></br>
-       <br/>
-       <hr/>
-       <br/>
-       <h3><b>  לקבלת הצעת מחיר</b></h3>
-       <p style={{fontSize:'12px'}}>לאחר בחירת קטגוריה, יפתח בעמוד חדש הקטלוג עם קוד פרטים</p>
-    <div className='price-form'>
-        <form  onSubmit={this.handleSubmit}>
-         כמות :
-          <input className='textarea2' placeholder='1' type="number" value={this.state.Amount} onChange={this.handleChangeAmount} />
-         <br/>
-         קוד הפריט:
-          <input             
-       className='textarea2'
- type="text"placeholder='KR0000' value={this.state.value} onChange={this.handleChange} />
- <br/>
-        <input className='button' type="submit" value="קבל מחיר" />
-      </form>
+            <div className='row5'>
+              <span id={this.state.category === 'כובעים ומוצרי טקסטיל' ? 'clicked-bluepurple' : ''} className='text-all border-bluepurple'  >  כובעים ומוצרי טקסטיל <span class="iconify" id='icon-category' data-icon="fa-solid:hat-cowboy"></span></span>
+              <div className='category-dropdown dropdown-bluepurple'>
+                <div id="mask"></div>
+                {
+                  this.state.listCup.map((item, index) => {
+                    return <button className='dropdown-btn' onClick={() => this.handleClickSubCategory('כובעים ומוצרי טקסטיל', item)}>{item}</button>
+
+
+                  })}
+
+
+              </div>
+            </div>
+
+          </div>
+          <div className='cubeC'  >
+            {/* <img src={Office} ></img> */}
+
+            <div className='row6'>
+              <span id={this.state.category === 'תיקים ומוצרים למשרד' ? 'clicked-blue' : ''} className='text-all border-blue' onClick={() => this.handleClick('תיקים ומוצרים למשרד')}>  תיקים ומוצרים למשרד <span class="iconify" id='icon-category' data-icon="fluent:backpack-24-filled"></span></span>
+              <div className='category-dropdown dropdown-blue'>
+                <div id="mask"></div>
+                {
+                  this.state.listBags.map((item, index) => {
+                    return <button className='dropdown-btn' onClick={() => this.handleClickSubCategory('תיקים ומוצרים למשרד', item)}>{item}</button>
+
+
+                  })}
+
+
+              </div>
+            </div>
+
+          </div>
+          <div className='cubeC'  >
+            {/* <img src={Kit} ></img> */}
+
+            <div className='row7'>
+              <span className='text-all border-green' id={this.state.category === 'מוצרי מטבח ואירוח לבית' ? 'clicked-green' : ''} onClick={() => this.handleClick('מוצרי מטבח ואירוח לבית')}> מוצרי מטבח ואירוח לבית<span class="iconify" id='icon-category' data-icon="ic:baseline-soup-kitchen"></span></span>
+              <div className='category-dropdown dropdown-green'>
+                <div id="mask"></div>
+                {
+                  this.state.listKitchen.map((item, index) => {
+                    return <button className='dropdown-btn' onClick={() => this.handleClickSubCategory('מוצרי מטבח ואירוח לבית', item)}>{item}</button>
+
+
+                  })}
+
+
+              </div>
+            </div>
+
+          </div>
+          <div className='cubeC'  >
+            {/* <img src={Key} ></img> */}
+
+            <div className='row8'>
+              <span className='text-all border-greenorange' id={this.state.category === 'הדפסת תמונות מעוצבות' ? 'clicked-greenorange' : ''} onClick={() => this.handleClick('הדפסת תמונות מעוצבות')}>  הדפסת תמונות מעוצבות <span class="iconify" id='icon-category' data-icon="bi:file-earmark-image-fill"></span></span>
+              <div className='category-dropdown dropdown-greenorange'>
+                <div id="mask"></div>
+                {
+                  this.state.listGift.map((item, index) => {
+                    return <button className='dropdown-btn' onClick={() => this.handleClickSubCategory('הדפסת תמונות מעוצבות', item)}>{item}</button>
+
+
+                  })}
+
+
+              </div>
+            </div>
+
+          </div>
+          <div className='cubeC' onClick={() => this.handleClick('all')}  >
+            {/* <img src={All} ></img> */}
+
+            <div className='row9' >
+              <span id={this.state.category === 'all' ? 'clicked-orange' : ''} className='text-all border-orange'> כל המוצרים</span>
+         
+            </div>
+
+          </div>
+
+        </div>
+        <div className='product-details'>
+          {this.props.Ondesign?
+          <Product Ondesign={this.props.Ondesign} pickProduct={this.props.pickProduct}  category={this.state.category} subCategory={this.state.subCategory}  addToCart={this.props.addToCart}
+              deleteFromCart={this.props.deleteFromCart} />:
+                 <Product Ondesign={this.props.Ondesign} category={this.state.category} subCategory={this.state.subCategory}  addToCart={this.props.addToCart}
+              deleteFromCart={this.props.deleteFromCart} />}
+        </div>
       </div>
-    {this.state.price!==null?(
-    <div  className='price'> 
-    <p style={{fontSize:'22px'}}> המחיר ל {this.state.Amount}  פרטים הוא:{this.state.price}</p>
-    <p> *המחיר הינו ראשוני, לקבלת הצעת מחיר אטרקטיבי לכמויות גדולות יותר ניתן ליצור קשר עם החנות</p>
 
-    </div>):''}
-    </div> */}
-    </div>
-       </div>
-          /* <div className='cube' id='pink'>
-          <img src={BlackCup}></img>
-          <div className='product-details' id='pink-details'>
-          <h4>כובע 1</h4>
-
-          <p>45 ₪</p>
-          </div>
-          </div>
-
-          <div className='cube' id='red'>
-          <img src={BlackCup}></img>
-          <div className='product-details' id='red-details'>
-          <h4>כובע 1</h4>
-
-          <p>45 ₪</p>
-          </div>
-          </div> */
-
-          
-          /* <div className='cube' id='orange'>
-          <img src={BlackCup}></img>
-          <div className='product-details' id='orange-details'>
-          <h4>כובע 1</h4>
-
-          <p>45 ₪</p>
-          </div>
-          </div>
-          </div>
-          <div className="" id='products-class'>
-
-
-          <div className='cube' id='green'>
-          <img src={BlackCup}></img>
-          <div className='product-details' id='green-details'>
-          <h4>כובע 1</h4>
-
-          <p>45 ₪</p>
-          </div>
-          </div> */
-
-          /* <div className='cube' id='blue'>
-          <img src={BlackCup}></img>
-          <div className='product-details' id='blue-details'>
-          <h4>כובע 1</h4>
-
-          <p>45 ₪</p>
-          </div>
-          </div>
-          <div className='cube' id='purple'>
-          <img src={Shot}></img>
-          <div className='product-details' id='purple-details'>
-          <h4>כובע 1</h4>
-
-          <p>45 ₪</p>
-          </div>
-          </div> */
-
-      //      </div>
-
-    
-    
-      // </div>
     );
   }
 }

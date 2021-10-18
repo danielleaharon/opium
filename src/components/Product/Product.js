@@ -8,20 +8,13 @@ import ProductShopItem from './ProductShopItem'
 
 import './Product.css';
 export default class Product extends Component {
-    constructor(props, context) {
-        super(props, context);
+    constructor(props) {
+        super(props);
         this.state={
-          value: '',
-          Amount:null,
-          price:null,
-          m:true,
+      
           productList:[]
         }
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleChangeAmount = this.handleChangeAmount.bind(this);
-        this.muse = this.muse.bind(this);
-        this.muse2 = this.muse2.bind(this);
+   
 
     }
     componentDidMount(){
@@ -40,40 +33,22 @@ export default class Product extends Component {
       .catch(() => {    console.log('send')
     }   );
     }
-    handleChange(event) {
-      this.setState({value: event.target.value});
-
-    }
-  
-    handleSubmit(event) {
-      this.setState({price:10*this.state.Amount})
-      event.preventDefault();
-    }
-    handleChangeAmount(event) {
-      
-      this.setState({Amount: event.target.value});
-
-    }
-  
-   muse(e){
-     console.log(e)
-    this.setState({m:false})
-   }
-   muse2(e){
-    console.log(e)
-   this.setState({m:true})
-  }
+ 
       render() {
     return (
       <div className='Product-t'>
 
-      <h2 className='h2' style={{fontSize:'40px'}}><b>המוצרים שלנו</b></h2>
 
         <div className='Product-p'>
        
        <div className='row-p'>
-         {this.state.productList.map((item,index)=>{
-return <ProductShopItem item={item}/>
+         {console.log(this.props.category)}
+         {this.state.productList.filter(x=>x.category===this.props.category&&(x.Subcategory.name===this.props.subCategory||this.props.subCategory===null)||this.props.category==='all').map((item,index)=>{
+           if(this.props.Ondesign)
+return <ProductShopItem Ondesign={this.props.Ondesign} pickProduct={this.props.pickProduct} item={item} key={item._id}   addToCart={this.props.addToCart}
+deleteFromCart={this.props.deleteFromCart}/>
+else return <ProductShopItem Ondesign={this.props.Ondesign}  item={item} key={item._id}   addToCart={this.props.addToCart}
+deleteFromCart={this.props.deleteFromCart}/>
 
          })}
            {/* <div className='product-details-div' onMouseMove={this.muse} onMouseLeave={this.muse2}>

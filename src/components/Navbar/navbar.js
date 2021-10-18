@@ -24,6 +24,7 @@ this.openMenu=this.openMenu.bind(this);
 this.getMenu=this.getMenu.bind(this);
   }
 
+ 
     getMenuOptions() {
       return [
         {
@@ -97,7 +98,7 @@ getMenu() {
 render() {
 
     return (
-      <div className='menu-root'>
+      <div className='menu-root' hidden={this.props.hide}>
  {this.getMenu()}
 
         <div className='menu'>
@@ -108,7 +109,6 @@ render() {
    
     {/* <span className='background-anim-dot'></span> */}
     <div className='menu-item1'>
-{console.log(window.location.pathname)}
     <a href='/Products' className={window.location.pathname==='/Products'?'background-anim-dot':''}><div   > מוצרים </div></a>
     <a href='http://www.giftlogo.co.il/' target='_blank' ><div > קטלוג </div></a>
     <a href='/Design' ><div > עצב בעצמך </div></a>
@@ -116,9 +116,16 @@ render() {
   
     </div>
     <div className='icon-nav'>
-    <span  class="dot-nav" >1</span>
+    {/* <span  class="dot-nav" >{this.props.cartSize}</span> */}
 
-    <a  id='shoping'><span class="iconify" data-icon="ph:shopping-cart-fill" data-inline="false"></span>    </a>
+    <a hidden={this.props.orderSize===0} id={window.location.pathname==='/Order'?'background-cart':'order'} href='/Order'><span class="iconify"  id='shopCart-icon' data-icon="icon-park-outline:transaction-order"></span>  <span  class="dot-nav dot-order" >{this.props.orderSize}</span>
+  
+  <span className='myCart'>ההזמנות שלי</span>
+  </a>
+    <a  id={window.location.pathname==='/Cart'?'background-cart':'shoping'} href='/Cart'><span class="iconify" id='shopCart-icon'data-icon="ph:shopping-cart-fill" data-inline="false"></span>      <span  class="dot-nav dot-shoping" >{this.props.cartSize}</span>
+  
+  <span className='myCart'>המוצרים שלי</span>
+  </a>
             <a href='https://www.facebook.com/swqwlb.hrzlyh'rel="noreferrer"  target='_blank'className='facebook-nav'>   <i class="fa fa-facebook-f" style={{fontSize:'15px' , color:'black'}}></i></a>
             <a href='https://www.instagram.com/opium_print/'rel="noreferrer"  target='_blank' className='insta-nav' >   <i class="fa fa-instagram" style={{fontSize:'15px', color:'black'}}></i></a>
             <a href='https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=dda180@gmail.com' rel="noreferrer" target='_blank'className='email-nav'>   <i class="fa fa-envelope"  style={{fontSize:'15px' ,color:'black'}}></i></a>

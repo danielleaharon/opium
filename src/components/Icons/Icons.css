@@ -1,8 +1,11 @@
 .Icons{
     font-size: 80px;
     width: 110%;
-    /* display: flex; */
-    margin-top: 5px;
+   z-index: 10;
+    margin-top: 10px;
+    display: grid;
+    grid-template-rows: repeat(6,20%);
+    grid-row-gap: 0px;
 }
 #red{
  color:red;
@@ -11,6 +14,25 @@
 .icon-btn{
     border: none;
     background-color: transparent;
-    margin-left: 5px;
-    margin-right: 5px;
+    margin: 5px;
+    width: 100%;
+    z-index: 15;
+
+    /* height: 100%; */
+    position: relative;
+  
+}
+.icon-toolbar{
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.icons-col{
+    height: 100px;
+    position: relative;
+    display: grid;
+        grid-template-columns: repeat(4,25%);
+        grid-column-gap: 5px;
+
 }

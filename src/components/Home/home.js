@@ -37,7 +37,7 @@ export default class Home extends Component {
   return
   }
   this.setState({photoList:res.data.photoList},()=>{
-    console.log(this.state.photoList)
+    // console.log(this.state.photoList)
     this.state.photoList.sort((a,b)=>a.positon-b.position).forEach((item,index)=>{
       this.galleryItems.push( 
       <img className='gallery-image' src={item.src}></img>

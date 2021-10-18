@@ -1,0 +1,104 @@
+.subcategory-list{
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    display: grid;
+    grid-row-gap: 15px;
+    grid-column-gap:15px ;
+    align-items: center;
+    background-color: rgba(219, 218, 218, 0.529);
+    border-radius: 10px;  
+    padding: 20px 10px;
+    
+}
+
+
+
+
+.subcategory-item{
+    position: relative;
+
+    background-color: white;
+    border-radius: 2px;
+width: auto;
+    padding: 5px 20px;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+
+}
+.subcategory-item-update{
+    position: relative;
+
+    background-color: white;
+    border-radius: 2px;
+width: auto;
+    padding: 15px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+
+}
+#subcategory-item-form{
+    padding-bottom: 20px;
+}
+.subcategory-item-name{
+    margin-top: 13px;
+}
+#subcategory-item-delete{
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: transparent;
+    border: none;
+}
+#subcategory-item-update{
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: transparent;
+    border: none;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    font-size: 18px;
+    font-weight: bold;
+    padding-bottom: 23px;
+    background-color: rgba(156, 190, 232, 0.708);
+}
+#subcategory-item-update:hover{
+    opacity: 1;
+
+}
+.subcategory-item-update-btns{
+    justify-self: center;
+    align-self: center;
+    position: absolute;
+    bottom: -7px;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-column-gap:auto ;
+}
+#subcategory-item-update-x{
+
+    background-color: transparent;
+    border: none;
+    color: transparent;
+    width: 27px;
+    height: 27px;
+
+    background: url('https://api.iconify.design/akar-icons/circle-x-fill.svg?color=red') no-repeat center center / contain;
+
+}
+.update-v{
+  
+    width: 25px;
+    height: 25px;
+    margin-right: 20px;
+
+    background-color: transparent;
+    border: none;
+    color: transparent;
+    background: url('https://api.iconify.design/el/ok-sign.svg?color=green') no-repeat center center / contain;
+}

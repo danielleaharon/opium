@@ -1,0 +1,99 @@
+.historyDesign{
+    display: flex;
+    /* width: 80%; */
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+    background-color: whitesmoke;
+    border: 1px #d57b7b solid;
+    border-radius: 4px;
+    margin: 10px;
+    margin-top: 20px;
+    position: relative;
+}
+.historyDesign:hover{
+    border: 3px #d57b7b solid;
+
+}
+.historyDesign-name-input{
+
+    font-size: 14px;
+    /* margin-top: 7px; */
+    border: none;
+    background-color: transparent;
+    align-items: center;
+    text-align: center;
+    padding:10px 0px;
+}
+.historyDesign-name-input:focus{
+    background-color: #d57b7b;
+
+}
+.historyDesign-name:hover .historyDesign-name-toolip {
+display: block;
+}
+.historyDesign-name-toolip{
+    display: none;
+    font-size: 12px;
+    /* font-weight: bold; */
+    position: absolute;
+    top: -18px;
+    left: 2px;
+
+}
+.historyDesign-date{
+    font-size: 11px;
+position: absolute;
+font-weight: bold;
+bottom: -7px;
+left: 5px;
+
+}
+
+.historyDesign-btn{
+    border: none;
+    background-color: transparent;
+    margin-right:5px ;
+    padding: 0px 5px;
+  
+    font-size: 18px;
+    border-radius: 5px;
+    position: relative;
+}
+.historyDesign-btn-toolip{
+    display: none;
+    font-size: 13px;
+    font-weight: bold;
+    position: absolute;
+    bottom: -16px;
+
+}
+.historyDesign-btn:hover{
+    background-color: #d57b7b;
+
+}
+.historyDesign-btn:hover .historyDesign-btn-toolip{
+display: block;
+}
+.historyDesign-btns{
+    position: absolute;
+    background-color: whitesmoke;
+    height: fit-content;
+
+    top: -12px;
+    right: 15px;
+
+}
+.historyDesign-btns-left{
+    position: absolute;
+    background-color: transparent;
+    height: fit-content;
+
+    top: 7px;
+    left: -35px;
+}
+.historyDesign-save{
+    width: 100px;
+
+}

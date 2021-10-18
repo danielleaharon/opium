@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import ReactCrop from 'react-image-crop'
 import 'react-image-crop/dist/ReactCrop.css'
 import './UploadImage.module.css';
+import getFirebase from "../../Firebase";
 
 class PicUploadNoCrop extends Component {
 
@@ -13,7 +14,7 @@ class PicUploadNoCrop extends Component {
             src: null,
             crop: {
                 unit: "%",
-                width: 30,
+                width: 100,
                 aspect: 1 / 1
             },
             croppedImageUrl: null,
@@ -22,6 +23,8 @@ class PicUploadNoCrop extends Component {
 
 
     }
+    firebase = getFirebase();
+
 
     handleFile = e => {
         const fileReader = new FileReader()
@@ -47,11 +50,37 @@ class PicUploadNoCrop extends Component {
     }
     }
     
-    handleSubmit = e => {
+    handleSubmit = async e => {
         e.preventDefault()
         const formData = new FormData()
-        this.props.onUpload(this.state.croppedImage)
-        this.setState({src:null})
+        if (!this.firebase) return;
+
+        const uploadedFile =this.state.croppedImage;
+        if (!uploadedFile) return;
+        const ImgName = await Math.random().toString(36).substr(2, 10);
+
+        const storage = this.firebase.storage();
+        const storageRef = storage.ref("ImageUsers");
+    var metadata = {
+        contentType: uploadedFile.type,
+      };
+        try {
+          const r= await storageRef.child(ImgName).put(uploadedFile,metadata);
+
+          console.log(r.ref)
+          r.ref.getDownloadURL().then((url)=>{
+            this.props.onUpload(url)
+            this.setState({src:null})
+
+         });
+
+        //   alert("Successfully uploaded picture!");
+        } catch (error) {
+          console.log("error", error);
+        }
+    
+        // this.props.onUpload(this.state.croppedImage)
+        // this.setState({src:null})
  
     
         // addPhotoToUser(user, formData)
@@ -171,15 +200,14 @@ class PicUploadNoCrop extends Component {
                  id='profile_pic' value={profile_pic} 
 
                 onChange={this.handleFile}  />
+     <div className='upload_btn' hidden={!src}>
 
-                {src && (
-                    <div>
-                        <div className='upload_btn'>
+<button className='upload_btn_right'  ><span class="iconify" data-icon="el:ok" data-inline="false"></span></button>
+<button className='upload_btn_left' onClick={()=>this.setState({src:null})}><span class="iconify" data-icon="topcoat:cancel" data-inline="false"></span></button>
 
-                <button className='upload_btn_right'  ><span class="iconify" data-icon="el:ok" data-inline="false"></span></button>
-                <button className='upload_btn_left' onClick={()=>this.setState({src:null})}><span class="iconify" data-icon="topcoat:cancel" data-inline="false"></span></button>
-
-                </div>
+</div>
+                {src && 
+                   
                     <ReactCrop
                       src={src}
                       crop={crop}
@@ -189,8 +217,7 @@ class PicUploadNoCrop extends Component {
                      /> 
               
 
-                </div>
-                )}
+                }
             </Form>
             </Fragment>
         )

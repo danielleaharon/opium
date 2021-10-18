@@ -182,6 +182,45 @@ text-align: center;
 
     width: 100%;
   }
+  
+  
+  
+  .heart-border{
+    mask-border: url('../../Image/heart2.png') ;
+
+  }
+  .cloud-border{
+    mask-border: url('../../Image/cloud.png');
+
+
+  }
+
+  .star-border{
+
+    clip-path: polygon(50% 0%, 71% 29%, 98% 35%, 79% 59%, 79% 91%, 50% 77%, 21% 91%, 23% 59%, 2% 35%, 30% 29%);
+
+  }
+  .circle-border{
+
+    clip-path: circle(50% at 50% 50%);
+
+  }
+  .triangular-border{
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+
+  }
+  .hexagon-border{
+    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+
+  }
+ .img-h{
+width: 100%;
+height: 100%;
+/* -webkit-mask-box-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/stampTiles.svg) ; */
+mask-border: url('../../Image/heart2.png') ;
+  /* clip-path: polygon(61% 31%, 82% 8%, 89% 43%, 74% 76%, 49% 100%, 47% 100%, 21% 73%, 5% 43%, 15% 8%); */
+  /* clip-path: path(nonzero,'M 10,30 A 20,20 0,0,1 50,30 A 20,20 0,0,1 90,30 Q 90,60 50,90 Q 10,60 10,30 z'); */
+ }
   .buttonEdit{
     background-color: black; 
     color: whitesmoke; 
@@ -241,102 +280,42 @@ width: 950px;
 
 }
 
-#heart {
-  position: absolute;
-  width: 100px;
-  height: 90px;
-  overflow: hidden;
-  background-image: url("../../Image/Design/men_back.png") ;
-  background-size: 100%;
- }
- .heart-shape:before{
-	color: url("../../Image/Design/men_back.png");
-	content: "❤";
-	font-size: 8em;
-	position: relative;
-	top: 100px;
-}
- .heart-shape {
-  background: #f9e1ea none repeat scroll 0 0;
-  border-radius: 50%;
-  
-  display: run-in;
-  height: 200px;
-  margin: 5em auto 0;
-  text-align: center;
-  width: 200px;
-}
- .img1{
- 
-  position: absolute;
-  background-repeat:no-repeat; 
-
-  overflow:hidden;
-
- }
- .img2{
-width: 200px;
-height: 200px;
-
- }
-
- #wrap {
-  width: 80%;
-  margin: 1em auto;
-  padding: 1em 5%;
-  background: #fff;
+.elementImg{
+  width: 120px;
   position: relative;
+
 }
-#wrap:after {
-  content: "\f004"; 
-  font-family: FontAwesome;
-  font-style: normal;
-  font-weight: normal;
-  text-decoration: inherit;
+.delete-img-item-toolbar{
+  border: none;
+  background-color: transparent;
   position: absolute;
-  font-size: 400px;
-  color: lightblue;
-  
-  top: 50%;
-  left: 50%;
-  margin: -300px 0 0 -200px;
-  z-index: 1;
+  top: -10px;
+  left: -10px;
 }
- #heart:before
- {
-   visibility: visible;
+
+.elementimg-view{
+  display: flex;
+  justify-content: center;
+  font-size: 25px;
+  /* align-items: center; */
+  text-align: center;
+  padding: 5px;
+  background-color: rgba(100, 194, 119, 0.55);
+  border-radius:4px ;
+  margin: 5px;
+  position: relative;
+
+
+}
+#elementimg-view-icon{
+  font-size: 25px;
+  margin: 0px 10px;
   position: absolute;
-  content: url("../../Image/Design/men_back.png");
-  left: 50px;
-  top: 0;
-  width: 50px;
-  height: 80px;
-  border:'10px black solid';
-  background: rgba(187, 19, 19, 0.18);
-  -moz-border-radius: 50px 50px 0 0;
-  border-radius: 50px 50px 0 0;
-  -webkit-transform: rotate(-45deg);
-  -moz-transform: rotate(-45deg);
-  -ms-transform: rotate(-45deg);
-  -o-transform: rotate(-45deg);
-  transform: rotate(-45deg);
-  -webkit-transform-origin: 0 100%;
-  -moz-transform-origin: 0 100%;
-  -ms-transform-origin: 0 100%;
-  -o-transform-origin: 0 100%;
-  transform-origin: 0 100%;
- }
- 
- #heart:after {
-  left: 0;
-  -webkit-transform: rotate(45deg);
-  -moz-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  -o-transform: rotate(45deg);
-  transform: rotate(45deg);
-  -webkit-transform-origin: 100% 100%;
-  -moz-transform-origin: 100% 100%;
-  -ms-transform-origin: 100% 100%;
-  -o-transform-origin: 100% 100%;
-  transform-origin :100% 100%;
- }
+  top: 18px;
+  right: 5px;
+}
+.elementimg-view-img{
+  width: 12%;
+  border-radius: 4px;
+  margin: 5px;
+}

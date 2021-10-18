@@ -9,24 +9,25 @@ import ResizableRect from 'react-resizable-rotatable-draggable'
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
 import 'react-alice-carousel/lib/alice-carousel.css';
-import { Slider } from '@material-ui/core';
-import ImgToolbar from '../ImgToolbar/ImgToolbar';
+import CropSquareIcon from '@mui/icons-material/CropSquare';
+import ImgToolbar2 from '../ImgToolbar/ImgToolbar2';
 
 
 import './DesignElementImg.css';
-export default class DesignElementText extends Component {
-    constructor(props, context) {
-        super(props, context);
+export default class DesignElementImg extends Component {
+    constructor(props) {
+        super(props);
         this.state={
           delete:false,
           BorderColor:'transparent',
-          width: 100,
-          height: 80,
-          top: 175,
-          left: 240,
-          rotateAngle: 0,
+          width: this.props.item.getWidth(),
+          height: this.props.item.getHeight(),
+          top: this.props.item.getTop(),
+          left: this.props.item.getLeft(),
+          rotateAngle: this.props.item.getRotateAngle(),
           borderRadius:0,
           zIndex:'1',
+          imgClip:this.props.item.getImgClip()
 
         }
       
@@ -40,34 +41,44 @@ this.setRadios=this.setRadios.bind(this);
         this.click=this.click.bind(this);
         this.getZIndex=this.getZIndex.bind(this);
         this.delete=this.delete.bind(this);
+        this.changeImgClip=this.changeImgClip.bind(this);
 
 
       }
+      changeImgClip(clip){
+        this.setState({imgClip:clip})
+        this.props.item.setImgClip(clip)
+        
+      }
       delete(e){
-        console.log("delete  "+e.charCode)
-        console.log("delete  "+e.tabIndex        )
+        this.props.deleteImg(this.props.item.getId())
+
         this.props.getTextToolbar('')
 
-        this.setState({text:''});
         this.setState({delete:true})
       }
       componentDidMount(){
-        this.getZIndex();
+        // this.getZIndex();
       }
       getZIndex(){
-        const z= this.props.zIndex();
-        this.setState({zIndex:z});
+        // const z= this.props.zIndex();
+        // this.setState({zIndex:z});
       }
       handleRotate(rotateAngle) {
         this.setState({
           rotateAngle
         })
+        this.props.item.setRotateAngle(rotateAngle)
+
       }
     
       handleDrag (deltaX, deltaY)  {
         this.setState({
           left: this.state.left + deltaX,
           top: this.state.top + deltaY
+        },()=>{
+          this.props.item.setTop(this.state.top)
+          this.props.item.setLeft(this.state.left)
         })
       }
       handleResize (style, isShiftKey, type) {
@@ -83,6 +94,12 @@ this.setRadios=this.setRadios.bind(this);
           left,
           width,
           height
+        },()=>{
+          this.props.item.setWidth(this.state.width)
+          this.props.item.setHeight(this.state.height)
+
+          this.props.item.setTop(this.state.top)
+          this.props.item.setLeft(this.state.left)
         })
       }
       setRadios(e,value){
@@ -90,11 +107,13 @@ this.setRadios=this.setRadios.bind(this);
       }
      
       click(){
-        this.props.onDrag(this.props.myIndex)
-        this.props.getTextToolbar(<ImgToolbar zIndex={this.getZIndex} setBorderColor={this.setBorderColor} boderColor={this.state.BorderColor}setRadios={this.setRadios} Radios={this.state.borderRadius}  setShowSlider={this.props.setShowSlider}/>)
+        this.props.onDrag(this.props.item.getId())
+        console.log(this.props.item.getImgClip())
+        this.props.getTextToolbar(<ImgToolbar2  changeImgClip={this.changeImgClip} imgClip={this.props.item.getImgClip()} setBorderColor={this.setBorderColor} boderColor={this.state.BorderColor}setRadios={this.setRadios} Radios={this.state.borderRadius}  setShowSlider={this.props.setShowSlider}/>)
       }
       setBorderColor(color){
         this.setState({BorderColor:color})
+        this.props.item.setBorderColor(color)
       }
       render() {
         if(this.state.delete)
@@ -102,36 +121,50 @@ this.setRadios=this.setRadios.bind(this);
      
     return (
         
-      <div className='Design2' style={{zIndex:this.state.zIndex}}  >
-          
+      <div className='Design2'  hidden={this.props.item.hidden} style={{zIndex:this.props.item.getZIndex()}}  >
+
+{/*           
           <div  onClick={this.click} style={
               {
-                width:this.state.width,
-                height:this.state.height,
-                left:this.state.left+1,
-                top:this.state.top+1,
-             
-                border:this.state.BorderColor+' 2px solid',
-                position:'absolute',
-                borderRadius:this.state.borderRadius,
-                backgroundSize:'cover',
-                backgroundRepeat: 'no-repeat',
+                width:this.state.width-1,
+                height:this.state.width-1,
+                // position:'absolute',
 
-                transform: `rotate(${this.state.rotateAngle}deg)`,
-                overflow:'hidden',
+                // left:this.state.left,
+                // top:this.state.top,
+             backgroundColor:'transparent',
+                borderRadius:this.state.borderRadius,
+                border:this.state.BorderColor+' 2px solid',
+                padding:'1px',paddingBottom:'4px',  
+                // transform: `rotate(${this.state.rotateAngle}deg)`,
+                // overflow:'hidden',
                 
 
                 }
               }
               
-             >
+             > */}
+<div className={this.state.imgClip.titel} style={{
+   width:this.state.width,height:this.state.width,
+   position:'absolute',
+   left:this.state.left,
+top:this.state.top, 
+transform: `rotate(${this.state.rotateAngle}deg)`,
 
-          <img   src={this.props.img}></img>
 
-               {/* <div className='heart-shape'></div> */}
+backgroundColor:this.state.BorderColor,
+}}>
+          <img  onClick={this.click} style={{   position:'absolute',
+ borderRadius:this.state.borderRadius,
+//  border:this.state.BorderColor+' 2px solid',
+left:5,
+top:5,         
+                        //  transform: `rotate(${this.state.rotateAngle}deg)`,
+
+ width:this.state.width-10,height:this.state.width-10}} src={this.props.item.getData()} className={this.state.imgClip.titel} ></img>
         </div>
         <div>
-         {this.props.drag===this.props.myIndex?( 
+         {this.props.drag===this.props.item.getId()?( 
             <div>
             <button style={{position:'absolute',
          left:this.state.left-12,

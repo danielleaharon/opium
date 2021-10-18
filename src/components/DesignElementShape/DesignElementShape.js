@@ -10,26 +10,27 @@ import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
 import 'react-alice-carousel/lib/alice-carousel.css';
 import { Slider } from '@material-ui/core';
-import ImgToolbar from '../ImgToolbar/ImgToolbar';
+import ShapeToolbar from '../ShapeToolbar/ShapeToolbar';
+import { Icon } from '@iconify/react';
 
 
 import './DesignElementShape.css';
 export default class DesignElementText extends Component {
-    constructor(props, context) {
-        super(props, context);
+    constructor(props) {
+        super(props);
         this.state={
           delete:false,
-          BorderColor:this.props.color,
-          BorderColorHex:'#'+this.props.color,
+          backgroundColor:this.props.colorFill,
+          BorderColor:this.props.colorBorder,
 
-          width: 100,
-          height: 80,
-          top: 175,
-          left: 240,
-          rotateAngle: 0,
+          width: this.props.item.getWidth(),
+          height: this.props.item.getWidth(),
+          top: this.props.item.getTop(),
+          left: this.props.item.getLeft(),
+          rotateAngle: this.props.item.getRotateAngle(),
           borderRadius:0,
           color:this.props.color,
-          zIndex:'1',
+          
 
         
         }
@@ -44,34 +45,40 @@ this.setRadios=this.setRadios.bind(this);
         this.click=this.click.bind(this);
         this.getZIndex=this.getZIndex.bind(this);
         this.delete=this.delete.bind(this);
+        this.setBackgroundColor=this.setBackgroundColor.bind(this);
 
 
       }
+      
          delete(e){
-        console.log("delete  "+e.charCode)
-        console.log("delete  "+e.tabIndex        )
-        this.props.getTextToolbar('')
+          this.props.deleteShape(this.props.item.getId())
 
-        this.setState({text:''});
+          this.props.getTextToolbar('')
+  
+
         this.setState({delete:true})
       }
       componentDidMount(){
-        this.getZIndex();
+        // this.getZIndex();
       }
       getZIndex(){
-        const z= this.props.zIndex();
-        this.setState({zIndex:z});
+        // const z= this.props.zIndex();
+        // this.setState({zIndex:z});
       }
       handleRotate(rotateAngle) {
         this.setState({
           rotateAngle
         })
+        this.props.item.setRotateAngle(rotateAngle)
       }
     
       handleDrag (deltaX, deltaY)  {
         this.setState({
           left: this.state.left + deltaX,
           top: this.state.top + deltaY
+        },()=>{
+          this.props.item.setTop(this.state.top)
+          this.props.item.setLeft(this.state.left)
         })
       }
       handleResize (style, isShiftKey, type) {
@@ -87,6 +94,10 @@ this.setRadios=this.setRadios.bind(this);
           left,
           width,
           height
+        },()=>{
+          this.props.item.setWidth(this.state.width)
+          this.props.item.setTop(this.state.top)
+          this.props.item.setLeft(this.state.left)
         })
       }
       setRadios(e,value){
@@ -94,36 +105,66 @@ this.setRadios=this.setRadios.bind(this);
       }
      
       click(){
-        this.props.onDrag(this.props.myIndex)
-        this.props.getTextToolbar(<ImgToolbar zIndex={this.getZIndex} setBorderColor={this.setBorderColor} boderColor={this.state.BorderColorHex}setRadios={this.setRadios} Radios={this.state.borderRadius}  setShowSlider={this.props.setShowSlider}/>)
+        this.props.onDrag(this.props.item.getId())
+        this.props.getTextToolbar(<ShapeToolbar zIndex={this.getZIndex} setBackgroundColor={this.setBackgroundColor}  backgroundColor={this.state.backgroundColor} setBorderColor={this.setBorderColor} boderColor={this.state.BorderColor} icon={this.props.shapefill} 
+       borderIcon={ this.props.shapeborder}  
+    />)
       }
       setBorderColor(color){
-        const c=color.slice(1);
-        console.log(c)
-        this.setState({BorderColorHex:color})
-        this.setState({BorderColor:c})
+        
+        this.setState({BorderColor:color})
+        this.props.item.setColorBorder(color)
+      }
+      setBackgroundColor(color){
+        this.setState({backgroundColor:color})
+        this.props.item.setColorFill(color);
+
       }
       render() {
         if(this.state.delete)
         return '';
      
     return (
-        <div className='Design2' style={{zIndex:this.state.zIndex}}  >
+        <div className='Design2'  hidden={this.props.item.hidden} style={{zIndex:this.props.item.getZIndex()}}  >
           
-          <div onClick={this.click} style={
+          <div  className='ddd'  id={this.props.item.getId()} onClick={this.click} style={
               {
                 width:this.state.width,
                 height:this.state.width,
-                left:this.state.left+1,
-                top:this.state.top+1,
-             
+                left:this.state.left,
+                top:this.state.top,
+                // backgroundColor:this.state.backgroundColorHex,
+
                 position:'absolute',
-                background:'url('+this.props.shape+'?color=%23'+this.state.BorderColor+') no-repeat center center / contain',
-                backgroundSize:'cover',
-                backgroundRepeat: 'no-repeat',
+
 
                 transform: `rotate(${this.state.rotateAngle}deg)`,
-                overflow:'hidden',
+                // overflow:'hidden',
+                
+
+                }
+              }
+              
+             >
+               <Icon color={this.state.backgroundColor} width={this.state.width} icon={this.props.shapefill}  style={{position:'absolute',top:'0'}} />
+               <Icon color={this.state.BorderColor} width={this.state.width}  icon={this.props.shapeborder}  style={{position:'absolute',top:'0'}} />
+
+             
+
+          {/* <div style={
+              {
+                width:this.state.width-10,
+                height:this.state.width-15,
+               
+             backgroundColor:this.props.boderColorHex,
+                position:'absolute',
+                // maskBorder:"url('../../Image/heart2.png')",
+                // background:'url('+this.props.shape+'?color=%23'+this.state.backgroundColor+') no-repeat center center / contain',
+                backgroundSize:'cover',
+                backgroundRepeat: 'no-repeat',
+zIndex:10,
+                left:5,
+                top:7.5,
                 
 
                 }
@@ -132,9 +173,12 @@ this.setRadios=this.setRadios.bind(this);
              >
               
 
+        </div> */}
+              
+
         </div>
         <div>
-         {this.props.drag===this.props.myIndex?( 
+         {this.props.drag===this.props.item.getId()?( 
             <div>
             <button style={{position:'absolute',
          left:this.state.left-12,

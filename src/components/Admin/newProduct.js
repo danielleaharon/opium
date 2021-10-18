@@ -13,8 +13,8 @@ import ProductItem from '../ProductImgItem/ProductItem';
 import Config from '../../config/config';
 import './Admin.css';
 export default class newProduct extends Component {
-    constructor(props, context) {
-        super(props, context);
+    constructor(props) {
+        super(props);
         this.state={
             pName:'',
             pNameE:false,
@@ -23,12 +23,15 @@ export default class newProduct extends Component {
             pDiscription:'',
             pDiscriptionE:false,
             pSelectCategory:10,
+            pSubcategory:10,
+            pSubcategoryE:false,
             pImage:'',
             pImageE:false,
             add:false,
             productList:[],
             imgs:[],
             newColor:false,
+            subcategoryList:[]
 
         }
        
@@ -43,28 +46,7 @@ export default class newProduct extends Component {
     }
     componentDidMount(){
 
-      // var item=[];
-      // var front='https://firebasestorage.googleapis.com/v0/b/opium-37022.appspot.com/o/product%2Fmen_front_blue.png?alt=media&token=dac788b2-ac5d-4b51-b615-b7530bbeebeb';
-      // var back='https://firebasestorage.googleapis.com/v0/b/opium-37022.appspot.com/o/product%2Fmen_back_blue.png?alt=media&token=a29bb95a-8e90-4ccc-8fd6-32cc74ece5ab';
-      // var color='blue'
-      // item.push({front,back,color});
-      // var front='https://firebasestorage.googleapis.com/v0/b/opium-37022.appspot.com/o/product%2Fmen_front.png?alt=media&token=4586cb18-0c02-4cf9-b15c-76fcdbaacb15';
-      // var back='https://firebasestorage.googleapis.com/v0/b/opium-37022.appspot.com/o/product%2Fmen_back.png?alt=media&token=81224806-4e13-48b2-964e-5a73593a1660';
-      // var color='white'
-      // item.push({front,back,color});
-      // this.setState({imgs:item});
-      axios.post(Config.getServerPath()+'product/all')
-      .then(res => {
-  if(res.data.status===400){
-    console.log('error')
-  return
-  }
-  this.setState({productList:res.data.productList})
-  
-
-      })
-      .catch(() => {    console.log('send')
-    }   );
+    
     }
     ClearError(){
 
@@ -120,6 +102,7 @@ export default class newProduct extends Component {
         category: this.state.pSelectCategory,
         price:this.state.pPrice,
         productImage:this.state.imgs,
+        subcategory:this.state.pSubcategory
     };
       axios.post(Config.getServerPath()+'product/create',postData)
       .then(res => {
@@ -205,9 +188,40 @@ export default class newProduct extends Component {
           onChange={(e)=>this.setState({pSelectCategory:e.target.value})}
           displayEmpty
         >
-<MenuItem id='val' value="חולצות">חולצות</MenuItem>
+<MenuItem id='val' value="הלבשה">הלבשה</MenuItem>
+<MenuItem id='val' value='גאדגטים ואלקטרוניקה'>גאדגטים ואלקטרוניקה</MenuItem>
+<MenuItem id='val' value="מתנות בעיצוב">מתנות בעיצוב</MenuItem>
+<MenuItem id='val' value="כוסות ספלים ובקבוקים">כוסות ספלים ובקבוקים</MenuItem>
+<MenuItem id='val' value="כובעים ומוצרי טקסטיל">כובעים ומוצרי טקסטיל</MenuItem>
+<MenuItem id='val' value="תיקים ומוצרים למשרד">תיקים ומוצרים למשרד</MenuItem>
+<MenuItem id='val' value="מוצרי מטבח ואירוח לבית">מוצרי מטבח ואירוח לבית</MenuItem>
+<MenuItem id='val' value="הדפסת תמונות מעוצבות">הדפסת תמונות מעוצבות</MenuItem>
+
+
+         
+
+          
+        </Select>
+      </FormControl>
+
+      <FormControl  variant="standard" id='select-time-start'>
+        <InputLabel id="product-label" error={this.state.pSubcategoryE} shrink > תת קטגוריה </InputLabel>
+
+        <Select
+        required
+        labelId="demo-simple-select-placeholder-label-label"
+        id="demo-simple-select-placeholder-label"
+          value={this.state.pSubcategory}
+          onChange={(e)=>this.setState({pSubcategory:e.target.value})}
+          displayEmpty
+        >
+          {this.props.subcategoryList.map((item,index)=>{
+            return <MenuItem id='val' value={item}>{item.name}</MenuItem>
+
+          })}
+{/* <MenuItem id='val' value="חולצות">חולצות</MenuItem>
 <MenuItem id='val' value='כובעים'>כובעים</MenuItem>
-<MenuItem id='val' value="כוסות">כוסות</MenuItem>
+<MenuItem id='val' value="כוסות">כוסות</MenuItem> */}
 
          
 

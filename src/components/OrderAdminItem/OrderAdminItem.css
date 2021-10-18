@@ -1,0 +1,224 @@
+.orderAdminItem{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 15% 15% 15% 15% 30% 25%;
+    position: relative;
+    background-color:#93aecc27 ;
+
+    /* justify-content: center;
+    justify-self: center; */
+    /* grid-column-gap: 5px; */
+    /* text-align: center;
+    align-items: center; */
+    /* margin-top: 10px; */
+
+}
+.orderAdminItem p{
+  margin-top: 13px;
+  display: inline-block;
+  padding: 0px;
+}
+.orderAdminItem img{
+    width: 35%;
+}
+.order-item{
+    width: 80%;
+    margin-right: 45px;
+
+    /* justify-content: center; */
+  
+  
+}
+
+.order-preview-imgs{
+    position: relative;
+}
+.order-preview-imgs img{
+    margin-left: 5px;
+    /* width: 50%; */
+
+}
+.order-img{
+    justify-self: center;
+    width: 35%;
+}
+#order-preview-big{
+position: absolute;
+top: 1.5rem;
+left: 7.5rem;
+width: 40px;
+height: 40px;
+border: none;
+background-color: rgba(0, 0, 0, 0.336);
+border-radius: 100px;
+display: none;
+mask-border: url('../../Image/zoomin4.png') ;
+
+}
+.order-preview-imgs:hover #order-preview-big{
+    display: block;
+}
+.order-preview-dailog-context-imgs{
+    display: flex;
+    width: fit-content;
+}
+
+  .order-preview-dailog-context-img{
+    width: 50%;
+    /* margin: 10px; */
+  }
+  #order-preview-dailog-context{
+      width: fit-content;
+      display: flex;
+      
+
+  }
+  #order-preview-dailog-btn{
+ position: absolute;
+ top: 10px;
+ right: 10px;
+ font-size: 34px;
+  }
+.OrderAdminDesign{
+    margin-bottom: 5px;
+}
+  .OrderAdminDesign-btn{
+      background-color: transparent;
+      width: 96%;
+      border: 1px black solid;
+      border-radius: 4px;
+      font-size: 16px;
+      position: relative;
+  }
+  .OrderAdminDesign-details{
+      display: grid;
+      /* margin-top: 10px; */
+      grid-template-columns: repeat(2,50%);
+      background-color: rgba(0, 0, 0, 0.077);
+      grid-column-gap: 25px;
+      border-radius: 4px;
+      margin-left: 10px;
+      padding: 5px;
+      padding-top: 15px;
+  }
+
+
+  .OrderAdminDesign-details-img{
+    display: grid;
+    /* margin-top: 10px; */
+    grid-template-columns: repeat(2,50%);
+    background-color: rgba(0, 0, 0, 0.077);
+    grid-column-gap: 15px;
+    border-radius: 4px;
+    margin-left: 10px;
+    padding: 5px;
+    padding-top: 15px;
+}
+  #dot-OrderAdminDesign{
+    /* margin: 5px; */
+    /* margin-top: 10px; */
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    display: inline-block;
+    border: 1px solid black;
+    position: absolute;
+    left: 30px;
+  }
+  .OrderA-details-p{
+      position: relative;
+  }
+  .orderItem-dialog-details-txt{
+    direction: rtl;
+    padding-right: 20px;
+    width: 100%;
+    background-color: whitesmoke;
+  }
+  #orderItem-dialog-details-txt-title{
+    font-size: 28px;
+    margin-top: 50px;
+    font-weight: bold;
+
+
+}
+.orderItem-dialog-details-txt{
+    direction: rtl;
+    padding-right: 20px;
+    width: 100%;
+    background-color: whitesmoke;
+    font-size: 18px;
+    
+    /* padding: 60px; */
+    /* width: 200%; */
+}
+.orderItem-text{
+    font-size: 18px;
+    margin-top: 30px;
+
+}
+.OrderAdminDesign-download{
+    margin-top: 30px;
+    background-color: white;
+    border: none;
+    /* border: 1px black solid; */
+    border-radius: 4px;
+    font-size: 16px;
+    width: 90%;
+}
+.OrderAdminDesign-download:hover{
+    background-color:#BEE4A6 ;
+    border: 1px black solid;
+
+}
+.OrderAdminDesign-view-img{
+    width: 10%;
+    position: absolute;
+    top: 0px;
+    left: 45%;
+}
+.OrderAdminDesign-shape{
+    height: 30px;
+}
+#OrderAdminDesign-shape-design{
+    position: relative;
+}
+.orderAdmin-addprice{
+    border: none;
+    display: flex;
+    /* border: 1px #93AECC solid; */
+    background-color:#E6EBEF ;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    /* background-color: #93aeccbd; */
+}
+.orderAdmin-addprice:hover{
+    border: 2px #93AECC solid;
+}
+.orderAdmin-addprice-btn{
+    border: none;
+    background-color: transparent;
+}
+.orderAdmin-addprice-div{
+    border-right: 3px white solid;
+    padding: 5px 10px;
+
+}
+
+#orderAdmin-addprice-label{
+    /* margin-top: -2px; */
+  
+ font-family: 'Varela Round', sans-serif;
+
+
+}
+
+.orderAdmin-addprice-send{
+
+    border: 3px #93AECC solid;
+    /* background-color:#93aecc27 ; */
+    /* width: 90%; */
+    margin-top: 13px;
+    border-radius: 50%;
+}

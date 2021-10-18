@@ -11,6 +11,10 @@
     width: 100%;
     
 }
+.ddd{
+  clip-path: border-box;
+
+}
 #back-button{
   font-size: 22px;
   /* background-image: url('../../Image/logoPic.png'); */
@@ -339,3 +343,22 @@ height: 200px;
   -o-transform-origin: 100% 100%;
   transform-origin :100% 100%;
  }
+ .elementshape-view{
+  display: flex;
+  justify-content: center;
+  font-size: 25px;
+  text-align: center;
+  padding-top: 10px;
+  background-color: rgba(184, 144, 220, 0.55);
+  border-radius:4px ;
+  margin: 5px;
+  position: relative;
+  height: 40px;
+ }
+ #elementshape-view-icon{
+  font-size: 25px;
+  margin: 0px 10px;
+  position: absolute;
+  top: 7px;
+  right: 5px;
+}

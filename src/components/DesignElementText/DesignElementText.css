@@ -1,17 +1,27 @@
-.Design2{
+.Design3{
 
     font-family: 'Varela Round', sans-serif;
-    justify-content: right;
-    /* align-items: center; */
-    /* text-align: center; */
+    /* justify-content: center; */
+    /* align-items: center;
+    text-align: center; */
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-color: rgba(245, 245, 245, 0.856);
+    top: 0rem;
+    left: 0rem;
+    width:100%;
+    /* justify-items: center; */
+
+    /* display: flex; */
+    /* background-color: rgba(245, 245, 245, 0.856); */
 
     
 }
+/* .div2{
+  position: absolute;
+  top: 10px;
+  left: 0;
+  width: 100%;
+  background-color: aqua;
+} */
 #back-button{
   font-size: 22px;
   /* background-image: url('../../Image/logoPic.png'); */
@@ -116,6 +126,46 @@ div.menur
   direction: rtl;
   display: flex;
   
+}
+.resizable-handler{
+  content: url('https://api.iconify.design/akar-icons/circle-fill.svg?color=white');
+      /* border: 1px solid #cec8c8; */
+  background-color: rgb(85, 85, 85);
+  padding: 2px;
+  border-radius: 10px;
+
+}
+.div2 div{
+  border-style: none;
+  /* background-color: aqua; */
+  /* border-color: black; */
+}
+ div .rect{
+  border-style: dashed;
+  border: 1.5px gray dashed;
+  /* background-color: aqua; */
+  /* border-color: black; */
+
+}
+
+.t,.b,.r,.l,.tl{
+  /* border: 1px solid #000000; */
+ display: none;
+}
+.rotate svg{
+  display: none;
+  visibility: hidden;
+}
+.rotate{
+  content: url('https://api.iconify.design/feather/rotate-cw.svg?color=%23555&width=20');    /* border: 1px solid #000000; */
+border: none;
+border-style: none;
+}
+
+#txt-element-delete{
+  z-index:'10';
+  background-color:'white';
+  border:'none';
 }
 #back-front{
   position: absolute;
@@ -265,6 +315,28 @@ width: 950px;
 
 
 }
+.textcenter{
+  /* position: absolute; */
+  font-size: 4em;
+  top: 0;
+}
+.textcenter-input{
+  border: none;
+  background-color: transparent;
+  padding: 0px;
+
+}
+.textcenter-input:active{
+  border: none;
+  outline: none;
+
+}
+
+input:focus{
+  border: none;
+  outline: none;
+
+}
 .textcenter:focus{
 border: hidden;
 color: black;
@@ -279,4 +351,48 @@ p:focus{
   outline: 0;
   /* border: none; */
 
+}
+.elementtext-view{
+  display: flex;
+  justify-content: center;
+  font-size: 25px;
+  text-align: center;
+  padding-top: 10px;
+  background-color: rgba(100, 166, 194, 0.55);
+  border-radius:4px ;
+  margin: 5px;
+  position: relative;
+
+
+}
+#elementtext-view-icon{
+  font-size: 25px;
+  margin: 0px 10px;
+  position: absolute;
+  top: 12px;
+  right: 5px;
+}
+.elementtext-view-txt{
+  font-size: 16px;
+
+}
+#elementtext-view-eye-true{
+  color: gray;
+  font-size: 20px;
+  margin: 0px 10px;
+  position: absolute;
+  top: 10px;
+  left: 5px;
+  border: none;
+  background-color: transparent;
+}
+#elementtext-view-eye-false{
+  color: black;
+  font-size: 20px;
+  margin: 0px 10px;
+  position: absolute;
+  top: 10px;
+  left: 5px;
+  border: none;
+  background-color: transparent;
 }

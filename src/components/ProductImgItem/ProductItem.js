@@ -25,6 +25,8 @@ export default class ProductItem extends Component {
       discriptionE:false,
       category:this.props.item.category,
       categoryE:false,
+      subcategory:this.props.item.Subcategory,
+      subcategoryE:false,
       imgs:this.props.productImage,
       addImg:false,
 
@@ -41,6 +43,7 @@ export default class ProductItem extends Component {
     this.handelUpdateChanges = this.handelUpdateChanges.bind(this);
     this.handelDeleteImg = this.handelDeleteImg.bind(this);
     this.handelAddImg = this.handelAddImg.bind(this);
+    this.handelSubcategoryChange = this.handelSubcategoryChange.bind(this);
 
   }
   handelAddImg(front, back,color){
@@ -81,6 +84,20 @@ export default class ProductItem extends Component {
     else{
       this.handelUpdateChanges()
       this.setState({categoryE:false})
+  
+      }
+     
+    })
+  
+  }
+  handelSubcategoryChange(e){
+    e.preventDefault();
+    this.setState({ subcategory: e.target.value },()=>{
+      if(this.state.subcategory==='')
+      this.setState({subcategoryE:true})
+    else{
+      this.handelUpdateChanges()
+      this.setState({subcategoryE:false})
   
       }
      
@@ -148,6 +165,10 @@ handelNameChange(e){
     if(this.state.category.trim()!==this.props.item.category.trim()){
       this.setState({ update: true})
     } 
+    console.log(this.state.subcategory.name)
+    if(this.state.subcategory.name.trim()!==this.props.item.Subcategory.name.trim()){
+      this.setState({ update: true})
+    } 
   }
   handelUpdate(){
     const postData = {
@@ -156,6 +177,7 @@ handelNameChange(e){
       category: this.state.category,
       price:this.state.price,
       productImage:this.state.imgs,
+      subcategory:this.state.subcategory
   };
     axios.post(Config.getServerPath() + 'product/update/' + this.props.item._id,postData)
     .then(res => {
@@ -217,7 +239,7 @@ handelNameChange(e){
                 {this.state.discriptionE ? <FormHelperText error={this.state.discriptionE} id="helper">חסר תיאור </FormHelperText> : ''}
               </FormControl>    
               <FormControl  variant="standard" id='select-time-start'>
-        <InputLabel id="product-label" error={this.state.pSelectCategoryE} shrink >קטגוריה </InputLabel>
+        <InputLabel id="product-label" error={this.state.categoryE} shrink >קטגוריה </InputLabel>
 
         <Select
         required
@@ -227,9 +249,14 @@ handelNameChange(e){
           onChange={this.handelCategoryChange}
           displayEmpty
         >
-<MenuItem id='val' value="חולצות">חולצות</MenuItem>
-<MenuItem id='val' value='כובעים'>כובעים</MenuItem>
-<MenuItem id='val' value="כוסות">כוסות</MenuItem>
+<MenuItem id='val' value="הלבשה">הלבשה</MenuItem>
+<MenuItem id='val' value='גאדגטים ואלקטרוניקה'>גאדגטים ואלקטרוניקה</MenuItem>
+<MenuItem id='val' value="מתנות בעיצוב">מתנות בעיצוב</MenuItem>
+<MenuItem id='val' value="כוסות ספלים ובקבוקים">כוסות ספלים ובקבוקים</MenuItem>
+<MenuItem id='val' value="כובעים ומוצרי טקסטיל">כובעים ומוצרי טקסטיל</MenuItem>
+<MenuItem id='val' value="תיקים ומוצרים למשרד">תיקים ומוצרים למשרד</MenuItem>
+<MenuItem id='val' value="מוצרי מטבח ואירוח לבית">מוצרי מטבח ואירוח לבית</MenuItem>
+<MenuItem id='val' value="הדפסת תמונות מעוצבות">הדפסת תמונות מעוצבות</MenuItem>
 
          
 
@@ -237,6 +264,29 @@ handelNameChange(e){
         </Select>
       </FormControl>  
           
+      <FormControl  variant="standard" id='select-time-start'>
+        <InputLabel id="product-label" error={this.state.subcategoryE} shrink >תת קטגוריה </InputLabel>
+
+        <Select
+        required
+        labelId="demo-simple-select-placeholder-label-label"
+        id="demo-simple-select-placeholder-label"
+          value={this.props.item.Subcategory}
+          onChange={this.handelSubcategoryChange}
+          displayEmpty
+        >
+          <MenuItem id='val' value={this.props.item.Subcategory}>{this.props.item.Subcategory.name}</MenuItem>
+  {this.props.subcategoryList.map((item,index)=>{
+    if(this.props.item.Subcategory.name.trim()!==item.name.trim())
+            return <MenuItem id='val' value={item}>{item.name}</MenuItem>
+
+          })}
+
+         
+
+          
+        </Select>
+      </FormControl>
               {/* <div className='div-item-img'> */}
             </div>
             {this.props.item.productImage.map((item, index) => {

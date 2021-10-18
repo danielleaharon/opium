@@ -1,0 +1,162 @@
+.ordermy{
+    width: 100%;
+    display: flex;
+    /* grid-template-columns: repeat(5,20%); */
+    position: relative;
+    /* justify-content: center;
+    justify-self: center; */
+    /* grid-row-gap: 0px; */
+    /* text-align: center; */
+    align-items: center;
+
+    height: min-content;
+    /* padding-top: 15px; */
+    /* margin-top: 10px; */
+
+}
+.myorder-titles{
+    width: 80%;
+    display: grid;
+    grid-template-columns: repeat(5,15%);
+    margin-right: 45px;
+margin-top: 30px;
+    font-weight: bold;
+    /* text-align: center; */
+    font-size: 16px;
+    /* grid-column-gap: 5px; */
+
+}
+.Ordermy{
+    width: 80%;
+    background-color: whitesmoke;
+    border: 1px #93AECC solid;
+    margin-bottom: 20px;
+    align-items: center;
+
+    border-radius: 4px;
+    height: min-content;
+    /* display: flex; */
+    /* grid-template-columns: repeat(5,20%); */
+    position: relative;
+    /* justify-content: center;
+    justify-self: center; */
+    /* grid-row-gap: 0px; */
+    /* text-align: center; */
+    align-items: center;
+    background-color: whitesmoke;
+    /* border: 1px #93AECC solid;
+    border-radius: 4px;
+    height: min-content;
+    margin-bottom: 20px; */
+    /* padding-top: 15px; */
+    /* margin-top: 10px; */
+
+}
+.ordermy p{
+    /* display: inline-block; */
+    width: 20%;
+    margin-bottom: 5px;
+}
+.ordermy:hover{
+    border: 3px #93AECC solid;
+    background-color: #93aecc22;
+
+}
+.ordermy-select{
+    border: 3px #93AECC solid;
+    background-color: #93aecc22;
+
+}
+#waiting{
+background-color: #9d9d9d57;
+padding: 20px 0px;
+margin-top: 5px;
+/* margin-left: 5px; */
+}
+#confirmed{
+    background-color: #e0852b65;
+    padding: 20px 0px;
+    margin-top: 5px;
+    /* margin-left: 5px; */
+}
+#paid{
+    background-color: #38ae6357;
+    padding: 20px 0px;
+    margin-top: 5px;
+    /* margin-left: 5px; */
+}
+#done{
+    background-color: #bd3f3f57;
+    padding: 20px 0px;
+    margin-top: 5px;
+    /* margin-left: 5px; */
+}
+#ordermy-arrow{
+    position: absolute;
+    right: 20px;
+    font-size: 24px;
+
+}
+.myorder-send-btn{
+    border: #93AECC 1px solid;
+    background-color: white;
+    border-radius: 4px;
+    width: 40%;
+    margin-left: 15px;
+    color: black;
+ 
+}
+.myorder-mail:hover{
+    border: #4285F4 2px solid;
+    color: #c22c3b;
+    font-weight: bold;
+
+ 
+}
+#gmail-black{
+    position: relative;
+
+}
+#gmail-color{
+    display: none;
+
+}
+.myorder-mail:hover #gmail-color{
+    display: inline;
+}
+.myorder-mail:hover #gmail-black{
+    display: none;
+}
+.myorder-whatsapp:hover{
+    border: #66bf69 2px solid;
+    color: #50a253;
+    font-weight: bold;
+
+ 
+}
+
+.myorder-send-btns{
+    width: 40%;
+
+    position: absolute;
+    bottom: 5px;
+    left: -30px;
+}
+.myorder-list{
+    margin-bottom: 50px;
+}
+#orderAdminCalss-select{
+    font-family: 'Varela Round', sans-serif;
+    font-weight: bold;
+    width: 20%;
+    margin-bottom: 5px;
+    margin-left: 5px;
+
+
+}
+.send-dialog-orderAdmin-title{
+    padding: 0px 50px;
+}
+.orderAdmin-send-dailog-context{
+    width: 150%;
+}

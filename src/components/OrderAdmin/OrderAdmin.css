@@ -1,0 +1,108 @@
+.Order{
+
+    padding-top: 30px;
+     font-family: 'Varela Round', sans-serif;
+     align-items: center;
+     justify-content: center;
+     justify-items: center;
+     display: flex;
+     flex-direction: column;
+     text-align: center;
+     direction: rtl;
+     background-color: #f5f5f5da;
+     padding-bottom: 20px;
+    
+     
+ }
+.orderAdmin-titles{
+    width: 60%;
+  /* margin-right: 230px; */
+    display: grid;
+    grid-template-columns: repeat(5,25%);
+    justify-content: center;
+    justify-self: center;
+    font-weight: bold;
+    /* text-align: center; */
+    font-size: 16px;
+    grid-column-gap: 13px;
+
+}
+.cart-empty{
+    padding:160px 0px ;
+
+}
+.cart-empty-p{
+    font-size: 18px;
+    font-weight: bold;
+}
+.cart-sent-btn{
+    width: 78%;
+    margin-top: 30px;
+    margin-bottom: 30px;
+
+    border: #7ec94f 1px solid;
+    background-color: white;
+    font-size: 20px;
+    border-radius: 4px;
+    padding: 2px 30px;
+ 
+
+}
+.cart-sent-btn:hover{
+    background-color: #c5f0aa;
+    border: #7ec94f 2px solid;
+
+
+}
+.orderAdmin-title{
+    font-family: 'Varela Round', sans-serif;
+   margin-right: 140px;
+    align-self: flex-start;
+    font-size: 26px;
+    font-weight: bold;
+    text-decoration: underline;
+
+}
+.orderAdmin-MenuItem{
+    font-family: 'Varela Round', sans-serif;
+    font-weight: bold;
+
+}
+#orderAdmin-select{
+    font-family: 'Varela Round', sans-serif;
+    font-weight: bold;
+}
+@media only screen and (max-width: 768px) {
+    .About{
+
+        padding-top: 30px;
+         font-family: 'Varela Round', sans-serif;
+         align-items: center;
+         align-self: center;
+         align-content: center;
+         text-align: center;
+         direction: rtl;
+         background-color: rgba(245, 245, 245, 0.856);
+         padding-bottom: 20px;
+        
+         
+     }
+     .About h3{
+        direction: rtl;
+        align-items: center;
+        font-family: 'Varela Round', sans-serif;
+    
+    
+    }
+    .about{
+        line-height: 1.6;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        /* margin-left: 14px; */
+        margin-right: -5px;
+        font-size: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+        
+    }
+}

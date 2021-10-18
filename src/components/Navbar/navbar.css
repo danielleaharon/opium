@@ -21,6 +21,7 @@ font-size: 25px;
     /* border-bottom: 2px solid rgba(245, 245, 245, 0.856); */
 
 }
+
 .menu-item1 {
     display: flex;
     justify-self: end;
@@ -43,6 +44,18 @@ z-index: 10;
 
     font-family: 'Varela Round', sans-serif;
 }
+.dot-shoping {
+ 
+        background-color: rgb(255, 191, 102);
+        
+      
+      }
+      .dot-order {
+ 
+        background-color: #93AECC;
+        
+      
+      }
 .dot-nav {
 align-items: center;
 text-align: center;
@@ -57,11 +70,13 @@ font-size: 12px;
     border-radius: 50%;
     backdrop-filter: inherit;
     /* background-image:url('../../Image/logopicopti.png') ; */
-    background-color: rgb(255, 191, 102);
+    /* background-color: rgb(255, 191, 102); */
     background-size: cover;
     border: 0.5px rgb(70, 69, 69) solid;
     display: inline-block;
     position: absolute;
+    right: -15px;
+    top: -3px;
   
   }
   #search-input{
@@ -111,7 +126,7 @@ width: 20%;
 }
 .menu {
     display: grid;
-    grid-template-columns:12% auto auto ;
+    grid-template-columns:130px auto auto ;
     /* grid-column-gap:185px; */
 
     /* grid-template-rows: repeat(1,100%); */
@@ -155,17 +170,87 @@ a:link, a:visited {
 #shoping{
     border: black 2px solid;
     margin-right: 50px;
-    padding-top: 4px;
-    padding-left: 6px;
-    padding-right: 6px;
-    padding-bottom: 6px;
+    padding-top: 3px;
+    padding-left: 7px;
+    padding-right: 7px;
+    padding-bottom: 3px;
     border-radius: 150px;
+    color: black;
+    height: fit-content;
+    position: relative;
+
     /* background-image:url('../../Image/logopicopti.png') ; */
     /* background-size: cover; */
 
 
 }
+#order{
+    border: black 2px solid;
+    margin-right: 20px;
+    padding-top: 3px;
+    padding-left: 7px;
+    padding-right: 7px;
+    padding-bottom: 3px;
+    border-radius: 150px;
+    color: black;
+    height: fit-content;
+    position: relative;
+
+    /* background-image:url('../../Image/logopicopti.png') ; */
+    /* background-size: cover; */
+
+
+}
+#shopCart-icon{
+    /* padding-top: 60px;
+    font-size: 90px; */
+}
+#background-cart .dot-nav{
+    right: 28px;
+    top: 48px;
+}
+.myCart{
+    font-size: 18px;
+    display: none;
+    margin-top: 60px;
+    position: absolute;
+    
+}
+#background-cart .myCart{
+    display: block;
+}
+#background-cart{
+    /* border-bottom: 2px solid transparent; */
+    padding:0px 28px ;
+    height: 8.7rem;
+    position: relative;
+
+    display: flex;
+    top: -45px;
+    width: 120px;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    justify-items: center;
+    /* padding-top: 20px; */
+z-index: 11;
+    background-color: #F6F6F6;
+margin-left: 10px;
+margin-right: 10px;
+
+font-size: 25px;
+    border: 0.5px solid #8e8e8ec9;
+    border-top:none ;
+    border-bottom:none ;
+    border-radius: 0px;
+    color: black;
+
+    /* border-bottom: 2px solid rgba(245, 245, 245, 0.856); */
+
+}
 .insta-nav{
+    height: fit-content;
+
     border: black 2px solid;
   /* color:  radial-gradient(circle farthest-corner at 35% 90%, #fec564, transparent 50%), radial-gradient(circle farthest-corner at 0 140%, #fec564, transparent 50%), radial-gradient(ellipse farthest-corner at 0 -25%, #5258cf, transparent 50%), radial-gradient(ellipse farthest-corner at 20% -50%, #5258cf, transparent 50%), radial-gradient(ellipse farthest-corner at 100% 0, #893dc2, transparent 50%), radial-gradient(ellipse farthest-corner at 60% -20%, #893dc2, transparent 50%), radial-gradient(ellipse farthest-corner at 100% 100%, #d9317a, transparent), linear-gradient(#6559ca, #bc318f 30%, #e33f5f 50%, #f77638 70%, #fec66d 100%); */
   margin-right: 10px;
@@ -178,13 +263,17 @@ a:link, a:visited {
  }
  .icon-nav{
      direction: ltr;
+     display: flex;
      margin-top: 35px;
+     height: 100%;
      justify-content: center;
      justify-items: center;
      background-color: transparent;
  
  }
  .facebook-nav{
+    height: fit-content;
+
      /* background-color: #3C5A99; */
      border:black 2px solid ;
      padding-top: 2px;
@@ -197,6 +286,8 @@ a:link, a:visited {
      justify-self: center;
  }
  .email-nav{
+    height: fit-content;
+
      border:black 2px solid ;
      padding: 2px;
      padding-left: 8px;

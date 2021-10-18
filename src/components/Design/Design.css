@@ -8,7 +8,21 @@
 
     
 }
-
+.layers{
+  background-color: #eeececcb;
+  border: 2px solid rgb(187, 187, 187);
+  border-radius: 10px;
+  padding: 10px 10px;
+  margin-right: 20px;
+  position: relative;
+  
+}
+.layers-item{
+  border-bottom: rgb(187, 187, 187) 1px solid;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+.pText{position: relative;}
 #back-button{
   font-size: 22px;
   /* background-image: url('../../Image/logoPic.png'); */
@@ -31,10 +45,12 @@
   text-shadow: rgba(228, 227, 227, 0.664) 1px 1px 3px;
 
 }
-div.menul
+.menul
 {
   float: left;
-  width: 880px;
+  position: absolute;
+  left: 5px;
+  /* width: 880px; */
   
   /* padding: 10px; */
 }
@@ -62,11 +78,22 @@ div.menur
   
   margin-right: 5px;
 }
+.menuc{
+  position: absolute;
+  right: 45%;
+  /* z-index: 999; */
+  /* width: 250px; */
+  /* padding: 10px; */
+  padding-top: 10px;
+  font-size: 20px;
+  
+}
 #menu-design{
   display: flex;
   justify-content: right;
   /* padding: 0px 30px; */
-  position: 'relative';
+  position:relative;
+  height: 55px;
   /* margin: 7px; */
   cursor: pointer;
   padding: 3px;
@@ -202,10 +229,10 @@ text-align: center;
     width: 100%;
   }
   .box1{
-    position: absolute;
+    /* position: absolute;
     top:0;
-    left: 0;
-    width: 110%;
+    left: 0; */
+    /* width: 110%; */
   }
  
   .buttonEdit{
@@ -227,7 +254,7 @@ text-align: center;
   }
   .buttons{
     background-color: rgba(236, 234, 234, 0.66);
-    height: 825px;
+    height:100%;
     justify-content: right;
     background-color: black;
 
@@ -257,7 +284,26 @@ text-align: center;
     grid-template-columns:repeat(1,100%);
 
   }
- 
+ .preview-dailog-context{
+  /* display: grid;
+  grid-column-gap:10px;
+  grid-row-gap: 20px;
+  grid-template-columns:repeat(1,100%); */
+ }
+ .preview-dailog-context-div{
+   text-align: right;
+   display: flex;
+   flex-direction: column;
+   font-size: 16px;
+   
+ }
+ .preview-dailog-context-imgs{
+   display: flex;
+ }
+ .preview-dailog-context-img{
+   width: 50%;
+   /* margin: 10px; */
+ }
   #Dialog-send{
     direction: rtl;
     font-family: 'Varela Round', sans-serif;
@@ -303,6 +349,11 @@ text-align: center;
 
 
   }
+  .shirt-design-ditails{
+    display: inline-block;
+    font-size: 20px;
+
+  }
   #alert-dialog-slide-description{
     font-family: 'Varela Round', sans-serif;
     font-weight: bold;
@@ -315,6 +366,17 @@ text-align: center;
     font-weight: bold;
     font-size: 15px;
     color: rgb(53, 52, 52);
+
+  }
+  .product-chang-btn{
+    margin-top: 70px;
+    border: #0288D1 2px solid;
+    border-radius: 4px;
+    background-color: transparent;
+    width: 80%;
+    padding: 5px 10px;
+    font-size: 16px;
+    font-family: 'Varela Round', sans-serif;
 
   }
   .dialog-design-img{
@@ -392,9 +454,65 @@ width: 950px;
   border-radius: 9px;
 
 }
+.img-item-toolbar-grid{
+  display: grid;
+  grid-template-columns: repeat(3,33%);
+  grid-column-gap: 10px;
+  margin-right: 20px;
+}
+.design-adddesign-btn{
+  margin-top: 70px;
+  border: #d57b7b 2px solid;
+  background-color: #d57b7b;
 
+  border-radius: 4px;
+  /* background-color: transparent; */
+  width: 80%;
+  padding: 5px 10px;
+  font-size: 16px;
+  font-family: 'Varela Round', sans-serif;}
 
+.design-adddesign-btn:hover{
+  background-color: #f1b6b6d9;
+
+  }
+  @keyframes djplay {
+  
+    /* 50%  {    transform: rotate(0.1turn) ;} */
+
+    100%  {    transform: rotate(1turn) ;}
+
+  }
+.loading-design{
+
+  /* width: 35%; */
+  position: absolute;
+  top: 27%;
+  right: 32%;
+  z-index: 1000;
+}
+.loading-design-img{
+  width: 50%;
+  opacity: 0.6;
+
+  -webkit-animation: djplay 1.4s infinite ease;
+  animation: djplay 1.4s infinite ease;
+}
+.loading-design-p{
+  position: absolute;
+  font-size: 24px;
+  font-weight: bold;
+  top: 28%;
+  right: 13%;
+  z-index: 1000;
+  color: black;
+ background-color: rgba(245, 245, 245, 0.523);
+ padding: 30px 10px;
+ border-radius: 100px; 
+
+}
 /*shape*/
+
 
 
 

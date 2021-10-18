@@ -1,0 +1,91 @@
+.cartItem{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 13.6% 13.6% 13.6% 13.6% 13.6% 20.6%;
+    position: relative;
+    justify-content: center;
+    justify-self: center;
+    grid-column-gap: 5px;
+    text-align: center;
+    align-items: center;
+    /* margin-top: 10px; */
+
+}
+.cartItem p{
+  margin-top: 13px;
+}
+.cartItem img{
+    width: 35%;
+}
+.cart-item{
+    width: 80%;
+    justify-content: center;
+  
+  
+}
+.cartItem-delete{
+    border: none;
+    position: absolute;
+    left: 0;
+    font-size: 23px;
+    background-color: transparent;
+}
+#cartItem-count{
+    width: 50%;
+    justify-self: center;
+}
+.cart-addDesign{
+    border: none;
+    background-color: transparent;
+    /* display: flex; */
+
+
+}
+.cart-preview-imgs{
+    position: relative;
+}
+.cart-preview-imgs img{
+    margin-left: 5px;
+    /* width: 50%; */
+
+}
+.cart-img{
+    width: 100%;
+}
+#cart-preview-big{
+position: absolute;
+top: 0.5rem;
+left: 5.5rem;
+width: 60px;
+height: 60px;
+border: none;
+background-color: rgba(0, 0, 0, 0.336);
+border-radius: 100px;
+display: none;
+mask-border: url('../../Image/zoomin4.png') ;
+
+}
+.cart-preview-imgs:hover #cart-preview-big{
+    display: block;
+}
+.cart-preview-dailog-context-imgs{
+    display: flex;
+    width: fit-content;
+}
+
+  .cart-preview-dailog-context-img{
+    width: 50%;
+    /* margin: 10px; */
+  }
+  #cart-preview-dailog-context{
+      width: fit-content;
+      display: flex;
+      
+
+  }
+  #cart-preview-dailog-btn{
+ position: absolute;
+ top: 10px;
+ right: 10px;
+ font-size: 34px;
+  }
