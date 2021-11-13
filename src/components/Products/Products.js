@@ -18,7 +18,7 @@ export default class Products extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      category: 'all',
+      category: this.props.category,
       subCategory: null,
       productList: [],
       listClothing: [],
@@ -38,9 +38,13 @@ export default class Products extends Component {
     this.tempList = this.tempList.bind(this);
 
   }
+  UNSAFE_componentWillReceiveProps(){
+    console.log(this.props.category)
+
+  }
   componentDidMount() {
 
-
+console.log(this.props.category)
     axios.post(Config.getServerPath() + 'product/all')
       .then(res => {
         if (res.data.status === 400) {
@@ -228,11 +232,11 @@ export default class Products extends Component {
           <div className='cubeC'>
 
             <div className='row5'>
-              <span id={this.state.category === 'כובעים ומוצרי טקסטיל' ? 'clicked-bluepurple' : ''} className='text-all border-bluepurple'  >  כובעים ומוצרי טקסטיל <span class="iconify" id='icon-category' data-icon="fa-solid:hat-cowboy"></span></span>
+              <span id={this.state.category === 'כובעים ומוצרי טקסטיל' ? 'clicked-bluepurple' : ''}  onClick={() => this.handleClick('כובעים ומוצרי טקסטיל')}className='text-all border-bluepurple'  >  כובעים ומוצרי טקסטיל <span class="iconify" id='icon-category' data-icon="fa-solid:hat-cowboy"></span></span>
               <div className='category-dropdown dropdown-bluepurple'>
                 <div id="mask"></div>
                 {
-                  this.state.listCup.map((item, index) => {
+                  this.state.listHat.map((item, index) => {
                     return <button className='dropdown-btn' onClick={() => this.handleClickSubCategory('כובעים ומוצרי טקסטיל', item)}>{item}</button>
 
 
@@ -313,9 +317,9 @@ export default class Products extends Component {
         </div>
         <div className='product-details'>
           {this.props.Ondesign?
-          <Product Ondesign={this.props.Ondesign} pickProduct={this.props.pickProduct}  category={this.state.category} subCategory={this.state.subCategory}  addToCart={this.props.addToCart}
+          <Product  width={this.props.width} Ondesign={this.props.Ondesign} pickProduct={this.props.pickProduct}  category={this.state.category} subCategory={this.state.subCategory}  addToCart={this.props.addToCart}
               deleteFromCart={this.props.deleteFromCart} />:
-                 <Product Ondesign={this.props.Ondesign} category={this.state.category} subCategory={this.state.subCategory}  addToCart={this.props.addToCart}
+                 <Product width={this.props.width} Ondesign={this.props.Ondesign} category={this.state.category} subCategory={this.state.subCategory}  addToCart={this.props.addToCart}
               deleteFromCart={this.props.deleteFromCart} />}
         </div>
       </div>

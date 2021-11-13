@@ -42,12 +42,11 @@ export default class Product extends Component {
         <div className='Product-p'>
        
        <div className='row-p'>
-         {console.log(this.props.category)}
          {this.state.productList.filter(x=>x.category===this.props.category&&(x.Subcategory.name===this.props.subCategory||this.props.subCategory===null)||this.props.category==='all').map((item,index)=>{
            if(this.props.Ondesign)
-return <ProductShopItem Ondesign={this.props.Ondesign} pickProduct={this.props.pickProduct} item={item} key={item._id}   addToCart={this.props.addToCart}
+return <ProductShopItem   width={this.props.width} Ondesign={this.props.Ondesign} pickProduct={this.props.pickProduct} item={item} key={item._id}   addToCart={this.props.addToCart}
 deleteFromCart={this.props.deleteFromCart}/>
-else return <ProductShopItem Ondesign={this.props.Ondesign}  item={item} key={item._id}   addToCart={this.props.addToCart}
+else return <ProductShopItem  width={this.props.width} Ondesign={this.props.Ondesign}  item={item} key={item._id}   addToCart={this.props.addToCart}
 deleteFromCart={this.props.deleteFromCart}/>
 
          })}

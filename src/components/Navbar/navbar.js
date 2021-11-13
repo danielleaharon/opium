@@ -51,6 +51,18 @@ this.getMenu=this.getMenu.bind(this);
               internal: true
 
           },
+          {
+            name: 'סל קניות',
+            link: '/Cart',
+            internal: true
+
+        },
+        this.props.orderSize===0?'': {
+          name: 'ההזמנות שלי',
+          link: '/Order',
+          internal: true
+
+      },
         
        
 

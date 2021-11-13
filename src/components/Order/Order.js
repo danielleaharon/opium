@@ -228,9 +228,8 @@ export default class Order extends Component {
         </div>
      
   {this.props.order.map((item,index)=>{
-    console.log(item)
 return <OrderMy  
-item={item} updateOrder={this.props.updateOrder} key={item._id}   />
+item={item} width={this.props.width} updateOrder={this.props.updateOrder} key={item._id}   />
  
  })}
       </div>

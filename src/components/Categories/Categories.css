@@ -18,59 +18,70 @@
 
 
 }
-.print-category{
+.print-category-home{
     align-items: center;
     text-align: center;
     /* display: flex; */
     display: grid;
     grid-column-gap:0px;
     grid-row-gap: 10px;
-    grid-template-columns:repeat(6,13.5%);
+    grid-template-columns:repeat(6,14%);
     justify-content: center;
     width: 100%;
-    font-size: 24px;
+    margin-bottom: 20px;
+}
+.cube-category{
+    font-size: 18px;
+    font-weight: bold;
+    padding: 3%;
+    padding-top: 10% ;
+    height: 100%;
+    color: black;
+    text-decoration: none;
+
+
+
+}
+.cube-category:hover{
+    color: black;
 }
  .cube-red-category{
-     align-items: flex-start;
-    padding: 19.5%;
-    font-size: 24px;
      border: rgba(234, 75, 75, 0.757) 3px solid;
      background-color:rgba(234, 75, 75, 0.256) ;
-     /* width: 13%; */
-     font-weight: bold;
  }
+ .cube-red-category:hover{
+    border: rgba(234, 75, 75, 0.757) 7px solid;
+}
  .cube-pink-category{
-    /* padding-left: 24px;
-    padding-right: 24px;
-    padding-top: 21px; */
-    padding: 15%;
-
-    font-size: 24px;
-
+   
     border: rgba(199, 97, 173, 0.757) 3px solid;
     background-color:rgba(199, 97, 173, 0.256) ;
-    /* width: 13%; */
-    font-weight: bold;
+}
+
+.cube-pink-category:hover{
+   
+    border: rgba(199, 97, 173, 0.757) 7px solid;
+}
+.cube-purple-category:hover{
+    border: rgba(155, 99, 188, 0.757) 7px solid;
+
 }
 .cube-purple-category{
-    padding: 15%;
+    /* padding: 15%; */
     border: rgba(155, 99, 188, 0.757) 3px solid;
     background-color:rgba(155, 99, 188, 0.256)  ;
-    /* width: 13%; */
-    font-size: 24px;
 
-    font-weight: bold;
+  
+}
+.cube-orange-category:hover{
+    border: rgba(232, 178, 103, 0.757) 7px solid;
+
 }
 .cube-orange-category{
    border: rgba(232, 178, 103, 0.757) 3px solid;
-    /* width: 13%; */
-    font-size: 24px;
 
     background-color:rgba(232, 178, 103, 0.256);
-    /* background-image: url('../../Image/cupCat.png');
-    background-size: 85%; */
-    padding: 17%;
-    font-weight: bold;
+  
     border-top-right-radius:4px ;
     border-bottom-right-radius:4px ;
 }
@@ -92,110 +103,75 @@
 .cube-green-category{
     padding-top: 30%;
     padding-bottom: 30%;
-    font-size: 24px;
 
     border: rgba(140, 207, 95, 0.757)  3px solid;
     background-color:rgba(140, 207, 95, 0.256)  ;
     /* width: 14%; */
-    font-weight: bold;
+  
     border-top-left-radius:4px ;
     border-bottom-left-radius:4px ;
 
 }
-.cube-blue-category{
-    padding: 0px;
-    padding-top: 13%;
-    padding-bottom: 9%;
-    font-size: 24px;
+.cube-green-category:hover{
+    border: rgba(140, 207, 95, 0.757)  7px solid;
 
+}
+.cube-blue-category{
     border: rgba(94, 148, 210, 0.757) 3px solid;
     background-color:rgba(94, 148, 210, 0.256) ;
-    /* width: 14%; */
-
-    font-weight: bold;
+}
+.cube-blue-category:hover{
+    border: rgba(94, 148, 210, 0.757) 7px solid;
 }
 @media only screen and (max-width: 768px) {
 
-    .print-category{
+    .print-category-home{
         align-items: center;
         text-align: center;
         /* display: flex; */
         display: grid;
         grid-column-gap:0px;
-        grid-row-gap: 10px;
+        grid-row-gap: 0px;
         grid-template-columns:repeat(3,25%);
         justify-content: center;
         width: 100%;
         font-size: 14px;
     }
 
-    .cube-red-category{
-        align-items: flex-start;
-       padding: 19.5%;
-       font-size: 14px;
-        border: rgba(234, 75, 75, 0.757) 3px solid;
-        background-color:rgba(234, 75, 75, 0.256) ;
-        /* width: 13%; */
+    .cube-category{
+        font-size: 13px;
         font-weight: bold;
+        padding: 3%;
+        padding-top: 10% ;
+        height: 100%;
+        color: black;
+        text-decoration: none;
+    
+    
+    
     }
     .cube-pink-category{
-       /* padding-left: 24px;
-       padding-right: 24px;
-       padding-top: 21px; */
-       padding: 15%;
-   
-       font-size: 14px;
-   
-       border: rgba(199, 97, 173, 0.757) 3px solid;
-       background-color:rgba(199, 97, 173, 0.256) ;
-       /* width: 13%; */
-       font-weight: bold;
-   }
-   .cube-purple-category{
-       padding: 15%;
-       border: rgba(155, 99, 188, 0.757) 3px solid;
-       background-color:rgba(155, 99, 188, 0.256)  ;
-       /* width: 13%; */
-       font-size: 14px;
-   
-       font-weight: bold;
-   }
-   .cube-orange-category{
-      border: rgba(232, 178, 103, 0.757) 3px solid;
-       /* width: 13%; */
-       font-size: 14px;
-   
-       background-color:rgba(232, 178, 103, 0.256);
-       /* background-image: url('../../Image/cupCat.png');
-       background-size: 85%; */
-       padding: 17%;
-       font-weight: bold;
-       border-top-right-radius:4px ;
-       border-bottom-right-radius:4px ;
-   }
-   .cube-green-category{
-    padding-top: 30%;
-    padding-bottom: 30%;
-    font-size: 14px;
+  
+        border-top-left-radius:4px ;
+    }
+    .cube-purple-category{
+        border-bottom-right-radius:4px ;
+    
+      
+    }
+    .cube-green-category{
+      
+  
+        border-top-left-radius:0px ;
+        border-bottom-left-radius:4px ;
+    
+    }
+    .cube-orange-category{
+       
+       
+         border-top-right-radius:4px ;
+         border-bottom-right-radius:0px ;
+     }
 
-    border: rgba(140, 207, 95, 0.757)  3px solid;
-    background-color:rgba(140, 207, 95, 0.256)  ;
-    /* width: 14%; */
-    font-weight: bold;
-    border-top-left-radius:4px ;
-    border-bottom-left-radius:4px ;
-
-}
-.cube-blue-category{
-    padding: 0px;
-    padding-top: 14%;
-    padding-bottom: 9%;
-    font-size: 14px;
-
-    border: rgba(94, 148, 210, 0.757) 3px solid;
-    background-color:rgba(94, 148, 210, 0.256) ;
-    /* width: 14%; */
-
-    font-weight: bold;
-}
+    
 }

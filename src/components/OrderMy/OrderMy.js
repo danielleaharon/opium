@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 
 import OrderItem from '../OrderItem/OrderItem';
+import CartItem from '../CartItem/CartItem';
+
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -235,6 +237,7 @@ export default class OrderMy extends Component {
     }
    
       render() {
+        if(this.props.width>800){
     return (
       <div className='Ordermy'>
         {this.changeOrderDialog()}
@@ -244,7 +247,7 @@ export default class OrderMy extends Component {
           <p>{this.props.item.name}</p>
           <p>{this.props.item.phone}</p>
           <p>{this.props.item.mail}</p>
-          <p className={this.state.statusClass} >{this.props.item.status}</p>
+          <p className={this.state.statusClass+' status-all'} >{this.props.item.status}</p>
 </div>
 <div className='myorder-titles' hidden={!this.state.openOrder} >
           <p>שם הפריט</p>
@@ -256,7 +259,7 @@ export default class OrderMy extends Component {
         </div>
         <div className='myorder-list' hidden={!this.state.openOrder} >
 {this.props.item.products.map((item,index)=>{
-  return <OrderItem item={item} key={item._id}/>
+  return <OrderItem width={this.props.width} item={item} key={item._id}/>
 
 })}
 </div>
@@ -267,5 +270,38 @@ export default class OrderMy extends Component {
 <button className='myorder-change-btn'hidden={!this.state.openOrder} onClick={()=>this.setState({openChange:true})} >עדכן את פרטי המזמין</button>
       </div>
     );
+}
+else{
+  return (
+    <div className='Ordermy-mobile'>
+      {this.changeOrderDialog()}
+      <div className={this.state.openOrder?'ordermy-mobile ordermy-select':'ordermy-mobile'}>
+      <span class="iconify" id='ordermy-arrow-mobile' data-icon="bi:arrow-down-square-fill"></span>
+
+      <div className='ordermy-details-mobile' onClick={()=>this.setState({openOrder:!this.state.openOrder})}>
+        {/* <span class="iconify" id='ordermy-arrow' data-icon="bi:arrow-down-square-fill"></span> */}
+        <p className='ordermy-date-mobile'> {this.dateString} </p>
+        <p>שם המזמין: {this.props.item.name}</p>
+        <p>טלפון: {this.props.item.phone}</p>
+        <p>מייל: {this.props.item.mail}</p>
+        {/* <p className={this.state.statusClass} >{this.props.item.status}</p> */}
+</div>
+<p className={this.state.statusClass+ ' status-all'} >{this.props.item.status}</p>
+</div>
+
+      <div className='myorder-list' hidden={!this.state.openOrder} >
+{this.props.item.products.map((item,index)=>{
+return <OrderItem width={this.props.width} item={item} key={item._id}/>
+
+})}
+</div>
+{/* <div  hidden={!this.state.openOrder} className='myorder-send-btns-right' >
+<a className='myorder-send-btn myorder-mail' hidden={!this.state.openOrder} href={"https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=dda180@gmail.com"} target="_blank"> <span class="iconify" id='gmail-black' data-icon="simple-icons:gmail"></span> <span class="iconify" id='gmail-color'data-icon="logos:google-gmail"></span> שלח מייל</a>
+<a className='myorder-send-btn myorder-whatsapp' hidden={!this.state.openOrder} href={"https://api.whatsapp.com/send?phone='+972549900099"} target="_blank"><span class="iconify" data-icon="dashicons:whatsapp"></span> שלח ווסטאפ</a>
+</div> */}
+<button className='myorder-change-btn-mobile'hidden={!this.state.openOrder} onClick={()=>this.setState({openChange:true})} >עדכן את פרטי המזמין</button>
+    </div>
+  );
+}
   }
 }

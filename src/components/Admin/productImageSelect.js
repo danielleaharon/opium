@@ -146,11 +146,11 @@ export default class productImageSelect extends Component {
 </FormControl>:''}
       <div className='product-add-img-input'>
     <p>קדימה</p>  
-    <ImageUploading url={this.state.pImageFront} setImage={this.setImageFront} />
+    <ImageUploading category='product' url={this.state.pImageFront} setImage={this.setImageFront} />
       </div>
       <div className='product-add-img-input'>
     <p>אחורה</p>  
-      <ImageUploading url={this.state.pImageBack} setImage={this.setImageBack} />
+      <ImageUploading category='product' url={this.state.pImageBack} setImage={this.setImageBack} />
       </div>
       <button className='product-add-img-btn' onClick={this.addImg} >הוסף את הצבע</button>
       </div>      

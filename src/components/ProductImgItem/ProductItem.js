@@ -9,7 +9,10 @@ import FormHelperText from '@material-ui/core/FormHelperText';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import ProductImageSelect from '../Admin/productImageSelect';
-
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormLabel from '@mui/material/FormLabel';
 import './ProductImgItem.css';
 export default class ProductItem extends Component {
   constructor(props) {
@@ -27,9 +30,11 @@ export default class ProductItem extends Component {
       categoryE:false,
       subcategory:this.props.item.Subcategory,
       subcategoryE:false,
+      inStock:this.props.item.InStock,
+      inStockE:false,
       imgs:this.props.productImage,
       addImg:false,
-
+      size:this.props.item.size
     }
 
 
@@ -44,6 +49,8 @@ export default class ProductItem extends Component {
     this.handelDeleteImg = this.handelDeleteImg.bind(this);
     this.handelAddImg = this.handelAddImg.bind(this);
     this.handelSubcategoryChange = this.handelSubcategoryChange.bind(this);
+    
+    this.handelStockChange = this.handelStockChange.bind(this);
 
   }
   handelAddImg(front, back,color){
@@ -147,13 +154,24 @@ handelNameChange(e){
   })
 
 }
+handelStockChange(e){
+  e.preventDefault();
+  this.setState({ inStock: e.target.value },()=>{
+
+    this.handelUpdateChanges()
+
+    
+   
+  })
+
+}
   handelOpen() {
     this.setState({ open: !this.state.open })
   }
   handelUpdateChanges() {
     this.setState({ update: false})
 
-    if(this.state.name.trim()!==this.props.item.name.trim()){
+    if(this.state.name.trim()!== this.props.item.name.trim()){
       this.setState({ update: true})
     } 
     if(new String(this.state.price).trim()!==new String(this.props.item.price).trim()){
@@ -169,6 +187,9 @@ handelNameChange(e){
     if(this.state.subcategory.name.trim()!==this.props.item.Subcategory.name.trim()){
       this.setState({ update: true})
     } 
+    if(new String(this.state.inStock).trim()!==new String(this.props.item.InStock).trim()){
+      this.setState({ update: true})
+    } 
   }
   handelUpdate(){
     const postData = {
@@ -177,7 +198,10 @@ handelNameChange(e){
       category: this.state.category,
       price:this.state.price,
       productImage:this.state.imgs,
-      subcategory:this.state.subcategory
+      subcategory:this.state.subcategory,
+      size:this.state.size,
+      InStock:this.state.inStock
+
   };
     axios.post(Config.getServerPath() + 'product/update/' + this.props.item._id,postData)
     .then(res => {
@@ -287,6 +311,23 @@ handelNameChange(e){
           
         </Select>
       </FormControl>
+      <FormControl
+ >
+  <RadioGroup
+    aria-label="stock"
+    defaultValue={this.state.inStock}
+    name="radio-buttons-group"
+    onChange={this.handelStockChange}
+    itemProp={{id:'stock-form-input'}}
+    className='stock-form-input'
+  >
+    <div  className='stock-form'
+>
+    <FormControlLabel className='stock-form-input' value={true} control={<Radio />} label="במלאי" />
+    <FormControlLabel id='stock-form-input' itemProp={{id:'stock-form-input'}} value={false} control={<Radio />} label="לא במלאי" />
+    </div>
+  </RadioGroup>
+</FormControl>
               {/* <div className='div-item-img'> */}
             </div>
             {this.props.item.productImage.map((item, index) => {

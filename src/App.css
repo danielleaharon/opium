@@ -2,6 +2,8 @@
 .App-background{
   /* background-color: rgba(216, 250, 250, 0.61); */
   background-image: url('./Image/background2.png');
+  /* height: 100%; */
+  position: relative;
   /* justify-items: center; */
 
   /* background-image: url('./Image/coinsBack.png'); */
@@ -11,6 +13,7 @@ body{
   font-family: 'Varela Round', sans-serif;
 
 }
+
 /* .hr{
   width: 45%;
  margin-left: 27.5%;
@@ -73,6 +76,9 @@ margin-right: 20px;
   width: 400px;
   height: 200px;
   border: 4px dashed #4aa1f3;
+}
+html,body{
+  overflow-x: hidden;
 }
 .upload-icon {
   width: 50px;

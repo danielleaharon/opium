@@ -39,8 +39,10 @@ export default class Home extends Component {
   this.setState({photoList:res.data.photoList},()=>{
     // console.log(this.state.photoList)
     this.state.photoList.sort((a,b)=>a.positon-b.position).forEach((item,index)=>{
+      console.log(item.url)
+
       this.galleryItems.push( 
-      <img className='gallery-image' src={item.src}></img>
+     <a className='gallery-image' href={item.url}><img className='gallery-image' src={item.src}></img></a> 
       )
       this.setState({galleryItems:this.state.galleryItems})
       // console.log(this.state.galleryItems)
@@ -114,7 +116,7 @@ export default class Home extends Component {
       <hr className='hr'></hr>
       <Details/>
       <hr className='hr'></hr>
-      <Categories/>
+      <Categories setCategory={this.props.setCategory}/>
       <hr className='hr'></hr>
 
 

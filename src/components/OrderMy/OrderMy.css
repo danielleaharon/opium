@@ -35,21 +35,12 @@ margin-top: 30px;
 
     border-radius: 4px;
     height: min-content;
-    /* display: flex; */
-    /* grid-template-columns: repeat(5,20%); */
+  
     position: relative;
-    /* justify-content: center;
-    justify-self: center; */
-    /* grid-row-gap: 0px; */
-    /* text-align: center; */
+ 
     align-items: center;
     background-color: whitesmoke;
-    /* border: 1px #93AECC solid;
-    border-radius: 4px;
-    height: min-content;
-    margin-bottom: 20px; */
-    /* padding-top: 15px; */
-    /* margin-top: 10px; */
+
 
 }
 .ordermy p{
@@ -67,29 +58,26 @@ margin-top: 30px;
     background-color: #93aecc22;
 
 }
+.status-all{
+    padding: 20px 0px;
+    margin-top: 5px;
+    margin-left: 5px;
+}
 .waiting{
 background-color: #9d9d9d57;
-padding: 20px 0px;
-margin-top: 5px;
-margin-left: 5px;
+
 }
 .confirmed{
     background-color: #e0852b65;
-    padding: 20px 0px;
-    margin-top: 5px;
-    margin-left: 5px;
+
 }
 .paid{
     background-color: #38ae6357;
-    padding: 20px 0px;
-    margin-top: 5px;
-    margin-left: 5px;
+ 
 }
 .done{
     background-color: #bd3f3f57;
-    padding: 20px 0px;
-    margin-top: 5px;
-    margin-left: 5px;
+
 }
 #ordermy-arrow{
     position: absolute;
@@ -116,4 +104,77 @@ margin-left: 5px;
     position: absolute;
     bottom: 5px;
     right: -18px;
+}
+@media only screen and (max-width: 800px) {
+    .ordermy-details-mobile{
+        flex-direction: column;
+        width: 70%;
+        align-items: flex-start;
+        text-align: start;
+        /* background-color: #93AECC; */
+        margin-right: 40px;
+
+
+    }
+    .ordermy-mobile{
+        display: flex;
+        width: 100%;
+        position: relative;
+        height: 100%;
+    }
+    .ordermy-date-mobile{
+        font-size: 15px;
+        font-weight: bold;
+        margin-top: 6px;
+
+    }
+    .ordermy-details-mobile p{
+        width: fit-content;
+        margin-bottom: 5px;
+        font-size: 12px;
+    }
+    #ordermy-arrow-mobile{
+        position: absolute;
+        right: 5px;
+        top: 5px;
+        font-size: 20px;
+    
+    }
+.status-all{
+        padding: 20px 0px;
+        /* padding-bottom: 30px; */
+        margin-top: 5px;
+        margin-left: 5px;
+        width: 30%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 5px;
+    }
+    .Ordermy-mobile{
+        width: 90%;
+        background-color: whitesmoke;
+        border: 1px #93AECC solid;
+        margin-bottom: 20px;
+        align-items: center;
+    
+        border-radius: 4px;
+        height: min-content;
+      
+        position: relative;
+     
+        align-items: center;
+        background-color: whitesmoke;    }
+
+        .myorder-change-btn-mobile{
+            border: #93AECC 1px solid;
+            background-color: white;
+            border-radius: 4px;
+            width: 40%;
+            position: absolute;
+            bottom: 5px;
+            left: 5px;
+            color: black;
+            font-size: 12px;
+        }
 }

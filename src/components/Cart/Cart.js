@@ -10,6 +10,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import Slide from '@material-ui/core/Slide';
 import Logo from '../../Image/opiumLogo3.png';
 import { TextField } from "@material-ui/core";
+
 import axios from 'axios';
 import Config from '../../config/config';
 
@@ -226,8 +227,9 @@ export default class Cart extends Component {
       render() {
     return (
         
-        <div className='Cart'>
+        <div className='Cart'  >
 {this.sendMailDialog()}
+<p className='cart-mobile-title'> המוצרים שלי </p>
         <div className='cart-titles' hidden={JSON.parse(localStorage.getItem('cart')).length===0}>
           <p>שם הפריט</p>
           <p>מחיר ליח׳</p>
@@ -242,10 +244,10 @@ export default class Cart extends Component {
 <a href='/Products'>למעבר לחנות המוצרים</a>
 </div>
   {JSON.parse(localStorage.getItem('cart')).map((item,index)=>{
-return <CartItem  goToDesign={this.props.goToDesign}
+return <CartItem   width={this.props.width} goToDesign={this.props.goToDesign}
 item={item} updateCart={this.props.updateCart} key={item.item._id+item.imgItem.color+item.size+item.design.url.front}  deleteFromCart={this.props.deleteFromCart} />
   })}
-      <button hidden={JSON.parse(localStorage.getItem('cart')).length===0} onClick={()=>this.setState({openSend:true})} className='cart-sent-btn'>שלח להצעת מחיר</button>
+      <button hidden={JSON.parse(localStorage.getItem('cart')).length===0} onClick={()=>this.setState({openSend:true})} className='cart-sent-order-btn'>שלח להצעת מחיר</button>
       </div>
     );
   }

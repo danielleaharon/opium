@@ -16,6 +16,7 @@ export default class footer extends Component {
     return (
 
         <div className='footer' hidden={this.props.hide}>
+
                         <img src={Logo} alt='logo'/>
       <div className='icon'>
             <a href='https://www.facebook.com/swqwlb.hrzlyh' rel="noreferrer" target='_blank'className='facebook'>   <i class="fa fa-facebook-f" style={{fontSize:'24px' , color:'black'}}></i></a>

@@ -1,12 +1,11 @@
 .Contact{
 
-   padding-top: 30px;
     font-family: 'Varela Round', sans-serif;
     justify-content: center;
     align-items: center;
     text-align: center;
     padding-top: 100px;
-
+position: relative;
     background-color: rgba(245, 245, 245, 0.856);
 
     
@@ -16,14 +15,14 @@
   align-self: center;
   width: 100%;
 } */
-.Contact h3{
+.Contact-h3-big{
+
+position: absolute;
+top: 30px;
+right: 47%;
     direction: rtl;
     align-items: center;
-    margin-bottom: 25px;
-  font-weight: bold;
     font-family: 'Varela Round', sans-serif;
-
-
 }
 .map_grid{
   display: flex;
@@ -158,6 +157,30 @@ left: 50px; */
         font-family: 'Varela Round', sans-serif;
     
       }
+      .Contact{
+        padding-top: 60px;
+
+      }
+      .Contact-h3{
+
+        position: absolute;
+        top: -4.5%;
+        right: 20%;
+        font-size: 25px;
+        font-weight: bold;
+            direction: rtl;
+            align-items: center;
+            font-family: 'Varela Round', sans-serif;
+        }
+        .Contact-h3-big{
+
+          position: absolute;
+          top: 18px;
+          right: 40%;
+              direction: rtl;
+              align-items: center;
+              font-family: 'Varela Round', sans-serif;
+          }
       .Contact .h5{
         font-size: 14px;
         display: inline-block;

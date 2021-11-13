@@ -12,6 +12,7 @@ import ProductItem from '../ProductImgItem/ProductItem';
 import NewProduct from './newProduct';
 import HomeImage from './HomeImage';
 import Subcategory from './Subcategory/Subcategory';
+import SchoolLogo from './SchoolLogo/SchoolLogo';
 
 import Config from '../../config/config';
 import './Admin.css';
@@ -35,6 +36,8 @@ export default class Admin extends Component {
             homeImage:false,
             subcategory:false,
             subcategoryList:[],
+            schoolLogoList:[],
+            schoolLogo:false,
 
 
         }
@@ -45,21 +48,25 @@ export default class Admin extends Component {
         
         this.updateProductList=this.updateProductList.bind(this);
         this.updateSubcategoryList=this.updateSubcategoryList.bind(this);
+        this.updateSchoolLogoList=this.updateSchoolLogoList.bind(this);
 
 
     }
     componentDidMount(){
 
-      // var item=[];
-      // var front='https://firebasestorage.googleapis.com/v0/b/opium-37022.appspot.com/o/product%2Fmen_front_blue.png?alt=media&token=dac788b2-ac5d-4b51-b615-b7530bbeebeb';
-      // var back='https://firebasestorage.googleapis.com/v0/b/opium-37022.appspot.com/o/product%2Fmen_back_blue.png?alt=media&token=a29bb95a-8e90-4ccc-8fd6-32cc74ece5ab';
-      // var color='blue'
-      // item.push({front,back,color});
-      // var front='https://firebasestorage.googleapis.com/v0/b/opium-37022.appspot.com/o/product%2Fmen_front.png?alt=media&token=4586cb18-0c02-4cf9-b15c-76fcdbaacb15';
-      // var back='https://firebasestorage.googleapis.com/v0/b/opium-37022.appspot.com/o/product%2Fmen_back.png?alt=media&token=81224806-4e13-48b2-964e-5a73593a1660';
-      // var color='white'
-      // item.push({front,back,color});
-      // this.setState({imgs:item});
+      axios.post(Config.getServerPath()+'school/all')
+      .then(res => {
+  if(res.data.status===400){
+    console.log('error')
+  return
+  }
+  this.setState({schoolLogoList:res.data.schoolLogoList})
+  
+
+      })
+      .catch(() => {    console.log('send')
+    }   );
+
       axios.post(Config.getServerPath()+'subcategory/all')
       .then(res => {
   if(res.data.status===400){
@@ -117,6 +124,10 @@ export default class Admin extends Component {
       // this.setState({subcategoryList:SubcategorList})
 
     }
+    updateSchoolLogoList(list){
+      this.setState({schoolLogoList:list})
+
+    }
     updateProductList(list){
       this.setState({productList:list})
 
@@ -134,6 +145,8 @@ export default class Admin extends Component {
        <p>דף ניהול</p>
  <button onClick={()=>this.setState({homeImage:!this.state.homeImage})} id='product-add-new-btn'> תמונות עמוד ראשי</button>
  {this.state.homeImage?(<HomeImage/>):''}
+ <button onClick={()=>this.setState({schoolLogo:!this.state.schoolLogo})} id='product-add-new-btn'>  סמל בית ספר</button>
+ {this.state.schoolLogo?(<SchoolLogo updateSchoolLogoList={this.updateSchoolLogoList} schoolLogoList={this.state.schoolLogoList}/>):''}
  <button onClick={()=>this.setState({subcategory:!this.state.subcategory})} id='product-add-new-btn'>  תתי קטגוריות</button>
  {this.state.subcategory?(<Subcategory updateSubcategoryList={this.updateSubcategoryList} subcategoryList={this.state.subcategoryList}/>):''}
 <button onClick={this.openNew} id='product-add-new-btn'>מוצר חדש</button>

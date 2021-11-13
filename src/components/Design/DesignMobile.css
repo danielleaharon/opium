@@ -1,10 +1,23 @@
-.Design{
+@media only screen and (max-width: 768px) {
+.Design-mobile{
 
     font-family: 'Varela Round', sans-serif;
     width: 100%;
     background-color: rgba(245, 245, 245, 0.856);
+    max-width: 100%;
+    height: 100%;
+    min-height: 100%;
+    display: block;
+    position: relative;
+
 
     
+}
+div{
+  display: block;
+}
+*::after,*::before{
+  box-sizing: border-box;
 }
 .layers{
   background-color: #eeececcb;
@@ -86,7 +99,7 @@ div.menur
   font-size: 20px;
   
 }
-#menu-design{
+#menu-design-mobile{
   display: flex;
   justify-content: right;
   /* padding: 0px 30px; */
@@ -101,10 +114,12 @@ div.menur
 /* width: 100%; */
   background-color: #fefefeb9;
   border-bottom: #8e8e8ec9 0.5px solid;
+  width: 100%;
+  max-width: 100%;
 }
 #productSelect{
   margin: 10px;
-  width: 350px;
+  width: 100%;
   padding-top: 5px;
   padding-bottom: 5px;
   display: inline-block;
@@ -129,18 +144,18 @@ div.menur
 
 
 
-#container {
-  display: inline-block;
-  cursor: nwse-resize;
-}
-.Design-cube{
+
+.Design-cube-mobile{
   /* justify-content: center; */
   width: 100%;
+  max-width: 100%;
     position: relative;
   /* text-align: center; */
   direction: rtl;
   display: flex;
+  flex-direction: column;
   font-family: 'Varela Round', sans-serif;
+  /* display: none; */
 
   
 }
@@ -166,7 +181,7 @@ border: black 1px solid;
   position: absolute;
   bottom: 120;
   margin-top: 50px;
-margin-right: 68%; 
+margin-right: 8%; 
 padding-top: 5px;
 padding-bottom: 5px;
 font-size: 12px;
@@ -183,7 +198,8 @@ color: black;
 #h1-title{
   margin-top: 20px;
 }
-  .Design-cube1{
+  .Design-cube1-mobile{
+    width: 100%;
     display: flex;
     border-top: black 4px solid;
     border-bottom: black 4px inset;
@@ -198,12 +214,12 @@ text-align: center;
     font-family: 'Varela Round', sans-serif;
 
   }
-  .edits{
+  .edits-mobile{
     /* background-color: rgba(236, 234, 234, 0.66); */
     margin-left: 0.5px;
     padding: 10px;
-    height: 800px;
-    width: 400px;
+    height: 100%;
+    width: 100%;
     padding-top: 30px;
 
     align-items: center;
@@ -426,20 +442,16 @@ text-align: center;
 
   }
   
-  .Design-cube2{
-    overflow: hidden;
-    margin-right: 8%;
+  .Design-cube2-mobile{
+    /* margin-right: 8%; */
     /* padding-left: 100px;
     padding-right: 100px; */
 position: relative;
+display: block;
 /* height: auto; */
-width: 100%;
+width: fit-content;
+height: fit-content;
 /* width: 950px; */
-  }
-  .Design-cube2-imgelemnt{
-    overflow: hidden;
-    width: fit-content;
-
   }
  
 .Design h3{
@@ -450,9 +462,9 @@ width: 100%;
 
 
 }
-.shirt{
+.shirt-mobile{
   width: 100%;
-  height: 100%;
+  height: fit-content;
   border-radius: 9px;
 
 }
@@ -514,6 +526,9 @@ width: 100%;
 
 }
 
+
+ 
+}
 /*shape*/
 
 

@@ -80,3 +80,31 @@ mask-border: url('../../Image/zoomin4.png') ;
  right: 10px;
  font-size: 34px;
   }
+  .orderItem-mobile-total{
+    margin-top: 15px;
+position: absolute;
+bottom: 15%;
+left: 5%;
+    font-size: 13px;
+}
+.orderItem-mobile{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    /* display: grid;
+    grid-template-columns: 100% ; */
+    position: relative;
+    justify-self: center;
+    /* grid-column-gap: 2px;
+    grid-row-gap: 0px; */
+    text-align: center;
+    align-items: flex-start;
+    margin-top: 20px;
+    /* margin-top: 10px; */
+
+}
+.orderItem-mobile p{
+    /* margin-top: 13px; */
+    font-size: 12px;
+    line-height: 0.8;
+  }

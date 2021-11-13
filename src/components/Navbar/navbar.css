@@ -303,7 +303,7 @@ font-size: 25px;
     top: 25px;
     right: 30px;
     direction: rtl;
-    z-index: 15;
+    z-index: 35;
 }
 /* .menu {
     visibility: hidden;

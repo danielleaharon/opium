@@ -38,7 +38,7 @@ export default class newProduct extends Component {
         this.ClearError=this.ClearError.bind(this);
         this.addProductValid=this.addProductValid.bind(this);
         this.handleAddProduct=this.handleAddProduct.bind(this);
-        this.setImage=this.setImage.bind(this);
+        // this.setImage=this.setImage.bind(this);
         this.addImg=this.addImg.bind(this);
         this.updateProductList=this.updateProductList.bind(this);
 
@@ -138,11 +138,11 @@ export default class newProduct extends Component {
  
     }
    
-    setImage(url){
-      this.setState({pImage:url});
-      this.setState({pImageE:false})
+    // setImage(url){
+    //   this.setState({pImage:url});
+    //   this.setState({pImageE:false})
   
-    }
+    // }
       render() {
     return (
         

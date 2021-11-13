@@ -53,3 +53,8 @@ flex-direction: column;
     background-color: transparent;
     border: none;
 }
+#homeImage-form{
+    width: 35%;
+    font-family: 'Varela Round', sans-serif;
+
+}

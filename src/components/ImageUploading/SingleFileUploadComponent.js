@@ -32,7 +32,8 @@ export default class SingleFileUploadComponent extends Component {
         if (!uploadedFile) return;
     
         const storage = this.firebase.storage();
-        const storageRef = storage.ref("product");
+        const ref=this.props.category.trim();
+        const storageRef = storage.ref(ref);
     console.log(storage)
     var metadata = {
         contentType: uploadedFile.type,

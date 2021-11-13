@@ -162,7 +162,12 @@ this.setState({mesaage:'תודה '+this.state.name +'\nהפרטים נשלחו, 
     return (
         
         <div className='Contact'>
+          {console.log(window.innerWidth)}
+                 <h3  className='Contact-h3-big' hidden={window.location.pathname==='/Contact'} > צור קשר</h3>
+                 <h3 className='Contact-h3' hidden={(window.location.pathname==='/Contact'&&this.props.width>800)||window.location.pathname==='/'} > צור קשר</h3>
+
 <div className='contact-div' >
+
     	<div className='Contact-d'>
 
              <TextField

@@ -143,4 +143,16 @@ height: 40px;
 
     /* text-decoration: underline; */
 }
+.stock-form{
+    display: flex;
+    margin-right: -35px;
+    font-family: 'Varela Round', sans-serif;
+
+}
+#stock-form-input{
+
+    font-family: 'Varela Round', sans-serif;
+
+}
+
 

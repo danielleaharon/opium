@@ -12,13 +12,14 @@ import ImageUploading from '../ImageUploading/SingleFileUploadComponent';
 import Config from '../../config/config';
 import './HomeImage.css';
 export default class HomeImage extends Component {
-    constructor(props, context) {
-        super(props, context);
+    constructor(props) {
+        super(props);
         this.state={
           photoList:[],
           newImg:null,
           DragId:null,
           haveChange:false,
+          url:'',
          
 
         }
@@ -54,7 +55,8 @@ export default class HomeImage extends Component {
 
       const postData = {
         src:this.state.newImg,
-        position:this.state.photoList.length
+        position:this.state.photoList.length,
+        url:this.state.url
      
     };
       axios.post(Config.getServerPath()+'photo/create',postData)
@@ -65,6 +67,7 @@ export default class HomeImage extends Component {
   }
   this.setState({photoList:res.data.photoList})
   this.setState({newImg:null})
+  this.setState({url:''})
   window.document.getElementById('input-img').value=null;
   
 
@@ -127,9 +130,16 @@ export default class HomeImage extends Component {
 
 
 <div id='card-gallary'>
-<ImageUploading url={this.state.newImg} setImage={this.setImage} />
-<button hidden={this.state.newImg===null} onClick={this.handleAddImg} id='product-add-new-btn'> הוסף</button>
+<ImageUploading category='homeImage' url={this.state.newImg} setImage={this.setImage} />
+<FormControl id='homeImage-form' >
 
+          <InputLabel >קישור תמונה</InputLabel>
+
+          <Input aria-describedby="helper"  required type='text' id="product-input" value={this.state.url} onChange={(e)=>this.setState({url:e.target.value})} />
+
+        </FormControl>
+<button hidden={this.state.newImg===null} onClick={this.handleAddImg} id='product-add-new-btn'> הוסף</button>
+<br/>
 <div id='galley-list'>
   <p id='galley-list-title'>תמונות בגלריה</p>
 <div className='home-img-list'>

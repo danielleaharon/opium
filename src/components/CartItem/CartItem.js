@@ -70,10 +70,10 @@ this.setState({openPreview:false})
             </DialogContentText> */}
            {/* <div className='preview-dailog-context-div'> */}
             
-             {/* <div className='cart-preview-dailog-context-imgs'> */}
+             <div className='cart-preview-dailog-context-imgs'>
              <img className='cart-preview-dailog-context-img' src={this.props.item.design.url.front} alt='design'/>
              <img className='cart-preview-dailog-context-img' src={this.props.item.design.url.back} alt='design'/>
-{/* </div> */}
+</div>
            
 
            {/* </div> */}
@@ -91,6 +91,7 @@ this.setState({openPreview:false})
       render() {
         if(this.state.goDesign)
         return <Redirect to={'/Design'}/>;
+        if(this.props.width>800){
         return (
 <div className='cart-item'>  
 {this.openDesignPreview()} 
@@ -113,16 +114,7 @@ this.setState({openPreview:false})
            return <MenuItem id='val' value={index+1}>{index+1}</MenuItem>
 
           })}
-{/* <MenuItem id='val' value="1">1</MenuItem>
-<MenuItem id='val' value="2">2</MenuItem>
-<MenuItem id='val' value="3">3</MenuItem>
-<MenuItem id='val' value="4">4</MenuItem>
-<MenuItem id='val' value="5">5</MenuItem>
-<MenuItem id='val' value="6">6</MenuItem> */}
 
-
-
-         
 
           
         </Select>
@@ -138,5 +130,60 @@ this.setState({openPreview:false})
       <hr/>
       </div>  
           );
+  }
+  else{
+    return (
+      <div className='cart-item-mobile'>  
+      {this.openDesignPreview()} 
+      <div className='cartItem-mobile-right'>
+      {this.props.item.design.url.front!==''?  <div className='cart-preview-imgs' onClick={()=>this.setState({openPreview:true})} >   <img src={this.props.item.design.url.front}/> <img src={this.props.item.design.url.back}></img></div>:      <img className='cart-img' src={this.props.item.imgItem.front}></img>}
+      <p> ₪ {this.props.item.item.price}</p>
+
+      </div>
+           <div className='cartItem-mobile'>
+
+          <p>{this.props.item.item.name}</p>
+          {/* <p> ₪ {this.props.item.item.price}</p> */}
+          <p> מידה:  {this.props.item.size} </p>
+          </div>
+
+          <FormControl  variant="standard" id='cartItem-count-form'>
+      
+      
+              <Select
+              required
+              labelId="demo-simple-select-placeholder-label-label"
+              id="cartItem-count"
+                value={this.state.count}
+                onChange={this.changeCount}
+                displayEmpty
+              >
+                {Array(100).fill(1).map((item,index)=>{
+                 return <MenuItem id='val' value={index+1}>{index+1}</MenuItem>
+      
+                })}
+      
+      
+                
+              </Select>
+            </FormControl>
+      
+            {/* <img src={this.props.item.imgItem.front}></img>
+      
+          <img src={this.props.item.design.url}></img> */}
+          {/* {this.props.item.design.url.front!==''?  <div className='cart-preview-imgs' > <button onClick={()=>this.setState({openPreview:true})} id='cart-preview-big'></button>  <img src={this.props.item.design.url.front}/> <img src={this.props.item.design.url.back}></img></div>:      <img className='cart-img' src={this.props.item.imgItem.front}></img>} */}
+    <div className='cartItem-mobile-btns'>
+      <button onClick={()=>this.props.deleteFromCart(this.props.item)} className='cartItem-delete-mobile'><span class="iconify" data-icon="fluent:delete-48-filled"></span></button>
+      <button  className='cart-addDesign' onClick={this.addDesign} > <span class="iconify" id='cartItem-brush' data-icon="fluent:paint-brush-16-filled"></span> <br/> {this.props.item.design.url.front!==''?'ערוך עיצוב':'הוסף עיצוב'}</button>  
+{/* <p className='cartItem-mobile-total'>סהכ: ₪ {this.props.item.item.price*this.state.count}</p> */}
+      </div>
+      <p className='cartItem-mobile-total'>סהכ: ₪ {this.props.item.item.price*this.state.count}</p>
+
+            {/* </div> */}
+            <hr/>
+            </div>  
+                );
+  }
+
   }
 }

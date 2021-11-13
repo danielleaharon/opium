@@ -5,9 +5,11 @@ import Home from './components/Home/home';
 
 import Footer from './components/footer/footer';
 import Contact from './components/Contact/Contact';
-import Products from './components/Products/Products';
+import ProductsChoice from './components/Products/ProductsChoice';
 import Product from './components/Product/Product';
 import Design from './components/Design/Design';
+// import Design from './components/Design/DesignMobile';
+
 import Error from './components/Error/Error';
 import Admin from './components/Admin/Admin';
 import Cart from './components/Cart/Cart';
@@ -22,11 +24,26 @@ import Navbar from './components/Navbar/navbar';
 function App(props) {
   const [cart,setCart]=React.useState([]);
   const [order,setOrder]=React.useState([]);
+  const [category,setCategory]=React.useState('all');
+  const [width,setWidth]=React.useState(0);
+  const [height,setHeight]=React.useState(0);
 
   const [design,setDesign]=React.useState(null);
   const [Ondesign,setOnDesign]=React.useState(false);
 
+
+  
+  const updateWindowDimensions=() =>{
+    setWidth(window.innerWidth)
+    setHeight(window.innerHeight)
+  }
   React.useEffect(async ()=>{
+    updateWindowDimensions();
+
+    window.addEventListener('resize', updateWindowDimensions);
+
+    // returned function will be called on component unmount 
+   
     if (localStorage.getItem("cart") != null){
       if(cart.length<JSON.parse(localStorage.getItem("cart")).length) {
       setCart(JSON.parse(localStorage.getItem("cart")));
@@ -75,6 +92,9 @@ function App(props) {
 
     })
     
+}
+return () => {
+  window.removeEventListener('resize', updateWindowDimensions)
 }
 
   },[]);
@@ -196,19 +216,23 @@ goToDesign(tempItem2)
           <Route path={'/'} exact
             render={(props) =>
               <Home {...props}
+              setCategory={setCategory}
+              width={width}
               />} />
 
 
           <Route path={'/Contact'} exact
             render={(props) =>
               <Contact {...props}
+              width={width}
+
               />} />
           <Route path={'/Products'} exact
             render={(props) =>
-              <Products {...props}
+              <ProductsChoice {...props}
               addToCart={addToCart}
               Ondesign={Ondesign}
-
+              category={category}
               deleteFromCart={deleteFromCart}
               />} />
 
@@ -222,6 +246,9 @@ goToDesign(tempItem2)
               deleteFromCart={deleteFromCart}
               goToDesign={goToDesign}
               updateCartDesign={updateCartDesign}
+              width={width}
+              height={height}
+
 
 
               />} />
@@ -241,6 +268,8 @@ goToDesign(tempItem2)
               goToDesign={goToDesign}
               setCart={setCart}
               setOrder={setOrder}
+              width={width}
+              height={height}
 
               />} />
 
@@ -249,6 +278,8 @@ goToDesign(tempItem2)
               <Order {...props}
            order={order}
               updateOrder={updateOrder}
+              width={width}
+
               />} />
 
 <Route path={'/OrderAdmin'} exact
@@ -262,17 +293,17 @@ goToDesign(tempItem2)
     );
   }
   return (
-    <div className='App-background'>
+    <div className='App-background' style={{minHeight:(height), maxWidth:width}}>
       <Router>
 
       <Navbar hide={Ondesign} cartSize={cart.length} orderSize={order.length}
  />
-        <div >
+        {/* <div className='Content-div'> */}
           <Fragment>
             {getAppContent()}
           </Fragment>
-        </div>
-        <hr className='hr' />
+        {/* </div> */}
+        <hr className='hr' hidden={Ondesign} />
         <Footer hide={Ondesign} />
       </Router>
 

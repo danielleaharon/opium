@@ -324,7 +324,23 @@ this.setState({zIndex:zIndex})
 
   }
 
- 
+  // componentDidMount() {
+  //   if(this.props.productDesign!==undefined&&this.props.productDesign!==null){
+  //     this.setState({ShirtItem:this.props.productDesign.imgItem})
+
+  //   }else{
+  //     this.setState({exit:true})
+  //     this.exit=true
+
+  //     return
+  //   }
+  //   this.props.setOnDesign(true)
+
+
+
+
+  // }
+
   handelChangeColorShirt(item) {
     this.props.productDesign.imgItem = item
     console.log(this.props.productDesign)
@@ -362,6 +378,7 @@ this.setState({zIndex:zIndex})
     try {
       const r = await storageRef.child(ImgName).put(blob, metadata);
 
+      console.log(r.ref)
     return await  r.ref.getDownloadURL().then((url) => {
         this.setState({ url: url })
         return url
@@ -512,6 +529,7 @@ this.setState({zIndex:zIndex})
         }
         
        
+         console.log(back)
          const front= await  this.UploadFirebbase(img1);
 
         
@@ -522,7 +540,22 @@ this.setState({zIndex:zIndex})
 
   }
   Download3() {
-  
+    // event.preventDefault();
+
+    // domtoimage.toBlob(document.getElementById('Design-cube2'))
+    //   .then((blob) => {
+
+    //     var img = new File([blob], 'opium.png', {
+    //       type: "image/png",
+    //       lastModified: Date.now()
+    //     })
+
+     
+    //        this.UploadFirebbase(img);
+
+
+
+    //   })
       domtoimage.toPng(document.getElementById('Design-cube2'))
       .then((png) => {
 
@@ -585,8 +618,8 @@ this.setState({zIndex:zIndex})
       const borderColor = ''
       const underline = 'none'
       const textColor='black'
-      const top=115
-      const left= 170
+      const top=50
+      const left= 50
       const rotateAngle= 0;
       const backgroundColor = ''
       const activeFontFamily = "Bona Nova"
@@ -1126,12 +1159,12 @@ this.setState({zIndex:zIndex})
     }
     return (
 
-      <div className='Design' style={{maxWidth:this.props.width ,maxHeight:this.props.height, minHeight:this.props.height}}>
-        {this.ExitDialog()}
-        {this.nextDesignDialog()}
+      <div className='Design-mobile' draggable={false} style={{maxWidth:this.props.width ,minHeight:this.props.height}}>
+        {/* {this.ExitDialog()}
+        {this.nextDesignDialog()} */}
         {/* {this.Loading()} */}
 
-        <div id='menu-design'>
+        <div id='menu-design-mobile'>
           <div className='menur'>
 
             <i onClick={this.Download.bind(true)} class="fa fa-cloud-download" id='back-button'></i>
@@ -1147,11 +1180,11 @@ this.setState({zIndex:zIndex})
           </div>
         </div>
         {/* <h3><b>עצב בעצמך</b></h3> */}
-        <div className='Design-cube' style={{maxWidth:this.props.width}}>
+        <div className='Design-cube-mobile' >
 
 
 
-          <div className='Design-cube1' >
+          <div className='Design-cube1-mobile' >
             <div className='buttons'>
 
 
@@ -1167,7 +1200,7 @@ this.setState({zIndex:zIndex})
             </div>
             <div>
               {this.state.editNow === 'text' ? (
-                <div className='edits' id='editsText'>
+                <div className='edits-mobile' id='editsText'>
                   <div className='div-info'>
                     <button id='info'><span class="iconify" data-icon="clarity:info-solid" data-inline="false"></span></button>
                     <p className='info'>בחר כותרת, לכל טקסט יפתח לך סרגל כלים שתוכל בעזרתו לשנות את הצבע, הגופן, גודל ומלל</p>
@@ -1180,7 +1213,7 @@ this.setState({zIndex:zIndex})
 
                 </div>
 
-              ) : this.state.editNow === 'img' ? (<div className='edits'>
+              ) : this.state.editNow === 'img' ? (<div className='edits-mobile'>
                 <div className='div-info'>
                   <button id='info'><span class="iconify" data-icon="clarity:info-solid" data-inline="false"></span></button>
                   <p className='info'>העלאה את התמונה הרצויה או ע״י גרירה או לחיצה ובחירה מהמכשיר, בעזרת סרגל הכלים ניתן לחתוך את התמונה, להקטין ולהגדיל</p>
@@ -1195,7 +1228,7 @@ this.setState({zIndex:zIndex})
                   })}
                 </div>
               </div>) : this.state.editNow === 'product' ? (
-                <div className='edits'>
+                <div className='edits-mobile'>
                   {/* <Dropdown options={this.state.options} onChange={this.onSelect} value={this.state.defaultOption} placeholder="Select an option" /> */}
                   <p style={{ marginTop: '10px' }}>המוצר קיים בצבעים הבאים: (לחץ כדי להחליף צבע)</p>
                   {this.props.productDesign.item.productImage.map((item, index) => {
@@ -1212,7 +1245,7 @@ this.setState({zIndex:zIndex})
 
                 </div>
               ) : this.state.editNow === 'shape' ? (
-                <div className='edits'>
+                <div className='edits-mobile'>
                   <div className='div-info'>
                     <button id='info'><span class="iconify" data-icon="clarity:info-solid" data-inline="false"></span></button>
                     <p className='info'>בחר צורה, ניתן בעזרת סרגל הכלים לשנות את הצבע, להגדיל להקטין ולסבוב.</p>
@@ -1260,7 +1293,7 @@ this.setState({zIndex:zIndex})
 
 
                 </div>) : this.state.editNow === 'history' ? (
-                  <div className='edits'>
+                  <div className='edits-mobile'>
                     <div className='div-info'>
                       <button id='info'><span class="iconify" data-icon="clarity:info-solid" data-inline="false"></span></button>
                       <p className='info'>היסטורית העיצובים שלך, ניתן לטעון מחדש עיצובים ישנים, להעתיק ולערוך</p>
@@ -1275,7 +1308,7 @@ this.setState({zIndex:zIndex})
               <br />
             </div>
           </div>
-          <div className='Design-cube2'  id='Design-cube2' style={{maxWidth:this.props.width,  backgroundColor:this.state.downloadDesign?'transparent':'white'}} >
+          <div className='Design-cube2-mobile' draggable={false} id='Design-cube2' style={{maxWidth:this.props.width,  backgroundColor:this.state.downloadDesign?'transparent':'white'}} >
             <img hidden={this.state.downloadDesign} id='logo-down' src={Logo} alt='logo' />
 
 
@@ -1284,16 +1317,22 @@ this.setState({zIndex:zIndex})
             {/* <button className='buttonEdit' id='back-front'onClick={this.chengeShirt}>{this.state.front?('אחורה'):('קדימה')}</button> */}
             {this.props.productDesign.imgItem.back !== '' && !this.state.download ? (<button className='buttonEdit' id='back-front' onClick={this.chengeShirt}>{this.state.front ? ('אחורה') : ('קדימה')}</button>) : ''}
 
-            {this.state.textToolbar}
-            <div className='Design-cube2-imgelemnt' style={{minHeight:this.props.height}}>
-            <img hidden={this.state.downloadDesign} draggable={false} onClick={() => { this.datgnow(0) }} className='shirt' id='shirt' src={this.state.front ? (this.props.productDesign.imgItem.front) : (this.props.productDesign.imgItem.back)}></img>
+            {/* {this.state.textToolbar} */}
+            
+            <img hidden={this.state.downloadDesign} draggable={false} onClick={() => { this.datgnow(0) }} className='shirt-mobile' id='shirt' src={this.state.front ? (this.props.productDesign.imgItem.front) : (this.props.productDesign.imgItem.back)}></img>
             {/* <img draggable={false} onClick={() => { this.datgnow(0) }} className='shirt' id='shirt' src={this.state.d}></img> */}
 
 
 
+            {/* <div id='all'> */}
+              <p></p>
             {(this.state.front ? this.state.itemArrayFront : this.state.itemArrayBack).map((item, index) => {
+              // return <ElementText key={index} zIndex={item.zIndex}  showSlider={this.state.showSlider} setShowSlider={this.showSlider} getTextToolbar={this.setTextToolbar} onDrag={this.datgnow} fontFamily={this.state.activeFontFamily} widthText={item.size} text={this.state.text} drag={this.state.howDrag} myIndex={index + 1} />
               return <ElementText key={item.getId()} item={item} getTextToolbar={this.setTextToolbar} onDrag={this.datgnow} deleteText={this.deleteText} fontFamily={this.state.activeFontFamily} text={this.state.text} drag={this.state.howDrag} myIndex={index + 1} />
 
+              // <div className="box1"  key={index}>
+              // <ElementText key={index} zIndex={this.getZIndex}  showSlider={this.state.showSlider} setShowSlider={this.showSlider} getTextToolbar={this.setTextToolbar} onDrag={this.datgnow} fontFamily={this.state.activeFontFamily} widthText={item.size} text={this.state.text} drag={this.state.howDrag} myIndex={index + 1} />
+              // </div>
 
             })}
             {(this.state.front ? this.state.ImageArrayFront : this.state.ImageArrayBack).map((item, index) => {
@@ -1306,7 +1345,6 @@ this.setState({zIndex:zIndex})
               return <ElementShape key={item.getId()} item={item} colorFill={item.getColorFill()} colorBorder={item.getColorBorder()} shapefill={item.getData().fill} shapeborder={item.getData().nofill} deleteShape={this.deleteShape} onDrag={this.datgnow} getTextToolbar={this.setTextToolbar} drag={this.state.howDrag} myIndex={(index + 1) * 10} />
 
             })}
-            </div>
             </div>
 
           {/* </div> */}

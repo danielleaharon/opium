@@ -1,25 +1,43 @@
 import React from 'react';
-import './Navbar.css';
+import './ProductMobileMenu.css';
 import generalUtils from "../../common/generalUtils";
 import Logo from '../../Image/opiumLogo3.png'
 
 import {Link} from 'react-router-dom';
 
 
-class Navbar1 extends React.Component {
+class ProductMobileMenu extends React.Component {
+constructor(props){
+    super(props)
+    this.state={
+        red:false,
+        redpink:false,
+        pink:false,
+        purple:false,
+        bluepurple:false,
+        blue:false,
+        green:false,
+        greenorange:false,
+        hide:false,
 
+        }
+}
     render() {
         return (
-            <div id={'menu-wrapper-id'} className={'menu-wrapper-nav ' + this.getClassNameWithSuffix('menu-wrapper')}
+            <div id={'menu-wrapper-id'} className={'menu-wrapper ' + this.getClassNameWithSuffix('menu-wrapper')}
                  onClick={(e) => this.onBackGroundClick(e.target.id)}>
+                     
                 <div className={'menu-white ' + generalUtils.getLangClass(this.getClassNameWithSuffix('menu-white'), 1)}>
-                <a href='/' className={'menu-logo'}><img src={Logo} /></a>
+                <button className='menu-close' onClick={this.props.onClose}>סגור <span id='x' class="iconify" data-icon="feather:x"></span></button>
+
+                    <div className='print-category' >
                     { this.getMenuItems() }
+                    </div>
                 </div>
             </div>
         );
     }
-
+   
     onBackGroundClick(targetId) {
         if (targetId == 'menu-wrapper-id') {
             this.props.onClose();
@@ -40,27 +58,9 @@ class Navbar1 extends React.Component {
     }
 
     getMenuItem(item) {
-        if (item.link != null) {
-            if (item.internal) {
-                return (
-                   
-                     <a href={item.link} key={'menu-item-' + item.name} >
-                     { this.getItemDiv(item) }
-                 </a>
-                );
-            } else {
-                return (
-                    <a href={item.link} key={'menu-item-' + item.name} target={'_blank'}>
-                        { this.getItemDiv(item) }
-                    </a>
-                );
-            }
-        }
-        return (
-            <div key={'menu-item-' + item.name}>
-                { this.getItemDiv(item) }
-            </div>
-        );
+       return <div className='cubeC'  >
+       {item}
+       </div>
     }
 
     getItemDiv(item) {
@@ -78,4 +78,4 @@ class Navbar1 extends React.Component {
     }
 }
 
-export default Navbar1;
+export default ProductMobileMenu;

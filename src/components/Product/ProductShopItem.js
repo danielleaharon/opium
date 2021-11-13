@@ -11,7 +11,18 @@ import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';import './Product.css';
+import { makeStyles, withStyles } from '@material-ui/core/styles';
+import { styled } from '@mui/material/styles';
+import Checkbox from '@mui/material/Checkbox';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormControl from '@material-ui/core/FormControl';
+import InputLabel from '@material-ui/core/InputLabel';
+import Input from '@material-ui/core/Input';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import MenuItem from '@material-ui/core/MenuItem';
+import Autocomplete from '@material-ui/lab/Autocomplete';
+
+
 export default class ProductShopItem extends Component {
     constructor(props) {
         super(props);
@@ -31,7 +42,13 @@ export default class ProductShopItem extends Component {
           full:true,
           imgDialog:'',
           sizeSelect:'',
-          sizeSelectMsg:false
+          sizeSelectMsg:false,
+          schoolLogo:false,
+          schoolLogoList:[],
+          CityFilter:[],
+          selectCity:'',
+          selectSchool: {school:'בתי ספר',city:'',url:'',},
+          schoolLogoListFilter:[]
         }
    
         this.muse = this.muse.bind(this);
@@ -43,9 +60,55 @@ export default class ProductShopItem extends Component {
         this.openViewDialog = this.openViewDialog.bind(this);
         this.handleCloseDialog = this.handleCloseDialog.bind(this);
         this.ViewDialog = this.ViewDialog.bind(this);
+        this.Alert = this.Alert.bind(this);
+
+   
+    }
+    Alert(){
+      return (
+        <div hidden={!this.state.addCartmsg} id='cart-success-alert'>
+                       <span id='cart-success-alert-icon' class="iconify" data-icon="icon-park-outline:success"></span>
+
+          <p>         
+             {/* <span id='cart-success-alert-icon' class="iconify" data-icon="icon-park-outline:success"></span> */}
+ נוסף בהצלחה  <a href='/Cart'> לסל הקניות </a></p>
+          <button  className='cart-success-alert-close' onClick={() => {this.setState({addCartmsg:false})}} > <span class="iconify" data-icon="feather:x"></span></button>
+
+        </div>
+      )
 
     }
+  
     componentDidMount(){
+      if(this.props.item.category.trim()==='הלבשה'){
+      axios.post(Config.getServerPath()+'school/all')
+      .then(res => {
+  if(res.data.status===400){
+    console.log('error')
+  return
+  }
+  this.setState({schoolLogoList:res.data.schoolLogoList})
+  const schoolLogoListCity=[];
+         
+  res.data.schoolLogoList.forEach((item)=>{
+
+        schoolLogoListCity.push(item.city)
+      })
+      const CityFilter = schoolLogoListCity.filter((elem, pos)=> {
+
+       return schoolLogoListCity.indexOf(elem) === pos;
+})
+
+      this.setState({CityFilter:CityFilter})
+      this.setState({schoolLogoListFilter:res.data.schoolLogoList})
+
+
+      })
+      .catch(() => {    console.log('send')
+    }   );
+
+  }
+
    if(   JSON.parse(localStorage.getItem('cart')).findIndex(x=>x._id==this.props.item._id)!==-1)
 this.setState({inCart:true})
 //  this.setState({item:this.props.item.productImage[0]});
@@ -65,6 +128,11 @@ this.setState({inCart:true})
      
 
     }
+    // handelChangeCity(value){
+    //   this.setState({selectCity:value});
+    //   const arr=this.state.schoolLogoList.filter((a)=>{a.city===value||value.trim()===''});
+    //   this.setState({schoolLogoListFilter:arr})
+    // }
     openViewDialog(){
 
       this.setState({openDialog:true})
@@ -74,12 +142,20 @@ this.setState({inCart:true})
       {/* <DialogTitle>{this.props.item.name}</DialogTitle> */}
       <DialogContent id='product-dialog-DialogContent' >
         <div id='product-dialog-details'>
-          <div className='dialog-imgs-select'>
+          <div className='mobile' hidden={this.props.width>800} >
+        <div className='dialog-imgs-select'>
           <img className={this.state.itemSide==='front'?'product-dialog-details-imgs select':'product-dialog-details-imgs'} onClick={()=> {this.setState({imgFront:this.state.item.front}); this.setState({itemSide:'front'})}}  src={this.state.item.front} ></img>
           <img hidden={!this.state.hasBack} onClick={()=> {this.setState({imgFront:this.state.item.back}); this.setState({itemSide:'back'})}} className={this.state.itemSide==='back'?'product-dialog-details-imgs select':'product-dialog-details-imgs'} src={this.state.item.back} ></img>
 
           </div>
         <img className='product-dialog-details-img' src={this.state.imgFront} ></img>
+        </div>
+          <div className='dialog-imgs-select'  hidden={this.props.width<=800}>
+          <img className={this.state.itemSide==='front'?'product-dialog-details-imgs select':'product-dialog-details-imgs'} onClick={()=> {this.setState({imgFront:this.state.item.front}); this.setState({itemSide:'front'})}}  src={this.state.item.front} ></img>
+          <img hidden={!this.state.hasBack} onClick={()=> {this.setState({imgFront:this.state.item.back}); this.setState({itemSide:'back'})}} className={this.state.itemSide==='back'?'product-dialog-details-imgs select':'product-dialog-details-imgs'} src={this.state.item.back} ></img>
+
+          </div>
+        <img  hidden={this.props.width<=800} className='product-dialog-details-img' src={this.state.imgFront} ></img>
         <div className='product-dialog-details-txt'>
           <p id='product-dialog-details-txt-title'>{this.props.item.name}</p>
           <p className='product-dialog-details-price'> ₪ {this.props.item.price}</p>
@@ -99,7 +175,90 @@ this.setState({inCart:true})
 
 
              </div>
-     
+             <div hidden={this.props.item.category.trim()!=='הלבשה'} className="product-schoollogo">
+             <Checkbox  checked={this.state.schoolLogo} onChange={()=>{this.setState({schoolLogo:!this.state.schoolLogo})}}  />
+
+             {/* <input type="checkbox"  name="schoollogo" onChange={(e)=>{this.setState({schoolLogo:!this.state.schoolLogo})}}  value={this.state.schoolLogo}/> */}
+<span className='product-schoollogo-p'> סמל בית ספר </span>
+     </div>
+
+     {/* <div> */}
+     <Autocomplete
+                options={this.state.CityFilter}
+                getOptionLabel={option => option}
+                renderOption={option => <>{option} </>}
+                renderInput={params =>
+                    <TextField
+                    // id='prodct-schoollogo-select'
+className='school-label'
+                        label="חפש לפי עיר"
+                        InputLabelProps={{id:'school-label'}}
+                        name="city"
+                        variant="standard"
+                        size='small'
+                        // fullWidth
+                        {...params}
+                    />
+                }
+                id='prodct-schoollogo-select'
+                className='prodct-schoollogo-select'
+                value={this.state.selectCity}
+                onChange={(event, value) => {
+                    this.setState({selectCity:value});
+                    const arr=this.state.schoolLogoList.filter((a)=>a.city===value||value===''||value===null);
+                    this.setState({schoolLogoListFilter:arr})
+                }}
+            />
+
+<Autocomplete
+                options={this.state.schoolLogoListFilter}
+                getOptionLabel={option => option.school+ ' | '+ option.city}
+                renderOption={option => <>{option.school} | {option.city} </>}
+                renderInput={params =>
+                    <TextField
+                    // id='prodct-schoollogo-select'
+                    className='school-label'
+
+                        label="בתי ספר"
+                        name="school"
+                        variant="standard"
+                        size='small'
+                        // fullWidth
+                        {...params}
+                    />
+                }
+                id='prodct-schoollogo-select'
+                className='prodct-schoollogo-select'
+                value={this.state.selectSchool}
+                onChange={(event, value) => {
+                  console.log(value)
+                    this.setState({selectSchool:value})
+                }}
+            />
+          {this.state.selectSchool!==null&&this.state.selectSchool!==undefined?  <img src={this.state.selectSchool.url} />:''}
+ {/* <FormControl  variant="standard" id='school-form-select-event'>
+
+
+<Select
+required
+labelId="demo-simple-select-placeholder-label-label"
+id="orderAdmin-select"
+  value={this.state.citySelect}
+  onChange={(e)=>this.setState({citySelect:e.target.value})}
+  displayEmpty
+>
+
+<MenuItem id='orderAdmin-MenuItem' value="all"> עיר</MenuItem>
+{this.state.CityFilter.map((item,index)=>{
+  return <MenuItem id='orderAdmin-MenuItem' value={item}>{item}</MenuItem>
+
+})}
+
+</Select>
+</FormControl> */}
+
+
+     {/* </div> */}
         {/* <DialogContentText>
           To subscribe to this website, please enter your email address here. We
           will send updates occasionally.
@@ -181,24 +340,19 @@ this.setState({addCartmsg:true})
     return (
       <div className='product-details-div' onMouseMove={this.muse} onMouseLeave={this.muse2}>
 {this.ViewDialog()}
-        <button className='switch-btn' hidden={!this.state.hasBack} onClick={this.changeShirt}><span class="iconify" data-icon="ic:twotone-switch-access-shortcut"></span></button>
+        {/* <button className='switch-btn' hidden={!this.state.hasBack} onClick={this.changeShirt}><span class="iconify" data-icon="fluent:camera-switch-24-regular"></span></button> */}
 
-<div className='product-img-div' ><img className='product-img' onClick={this.openViewDialog} src={this.state.imgFront}></img></div>
+<div className='product-img-div' >
+  <img className='product-img' onClick={this.openViewDialog} src={this.state.imgFront}></img>
                        <div className='procduct-cart'  hidden={this.state.m}>
-         <button onClick={this.openViewDialog} className='procduct-cart-btn' hidden={this.state.m}> <span class="iconify" data-icon="fluent:cart-16-regular"></span></button>
-         {/* <button onClick={this.deleteFromCart} className='procduct-cart-btn' hidden={this.state.m||!this.state.inCart}><span class="iconify" data-icon="fluent:cart-16-filled"></span></button> */}
+       <img className='procduct-cart-imgSmall' src={this.state.item.front} ></img>
+       <img className='procduct-cart-imgSmall' src={this.state.item.back} ></img>
+       <button className='switch-btn' hidden={!this.state.hasBack} onClick={this.changeShirt}><span class="iconify" data-icon="fluent:camera-switch-24-regular"></span></button>
+       <button onClick={this.openViewDialog} className='procduct-cart-btn' hidden={this.state.m}> <span class="iconify" data-icon="fluent:cart-16-regular"></span></button>
 
-          <div hidden={this.state.m}>
-          {this.props.item.productImage.map((item,index)=>{
-               return  <span key={index}  onClick={()=>this.handelChangeColor(item)} class="dot-product" style={{ backgroundColor: item.color }}></span>
-                
-             })}
-     
           </div>
-          </div>
-    
-    {/* <Alert hidden={!this.state.addCartmsg} variant="outlined" id='cart-success-alert' onClose={() => {this.setState({addCartmsg:false})}} severity="success"><p>נוסף בהצלחה  <a href='/Cart'> לסל הקניות </a></p></Alert> */}
-
+          {this.Alert()}
+    {/* <CustomizedSlider  hidden={!this.state.addCartmsg} variant="outlined"  id='cart-success-alert' onClose={() => {this.setState({addCartmsg:false})}} severity="success"><p>נוסף בהצלחה  <a href='/Cart'> לסל הקניות </a></p></CustomizedSlider> */}
           <div className='product-details-p2' >
        <div className='product-details-txt'>
           <p className='product-name'>{this.props.item.name}</p>
@@ -206,11 +360,14 @@ this.setState({addCartmsg:true})
           <p className='product-price'>{this.props.item.price} ₪</p>
           </div>
           <div className='product-colors' >
+          {/* <button onClick={this.openViewDialog} className='procduct-cart-btn' hidden={this.state.m}> <span class="iconify" data-icon="fluent:cart-16-regular"></span></button> */}
+
           {this.props.item.productImage.map((item,index)=>{
-               return  <p key={index}  onClick={()=>this.handelChangeColor(item)} class="dot-product" style={{ backgroundColor: item.color }}></p>
+               return  <p key={index} key={index}  onClick={()=>this.handelChangeColor(item)} class="dot-product" style={{ backgroundColor: item.color }}></p>
                 
              })}
      </div>
+          </div>
           </div>
           </div>
        

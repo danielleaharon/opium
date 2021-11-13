@@ -60,10 +60,10 @@ this.setState({openPreview:false})
             </DialogContentText> */}
            {/* <div className='preview-dailog-context-div'> */}
             
-             {/* <div className='cart-preview-dailog-context-imgs'> */}
+             <div className='cart-preview-dailog-context-imgs'>
              <img className='cart-preview-dailog-context-img' src={this.props.item.designItems.url.front} alt='design'/>
              <img className='cart-preview-dailog-context-img' src={this.props.item.designItems.url.back} alt='design'/>
-{/* </div> */}
+</div>
            
 
            {/* </div> */}
@@ -79,7 +79,7 @@ this.setState({openPreview:false})
     )
    }
       render() {
-        
+        if(this.props.width>800){
         return (
 <div className='order-item'>  
 {this.openDesignPreview()} 
@@ -94,5 +94,36 @@ this.setState({openPreview:false})
       <hr/>
       </div>  
           );
-  }
+  
+}else{
+return(
+  <div className='cart-item-mobile'>  
+  {this.openDesignPreview()} 
+  <div className='cartItem-mobile-right'>
+  {this.props.item.designItems.url.front!==''?  <div className='cart-preview-imgs' onClick={()=>this.setState({openPreview:true})} >   <img src={this.props.item.designItems.url.front}/> <img src={this.props.item.designItems.url.back}></img></div>:      <img className='cart-img' src={this.props.item.productColor.front}></img>}
+
+  </div>
+       <div className='orderItem-mobile'>
+
+      <p>{this.props.item.product.name}</p>
+      {/* <p> ₪ {this.props.item.item.price}</p> */}
+      <p> מידה:  {this.props.item.size} </p>
+      <p> כמות: {this.props.item.count}</p>
+      <p hidden={this.props.item.ProductQuote!==0}>מחיר ליח׳:  ₪ {this.props.item.product.price}</p>
+      <p hidden={this.props.item.ProductQuote===0} >הצעת מחיר ליח׳: ₪ { this.props.item.ProductQuote}</p>
+
+
+      </div>
+
+
+
+  <p hidden={this.props.item.ProductQuote!==0} className='orderItem-mobile-total'>סהכ: ₪ {this.props.item.product.price*this.props.item.count}</p>
+  <p hidden={this.props.item.ProductQuote===0} className='orderItem-mobile-total'>סהכ: ₪ {this.props.item.ProductQuote*this.props.item.count}</p>
+
+        {/* </div> */}
+        <hr/>
+        </div>  
+)
+}
+      }
 }
