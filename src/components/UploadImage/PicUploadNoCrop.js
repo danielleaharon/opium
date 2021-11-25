@@ -174,7 +174,7 @@ class PicUploadNoCrop extends Component {
     
         return (
             
-            <Fragment className='dragdropImage'>
+            <Fragment className=''>
                
             <Form  onSubmit={this.handleSubmit}>
           

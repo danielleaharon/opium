@@ -1,12 +1,5 @@
 import React, { Component } from 'react';
-import CupCat from '../../Image/cupCat.png'
-import Office from '../../Image/office.png'
-import Kit from '../../Image/kit.png'
-import All from '../../Image/all.png'
-import Key from '../../Image/key.png'
-import Cap from '../../Image/Cap.jpeg'
-import Cup from '../../Image/Cup.jpeg'
-import Gift from '../../Image/gift.jpeg'
+
 import Product from '../Product/Product'
 import axios from 'axios';
 import Config from '../../config/config';
@@ -189,7 +182,7 @@ if (this.props.category === 'מתנות בעיצוב') {
   getMenuOptions() {
     return [
       
-            <div className='row1' >
+            <div className='row1-mobile' >
               <div className='text-all border-red'  id={this.state.category === 'הלבשה' ? 'clicked-red' : ''}>
               <span hidden={this.state.hide }  onClick={this.state.hide?() => this.handleClick('הלבשה'):() =>{this.handleClick('הלבשה');this.setMenuSelect(0)}}>הלבשה  <span hidden={this.state.hide} class="iconify" id='icon-category' data-icon="ion:shirt-sharp"></span> 
               </span>
@@ -200,7 +193,7 @@ if (this.props.category === 'מתנות בעיצוב') {
               
               <button hidden={this.state.listClothing.length===0||this.state.hide} className='open-more-btn' onClick={()=>this.setState({red:!this.state.red})} > <span class="iconify" data-icon="fluent:add-square-multiple-16-filled"></span></button>
               </div>
-              <div hidden={!this.state.red} className='category-dropdown dropdown-red'>
+              <div hidden={!this.state.red} className='category-mobile-dropdown dropdown-red'>
                 <div id="mask"></div>
                 { this.state.listClothing.map((item, index) => {
                     return <button key={index} className='dropdown-btn' onClick={() => {this.handleClickSubCategory('הלבשה',item,0);this.setState({red:!this.state.red})}}>{item}<hr/></button>
@@ -215,7 +208,7 @@ if (this.props.category === 'מתנות בעיצוב') {
          
       
 
-            <div className='row2' >
+            <div className='row2-mobile' >
               <div id={this.state.category === 'גאדגטים ואלקטרוניקה' ? 'clicked-redpink' : ''} className='text-all border-red-pink'>
               <span hidden={this.state.hide} onClick={this.state.hide?() => this.handleClick('גאדגטים ואלקטרוניקה'):() => {this.handleClick('גאדגטים ואלקטרוניקה');this.setMenuSelect(1)}} > גאדגטים ואלקטרוניקה <span class="iconify" id='icon-category' data-icon="fa-solid:headphones"></span></span>
               <span hidden={!this.state.hide}><span class="iconify" id='productsItem-arrow' data-icon="bx:bx-down-arrow"></span> גאדגטים ואלקטרוניקה  
@@ -225,7 +218,7 @@ if (this.props.category === 'מתנות בעיצוב') {
               
               <button hidden={this.state.listElectronics.length===0} className='open-more-btn' onClick={()=>this.setState({redpink:!this.state.redpink})} > <span class="iconify" data-icon="fluent:add-square-multiple-16-filled"></span></button>
               </div>
-              <div  hidden={!this.state.redpink} className='category-dropdown dropdown-redpink'>
+              <div  hidden={!this.state.redpink} className='category-mobile-dropdown dropdown-redpink'>
                 <div id="mask"></div>
 
                 {
@@ -251,7 +244,7 @@ if (this.props.category === 'מתנות בעיצוב') {
               </span>
               <button hidden={this.state.listGift.length===0} className='open-more-btn' onClick={()=>this.setState({pink:!this.state.pink})} > <span class="iconify" data-icon="fluent:add-square-multiple-16-filled"></span></button>
               </div>
-              <div hidden={!this.state.pink} className='category-dropdown dropdown-pink'>
+              <div hidden={!this.state.pink} className='category-mobile-dropdown dropdown-pink'>
                 <div id="mask"></div>
                 {
                   this.state.listGift.map((item, index) => {
@@ -465,20 +458,19 @@ onClose={this.closeMenu}
   render() {
     return (
 
-      <div className='Products'>
+      <div className='Products-mobile' style={{width:window.innerWidth+'px'}}>
  {this.getMenu()}
-
-        <div className='print-category2' onClick={this.openMenu} >
-        {/* <div className='cubeC'> */}
+        <div className='print-category2' style={{width:window.innerWidth+'px'}} onClick={this.openMenu} >
+        <div className='cubeC'>
        {this.state.selectCategory}
                 {/* { this.state.subCategory!==null? this.state.subCategory:''} */}
-       {/* </div> */}
+       </div>
         </div>
         <div className='product-details'>
           {this.props.Ondesign?
-          <Product  width={this.props.width} Ondesign={this.props.Ondesign} pickProduct={this.props.pickProduct}  category={this.state.category} subCategory={this.state.subCategory}  addToCart={this.props.addToCart}
+          <Product productList={this.state.productList} width={this.props.width} Ondesign={this.props.Ondesign} pickProduct={this.props.pickProduct}  category={this.state.category} subCategory={this.state.subCategory}  addToCart={this.props.addToCart}
               deleteFromCart={this.props.deleteFromCart} />:
-                 <Product  width={this.props.width} Ondesign={this.props.Ondesign} category={this.state.category} subCategory={this.state.subCategory}  addToCart={this.props.addToCart}
+                 <Product  productList={this.state.productList} width={this.props.width} Ondesign={this.props.Ondesign} category={this.state.category} subCategory={this.state.subCategory}  addToCart={this.props.addToCart}
               deleteFromCart={this.props.deleteFromCart} />}
         </div>
       </div>

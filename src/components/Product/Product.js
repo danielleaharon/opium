@@ -15,24 +15,24 @@ export default class Product extends Component {
           productList:[]
         }
    
-
-    }
-    componentDidMount(){
+      }
+  //   }
+  //   componentDidMount(){
 
  
-      axios.post(Config.getServerPath()+'product/all')
-      .then(res => {
-  if(res.data.status===400){
-    console.log('error')
-  return
-  }
-  this.setState({productList:res.data.productList})
+  //     axios.post(Config.getServerPath()+'product/all')
+  //     .then(res => {
+  // if(res.data.status===400){
+  //   console.log('error')
+  // return
+  // }
+  // this.setState({productList:res.data.productList})
   
 
-      })
-      .catch(() => {    console.log('send')
-    }   );
-    }
+  //     })
+  //     .catch(() => {    console.log('send')
+  //   }   );
+  //   }
  
       render() {
     return (
@@ -42,7 +42,8 @@ export default class Product extends Component {
         <div className='Product-p'>
        
        <div className='row-p'>
-         {this.state.productList.filter(x=>x.category===this.props.category&&(x.Subcategory.name===this.props.subCategory||this.props.subCategory===null)||this.props.category==='all').map((item,index)=>{
+ 
+         {this.props.productList.filter(x=>x.category===this.props.category&&(x.Subcategory.name===this.props.subCategory||this.props.subCategory===null)||this.props.category==='all').map((item,index)=>{
            if(this.props.Ondesign)
 return <ProductShopItem   width={this.props.width} Ondesign={this.props.Ondesign} pickProduct={this.props.pickProduct} item={item} key={item._id}   addToCart={this.props.addToCart}
 deleteFromCart={this.props.deleteFromCart}/>

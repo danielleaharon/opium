@@ -1,0 +1,29 @@
+.NotFound{
+
+    padding-top: 30px;
+     font-family: 'Varela Round', sans-serif;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     text-align: center;
+     justify-content: center;
+     direction: rtl;
+     background-color: rgba(245, 245, 245, 0.856);
+     padding-bottom: 20px;
+     max-height: 80%;
+     
+     
+    
+     
+ }
+ .NotFound-p
+ {
+
+font-size: 24px;
+font-weight: bold;
+ }
+
+ .NotFound-a{
+    font-size: 16px;
+
+ }

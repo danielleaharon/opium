@@ -292,9 +292,15 @@ this.setState({zIndex:zIndex})
   }
   deleteDesignToHistory(index) {
     const historyArr = this.state.HistoryDesignList
-    historyArr.splice(index, 1);
-    this.setState({ HistoryDesign: historyArr })
-    localStorage.setItem("HistoryDesign", JSON.stringify(historyArr));
+  const i=  historyArr.splice(index, 1);
+  console.log(i)
+  console.log(historyArr)
+
+    this.setState({ HistoryDesignList: historyArr },()=>{
+      localStorage.setItem("HistoryDesign", JSON.stringify(historyArr));
+
+    })
+    // localStorage.setItem("HistoryDesign", JSON.stringify(historyArr));
 
   }
   updateDesignToHistory(index,name){
@@ -316,7 +322,8 @@ this.setState({zIndex:zIndex})
       itemArrayFront: this.state.itemArrayFront, itemArrayBack: this.state.itemArrayBack, ShapeArrayBack: this.state.ShapeArrayBack, ShapeArrayFront: this.state.ShapeArrayFront,
       ImageArrayBack: this.state.ImageArrayBack, ImageArrayFront: this.state.ImageArrayFront, AllItemsArrayBack: this.state.AllItemsArrayBack, AllItemsArrayFront: this.state.AllItemsArrayFront
     }
-    historyArr.push({ name, date, arrays })
+    const id=dateTemp;
+    historyArr.push({ name, date,id, arrays })
     localStorage.setItem("HistoryDesign", JSON.stringify(historyArr));
     return await this.setState({ HistoryDesignList: historyArr },()=>{
       return  true;
@@ -1126,7 +1133,7 @@ this.setState({zIndex:zIndex})
     }
     return (
 
-      <div className='Design' style={{maxWidth:this.props.width ,maxHeight:this.props.height, minHeight:this.props.height}}>
+      <div className='Design' style={{maxWidth:this.props.width+'px' ,maxHeight:this.props.height+'px', minHeight:this.props.height+'px',height:this.props.height+'px'}}>
         {this.ExitDialog()}
         {this.nextDesignDialog()}
         {/* {this.Loading()} */}
@@ -1147,7 +1154,7 @@ this.setState({zIndex:zIndex})
           </div>
         </div>
         {/* <h3><b>עצב בעצמך</b></h3> */}
-        <div className='Design-cube' style={{maxWidth:this.props.width}}>
+        <div className='Design-cube' style={{maxWidth:this.props.width+'px'}}>
 
 
 
@@ -1165,9 +1172,9 @@ this.setState({zIndex:zIndex})
 
 
             </div>
-            <div>
+            {/* <div> */}
               {this.state.editNow === 'text' ? (
-                <div className='edits' id='editsText'>
+                <div className='edits'  id='editsText'>
                   <div className='div-info'>
                     <button id='info'><span class="iconify" data-icon="clarity:info-solid" data-inline="false"></span></button>
                     <p className='info'>בחר כותרת, לכל טקסט יפתח לך סרגל כלים שתוכל בעזרתו לשנות את הצבע, הגופן, גודל ומלל</p>
@@ -1185,8 +1192,9 @@ this.setState({zIndex:zIndex})
                   <button id='info'><span class="iconify" data-icon="clarity:info-solid" data-inline="false"></span></button>
                   <p className='info'>העלאה את התמונה הרצויה או ע״י גרירה או לחיצה ובחירה מהמכשיר, בעזרת סרגל הכלים ניתן לחתוך את התמונה, להקטין ולהגדיל</p>
                 </div>
-
+<div className='edits-upload'>
                 <Upload onUpload={this.onUpload} />
+                </div>
                 <div className='img-item-toolbar-grid'>
                   {(this.state.front ? this.state.ImageArrayFront : this.state.ImageArrayBack).map((item, index) => {
                     return <ElementImgItem key={index} img={item.getData()} deleteImg={this.deleteImg} index={index} />
@@ -1198,10 +1206,12 @@ this.setState({zIndex:zIndex})
                 <div className='edits'>
                   {/* <Dropdown options={this.state.options} onChange={this.onSelect} value={this.state.defaultOption} placeholder="Select an option" /> */}
                   <p style={{ marginTop: '10px' }}>המוצר קיים בצבעים הבאים: (לחץ כדי להחליף צבע)</p>
+                  <div className='edits-colors-grid'>
                   {this.props.productDesign.item.productImage.map((item, index) => {
-                    return <span key={index} onClick={() => this.handelChangeColorShirt(item)} class="dot-product-dialog" id={this.state.ShirtItem.color === item.color ? 'dot-product-select' : ''} style={{ backgroundColor: item.color }}></span>
+                    return <span key={index} onClick={() => this.handelChangeColorShirt(item)} className="dot-product-dialog-design" id={this.state.ShirtItem.color === item.color ? 'dot-product-select' : ''} style={{ backgroundColor: item.color }}></span>
 
                   })}
+                  </div>
                   <br />
                   <button className='product-chang-btn' onClick={() => this.setState({ popUpProduct: true })}>החלפה מוצר</button>
 
@@ -1266,26 +1276,27 @@ this.setState({zIndex:zIndex})
                       <p className='info'>היסטורית העיצובים שלך, ניתן לטעון מחדש עיצובים ישנים, להעתיק ולערוך</p>
                     </div>
                     {this.state.HistoryDesignList.map((item, index) => {
-                      return <HistoryDesign key={index} index={index} item={item} changeName={this.updateDesignToHistory} load={this.loadDesignHistory} delete={this.deleteDesignToHistory} />
+                      console.log(this.state.HistoryDesignList)
+                      return <HistoryDesign key={item.id} index={index} item={item} changeName={this.updateDesignToHistory} load={this.loadDesignHistory} delete={this.deleteDesignToHistory} />
                     })}
 
                     <button className='design-adddesign-btn' onClick={this.saveDesignToHistory} >שמור את העיצוב  </button>
 
                   </div>) : ''}
               <br />
-            </div>
+            {/* </div> */}
           </div>
-          <div className='Design-cube2'  id='Design-cube2' style={{maxWidth:this.props.width,  backgroundColor:this.state.downloadDesign?'transparent':'white'}} >
+          <div className='Design-cube2'  id='Design-cube2' style={{maxWidth:this.props.width, maxHeight:this.props.height,height:this.props.height+'px', backgroundColor:this.state.downloadDesign?'transparent':'white'}} >
             <img hidden={this.state.downloadDesign} id='logo-down' src={Logo} alt='logo' />
 
 
 
             {/* fontSize:this.state.fontSize+'px' */}
             {/* <button className='buttonEdit' id='back-front'onClick={this.chengeShirt}>{this.state.front?('אחורה'):('קדימה')}</button> */}
-            {this.props.productDesign.imgItem.back !== '' && !this.state.download ? (<button className='buttonEdit' id='back-front' onClick={this.chengeShirt}>{this.state.front ? ('אחורה') : ('קדימה')}</button>) : ''}
+            {this.props.productDesign.imgItem.back !== '' && !this.state.download ? (<button className='buttonEdit' id='back-front' onClick={this.chengeShirt}>{this.state.front ? (' עצב אחורה ') : (' עצב קדימה ')}</button>) : ''}
 
             {this.state.textToolbar}
-            <div className='Design-cube2-imgelemnt' style={{minHeight:this.props.height}}>
+            <div className='Design-cube2-imgelemnt' >
             <img hidden={this.state.downloadDesign} draggable={false} onClick={() => { this.datgnow(0) }} className='shirt' id='shirt' src={this.state.front ? (this.props.productDesign.imgItem.front) : (this.props.productDesign.imgItem.back)}></img>
             {/* <img draggable={false} onClick={() => { this.datgnow(0) }} className='shirt' id='shirt' src={this.state.d}></img> */}
 

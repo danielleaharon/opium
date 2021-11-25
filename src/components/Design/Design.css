@@ -2,6 +2,7 @@
 
     font-family: 'Varela Round', sans-serif;
     width: 100%;
+    overflow: hidden;
     background-color: rgba(245, 245, 245, 0.856);
 
     
@@ -13,12 +14,14 @@
   padding: 10px 10px;
   margin-right: 20px;
   position: relative;
+  width: 100%;
   
 }
 .layers-item{
   border-bottom: rgb(187, 187, 187) 1px solid;
   margin-bottom: 10px;
   margin-top: 10px;
+  width: 100%;
 }
 .pText{position: relative;}
 #back-button{
@@ -136,6 +139,7 @@ div.menur
 .Design-cube{
   /* justify-content: center; */
   width: 100%;
+  height: 94.5%;
     position: relative;
   /* text-align: center; */
   direction: rtl;
@@ -164,17 +168,15 @@ border: black 1px solid;
 }
 #logo-down{
   position: absolute;
-  bottom: 120;
-  margin-top: 50px;
-margin-right: 68%; 
+  top: 50px;
+  left:5% ;
 padding-top: 5px;
 padding-bottom: 5px;
-font-size: 12px;
 border-radius: 3px;
 opacity: 0.6;
 color: black;
 
-  width: 20%;
+  width: 15%;
 }
 .titleEdit{
   margin-top: 10px;
@@ -184,11 +186,14 @@ color: black;
   margin-top: 20px;
 }
   .Design-cube1{
+    /* background-color: #d57b7b; */
     display: flex;
     border-top: black 4px solid;
     border-bottom: black 4px inset;
-align-items: center;
-text-align: center;
+/* align-items: center;
+text-align: center; */
+height: 100%;
+width: 30%;
     background-color: rgba(245, 245, 245, 0.475);
 
   
@@ -198,15 +203,30 @@ text-align: center;
     font-family: 'Varela Round', sans-serif;
 
   }
+  .edits-upload{
+    max-width: 100%;
+    /* overflow: hidden; */
+    /* background-color: #0288D1; */
+  }
+  .edits-colors-grid{
+    display: grid;
+    grid-template-columns: repeat(4,auto);
+    grid-column-gap: 5px;
+    grid-row-gap: 10px;
+  }
   .edits{
     /* background-color: rgba(236, 234, 234, 0.66); */
-    margin-left: 0.5px;
-    padding: 10px;
-    height: 800px;
-    width: 400px;
-    padding-top: 30px;
-
-    align-items: center;
+    /* margin-left: 0.5px; */
+    /* padding: 10px; */
+    margin-right: 20px;
+    /* padding-top: 30px; */
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    height: 95%;
+    max-width: 90%;
+    overflow: scroll;
+/* justify-content: center; */
     align-items: center;
     font-family: 'Varela Round', sans-serif;
 
@@ -253,6 +273,7 @@ text-align: center;
   .buttons{
     background-color: rgba(236, 234, 234, 0.66);
     height:100%;
+    width: 20%;
     justify-content: right;
     background-color: black;
 
@@ -368,13 +389,20 @@ text-align: center;
   }
   .product-chang-btn{
     margin-top: 70px;
-    border: #0288D1 2px solid;
+    border: #689FC9 2px solid;
     border-radius: 4px;
     background-color: transparent;
     width: 80%;
     padding: 5px 10px;
     font-size: 16px;
+    background-color: #689FC9;
     font-family: 'Varela Round', sans-serif;
+
+  }
+  .product-chang-btn:hover{
+    border: #689FC9 2px solid;
+    background-color: #689fc96f;
+
 
   }
   .dialog-design-img{
@@ -427,18 +455,17 @@ text-align: center;
   }
   
   .Design-cube2{
-    overflow: hidden;
     margin-right: 8%;
     /* padding-left: 100px;
     padding-right: 100px; */
 position: relative;
 /* height: auto; */
-width: 100%;
+width: 70%;
 /* width: 950px; */
   }
   .Design-cube2-imgelemnt{
-    overflow: hidden;
     width: fit-content;
+    height: 94.5%;
 
   }
  
@@ -454,6 +481,12 @@ width: 100%;
   width: 100%;
   height: 100%;
   border-radius: 9px;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+   -khtml-user-select: none; /* Konqueror HTML */
+     -moz-user-select: none; /* Firefox */
+      -ms-user-select: none; /* Internet Explorer/Edge */
+          user-select: none; 
 
 }
 .img-item-toolbar-grid{
@@ -513,7 +546,19 @@ width: 100%;
  border-radius: 100px; 
 
 }
+.dot-product-dialog-design {
+  margin: 5px;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  display: inline-block;
+  border: 1px solid black;
 
+}
+.dot-product-dialog-design:hover{
+  border: 2px solid black;
+
+}
 /*shape*/
 
 

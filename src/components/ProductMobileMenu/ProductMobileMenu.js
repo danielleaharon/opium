@@ -30,7 +30,7 @@ constructor(props){
                 <div className={'menu-white ' + generalUtils.getLangClass(this.getClassNameWithSuffix('menu-white'), 1)}>
                 <button className='menu-close' onClick={this.props.onClose}>סגור <span id='x' class="iconify" data-icon="feather:x"></span></button>
 
-                    <div className='print-category' >
+                    <div className='print-mobile-category' >
                     { this.getMenuItems() }
                     </div>
                 </div>
@@ -58,16 +58,13 @@ constructor(props){
     }
 
     getMenuItem(item) {
-       return <div className='cubeC'  >
+
+       return <div className='mobile-cubeC'  >
        {item}
        </div>
     }
 
-    getItemDiv(item) {
-        return (
-            <div className={'menu-item'} onClick={() => this.onItemClick(item)}>{ item.name }</div>
-        );
-    }
+ 
    
 
     onItemClick(item) {

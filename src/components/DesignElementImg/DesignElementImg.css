@@ -9,7 +9,12 @@
   left: 0;
   width: 100%;
   background-color: rgba(245, 245, 245, 0.856);
-
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+   -khtml-user-select: none; /* Konqueror HTML */
+     -moz-user-select: none; /* Firefox */
+      -ms-user-select: none; /* Internet Explorer/Edge */
+          user-select: none; 
   
 }
 #back-button{

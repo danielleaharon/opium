@@ -9,6 +9,7 @@ import ProductsChoice from './components/Products/ProductsChoice';
 import Product from './components/Product/Product';
 import Design from './components/Design/Design';
 // import Design from './components/Design/DesignMobile';
+import NotFound from './components/NotFound/NotFound';
 
 import Error from './components/Error/Error';
 import Admin from './components/Admin/Admin';
@@ -37,7 +38,7 @@ function App(props) {
     setWidth(window.innerWidth)
     setHeight(window.innerHeight)
   }
-  React.useEffect(async ()=>{
+  React.useEffect( ()=>{
     updateWindowDimensions();
 
     window.addEventListener('resize', updateWindowDimensions);
@@ -71,8 +72,8 @@ function App(props) {
       .then(res => {
         if (res.data.status === 400) {
           console.log('error')
-          return
-        }
+          
+        }else{
 
         orderList2.push(res.data.order)
           // orderList2=res.data.orderList;
@@ -81,7 +82,7 @@ function App(props) {
         //   if(order.length<JSON.parse(localStorage.getItem("order")).length) {
         //     setOrder(JSON.parse(localStorage.getItem("order")));
         // }
-  
+        }
       })
       .catch(() => {
         console.log('send')
@@ -93,9 +94,9 @@ function App(props) {
     })
     
 }
-return () => {
-  window.removeEventListener('resize', updateWindowDimensions)
-}
+
+  //window.removeEventListener('resize', updateWindowDimensions)
+
 
   },[]);
   const updateOrder=async ()=>{
@@ -227,12 +228,14 @@ goToDesign(tempItem2)
               width={width}
 
               />} />
-          <Route path={'/Products'} exact
+          <Route path={'/Products/:category/:subcategory'} exact
             render={(props) =>
               <ProductsChoice {...props}
               addToCart={addToCart}
               Ondesign={Ondesign}
-              category={category}
+              // category={category}
+              width={width}
+              height={height}
               deleteFromCart={deleteFromCart}
               />} />
 
@@ -287,6 +290,12 @@ goToDesign(tempItem2)
               <OrderAdmin {...props}
            order={order}
               updateOrder={updateOrder}
+              />} />
+              <Route path={'/'} 
+            render={(props) =>
+              <NotFound {...props}
+              height={height}
+             
               />} />
         </Switch>
       </div>

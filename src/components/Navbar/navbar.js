@@ -29,7 +29,7 @@ this.getMenu=this.getMenu.bind(this);
       return [
         {
           name: 'מוצרים',
-          link: '/Products',
+          link: '/Products/All/all',
           internal: true
   
       },
@@ -121,7 +121,7 @@ render() {
    
     {/* <span className='background-anim-dot'></span> */}
     <div className='menu-item1'>
-    <a href='/Products' className={window.location.pathname==='/Products'?'background-anim-dot':''}><div   > מוצרים </div></a>
+    <a href='/Products/All/all' className={window.location.pathname==='/Products'?'background-anim-dot':''}><div   > מוצרים </div></a>
     <a href='http://www.giftlogo.co.il/' target='_blank' ><div > קטלוג </div></a>
     <a href='/Design' ><div > עצב בעצמך </div></a>
     <a href='/Contact'className={window.location.pathname==='/Contact'?'background-anim-dot':''} ><div  > צור קשר </div></a>

@@ -1,12 +1,6 @@
 import React, { Component } from 'react';
-import CupCat from '../../Image/cupCat.png'
-import Office from '../../Image/office.png'
-import Kit from '../../Image/kit.png'
-import All from '../../Image/all.png'
-import Key from '../../Image/key.png'
-import Cap from '../../Image/Cap.jpeg'
-import Cup from '../../Image/Cup.jpeg'
-import Gift from '../../Image/gift.jpeg'
+import { useHistory } from 'react-router-dom'
+
 import Product from '../Product/Product'
 import axios from 'axios';
 import Config from '../../config/config';
@@ -14,6 +8,8 @@ import Config from '../../config/config';
 import 'react-alice-carousel/lib/alice-carousel.css';
 
 import './Products.css';
+
+
 export default class Products extends Component {
   constructor(props) {
     super(props);
@@ -35,7 +31,6 @@ export default class Products extends Component {
     }
     this.handleClick = this.handleClick.bind(this);
     this.handleClickSubCategory = this.handleClickSubCategory.bind(this);
-    this.tempList = this.tempList.bind(this);
 
   }
   UNSAFE_componentWillReceiveProps(){
@@ -60,8 +55,6 @@ console.log(this.props.category)
         const ListBags = [];
         const ListKitchen = [];
         const ListImageProduct = [];
-
-
         res.data.productList.map((item, index) => {
           if (item.category === 'הלבשה') {
             if (ListClothing.indexOf(item.Subcategory.name) === -1) {
@@ -122,6 +115,16 @@ console.log(this.props.category)
         this.setState({ listKitchen: ListKitchen })
         this.setState({ listImageProduct: ListImageProduct })
         this.setState({ listGift: ListGift })
+        const categoryHerf=window.location.pathname.split('/')[2].toLowerCase();
+        console.log(window.location)
+        if(categoryHerf.match('shirt'))
+        {
+          this.setState({category:'הלבשה'},()=>{
+            console.log(this.state.category)
+          })
+        }
+
+
 
 
 
@@ -131,6 +134,7 @@ console.log(this.props.category)
       });
   }
   handleClick(categorySelect) {
+
     this.setState({ category: categorySelect });
     this.setState({ subCategory: null });
 
@@ -138,9 +142,6 @@ console.log(this.props.category)
   handleClickSubCategory(categorySelect,subCategorySelect) {
     this.setState({ category: categorySelect });
     this.setState({ subCategory: subCategorySelect });
-
-  }
-  tempList() {
 
   }
 
@@ -155,7 +156,7 @@ console.log(this.props.category)
             {/* <img src={Shirt3} ></img> */}
             {/* </button> */}
 
-            <div className='row1' >
+            <div className='row-menu' >
               <span className='text-all border-red' id={this.state.category === 'הלבשה' ? 'clicked-red' : ''} onClick={() => this.handleClick('הלבשה')}>הלבשה  <span class="iconify" id='icon-category' data-icon="ion:shirt-sharp"></span> </span>
               <div className='category-dropdown dropdown-red'>
                 <div id="mask"></div>
@@ -173,7 +174,7 @@ console.log(this.props.category)
           <div className='cubeC'  >
             {/* <img src={Electronics} ></img> */}
 
-            <div className='row2' >
+            <div className='row-menu' >
               <span onClick={() => this.handleClick('גאדגטים ואלקטרוניקה')} id={this.state.category === 'גאדגטים ואלקטרוניקה' ? 'clicked-redpink' : ''} className='text-all border-red-pink'> גאדגטים ואלקטרוניקה <span class="iconify" id='icon-category' data-icon="fa-solid:headphones"></span></span>
               <div className='category-dropdown dropdown-redpink'>
                 <div id="mask"></div>
@@ -193,7 +194,7 @@ console.log(this.props.category)
           </div>
           <div className='cubeC' >
 
-            <div className='row3'>
+            <div className='row-menu'>
               <span className='text-all border-pink'  id={this.state.category === 'מתנות בעיצוב' ? 'clicked-pink' : ''} onClick={() => this.handleClick('מתנות בעיצוב')}> מתנות בעיצוב <span class="iconify" id='icon-category' data-icon="fa-solid:gift"></span></span>
               <div className='category-dropdown dropdown-pink'>
                 <div id="mask"></div>
@@ -214,7 +215,7 @@ console.log(this.props.category)
           <div className='cubeC'  >
             {/* <img src={Cup} ></img> */}
 
-            <div className='row4'>
+            <div className='row-menu'>
               <span className='text-all border-purple' id={this.state.category === 'כוסות ספלים ובקבוקים' ? 'clicked-purple' : ''} onClick={() => this.handleClick('כוסות ספלים ובקבוקים')}>כוסות ספלים ובקבוקים <span class="iconify" id='icon-category' data-icon="teenyicons:cup-solid"></span></span>
               <div className='category-dropdown dropdown-purple'>
                 <div id="mask"></div>
@@ -231,7 +232,7 @@ console.log(this.props.category)
           </div>
           <div className='cubeC'>
 
-            <div className='row5'>
+            <div className='row-menu'>
               <span id={this.state.category === 'כובעים ומוצרי טקסטיל' ? 'clicked-bluepurple' : ''}  onClick={() => this.handleClick('כובעים ומוצרי טקסטיל')}className='text-all border-bluepurple'  >  כובעים ומוצרי טקסטיל <span class="iconify" id='icon-category' data-icon="fa-solid:hat-cowboy"></span></span>
               <div className='category-dropdown dropdown-bluepurple'>
                 <div id="mask"></div>
@@ -250,7 +251,7 @@ console.log(this.props.category)
           <div className='cubeC'  >
             {/* <img src={Office} ></img> */}
 
-            <div className='row6'>
+            <div className='row-menu'>
               <span id={this.state.category === 'תיקים ומוצרים למשרד' ? 'clicked-blue' : ''} className='text-all border-blue' onClick={() => this.handleClick('תיקים ומוצרים למשרד')}>  תיקים ומוצרים למשרד <span class="iconify" id='icon-category' data-icon="fluent:backpack-24-filled"></span></span>
               <div className='category-dropdown dropdown-blue'>
                 <div id="mask"></div>
@@ -269,7 +270,7 @@ console.log(this.props.category)
           <div className='cubeC'  >
             {/* <img src={Kit} ></img> */}
 
-            <div className='row7'>
+            <div className='row-menu'>
               <span className='text-all border-green' id={this.state.category === 'מוצרי מטבח ואירוח לבית' ? 'clicked-green' : ''} onClick={() => this.handleClick('מוצרי מטבח ואירוח לבית')}> מוצרי מטבח ואירוח לבית<span class="iconify" id='icon-category' data-icon="ic:baseline-soup-kitchen"></span></span>
               <div className='category-dropdown dropdown-green'>
                 <div id="mask"></div>
@@ -288,7 +289,7 @@ console.log(this.props.category)
           <div className='cubeC'  >
             {/* <img src={Key} ></img> */}
 
-            <div className='row8'>
+            <div className='row-menu'>
               <span className='text-all border-greenorange' id={this.state.category === 'הדפסת תמונות מעוצבות' ? 'clicked-greenorange' : ''} onClick={() => this.handleClick('הדפסת תמונות מעוצבות')}>  הדפסת תמונות מעוצבות <span class="iconify" id='icon-category' data-icon="bi:file-earmark-image-fill"></span></span>
               <div className='category-dropdown dropdown-greenorange'>
                 <div id="mask"></div>
@@ -317,9 +318,9 @@ console.log(this.props.category)
         </div>
         <div className='product-details'>
           {this.props.Ondesign?
-          <Product  width={this.props.width} Ondesign={this.props.Ondesign} pickProduct={this.props.pickProduct}  category={this.state.category} subCategory={this.state.subCategory}  addToCart={this.props.addToCart}
+          <Product productList={this.state.productList}  width={this.props.width} Ondesign={this.props.Ondesign} pickProduct={this.props.pickProduct}  category={this.state.category} subCategory={this.state.subCategory}  addToCart={this.props.addToCart}
               deleteFromCart={this.props.deleteFromCart} />:
-                 <Product width={this.props.width} Ondesign={this.props.Ondesign} category={this.state.category} subCategory={this.state.subCategory}  addToCart={this.props.addToCart}
+                 <Product  productList={this.state.productList}  width={this.props.width} Ondesign={this.props.Ondesign} category={this.state.category} subCategory={this.state.subCategory}  addToCart={this.props.addToCart}
               deleteFromCart={this.props.deleteFromCart} />}
         </div>
       </div>

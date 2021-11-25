@@ -1,10 +1,10 @@
 .Icons{
     font-size: 80px;
-    width: 110%;
+    width: 95%;
    z-index: 10;
     margin-top: 10px;
     display: grid;
-    grid-template-rows: repeat(6,20%);
+    grid-template-rows: repeat(6,auto);
     grid-row-gap: 0px;
 }
 #red{
@@ -32,7 +32,7 @@
     height: 100px;
     position: relative;
     display: grid;
-        grid-template-columns: repeat(4,25%);
-        grid-column-gap: 5px;
+        grid-template-columns: repeat(4,auto);
+        grid-column-gap: 35px;
 
 }
