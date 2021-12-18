@@ -63,7 +63,7 @@ handelOpen(){
   <span  className="dot-OrderAdminDesign" id='dot-OrderAdminDesign' style={{ backgroundColor: this.props.item.colorFill }}></span>
   </p>
 
-  <button className='OrderAdminDesign-download'  onClick={this.download} > צורה <span class="iconify" data-icon="bi:cloud-arrow-down"></span></button>
+  <button className='OrderAdminDesign-download'  onClick={this.download} > צורה <span className="iconify" data-icon="bi:cloud-arrow-down"></span></button>
 
 
 

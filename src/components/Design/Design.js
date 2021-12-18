@@ -1124,8 +1124,10 @@ this.setState({zIndex:zIndex})
     //     return <Redirect to={'/Cart'}></Redirect>
     //   }
 
+   
+
     if (this.state.popUpProduct) {
-      return <DesignPopUpProduct Ondesign={this.props.Ondesign} deleteFromCart={this.props.deleteFromCart} addToCart={this.props.addToCart} pickProduct={this.pickProduct} open={this.state.popUpProduct} handleClose={() => { if (this.props.productDesign === null) this.setState({ exit: true }); this.setState({ popUpProduct: false }) }} />
+      return <DesignPopUpProduct {...this.props} pickProduct={this.pickProduct} open={this.state.popUpProduct} handleClose={() => { if (this.props.productDesign === null) this.setState({ exit: true }); this.setState({ popUpProduct: false }) }} />
     }
     if (this.state.exit) {
       this.props.setOnDesign(false)
@@ -1141,8 +1143,8 @@ this.setState({zIndex:zIndex})
         <div id='menu-design'>
           <div className='menur'>
 
-            <i onClick={this.Download.bind(true)} class="fa fa-cloud-download" id='back-button'></i>
-            <i onClick={this.handleClickOpen} id='back-button' class="fa fa-times"></i>
+            <i onClick={this.Download.bind(true)} className="fa fa-cloud-download" id='back-button'></i>
+            <i onClick={this.handleClickOpen} id='back-button' className="fa fa-times"></i>
 
 
           </div>
@@ -1150,7 +1152,7 @@ this.setState({zIndex:zIndex})
             <p className='shirt-design-ditails'>  {this.props.productDesign.size}  {this.props.productDesign.item.name}  </p>
           </div>
           <div className='menul'>
-            <button onClick={this.handleOpenNext} className='continued' ><i class="fa fa-arrow-circle-left"></i>   המשך </button>
+            <button onClick={this.handleOpenNext} className='continued' ><i className="fa fa-arrow-circle-left"></i>   המשך </button>
           </div>
         </div>
         {/* <h3><b>עצב בעצמך</b></h3> */}
@@ -1162,12 +1164,12 @@ this.setState({zIndex:zIndex})
             <div className='buttons'>
 
 
-              <button className={this.state.editNow === 'text' ? ('buttonEditPick') : 'buttonEdit'} onClick={() => this.setState({ editNow: 'text' })}> <i style={{ fontSize: '27px' }} class="fa fa-font"></i> <br /> הוסף טקסט  </button><br />
-              <button className={this.state.editNow === 'img' ? ('buttonEditPick') : 'buttonEdit'} onClick={() => this.setState({ editNow: 'img' })}> <i style={{ fontSize: '27px' }} class="fa fa-cloud-upload"></i> <br />הוסף תמונה</button><br />
-              <button className={this.state.editNow === 'shape' ? ('buttonEditPick') : 'buttonEdit'} onClick={() => this.setState({ editNow: 'shape' })}><span style={{ fontSize: '27px', marginBottom: '5px' }} class="iconify" data-icon="fa-solid:shapes" data-inline="false"></span> <br />הוסף צורה</button><br />
-              <button className={this.state.editNow === 'product' ? ('buttonEditPick') : 'buttonEdit'} onClick={() => this.setState({ editNow: 'product' })}> <i style={{ fontSize: '27px' }} class="fa fa-barcode"></i> <br />בחר מוצר</button><br />
-              {(this.state.front ? this.state.AllItemsArrayFront.length !== 0 : this.state.AllItemsArrayBack.length !== 0) ? <button className={this.state.editNow === 'zIndex' ? ('buttonEditPick') : 'buttonEdit'} onClick={() => this.setState({ editNow: 'zIndex' })}> <span style={{ fontSize: '27px' }} class="iconify" data-icon="entypo:layers"></span> <br />שכבות עיצוב</button> : ''}
-              <button className={this.state.editNow === 'history' ? ('buttonEditPick') : 'buttonEdit'} onClick={() => this.setState({ editNow: 'history' })}> <span style={{ fontSize: '27px' }} class="iconify" data-icon="fluent:history-16-filled"></span> <br />העיצובים שלי</button><br />
+              <button className={this.state.editNow === 'text' ? ('buttonEditPick') : 'buttonEdit'} onClick={() => this.setState({ editNow: 'text' })}> <i style={{ fontSize: '27px' }} className="fa fa-font"></i> <br /> הוסף טקסט  </button><br />
+              <button className={this.state.editNow === 'img' ? ('buttonEditPick') : 'buttonEdit'} onClick={() => this.setState({ editNow: 'img' })}> <i style={{ fontSize: '27px' }} className="fa fa-cloud-upload"></i> <br />הוסף תמונה</button><br />
+              <button className={this.state.editNow === 'shape' ? ('buttonEditPick') : 'buttonEdit'} onClick={() => this.setState({ editNow: 'shape' })}><span style={{ fontSize: '27px', marginBottom: '5px' }} className="iconify" data-icon="fa-solid:shapes" data-inline="false"></span> <br />הוסף צורה</button><br />
+              <button className={this.state.editNow === 'product' ? ('buttonEditPick') : 'buttonEdit'} onClick={() => this.setState({ editNow: 'product' })}> <i style={{ fontSize: '27px' }} className="fa fa-barcode"></i> <br />בחר מוצר</button><br />
+              {(this.state.front ? this.state.AllItemsArrayFront.length !== 0 : this.state.AllItemsArrayBack.length !== 0) ? <button className={this.state.editNow === 'zIndex' ? ('buttonEditPick') : 'buttonEdit'} onClick={() => this.setState({ editNow: 'zIndex' })}> <span style={{ fontSize: '27px' }} className="iconify" data-icon="entypo:layers"></span> <br />שכבות עיצוב</button> : ''}
+              <button className={this.state.editNow === 'history' ? ('buttonEditPick') : 'buttonEdit'} onClick={() => this.setState({ editNow: 'history' })}> <span style={{ fontSize: '27px' }} className="iconify" data-icon="fluent:history-16-filled"></span> <br />העיצובים שלי</button><br />
 
 
 
@@ -1176,7 +1178,7 @@ this.setState({zIndex:zIndex})
               {this.state.editNow === 'text' ? (
                 <div className='edits'  id='editsText'>
                   <div className='div-info'>
-                    <button id='info'><span class="iconify" data-icon="clarity:info-solid" data-inline="false"></span></button>
+                    <button id='info'><span className="iconify" data-icon="clarity:info-solid" data-inline="false"></span></button>
                     <p className='info'>בחר כותרת, לכל טקסט יפתח לך סרגל כלים שתוכל בעזרתו לשנות את הצבע, הגופן, גודל ומלל</p>
                   </div>
                   <p className='titleEdit'>לחץ כדי להוסיף טקסט</p>
@@ -1189,7 +1191,7 @@ this.setState({zIndex:zIndex})
 
               ) : this.state.editNow === 'img' ? (<div className='edits'>
                 <div className='div-info'>
-                  <button id='info'><span class="iconify" data-icon="clarity:info-solid" data-inline="false"></span></button>
+                  <button id='info'><span className="iconify" data-icon="clarity:info-solid" data-inline="false"></span></button>
                   <p className='info'>העלאה את התמונה הרצויה או ע״י גרירה או לחיצה ובחירה מהמכשיר, בעזרת סרגל הכלים ניתן לחתוך את התמונה, להקטין ולהגדיל</p>
                 </div>
 <div className='edits-upload'>
@@ -1224,7 +1226,7 @@ this.setState({zIndex:zIndex})
               ) : this.state.editNow === 'shape' ? (
                 <div className='edits'>
                   <div className='div-info'>
-                    <button id='info'><span class="iconify" data-icon="clarity:info-solid" data-inline="false"></span></button>
+                    <button id='info'><span className="iconify" data-icon="clarity:info-solid" data-inline="false"></span></button>
                     <p className='info'>בחר צורה, ניתן בעזרת סרגל הכלים לשנות את הצבע, להגדיל להקטין ולסבוב.</p>
                   </div>
                   {/* <div className='shape'> */}
@@ -1237,7 +1239,7 @@ this.setState({zIndex:zIndex})
               ) : this.state.editNow === 'zIndex' ? (
                 <div className='edits' id='editsText'>
                   <div className='div-info'>
-                    <button id='info'><span class="iconify" data-icon="clarity:info-solid" data-inline="false"></span></button>
+                    <button id='info'><span className="iconify" data-icon="clarity:info-solid" data-inline="false"></span></button>
                     <p className='info'>שכבות העיצוב שבחרת למוצר, ניתן לשחק בין השכבות ועלות שכבה אחת על האחרת</p>
                   </div>
                   <p className='titleEdit'>גרור על מנת לשנות את סדר השכבות</p>
@@ -1272,7 +1274,7 @@ this.setState({zIndex:zIndex})
                 </div>) : this.state.editNow === 'history' ? (
                   <div className='edits'>
                     <div className='div-info'>
-                      <button id='info'><span class="iconify" data-icon="clarity:info-solid" data-inline="false"></span></button>
+                      <button id='info'><span className="iconify" data-icon="clarity:info-solid" data-inline="false"></span></button>
                       <p className='info'>היסטורית העיצובים שלך, ניתן לטעון מחדש עיצובים ישנים, להעתיק ולערוך</p>
                     </div>
                     {this.state.HistoryDesignList.map((item, index) => {

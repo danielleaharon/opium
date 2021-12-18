@@ -8,7 +8,7 @@ import Select from '@material-ui/core/Select';
 import axios from 'axios';
 import ProductImageSelect from './productImageSelect';
 import ProductImgItem from '../ProductImgItem/ProductImgItem';
-import ImageUploading from '../ImageUploading/SingleFileUploadComponent';
+import {isAuth} from '../../actions/auth';
 
 import Config from '../../config/config';
 import './HomeImage.css';
@@ -26,7 +26,13 @@ this.handelDeleteImg=this.handelDeleteImg.bind(this);
 
     }
     handelDeleteImg(){
-      axios.delete(Config.getServerPath()+'photo/delete/'+this.props.item._id)
+      const postData = {
+       
+        token:isAuth(),
+
+     
+    };
+      axios.post(Config.getServerPath()+'photo/delete/'+this.props.item._id,postData)
       .then(res => {
   if(res.data.status===400){
     console.log('error')
@@ -54,7 +60,7 @@ this.handelDeleteImg=this.handelDeleteImg.bind(this);
 >
 <img src={this.props.item.src} ></img>
 <p className='img-position'>{this.props.position}</p>
-<button onClick={this.handelDeleteImg} id='home-img-item-delete'><span class="iconify" data-icon="fluent:delete-dismiss-24-filled"></span></button>
+<button onClick={this.handelDeleteImg} id='home-img-item-delete'><span className="iconify" data-icon="fluent:delete-dismiss-24-filled"></span></button>
 </div>
    
 

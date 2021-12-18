@@ -127,7 +127,7 @@ class colorPicker extends React.Component {
 
           <div style={ this.props.icon!==undefined? styles.color :styles.colorShape} >
             {this.props.icon===undefined?<Icon color={this.state.color}  icon={this.props.iconShape} width='25px' />:this.props.icon}
-          {/* <span class="iconify" id='paint-icon' data-icon="fluent:color-background-24-filled"></span> */}
+          {/* <span className="iconify" id='paint-icon' data-icon="fluent:color-background-24-filled"></span> */}
         </div>
         </div>
         { this.state.displayColorPicker ? <div style={ styles.popover }>

@@ -229,7 +229,7 @@ export default class Cart extends Component {
         
         <div className='Cart'  >
 {this.sendMailDialog()}
-<p className='cart-mobile-title'> המוצרים שלי </p>
+<p hidden={this.props.width>800} className='cart-mobile-title'> המוצרים שלי </p>
         <div className='cart-titles' hidden={JSON.parse(localStorage.getItem('cart')).length===0}>
           <p>שם הפריט</p>
           <p>מחיר ליח׳</p>

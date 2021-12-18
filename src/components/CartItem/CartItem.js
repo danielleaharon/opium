@@ -80,7 +80,7 @@ this.setState({openPreview:false})
           </DialogContent>
           <DialogActions id='Dialog-buttons-mail'>
             <Button onClick={this.handleClosePreview} id='cart-preview-dailog-btn' color="primary">
-            <span class="iconify" data-icon="bx:bx-x"></span>
+            <span className="iconify" data-icon="bx:bx-x"></span>
             </Button>
          
           </DialogActions>
@@ -125,7 +125,7 @@ this.setState({openPreview:false})
 
     <img src={this.props.item.design.url}></img> */}
     {this.props.item.design.url.front!==''?  <div className='cart-preview-imgs' > <button onClick={()=>this.setState({openPreview:true})} id='cart-preview-big'></button>  <img src={this.props.item.design.url.front}/> <img src={this.props.item.design.url.back}></img></div>:      <img className='cart-img' src={this.props.item.imgItem.front}></img>}
-<button onClick={()=>this.props.deleteFromCart(this.props.item)} className='cartItem-delete'><span class="iconify" data-icon="fluent:delete-48-filled"></span></button>
+<button onClick={()=>this.props.deleteFromCart(this.props.item)} className='cartItem-delete'><span className="iconify" data-icon="fluent:delete-48-filled"></span></button>
       </div>
       <hr/>
       </div>  
@@ -173,8 +173,8 @@ this.setState({openPreview:false})
           <img src={this.props.item.design.url}></img> */}
           {/* {this.props.item.design.url.front!==''?  <div className='cart-preview-imgs' > <button onClick={()=>this.setState({openPreview:true})} id='cart-preview-big'></button>  <img src={this.props.item.design.url.front}/> <img src={this.props.item.design.url.back}></img></div>:      <img className='cart-img' src={this.props.item.imgItem.front}></img>} */}
     <div className='cartItem-mobile-btns'>
-      <button onClick={()=>this.props.deleteFromCart(this.props.item)} className='cartItem-delete-mobile'><span class="iconify" data-icon="fluent:delete-48-filled"></span></button>
-      <button  className='cart-addDesign' onClick={this.addDesign} > <span class="iconify" id='cartItem-brush' data-icon="fluent:paint-brush-16-filled"></span> <br/> {this.props.item.design.url.front!==''?'ערוך עיצוב':'הוסף עיצוב'}</button>  
+      <button onClick={()=>this.props.deleteFromCart(this.props.item)} className='cartItem-delete-mobile'><span className="iconify" data-icon="fluent:delete-48-filled"></span></button>
+      <button  className='cart-addDesign' onClick={this.addDesign} > <span className="iconify" id='cartItem-brush' data-icon="fluent:paint-brush-16-filled"></span> <br/> {this.props.item.design.url.front!==''?'ערוך עיצוב':'הוסף עיצוב'}</button>  
 {/* <p className='cartItem-mobile-total'>סהכ: ₪ {this.props.item.item.price*this.state.count}</p> */}
       </div>
       <p className='cartItem-mobile-total'>סהכ: ₪ {this.props.item.item.price*this.state.count}</p>

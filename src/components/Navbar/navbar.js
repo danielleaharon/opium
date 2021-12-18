@@ -121,27 +121,27 @@ render() {
    
     {/* <span className='background-anim-dot'></span> */}
     <div className='menu-item1'>
-    <a href='/Products/All/all' className={window.location.pathname==='/Products'?'background-anim-dot':''}><div   > מוצרים </div></a>
+    <a href='/Products/All/all' className={window.location.pathname.includes('/Products')?'background-anim-dot':''}><div   > מוצרים </div></a>
     <a href='http://www.giftlogo.co.il/' target='_blank' ><div > קטלוג </div></a>
     <a href='/Design' ><div > עצב בעצמך </div></a>
     <a href='/Contact'className={window.location.pathname==='/Contact'?'background-anim-dot':''} ><div  > צור קשר </div></a>
   
     </div>
     <div className='icon-nav'>
-    {/* <span  class="dot-nav" >{this.props.cartSize}</span> */}
+    {/* <span  className="dot-nav" >{this.props.cartSize}</span> */}
 
-    <a hidden={this.props.orderSize===0} id={window.location.pathname==='/Order'?'background-cart':'order'} href='/Order'><span class="iconify"  id='shopCart-icon' data-icon="icon-park-outline:transaction-order"></span>  <span  class="dot-nav dot-order" >{this.props.orderSize}</span>
+    <a hidden={this.props.orderSize===0} id={window.location.pathname==='/Order'?'background-cart':'order'} href='/Order'><span className="iconify"  id='shopCart-icon' data-icon="icon-park-outline:transaction-order"></span>  <span  className="dot-nav dot-order" >{this.props.orderSize}</span>
   
   <span className='myCart'>ההזמנות שלי</span>
   </a>
-    <a  id={window.location.pathname==='/Cart'?'background-cart':'shoping'} href='/Cart'><span class="iconify" id='shopCart-icon'data-icon="ph:shopping-cart-fill" data-inline="false"></span>      <span  class="dot-nav dot-shoping" >{this.props.cartSize}</span>
+    <a  id={window.location.pathname==='/Cart'?'background-cart':'shoping'} href='/Cart'><span className="iconify" id='shopCart-icon'data-icon="ph:shopping-cart-fill" data-inline="false"></span>      <span  className="dot-nav dot-shoping" >{this.props.cartSize}</span>
   
   <span className='myCart'>המוצרים שלי</span>
   </a>
-            <a href='https://www.facebook.com/swqwlb.hrzlyh'rel="noreferrer"  target='_blank'className='facebook-nav'>   <i class="fa fa-facebook-f" style={{fontSize:'15px' , color:'black'}}></i></a>
-            <a href='https://www.instagram.com/opium_print/'rel="noreferrer"  target='_blank' className='insta-nav' >   <i class="fa fa-instagram" style={{fontSize:'15px', color:'black'}}></i></a>
-            <a href='https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=dda180@gmail.com' rel="noreferrer" target='_blank'className='email-nav'>   <i class="fa fa-envelope"  style={{fontSize:'15px' ,color:'black'}}></i></a>
-           {/* <l className='search'><span class="iconify" id='search-icon'data-icon="fluent:search-32-filled" data-inline="false"></span><input id='search-input' type='text' placeholder='חיפוש..' ></input></l>  */}
+            <a href='https://www.facebook.com/swqwlb.hrzlyh'rel="noreferrer"  target='_blank'className='facebook-nav'>   <i className="fa fa-facebook-f" style={{fontSize:'15px' }}></i></a>
+            <a href='https://www.instagram.com/opium_print/'rel="noreferrer"  target='_blank' className='insta-nav' >   <i className="fa fa-instagram" style={{fontSize:'15px'}}></i></a>
+            <a href='https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=dda180@gmail.com' rel="noreferrer" target='_blank'className='email-nav'>   <i className="fa fa-envelope"  style={{fontSize:'15px' }}></i></a>
+           {/* <l className='search'><span className="iconify" id='search-icon'data-icon="fluent:search-32-filled" data-inline="false"></span><input id='search-input' type='text' placeholder='חיפוש..' ></input></l>  */}
 
             </div>
     </div>

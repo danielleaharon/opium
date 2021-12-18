@@ -157,7 +157,7 @@ console.log(this.props.category)
             {/* </button> */}
 
             <div className='row-menu' >
-              <span className='text-all border-red' id={this.state.category === 'הלבשה' ? 'clicked-red' : ''} onClick={() => this.handleClick('הלבשה')}>הלבשה  <span class="iconify" id='icon-category' data-icon="ion:shirt-sharp"></span> </span>
+              <span className='text-all border-red' id={this.state.category === 'הלבשה' ? 'clicked-red' : ''} onClick={() => this.handleClick('הלבשה')}>הלבשה  <span className="iconify" id='icon-category' data-icon="ion:shirt-sharp"></span> </span>
               <div className='category-dropdown dropdown-red'>
                 <div id="mask"></div>
                 { this.state.listClothing.map((item, index) => {
@@ -175,7 +175,7 @@ console.log(this.props.category)
             {/* <img src={Electronics} ></img> */}
 
             <div className='row-menu' >
-              <span onClick={() => this.handleClick('גאדגטים ואלקטרוניקה')} id={this.state.category === 'גאדגטים ואלקטרוניקה' ? 'clicked-redpink' : ''} className='text-all border-red-pink'> גאדגטים ואלקטרוניקה <span class="iconify" id='icon-category' data-icon="fa-solid:headphones"></span></span>
+              <span onClick={() => this.handleClick('גאדגטים ואלקטרוניקה')} id={this.state.category === 'גאדגטים ואלקטרוניקה' ? 'clicked-redpink' : ''} className='text-all border-red-pink'> גאדגטים ואלקטרוניקה <span className="iconify" id='icon-category' data-icon="fa-solid:headphones"></span></span>
               <div className='category-dropdown dropdown-redpink'>
                 <div id="mask"></div>
 
@@ -195,7 +195,7 @@ console.log(this.props.category)
           <div className='cubeC' >
 
             <div className='row-menu'>
-              <span className='text-all border-pink'  id={this.state.category === 'מתנות בעיצוב' ? 'clicked-pink' : ''} onClick={() => this.handleClick('מתנות בעיצוב')}> מתנות בעיצוב <span class="iconify" id='icon-category' data-icon="fa-solid:gift"></span></span>
+              <span className='text-all border-pink'  id={this.state.category === 'מתנות בעיצוב' ? 'clicked-pink' : ''} onClick={() => this.handleClick('מתנות בעיצוב')}> מתנות בעיצוב <span className="iconify" id='icon-category' data-icon="fa-solid:gift"></span></span>
               <div className='category-dropdown dropdown-pink'>
                 <div id="mask"></div>
                 {
@@ -216,7 +216,7 @@ console.log(this.props.category)
             {/* <img src={Cup} ></img> */}
 
             <div className='row-menu'>
-              <span className='text-all border-purple' id={this.state.category === 'כוסות ספלים ובקבוקים' ? 'clicked-purple' : ''} onClick={() => this.handleClick('כוסות ספלים ובקבוקים')}>כוסות ספלים ובקבוקים <span class="iconify" id='icon-category' data-icon="teenyicons:cup-solid"></span></span>
+              <span className='text-all border-purple' id={this.state.category === 'כוסות ספלים ובקבוקים' ? 'clicked-purple' : ''} onClick={() => this.handleClick('כוסות ספלים ובקבוקים')}>כוסות ספלים ובקבוקים <span className="iconify" id='icon-category' data-icon="teenyicons:cup-solid"></span></span>
               <div className='category-dropdown dropdown-purple'>
                 <div id="mask"></div>
                 {
@@ -233,7 +233,7 @@ console.log(this.props.category)
           <div className='cubeC'>
 
             <div className='row-menu'>
-              <span id={this.state.category === 'כובעים ומוצרי טקסטיל' ? 'clicked-bluepurple' : ''}  onClick={() => this.handleClick('כובעים ומוצרי טקסטיל')}className='text-all border-bluepurple'  >  כובעים ומוצרי טקסטיל <span class="iconify" id='icon-category' data-icon="fa-solid:hat-cowboy"></span></span>
+              <span id={this.state.category === 'כובעים ומוצרי טקסטיל' ? 'clicked-bluepurple' : ''}  onClick={() => this.handleClick('כובעים ומוצרי טקסטיל')}className='text-all border-bluepurple'  >  כובעים ומוצרי טקסטיל <span className="iconify" id='icon-category' data-icon="fa-solid:hat-cowboy"></span></span>
               <div className='category-dropdown dropdown-bluepurple'>
                 <div id="mask"></div>
                 {
@@ -252,7 +252,7 @@ console.log(this.props.category)
             {/* <img src={Office} ></img> */}
 
             <div className='row-menu'>
-              <span id={this.state.category === 'תיקים ומוצרים למשרד' ? 'clicked-blue' : ''} className='text-all border-blue' onClick={() => this.handleClick('תיקים ומוצרים למשרד')}>  תיקים ומוצרים למשרד <span class="iconify" id='icon-category' data-icon="fluent:backpack-24-filled"></span></span>
+              <span id={this.state.category === 'תיקים ומוצרים למשרד' ? 'clicked-blue' : ''} className='text-all border-blue' onClick={() => this.handleClick('תיקים ומוצרים למשרד')}>  תיקים ומוצרים למשרד <span className="iconify" id='icon-category' data-icon="fluent:backpack-24-filled"></span></span>
               <div className='category-dropdown dropdown-blue'>
                 <div id="mask"></div>
                 {
@@ -271,7 +271,7 @@ console.log(this.props.category)
             {/* <img src={Kit} ></img> */}
 
             <div className='row-menu'>
-              <span className='text-all border-green' id={this.state.category === 'מוצרי מטבח ואירוח לבית' ? 'clicked-green' : ''} onClick={() => this.handleClick('מוצרי מטבח ואירוח לבית')}> מוצרי מטבח ואירוח לבית<span class="iconify" id='icon-category' data-icon="ic:baseline-soup-kitchen"></span></span>
+              <span className='text-all border-green' id={this.state.category === 'מוצרי מטבח ואירוח לבית' ? 'clicked-green' : ''} onClick={() => this.handleClick('מוצרי מטבח ואירוח לבית')}> מוצרי מטבח ואירוח לבית<span className="iconify" id='icon-category' data-icon="ic:baseline-soup-kitchen"></span></span>
               <div className='category-dropdown dropdown-green'>
                 <div id="mask"></div>
                 {
@@ -290,7 +290,7 @@ console.log(this.props.category)
             {/* <img src={Key} ></img> */}
 
             <div className='row-menu'>
-              <span className='text-all border-greenorange' id={this.state.category === 'הדפסת תמונות מעוצבות' ? 'clicked-greenorange' : ''} onClick={() => this.handleClick('הדפסת תמונות מעוצבות')}>  הדפסת תמונות מעוצבות <span class="iconify" id='icon-category' data-icon="bi:file-earmark-image-fill"></span></span>
+              <span className='text-all border-greenorange' id={this.state.category === 'הדפסת תמונות מעוצבות' ? 'clicked-greenorange' : ''} onClick={() => this.handleClick('הדפסת תמונות מעוצבות')}>  הדפסת תמונות מעוצבות <span className="iconify" id='icon-category' data-icon="bi:file-earmark-image-fill"></span></span>
               <div className='category-dropdown dropdown-greenorange'>
                 <div id="mask"></div>
                 {

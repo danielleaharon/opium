@@ -89,7 +89,7 @@
     #design-dailog-lable{
         font-size: 14px;
         top:0;
-        width: 24%;
+        width: 26%;
         /* right: 0; */
         
 
@@ -100,7 +100,7 @@
  
     .cart-mobile-title{
         position: absolute;
-            top: -10.5%;
+            top: -4.5%;
             right: 20%;
             font-size: 25px;
             font-weight: bold;

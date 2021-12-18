@@ -76,7 +76,7 @@ color: black;
     grid-column-gap: 20px;
     grid-row-gap: 50px;
 
-    grid-template-columns:repeat(4, 25%);
+    grid-template-columns:repeat(4, auto);
 }
 
 #cart-success-alert {
@@ -142,12 +142,13 @@ color: black;
 }
 #product-dialog-details{
     display: flex;
+
     /* margin-right:20px; */
 }
 .product-dialog-details-txt{
     direction: rtl;
     padding-right: 20px;
-    padding-left: 50px;
+    /* padding-left: 50px; */
     width: 100%;
     /* width: 100%; */
     background-color: whitesmoke;
@@ -194,6 +195,7 @@ color: black;
 }
 .product-dialog-details-img{
     width: 65%;
+    /* height: fit-content; */
 }
 .procduct-cart-btn{
     margin-left: 5px;
@@ -208,6 +210,23 @@ color: black;
     /* margin-top: -8px; */
     /* display: inline-block; */
 
+}
+.Autocomplete{
+    margin-bottom: 50px;
+    padding: 10px;
+
+
+}
+.Autocomplete-mobile{
+    background-color: whitesmoke;
+
+    font-family: 'Varela Round', sans-serif;
+    font-size: 5px;
+    padding: 10px;
+}
+.school-logo{
+    margin-bottom: 50px;
+    margin-top: 20px;
 }
 .product-details-txt{
     position: absolute;
@@ -274,7 +293,7 @@ top: 5px; */
     align-items: center;
     justify-items: center;
     position: relative;
-    height: 35vh;
+    height: auto;
 
     
     /* border: 1px white solid; */
@@ -282,10 +301,10 @@ top: 5px; */
 }
 .product-img{
 
-    height:84%;
+    /* height:84%; */
     width: auto;
     max-width: 100%;
-    /* max-height: fit-content; */
+    max-height: 84%;
 }
 .product-img-div{
     height: 100%;
@@ -374,7 +393,7 @@ background-color: rgba(242, 248, 254, 0.817);
   }
   .sizeSelect{
       font-weight: bold;
-      font-size: 19px;
+      font-size: 18px;
   }
   .product-dialog-size p{
       margin-right: 20px;
@@ -401,6 +420,7 @@ background-color: rgba(242, 248, 254, 0.817);
     align-items: center;
     text-align: center;
     justify-items: center;
+    font-size: 14px;
 
   }
   .product-schoollogo-p{
@@ -408,13 +428,14 @@ background-color: rgba(242, 248, 254, 0.817);
       justify-content: center;
       /* display: inline; */
   }
-  .prodct-schoollogo-select{
-    width: 100%;
+  #prodct-schoollogo-select{
+    width: 120%;
     font-family: 'Varela Round', sans-serif;
     
       }
-.school-label{
+#school-label{
     font-family: 'Varela Round', sans-serif;
+    font-size: 12px;
 
 }
 
@@ -517,8 +538,10 @@ background-color: rgba(242, 248, 254, 0.817);
         .product-dialog-details-img{
             width: fit-content;
             max-width: 100%;
+            margin-top: 0px;
             /* height: min-content; */
             max-height: 100%;
+            /* height: fit-content; */
         }
         .product-dialog-details-price{
             font-size: 12px;
@@ -588,8 +611,9 @@ background-color: rgba(242, 248, 254, 0.817);
 
         }
         .mobile{
-            display: flex;
-            flex-direction: column-reverse;
+            direction: ltr;
+            display: grid;
+            grid-template-columns: auto;
         }
         .product-dialog-details-imgs{
             width: 20%;
@@ -668,5 +692,47 @@ background-color: rgba(242, 248, 254, 0.817);
             /* margin: 0px 10px; */
             /* padding: 0px 40px; */
         }
+        .product-schoollogo{
+            font-family: 'Varela Round', sans-serif;
+            display: grid;
+            grid-template-columns: 5% auto;
+            grid-column-gap: 8px;
+            /* align-items: center;
+            text-align: center; */
+            /* justify-items: center; */
+            font-size: 12px;
+            width: 100%;
 
+        
+          }
+          .product-schoollogo-p{
+            justify-content: left;
+            margin-right: 0px;
+            /* display: inline; */
+        }
+        #prodct-schoollogo-select{
+            width: 120%;
+            font-size: 12px;
+            font-family: 'Varela Round', sans-serif;
+
+              }
+              #school-label{
+                width: 120%;
+
+                font-family: 'Varela Round', sans-serif;
+                font-size: 5px;
+
+            }
+            .school-label{
+                width: 120%;
+
+                font-family: 'Varela Round', sans-serif;
+                font-size: 5px;
+
+            }
+            #product-dialog-details{
+                display: grid;
+                grid-template-columns: 60% 40%
+                /* margin-right:20px; */
+            }
 }

@@ -75,23 +75,23 @@ this.getZIndex=this.getZIndex.bind(this);
       }
       TextToolbar(){
         return(<div className='TextToolbar' style={{marginRight:'-250px',paddingRight:'30px'}}>
-<span style={{fontSize:'30px',margin:'5px' ,marginRight:'10px', marginTop:'5px' }}class="iconify" data-icon="fluent:text-edit-style-24-regular" data-inline="false"></span>      
+<span style={{fontSize:'30px',margin:'5px' ,marginRight:'10px', marginTop:'5px' }}className="iconify" data-icon="fluent:text-edit-style-24-regular" data-inline="false"></span>      
   <ColorPicker setPaint={this.props.setBorderColor} color={this.state.boderColor}/>
         
-        <span style={{fontSize:'30px',margin:'5px' ,marginRight:'10px', marginTop:'5px' }}class="iconify" data-icon="fluent:text-edit-style-24-filled" data-inline="false"></span>
+        <span style={{fontSize:'30px',margin:'5px' ,marginRight:'10px', marginTop:'5px' }}className="iconify" data-icon="fluent:text-edit-style-24-filled" data-inline="false"></span>
         <ColorPicker setPaint={this.props.setPaint} color={this.state.textColor}/>
-         <span  style={{fontSize:'20px',margin:'5px' ,marginRight:'20px', marginTop:'10px' }} class="iconify" data-icon="fa-solid:fill-drip" data-inline="false"></span>
+         <span  style={{fontSize:'20px',margin:'5px' ,marginRight:'20px', marginTop:'10px' }} className="iconify" data-icon="fa-solid:fill-drip" data-inline="false"></span>
 
           <ColorPicker setPaint={this.props.setBackgroundColor} color={this.props.backgroundColor}/>
           <div style={{marginTop:'-2px', display:'flex',fontSize:'27px'}}>
           <button style={{border:'none',backgroundColor:'transparent' ,position:'absolute', marginRight:'6px'}} onClick={()=>this.props.bold()}>
-          <span   class="iconify" data-icon="fluent:text-bold-24-filled" data-inline="false"></span>
+          <span   className="iconify" data-icon="fluent:text-bold-24-filled" data-inline="false"></span>
           </button>
           <button style={{border:'none',backgroundColor:'transparent',position:'absolute' ,marginRight:'45px'}} onClick={()=>this.props.Italic()}>
-          <span class="iconify" data-icon="bx:bx-italic" data-inline="false"></span>             </button>
+          <span className="iconify" data-icon="bx:bx-italic" data-inline="false"></span>             </button>
           </div>
           <div style={this.state.sliderStyle}>
-        <button   style={{border:'none',backgroundColor:'transparent'}} onClick={()=>this.setShowSlider()} > <span style={{fontSize:'23px'}}  class="iconify" data-icon="mdi:vector-radius" data-inline="false"></span></button> 
+        <button   style={{border:'none',backgroundColor:'transparent'}} onClick={()=>this.setShowSlider()} > <span style={{fontSize:'23px'}}  className="iconify" data-icon="mdi:vector-radius" data-inline="false"></span></button> 
          
          
  {this.state.showSlider?(<Slider
@@ -105,7 +105,7 @@ this.getZIndex=this.getZIndex.bind(this);
 />):''}
 </div>
           <div className='font-piker'>
-          <button onClick={this.getZIndex} style={{border:'none',backgroundColor:'transparent' ,fontSize:'27px',marginLeft:'20px'}}><span class="iconify" data-icon="bx:bxs-layer-plus" data-inline="false"></span></button>
+          <button onClick={this.getZIndex} style={{border:'none',backgroundColor:'transparent' ,fontSize:'27px',marginLeft:'20px'}}><span className="iconify" data-icon="bx:bxs-layer-plus" data-inline="false"></span></button>
 
              <FontPicker 
 

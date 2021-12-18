@@ -9,6 +9,7 @@ import axios from 'axios';
 import ProductImageSelect from './productImageSelect';
 import ProductImgItem from '../ProductImgItem/ProductImgItem';
 import ProductItem from '../ProductImgItem/ProductItem';
+import {isAuth} from '../../actions/auth';
 
 import Config from '../../config/config';
 import './Admin.css';
@@ -102,7 +103,9 @@ export default class newProduct extends Component {
         category: this.state.pSelectCategory,
         price:this.state.pPrice,
         productImage:this.state.imgs,
-        subcategory:this.state.pSubcategory
+        subcategory:this.state.pSubcategory,
+        token:isAuth(),
+
     };
       axios.post(Config.getServerPath()+'product/create',postData)
       .then(res => {

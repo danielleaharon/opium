@@ -79,7 +79,7 @@ this.props.addImg(this.state.pImage)
       <div className='product-add-img school-add-img' >
         <p className='school-add-img-title' >  הוסף תמונה של הסמל <span className='school-add-img-title-span'> *לא חובה </span></p>
       {this.state.pImage?<p >חסרה תמונה</p>:''}
-<button onClick={this.props.onClose} className='scool-close' > <span class="iconify" data-icon="feather:x"></span></button>
+<button onClick={this.props.onClose} className='scool-close' > <span className="iconify" data-icon="feather:x"></span></button>
       {/* <div className='school-add-img-input'> */}
     <ImageUploading category='schoollogo' url={this.state.pImage} setImage={this.setImage} />
       {/* </div> */}

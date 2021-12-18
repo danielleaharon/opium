@@ -114,7 +114,7 @@ export default class SchoolImageSelect extends Component {
     
       <div className='product-add-img school-add-img' >
                 <p className='school-add-img-title' >  הוסף צבע של הסמל <span className='school-add-img-title-span'> *חובה </span></p>
-      <button onClick={this.props.onClose} className='scool-close' > <span class="iconify" data-icon="feather:x"></span></button>
+      <button onClick={this.props.onClose} className='scool-close' > <span className="iconify" data-icon="feather:x"></span></button>
 
       <FormControl  variant="standard" id='school-select-color'>
         {/* <InputLabel id="product-label" error={this.state.pSelectColorE} shrink >צבע </InputLabel> */}

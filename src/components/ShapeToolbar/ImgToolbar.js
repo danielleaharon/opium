@@ -64,11 +64,11 @@ export default class DesignElementText extends Component {
       }
       ImgToolbar(){
         return(<div className='TextToolbar' style={{marginRight:'-250px', width:'60%',paddingRight:'20px'}} >
-          <span style={{fontSize:'25px',margin:'5px' ,marginRight:'10px', marginTop:'5px' }} class="iconify" data-icon="ic:baseline-border-color" data-inline="false"></span>
+          <span style={{fontSize:'25px',margin:'5px' ,marginRight:'10px', marginTop:'5px' }} className="iconify" data-icon="ic:baseline-border-color" data-inline="false"></span>
   <ColorPicker setPaint={this.props.setBorderColor} color={this.props.boderColor}/>
       
           <div style={this.state.sliderStyle}>
-        <button   style={{border:'none',backgroundColor:'transparent'}} onClick={()=>this.setShowSlider()} > <span style={{fontSize:'23px'}}  class="iconify" data-icon="mdi:vector-radius" data-inline="false"></span></button> 
+        <button   style={{border:'none',backgroundColor:'transparent'}} onClick={()=>this.setShowSlider()} > <span style={{fontSize:'23px'}}  className="iconify" data-icon="mdi:vector-radius" data-inline="false"></span></button> 
          
          
  {this.state.showSlider?(<Slider
@@ -83,7 +83,7 @@ export default class DesignElementText extends Component {
 </div>
           
 <div className='font-piker'>
-          <button onClick={this.getZIndex} style={{border:'none',backgroundColor:'transparent' ,fontSize:'27px',marginLeft:'20px'}}><span class="iconify" data-icon="bx:bxs-layer-plus" data-inline="false"></span></button>
+          <button onClick={this.getZIndex} style={{border:'none',backgroundColor:'transparent' ,fontSize:'27px',marginLeft:'20px'}}><span className="iconify" data-icon="bx:bxs-layer-plus" data-inline="false"></span></button>
 </div>
 </div>)
       }

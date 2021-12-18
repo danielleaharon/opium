@@ -174,13 +174,13 @@ return <Icon icon={polygonIcon} width="24" />
       getView(){
 
         return       <div className='elementimg-view'   >
-          <span id='elementimg-view-icon' class="iconify" data-icon="bx:bx-image-alt"></span>
+          <span id='elementimg-view-icon' className="iconify" data-icon="bx:bx-image-alt"></span>
         <img className='elementimg-view-img' src={this.data} />
-        <button onClick={this.setHidden} id={this.hidden?'elementtext-view-eye-true':'elementtext-view-eye-false'}> <span class="iconify" data-icon="ant-design:eye-filled"></span></button>
+        <button onClick={this.setHidden} id={this.hidden?'elementtext-view-eye-true':'elementtext-view-eye-false'}> <span className="iconify" data-icon="ant-design:eye-filled"></span></button>
 
         {/* <button className='delete-img-item-toolbar'
                 
-              onClick={this.delete}><i style={{fontSize:'20px'}} class="fa fa-times"></i></button> */}
+              onClick={this.delete}><i style={{fontSize:'20px'}} className="fa fa-times"></i></button> */}
                    </div>
       }
      
@@ -193,7 +193,7 @@ return <Icon icon={polygonIcon} width="24" />
 <img src={this.props.img} />
 <button className='delete-img-item-toolbar'
         
-      onClick={this.delete}><i style={{fontSize:'20px'}} class="fa fa-times"></i></button>
+      onClick={this.delete}><i style={{fontSize:'20px'}} className="fa fa-times"></i></button>
            </div>
           
     );

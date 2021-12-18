@@ -197,11 +197,11 @@ export default class DesignElementText extends Component {
   }
   getView() {
     return <div className='elementtext-view'>
-      <span id='elementtext-view-icon' class="iconify" data-icon="carbon:text-font"></span>
+      <span id='elementtext-view-icon' className="iconify" data-icon="carbon:text-font"></span>
       <p className='elementtext-view-txt' > {this.data}</p>
 
-      {/* <button onClick={this.setHidden} id={this.state.hidden?'elementtext-view-eye-true':'elementtext-view-eye-false'}> <span class="iconify" data-icon="ant-design:eye-filled"></span></button> */}
-      <button onClick={this.setHidden} id={this.hidden ? 'elementtext-view-eye-true' : 'elementtext-view-eye-false'}> <span class="iconify" data-icon="ant-design:eye-filled"></span></button>
+      {/* <button onClick={this.setHidden} id={this.state.hidden?'elementtext-view-eye-true':'elementtext-view-eye-false'}> <span className="iconify" data-icon="ant-design:eye-filled"></span></button> */}
+      <button onClick={this.setHidden} id={this.hidden ? 'elementtext-view-eye-true' : 'elementtext-view-eye-false'}> <span className="iconify" data-icon="ant-design:eye-filled"></span></button>
 
     </div>
   }
@@ -212,10 +212,10 @@ export default class DesignElementText extends Component {
       // this.getView()
 
       <div className='elementtext-view'>
-        <span id='elementtext-view-icon' class="iconify" data-icon="carbon:text-font"></span>
+        <span id='elementtext-view-icon' className="iconify" data-icon="carbon:text-font"></span>
         <p className='elementtext-view-txt' > {this.getData()}</p>
         <p>{this.getId()}</p>
-        <button onClick={this.setHidden} id={this.hidden ? 'elementtext-view-eye-true' : 'elementtext-view-eye-false'}> <span class="iconify" data-icon="ant-design:eye-filled"></span></button>
+        <button onClick={this.setHidden} id={this.hidden ? 'elementtext-view-eye-true' : 'elementtext-view-eye-false'}> <span className="iconify" data-icon="ant-design:eye-filled"></span></button>
 
       </div>
 

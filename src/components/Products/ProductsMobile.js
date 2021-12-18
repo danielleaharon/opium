@@ -184,14 +184,14 @@ if (this.props.category === 'מתנות בעיצוב') {
       
             <div className='row1-mobile' >
               <div className='text-all border-red'  id={this.state.category === 'הלבשה' ? 'clicked-red' : ''}>
-              <span hidden={this.state.hide }  onClick={this.state.hide?() => this.handleClick('הלבשה'):() =>{this.handleClick('הלבשה');this.setMenuSelect(0)}}>הלבשה  <span hidden={this.state.hide} class="iconify" id='icon-category' data-icon="ion:shirt-sharp"></span> 
+              <span hidden={this.state.hide }  onClick={this.state.hide?() => this.handleClick('הלבשה'):() =>{this.handleClick('הלבשה');this.setMenuSelect(0)}}>הלבשה  <span hidden={this.state.hide} className="iconify" id='icon-category' data-icon="ion:shirt-sharp"></span> 
               </span>
-              <span hidden={!this.state.hide}><span class="iconify" id='productsItem-arrow' data-icon="bx:bx-down-arrow"></span>  הלבשה 
+              <span hidden={!this.state.hide}><span className="iconify" id='productsItem-arrow' data-icon="bx:bx-down-arrow"></span>  הלבשה 
               </span>
-              <span hidden={!this.state.hide || this.state.subCategory===null}> <span  class="iconify" data-icon="bx:bxs-left-arrow-alt"></span> {this.state.subCategory} 
+              <span hidden={!this.state.hide || this.state.subCategory===null}> <span  className="iconify" data-icon="bx:bxs-left-arrow-alt"></span> {this.state.subCategory} 
               </span>
               
-              <button hidden={this.state.listClothing.length===0||this.state.hide} className='open-more-btn' onClick={()=>this.setState({red:!this.state.red})} > <span class="iconify" data-icon="fluent:add-square-multiple-16-filled"></span></button>
+              <button hidden={this.state.listClothing.length===0||this.state.hide} className='open-more-btn' onClick={()=>this.setState({red:!this.state.red})} > <span className="iconify" data-icon="fluent:add-square-multiple-16-filled"></span></button>
               </div>
               <div hidden={!this.state.red} className='category-mobile-dropdown dropdown-red'>
                 <div id="mask"></div>
@@ -210,13 +210,13 @@ if (this.props.category === 'מתנות בעיצוב') {
 
             <div className='row2-mobile' >
               <div id={this.state.category === 'גאדגטים ואלקטרוניקה' ? 'clicked-redpink' : ''} className='text-all border-red-pink'>
-              <span hidden={this.state.hide} onClick={this.state.hide?() => this.handleClick('גאדגטים ואלקטרוניקה'):() => {this.handleClick('גאדגטים ואלקטרוניקה');this.setMenuSelect(1)}} > גאדגטים ואלקטרוניקה <span class="iconify" id='icon-category' data-icon="fa-solid:headphones"></span></span>
-              <span hidden={!this.state.hide}><span class="iconify" id='productsItem-arrow' data-icon="bx:bx-down-arrow"></span> גאדגטים ואלקטרוניקה  
+              <span hidden={this.state.hide} onClick={this.state.hide?() => this.handleClick('גאדגטים ואלקטרוניקה'):() => {this.handleClick('גאדגטים ואלקטרוניקה');this.setMenuSelect(1)}} > גאדגטים ואלקטרוניקה <span className="iconify" id='icon-category' data-icon="fa-solid:headphones"></span></span>
+              <span hidden={!this.state.hide}><span className="iconify" id='productsItem-arrow' data-icon="bx:bx-down-arrow"></span> גאדגטים ואלקטרוניקה  
               </span>
-              <span hidden={!this.state.hide || this.state.subCategory===null}> <span  class="iconify" data-icon="bx:bxs-left-arrow-alt"></span> {this.state.subCategory} 
+              <span hidden={!this.state.hide || this.state.subCategory===null}> <span  className="iconify" data-icon="bx:bxs-left-arrow-alt"></span> {this.state.subCategory} 
               </span>
               
-              <button hidden={this.state.listElectronics.length===0} className='open-more-btn' onClick={()=>this.setState({redpink:!this.state.redpink})} > <span class="iconify" data-icon="fluent:add-square-multiple-16-filled"></span></button>
+              <button hidden={this.state.listElectronics.length===0} className='open-more-btn' onClick={()=>this.setState({redpink:!this.state.redpink})} > <span className="iconify" data-icon="fluent:add-square-multiple-16-filled"></span></button>
               </div>
               <div  hidden={!this.state.redpink} className='category-mobile-dropdown dropdown-redpink'>
                 <div id="mask"></div>
@@ -237,12 +237,12 @@ if (this.props.category === 'מתנות בעיצוב') {
 
             <div className='row3'>
               <div className='text-all border-pink'  id={this.state.category === 'מתנות בעיצוב' ? 'clicked-pink' : ''}>
-              <span hidden={this.state.hide}  onClick={this.state.hide?() => this.handleClick('מתנות בעיצוב'):() => {this.handleClick('מתנות בעיצוב');this.setMenuSelect(2)}}> מתנות בעיצוב <span class="iconify" id='icon-category' data-icon="fa-solid:gift"></span></span>
-              <span hidden={!this.state.hide}><span class="iconify" id='productsItem-arrow' data-icon="bx:bx-down-arrow"></span> מתנות בעיצוב    
+              <span hidden={this.state.hide}  onClick={this.state.hide?() => this.handleClick('מתנות בעיצוב'):() => {this.handleClick('מתנות בעיצוב');this.setMenuSelect(2)}}> מתנות בעיצוב <span className="iconify" id='icon-category' data-icon="fa-solid:gift"></span></span>
+              <span hidden={!this.state.hide}><span className="iconify" id='productsItem-arrow' data-icon="bx:bx-down-arrow"></span> מתנות בעיצוב    
               </span>
-              <span hidden={!this.state.hide || this.state.subCategory===null}> <span  class="iconify" data-icon="bx:bxs-left-arrow-alt"></span> {this.state.subCategory} 
+              <span hidden={!this.state.hide || this.state.subCategory===null}> <span  className="iconify" data-icon="bx:bxs-left-arrow-alt"></span> {this.state.subCategory} 
               </span>
-              <button hidden={this.state.listGift.length===0} className='open-more-btn' onClick={()=>this.setState({pink:!this.state.pink})} > <span class="iconify" data-icon="fluent:add-square-multiple-16-filled"></span></button>
+              <button hidden={this.state.listGift.length===0} className='open-more-btn' onClick={()=>this.setState({pink:!this.state.pink})} > <span className="iconify" data-icon="fluent:add-square-multiple-16-filled"></span></button>
               </div>
               <div hidden={!this.state.pink} className='category-mobile-dropdown dropdown-pink'>
                 <div id="mask"></div>
@@ -264,12 +264,12 @@ if (this.props.category === 'מתנות בעיצוב') {
 
             <div className='row4'>
               <div className='text-all border-purple' id={this.state.category === 'כוסות ספלים ובקבוקים' ? 'clicked-purple' : ''}>
-              <span hidden={this.state.hide}  onClick={this.state.hide?() => this.handleClick('כוסות ספלים ובקבוקים'):() => {this.handleClick('כוסות ספלים ובקבוקים');this.setMenuSelect(3)}}>כוסות ספלים ובקבוקים <span class="iconify" id='icon-category' data-icon="teenyicons:cup-solid"></span></span>
-              <span hidden={!this.state.hide}><span class="iconify" id='productsItem-arrow' data-icon="bx:bx-down-arrow"></span> כוסות ספלים ובקבוקים    
+              <span hidden={this.state.hide}  onClick={this.state.hide?() => this.handleClick('כוסות ספלים ובקבוקים'):() => {this.handleClick('כוסות ספלים ובקבוקים');this.setMenuSelect(3)}}>כוסות ספלים ובקבוקים <span className="iconify" id='icon-category' data-icon="teenyicons:cup-solid"></span></span>
+              <span hidden={!this.state.hide}><span className="iconify" id='productsItem-arrow' data-icon="bx:bx-down-arrow"></span> כוסות ספלים ובקבוקים    
               </span>
-              <span hidden={!this.state.hide || this.state.subCategory===null}> <span  class="iconify" data-icon="bx:bxs-left-arrow-alt"></span> {this.state.subCategory} 
+              <span hidden={!this.state.hide || this.state.subCategory===null}> <span  className="iconify" data-icon="bx:bxs-left-arrow-alt"></span> {this.state.subCategory} 
               </span>
-              <button hidden={this.state.listCup.length===0} className='open-more-btn' onClick={()=>this.setState({purple:!this.state.purple})} > <span class="iconify" data-icon="fluent:add-square-multiple-16-filled"></span></button>
+              <button hidden={this.state.listCup.length===0} className='open-more-btn' onClick={()=>this.setState({purple:!this.state.purple})} > <span className="iconify" data-icon="fluent:add-square-multiple-16-filled"></span></button>
 
               </div>
               <div hidden={!this.state.purple} className='category-dropdown dropdown-purple'>
@@ -289,12 +289,12 @@ if (this.props.category === 'מתנות בעיצוב') {
 
             <div className='row5'>
               <div id={this.state.category === 'כובעים ומוצרי טקסטיל' ? 'clicked-bluepurple' : ''} className='text-all border-bluepurple'>
-              <span hidden={this.state.hide} onClick={this.state.hide?() => this.handleClick('כובעים ומוצרי טקסטיל'):() => {this.handleClick('כובעים ומוצרי טקסטיל');this.setMenuSelect(4)}}  >  כובעים ומוצרי טקסטיל <span class="iconify" id='icon-category' data-icon="fa-solid:hat-cowboy"></span></span>
-              <span hidden={!this.state.hide}><span class="iconify" id='productsItem-arrow' data-icon="bx:bx-down-arrow"></span> כובעים ומוצרי טקסטיל    
+              <span hidden={this.state.hide} onClick={this.state.hide?() => this.handleClick('כובעים ומוצרי טקסטיל'):() => {this.handleClick('כובעים ומוצרי טקסטיל');this.setMenuSelect(4)}}  >  כובעים ומוצרי טקסטיל <span className="iconify" id='icon-category' data-icon="fa-solid:hat-cowboy"></span></span>
+              <span hidden={!this.state.hide}><span className="iconify" id='productsItem-arrow' data-icon="bx:bx-down-arrow"></span> כובעים ומוצרי טקסטיל    
               </span>
-              <span hidden={!this.state.hide || this.state.subCategory===null}> <span  class="iconify" data-icon="bx:bxs-left-arrow-alt"></span> {this.state.subCategory} 
+              <span hidden={!this.state.hide || this.state.subCategory===null}> <span  className="iconify" data-icon="bx:bxs-left-arrow-alt"></span> {this.state.subCategory} 
               </span>
-              <button hidden={this.state.listHat.length===0||this.state.hide} className='open-more-btn' onClick={()=>this.setState({bluepurple:!this.state.bluepurple})} > <span class="iconify" data-icon="fluent:add-square-multiple-16-filled"></span></button>
+              <button hidden={this.state.listHat.length===0||this.state.hide} className='open-more-btn' onClick={()=>this.setState({bluepurple:!this.state.bluepurple})} > <span className="iconify" data-icon="fluent:add-square-multiple-16-filled"></span></button>
               </div>
 
               <div hidden={!this.state.bluepurple} className='category-dropdown dropdown-bluepurple'>
@@ -315,12 +315,12 @@ if (this.props.category === 'מתנות בעיצוב') {
 
             <div className='row6'>
               <div id={this.state.category === 'תיקים ומוצרים למשרד' ? 'clicked-blue' : ''} className='text-all border-blue'>
-              <span  hidden={this.state.hide} onClick={this.state.hide?() => this.handleClick('תיקים ומוצרים למשרד'):() => {this.handleClick('תיקים ומוצרים למשרד');this.setMenuSelect(5)}}>  תיקים ומוצרים למשרד <span class="iconify" id='icon-category' data-icon="fluent:backpack-24-filled"></span></span>
-              <span hidden={!this.state.hide}><span class="iconify" id='productsItem-arrow' data-icon="bx:bx-down-arrow"></span> תיקים ומוצרים למשרד    
+              <span  hidden={this.state.hide} onClick={this.state.hide?() => this.handleClick('תיקים ומוצרים למשרד'):() => {this.handleClick('תיקים ומוצרים למשרד');this.setMenuSelect(5)}}>  תיקים ומוצרים למשרד <span className="iconify" id='icon-category' data-icon="fluent:backpack-24-filled"></span></span>
+              <span hidden={!this.state.hide}><span className="iconify" id='productsItem-arrow' data-icon="bx:bx-down-arrow"></span> תיקים ומוצרים למשרד    
               </span>
-              <span hidden={!this.state.hide || this.state.subCategory===null}> <span  class="iconify" data-icon="bx:bxs-left-arrow-alt"></span> {this.state.subCategory} 
+              <span hidden={!this.state.hide || this.state.subCategory===null}> <span  className="iconify" data-icon="bx:bxs-left-arrow-alt"></span> {this.state.subCategory} 
               </span>
-              <button hidden={this.state.listBags.length===0} className='open-more-btn' onClick={()=>this.setState({blue:!this.state.blue})} > <span class="iconify" data-icon="fluent:add-square-multiple-16-filled"></span></button>
+              <button hidden={this.state.listBags.length===0} className='open-more-btn' onClick={()=>this.setState({blue:!this.state.blue})} > <span className="iconify" data-icon="fluent:add-square-multiple-16-filled"></span></button>
 
               </div>
               <div hidden={!this.state.blue} className='category-dropdown dropdown-blue'>
@@ -341,12 +341,12 @@ if (this.props.category === 'מתנות בעיצוב') {
 
             <div className='row7'>
               <div className='text-all border-green' id={this.state.category === 'מוצרי מטבח ואירוח לבית' ? 'clicked-green' : ''}>
-              <span hidden={this.state.hide} onClick={this.state.hide?() => this.handleClick('מוצרי מטבח ואירוח לבית'):() => {this.handleClick('מוצרי מטבח ואירוח לבית');this.setMenuSelect(6)}}> מוצרי מטבח ואירוח לבית<span class="iconify" id='icon-category' data-icon="ic:baseline-soup-kitchen"></span></span>
-              <span hidden={!this.state.hide}><span class="iconify" id='productsItem-arrow' data-icon="bx:bx-down-arrow"></span> מוצרי מטבח ואירוח לבית   
+              <span hidden={this.state.hide} onClick={this.state.hide?() => this.handleClick('מוצרי מטבח ואירוח לבית'):() => {this.handleClick('מוצרי מטבח ואירוח לבית');this.setMenuSelect(6)}}> מוצרי מטבח ואירוח לבית<span className="iconify" id='icon-category' data-icon="ic:baseline-soup-kitchen"></span></span>
+              <span hidden={!this.state.hide}><span className="iconify" id='productsItem-arrow' data-icon="bx:bx-down-arrow"></span> מוצרי מטבח ואירוח לבית   
               </span>
-              <span hidden={!this.state.hide || this.state.subCategory===null}> <span  class="iconify" data-icon="bx:bxs-left-arrow-alt"></span> {this.state.subCategory} 
+              <span hidden={!this.state.hide || this.state.subCategory===null}> <span  className="iconify" data-icon="bx:bxs-left-arrow-alt"></span> {this.state.subCategory} 
               </span>
-              <button hidden={this.state.listKitchen.length===0} className='open-more-btn' onClick={()=>this.setState({green:!this.state.green})} > <span class="iconify" data-icon="fluent:add-square-multiple-16-filled"></span></button>
+              <button hidden={this.state.listKitchen.length===0} className='open-more-btn' onClick={()=>this.setState({green:!this.state.green})} > <span className="iconify" data-icon="fluent:add-square-multiple-16-filled"></span></button>
               </div>
 
               <div  hidden={!this.state.green} className='category-dropdown dropdown-green'>
@@ -367,12 +367,12 @@ if (this.props.category === 'מתנות בעיצוב') {
 
             <div className='row8'>
               <div className='text-all border-greenorange' id={this.state.category === 'הדפסת תמונות מעוצבות' ? 'clicked-greenorange' : ''}>
-              <span hidden={this.state.hide}  onClick={this.state.hide?() => this.handleClick('הדפסת תמונות מעוצבות'):() =>{ this.handleClick('הדפסת תמונות מעוצבות');this.setMenuSelect(7)}}>  הדפסת תמונות מעוצבות <span class="iconify" id='icon-category' data-icon="bi:file-earmark-image-fill"></span></span>
-              <span hidden={!this.state.hide}><span class="iconify" id='productsItem-arrow' data-icon="bx:bx-down-arrow"></span> הדפסת תמונות מעוצבות   
+              <span hidden={this.state.hide}  onClick={this.state.hide?() => this.handleClick('הדפסת תמונות מעוצבות'):() =>{ this.handleClick('הדפסת תמונות מעוצבות');this.setMenuSelect(7)}}>  הדפסת תמונות מעוצבות <span className="iconify" id='icon-category' data-icon="bi:file-earmark-image-fill"></span></span>
+              <span hidden={!this.state.hide}><span className="iconify" id='productsItem-arrow' data-icon="bx:bx-down-arrow"></span> הדפסת תמונות מעוצבות   
               </span>
-              <span hidden={!this.state.hide || this.state.subCategory===null}> <span  class="iconify" data-icon="bx:bxs-left-arrow-alt"></span> {this.state.subCategory} 
+              <span hidden={!this.state.hide || this.state.subCategory===null}> <span  className="iconify" data-icon="bx:bxs-left-arrow-alt"></span> {this.state.subCategory} 
               </span>
-              <button hidden={this.state.listImageProduct.length===0} className='open-more-btn' onClick={()=>this.setState({greenorange:!this.state.greenorange})} > <span class="iconify" data-icon="fluent:add-square-multiple-16-filled"></span></button>
+              <button hidden={this.state.listImageProduct.length===0} className='open-more-btn' onClick={()=>this.setState({greenorange:!this.state.greenorange})} > <span className="iconify" data-icon="fluent:add-square-multiple-16-filled"></span></button>
               </div>
               
               <div  hidden={!this.state.greenorange} className='category-dropdown dropdown-greenorange'>
@@ -393,7 +393,7 @@ if (this.props.category === 'מתנות בעיצוב') {
 
             <div className='row9'onClick={this.state.hide?() => this.handleClick('all'):() => {this.handleClick('all');this.setMenuSelect(8)}} >
               <span hidden={this.state.hide} id={this.state.category === 'all' ? 'clicked-orange' : ''} className='text-all border-orange'> כל המוצרים</span>
-              <span className='text-all border-orange' id={this.state.category === 'all' ? 'clicked-orange' : ''} hidden={!this.state.hide}><span class="iconify" id='productsItem-arrow' data-icon="bx:bx-down-arrow"></span> כל המוצרים
+              <span className='text-all border-orange' id={this.state.category === 'all' ? 'clicked-orange' : ''} hidden={!this.state.hide}><span className="iconify" id='productsItem-arrow' data-icon="bx:bx-down-arrow"></span> כל המוצרים
               </span>
             </div>
 

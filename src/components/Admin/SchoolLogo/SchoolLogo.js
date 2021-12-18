@@ -9,6 +9,7 @@ import axios from 'axios';
 import SchoolLogoItem from './SchoolLogoItem';
 import SchoolImageSelect from './SchoolImageSelect';
 import SchoolColorSelect from './SchoolColorSelect';
+import {isAuth} from '../../../actions/auth';
 
 import Config from '../../../config/config';
 import './SchoolLogo.css';
@@ -86,7 +87,9 @@ export default class SchoolLogo extends Component {
         school:this.state.school,
         url:this.state.url,
         city:this.state.city,
-        colors:this.state.colors  
+        colors:this.state.colors ,
+        token:isAuth(),
+ 
     };
       axios.post(Config.getServerPath()+'school/create',postData)
       .then(res => {
@@ -165,13 +168,13 @@ export default class SchoolLogo extends Component {
           <p> צבעים :</p>
         {this.state.colors.map((item,index)=>{
             console.log(item)
-            return <button key={index} onClick={()=>this.deleteColor(index)} id='schoolLogot-color-dit-btn'  style={{backgroundColor:item}} > <span id='schoolLogot-color-dot'  class="iconify" data-icon="feather:x"></span> </button>
+            return <button key={index} onClick={()=>this.deleteColor(index)} id='schoolLogot-color-dit-btn'  style={{backgroundColor:item}} > <span id='schoolLogot-color-dot'  className="iconify" data-icon="feather:x"></span> </button>
           })}
           </div>
           
         {/* <div className='scoolLogo-img'> */}
         
-        {this.state.newColor?( <SchoolColorSelect colors={this.state.colors} addColor={this.addColor} onClose={()=>this.setState({newColor:false})} class='new'/>
+        {this.state.newColor?( <SchoolColorSelect colors={this.state.colors} addColor={this.addColor} onClose={()=>this.setState({newColor:false})} className='new'/>
 ):(
 <button className='school-add-btn' onClick={()=>this.setState({newColor:true})} > הוסף צבע</button>
 )}
@@ -181,7 +184,7 @@ export default class SchoolLogo extends Component {
 
 {/* <div className='scoolLogo-img' hidden={this.state.url.trim()!==''}> */}
 {this.state.url.trim()===''?(
-this.state.newImg?( <SchoolImageSelect addImg={this.addImg} class='new' onClose={()=>this.setState({newImg:false})}/>):
+this.state.newImg?( <SchoolImageSelect addImg={this.addImg} className='new' onClose={()=>this.setState({newImg:false})}/>):
 (
   <button className='school-add-btn' onClick={()=>this.setState({newImg:true})} > הוסף תמונה</button>
   )
@@ -190,7 +193,7 @@ this.state.newImg?( <SchoolImageSelect addImg={this.addImg} class='new' onClose=
         {/* </div> */}
 
         <div className='scoolLogo-img'  hidden={this.state.url.trim()===''}>
-        <button onClick={()=>{this.setState({url:''})}} className='school-delete-img' > <span class="iconify" data-icon="feather:x"></span></button>
+        <button onClick={()=>{this.setState({url:''})}} className='school-delete-img' > <span className="iconify" data-icon="feather:x"></span></button>
 
 <img src={this.state.url} ></img>
         </div>

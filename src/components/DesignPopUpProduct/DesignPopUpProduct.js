@@ -55,7 +55,7 @@ this.pickProduct=this.pickProduct.bind(this)
           <div id='popProduct-dialog-design-description'>
 על מנת לעצב מוצר , עלייך לבחור מוצר
           </div>
-        <Products category={'all'}  Ondesign={this.props.Ondesign} pickProduct={this.props.pickProduct} deleteFromCart={this.props.deleteFromCart} goToDesign={this.props.goToDesign} addToCart={this.props.addToCart}/>
+        <Products category={'all'}  {...this.props}/>
           </div>
           <div id='Dialog-buttons-popProduct'>
             <Button onClick={this.props.handleClose} id='dialog-btn-design-popProduct' color="primary">

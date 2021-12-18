@@ -77,6 +77,7 @@ font-size: 12px;
     position: absolute;
     right: -15px;
     top: -3px;
+    color: black !important;
   
   }
   #search-input{
@@ -184,6 +185,10 @@ a:link, a:visited {
 
 
 }
+#shoping:hover{
+    background-color: black;
+    color: white;
+}
 #order{
     border: black 2px solid;
     margin-right: 20px;
@@ -200,6 +205,10 @@ a:link, a:visited {
     /* background-size: cover; */
 
 
+}
+#order:hover{
+    background-color: black;
+    color: white;
 }
 #shopCart-icon{
     /* padding-top: 60px;
@@ -258,8 +267,13 @@ font-size: 25px;
      padding-left: 10px;
      padding-right: 10px;
      padding-bottom: 2px;
- 
+     color: black;
+
      border-radius: 100px;
+ }
+ .insta-nav:hover{
+    background-color: black;
+    color: white;
  }
  .icon-nav{
      direction: ltr;
@@ -279,11 +293,16 @@ font-size: 25px;
      padding-top: 2px;
      padding-bottom: 2px;
      margin-right: 10px;
-     color: #3C5A99;
+     color: black;
      padding-left: 11px;
      padding-right: 11px;
      border-radius: 100px;
      justify-self: center;
+ }
+ .facebook-nav:hover{
+     background-color: black;
+     color: white;
+
  }
  .email-nav{
     height: fit-content;
@@ -292,9 +311,14 @@ font-size: 25px;
      padding: 2px;
      padding-left: 8px;
      padding-right: 8px;
- color: white;
+ color: black;
      border-radius: 100px;
  }
+ .email-nav:hover{
+    background-color: black;
+    color: white;
+
+}
  .menu-root{
      direction: rtl;
  }

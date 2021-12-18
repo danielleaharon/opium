@@ -70,7 +70,7 @@ this.setState({openPreview:false})
           </DialogContent>
           <DialogActions id='Dialog-buttons-mail'>
             <Button onClick={this.handleClosePreview} id='cart-preview-dailog-btn' color="primary">
-            <span class="iconify" data-icon="bx:bx-x"></span>
+            <span className="iconify" data-icon="bx:bx-x"></span>
             </Button>
          
           </DialogActions>

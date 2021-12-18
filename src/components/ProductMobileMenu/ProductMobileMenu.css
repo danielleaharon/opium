@@ -1,12 +1,13 @@
-.menu-mobiel-wrapper {
+.menu-wrapper {
     background-color: rgba(0, 0, 0, 0.5);
-    /* position: fixed; */
+    position: fixed;
     width: 100%;
     height: 100%;
     z-index: 10;
     display: flex;
     justify-content: flex-end;
     cursor: pointer;
+
 }
 .menu-mobiel-wrapper-opening {
     animation: menu-kf2 0.2s ease-in forwards;
@@ -17,11 +18,15 @@
 .menu-white {
     background-color: white;
     width: 100%;
+    height: 100%;
     cursor: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: fixed;
+
     overflow-y: scroll;
+    overflow: scroll;
     /* padding: 30px 0 15px 0; */
 }
 .menu-mobiel-white-opening-eng {
@@ -71,6 +76,7 @@
     top: 12px;
     border: none;
     padding: 2px;
+    padding-bottom: 5px;
     background-color: transparent;
 }
 
@@ -79,7 +85,7 @@
 
 .menu-wrapper {
     background-color: rgba(0, 0, 0, 0.5);
-    position: fixed;
+    position: sticky;
     width: 100%;
     height: 100%;
     z-index: 10;
@@ -89,6 +95,10 @@
     /* justify-content: flex-end; */
     cursor: pointer;
     /* flex-direction: column; */
+}
+.menu-white {
+    position: fixed;
+    top: 0px;
 }
 
 }

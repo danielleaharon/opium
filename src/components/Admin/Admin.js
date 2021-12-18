@@ -1,18 +1,13 @@
 import React, {Component} from 'react';
-import FormControl from '@material-ui/core/FormControl';
-import InputLabel from '@material-ui/core/InputLabel';
-import Input from '@material-ui/core/Input';
-import FormHelperText from '@material-ui/core/FormHelperText';
-import MenuItem from '@material-ui/core/MenuItem';
-import Select from '@material-ui/core/Select';
+
 import axios from 'axios';
-import ProductImageSelect from './productImageSelect';
-import ProductImgItem from '../ProductImgItem/ProductImgItem';
+
 import ProductItem from '../ProductImgItem/ProductItem';
 import NewProduct from './newProduct';
 import HomeImage from './HomeImage';
 import Subcategory from './Subcategory/Subcategory';
 import SchoolLogo from './SchoolLogo/SchoolLogo';
+import {isAuth, signin} from '../../actions/auth';
 
 import Config from '../../config/config';
 import './Admin.css';
@@ -38,6 +33,12 @@ export default class Admin extends Component {
             subcategoryList:[],
             schoolLogoList:[],
             schoolLogo:false,
+            password:'',
+            passwordErrorMsg:'',
+            haveAcsses:false,
+            showPassword:{bool:false,type:'password'}
+            
+            
 
 
         }
@@ -49,11 +50,14 @@ export default class Admin extends Component {
         this.updateProductList=this.updateProductList.bind(this);
         this.updateSubcategoryList=this.updateSubcategoryList.bind(this);
         this.updateSchoolLogoList=this.updateSchoolLogoList.bind(this);
+        this.sendPassword=this.sendPassword.bind(this);
+        this.handelChangePassword=this.handelChangePassword.bind(this);
 
+        this.handelShowPassword=this.handelShowPassword.bind(this);
 
     }
     componentDidMount(){
-
+if(isAuth()) this.setState({haveAcsses:true})
       axios.post(Config.getServerPath()+'school/all')
       .then(res => {
   if(res.data.status===400){
@@ -73,7 +77,6 @@ export default class Admin extends Component {
     console.log('error')
   return
   }
-  console.log(res.data.subcategoryList)
   this.setState({subcategoryList:res.data.subcategoryList})
   
 
@@ -92,6 +95,17 @@ export default class Admin extends Component {
       })
       .catch(() => {    console.log('send')
     }   );
+    }
+
+    handelChangePassword(e){
+      this.setState({password:e.target.value})
+      
+
+    }
+    sendPassword(){
+
+      signin(this.state.password,()=>this.setState({haveAcsses:true}), ()=>this.setState({passwordErrorMsg:"הסיסמא לא נכונה"})  )
+   
     }
     ClearError(){
 
@@ -137,8 +151,30 @@ export default class Admin extends Component {
 
       this.setState({add:!this.state.add});
     }
+    handelShowPassword(){
+if(this.state.showPassword.bool){
+this.setState({showPassword:{bool:false,type:'password'}})
+}else{
+  this.setState({showPassword:{bool:true,type:'text'}})
+
+}
+
+    }
  
       render() {
+
+if(!this.state.haveAcsses){
+  return <div className='admin-dashborad password-admin-div'>
+    <div className='password-admin-input-div'>
+    <input placeholder='על מנת להיכנס הכנס סיסמא...' className='password-admin-input' type={this.state.showPassword.type} value={this.state.password} onChange={this.handelChangePassword} ></input>
+    {this.state.showPassword.bool&& <button onClick={this.handelShowPassword} className='password-admin-eye'><span className="iconify" data-icon="ant-design:eye-filled"></span></button>}
+      {!this.state.showPassword.bool&& <button onClick={this.handelShowPassword} className='password-admin-eye'><span className="iconify" data-icon="ant-design:eye-invisible-filled"></span></button>}
+    </div>
+    <p className='password-admin-error'>{this.state.passwordErrorMsg}</p>
+    <button className='password-admin-btn' onClick={this.sendPassword} > שלח </button>
+  </div>
+}
+
     return (
         
         <div className='admin-dashborad'>
@@ -155,57 +191,57 @@ export default class Admin extends Component {
 
 <p id='product-list-title'>רשימת מוצרים</p>
       <div id='list1' >  
-      {this.state.productList.filter(p=>p.category==('הלבשה')).length!==0?<p className='product-list-category'>הלבשה</p>:''}
-{this.state.productList.filter(p=>p.category==('הלבשה')).map((item,index)=>{
+      {this.state.productList.filter(p=>p.category===('הלבשה')).length!==0?<p className='product-list-category'>הלבשה</p>:''}
+{this.state.productList.filter(p=>p.category===('הלבשה')).map((item,index)=>{
   return(
     <ProductItem item={item}  key={index} updateProductList={this.updateProductList} subcategoryList={this.state.subcategoryList}/>
   )
 })}
-      {this.state.productList.filter(p=>p.category==('גאדגטים ואלקטרוניקה')).length!==0?<p className='product-list-category'>גאדגטים ואלקטרוניקה</p>:''}
+      {this.state.productList.filter(p=>p.category===('גאדגטים ואלקטרוניקה')).length!==0?<p className='product-list-category'>גאדגטים ואלקטרוניקה</p>:''}
 
-{this.state.productList.filter(p=>p.category==('גאדגטים ואלקטרוניקה')).map((item,index)=>{
+{this.state.productList.filter(p=>p.category===('גאדגטים ואלקטרוניקה')).map((item,index)=>{
   return(
     <ProductItem item={item} key={index} updateProductList={this.updateProductList}subcategoryList={this.state.subcategoryList}/>
   )
 })}
 
-{this.state.productList.filter(p=>p.category==('מתנות בעיצוב')).length!==0?<p className='product-list-category'>מתנות בעיצוב</p>:''}
-{this.state.productList.filter(p=>p.category==('מתנות בעיצוב')).map((item,index)=>{
+{this.state.productList.filter(p=>p.category===('מתנות בעיצוב')).length!==0?<p className='product-list-category'>מתנות בעיצוב</p>:''}
+{this.state.productList.filter(p=>p.category===('מתנות בעיצוב')).map((item,index)=>{
   return(
     <ProductItem item={item}  key={index} updateProductList={this.updateProductList} subcategoryList={this.state.subcategoryList}/>
   )
 })}
 
-{this.state.productList.filter(p=>p.category==('כוסות ספלים ובקבוקים')).length!==0?<p className='product-list-category'>כוסות ספלים ובקבוקים</p>:''}
-{this.state.productList.filter(p=>p.category==('כוסות ספלים ובקבוקים')).map((item,index)=>{
+{this.state.productList.filter(p=>p.category===('כוסות ספלים ובקבוקים')).length!==0?<p className='product-list-category'>כוסות ספלים ובקבוקים</p>:''}
+{this.state.productList.filter(p=>p.category===('כוסות ספלים ובקבוקים')).map((item,index)=>{
   return(
     <ProductItem item={item}  key={index} updateProductList={this.updateProductList} subcategoryList={this.state.subcategoryList}/>
   )
 })}
 
-{this.state.productList.filter(p=>p.category==('כובעים ומוצרי טקסטיל')).length!==0?<p className='product-list-category'>כובעים ומוצרי טקסטיל</p>:''}
-{this.state.productList.filter(p=>p.category==('כובעים ומוצרי טקסטיל')).map((item,index)=>{
+{this.state.productList.filter(p=>p.category===('כובעים ומוצרי טקסטיל')).length!==0?<p className='product-list-category'>כובעים ומוצרי טקסטיל</p>:''}
+{this.state.productList.filter(p=>p.category===('כובעים ומוצרי טקסטיל')).map((item,index)=>{
   return(
     <ProductItem item={item}  key={index} updateProductList={this.updateProductList} subcategoryList={this.state.subcategoryList}/>
   )
 })}
 
-{this.state.productList.filter(p=>p.category==('תיקים ומוצרים למשרד')).length!==0?<p className='product-list-category'>תיקים ומוצרים למשרד</p>:''}
-{this.state.productList.filter(p=>p.category==('תיקים ומוצרים למשרד')).map((item,index)=>{
+{this.state.productList.filter(p=>p.category===('תיקים ומוצרים למשרד')).length!==0?<p className='product-list-category'>תיקים ומוצרים למשרד</p>:''}
+{this.state.productList.filter(p=>p.category===('תיקים ומוצרים למשרד')).map((item,index)=>{
   return(
     <ProductItem item={item}  key={index} updateProductList={this.updateProductList} subcategoryList={this.state.subcategoryList}/>
   )
 })}
 
-{this.state.productList.filter(p=>p.category==('מוצרי מטבח ואירוח לבית')).length!==0?<p className='product-list-category'>מוצרי מטבח ואירוח לבית</p>:''}
-{this.state.productList.filter(p=>p.category==('מוצרי מטבח ואירוח לבית')).map((item,index)=>{
+{this.state.productList.filter(p=>p.category===('מוצרי מטבח ואירוח לבית')).length!==0?<p className='product-list-category'>מוצרי מטבח ואירוח לבית</p>:''}
+{this.state.productList.filter(p=>p.category===('מוצרי מטבח ואירוח לבית')).map((item,index)=>{
   return(
     <ProductItem item={item}  key={index} updateProductList={this.updateProductList} subcategoryList={this.state.subcategoryList}/>
   )
 })}
 
-{this.state.productList.filter(p=>p.category==('הדפסת תמונות מעוצבות')).length!==0?<p className='product-list-category'>הדפסת תמונות מעוצבות</p>:''}
-{this.state.productList.filter(p=>p.category==('הדפסת תמונות מעוצבות')).map((item,index)=>{
+{this.state.productList.filter(p=>p.category===('הדפסת תמונות מעוצבות')).length!==0?<p className='product-list-category'>הדפסת תמונות מעוצבות</p>:''}
+{this.state.productList.filter(p=>p.category===('הדפסת תמונות מעוצבות')).map((item,index)=>{
   return(
     <ProductItem item={item}  key={index} updateProductList={this.updateProductList} subcategoryList={this.state.subcategoryList}/>
   )

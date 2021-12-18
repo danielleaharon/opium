@@ -188,7 +188,7 @@ zIndex:10,
          position:'absolute',
          //  height:this.state.widthText/2,
           top:this.state.top-10,
-     }} onClick={this.delete}><i style={{fontSize:'20px'}} class="fa fa-times"></i></button>
+     }} onClick={this.delete}><i style={{fontSize:'20px'}} className="fa fa-times"></i></button>
             <ResizableRect 
           left={this.state.left}
           top={this.state.top}

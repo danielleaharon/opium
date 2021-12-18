@@ -24,11 +24,11 @@ constructor(props){
 }
     render() {
         return (
-            <div id={'menu-wrapper-id'} className={'menu-wrapper ' + this.getClassNameWithSuffix('menu-wrapper')}
+            <div id={'menu-wrapper-id'} className={'menu-wrapper ' + this.getClassNameWithSuffix('menu-wrapper')}style={{ height: window.innerHeight + 'px' ,zIndex:'40' }}
                  onClick={(e) => this.onBackGroundClick(e.target.id)}>
                      
-                <div className={'menu-white ' + generalUtils.getLangClass(this.getClassNameWithSuffix('menu-white'), 1)}>
-                <button className='menu-close' onClick={this.props.onClose}>סגור <span id='x' class="iconify" data-icon="feather:x"></span></button>
+                <div className={'menu-white ' + generalUtils.getLangClass(this.getClassNameWithSuffix('menu-white'), 1)} style={{ height: window.innerHeight + 'px' }} >
+                <button className='menu-close' onClick={this.props.onClose}>סגור <span id='x' className="iconify" data-icon="feather:x"></span></button>
 
                     <div className='print-mobile-category' >
                     { this.getMenuItems() }

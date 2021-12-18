@@ -81,9 +81,9 @@ handelOpen(){
   <span  className="dot-OrderAdminDesign" id='dot-OrderAdminDesign' style={{ backgroundColor: this.props.item.colorFill }}></span>
   </p>
 
-  <button className='OrderAdminDesign-download'  onClick={this.download} > תמונה מקורית <span class="iconify" data-icon="bi:cloud-arrow-down"></span></button>
+  <button className='OrderAdminDesign-download'  onClick={this.download} > תמונה מקורית <span className="iconify" data-icon="bi:cloud-arrow-down"></span></button>
 
-  <button className='OrderAdminDesign-download'  onClick={this.downloadSlice}  > תמונה חתוכה  <span class="iconify" data-icon="bi:cloud-arrow-down"></span></button>
+  <button className='OrderAdminDesign-download'  onClick={this.downloadSlice}  > תמונה חתוכה  <span className="iconify" data-icon="bi:cloud-arrow-down"></span></button>
 
 </div>
 <div   id='OrderAdminDesign-img-design'  > 

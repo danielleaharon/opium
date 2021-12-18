@@ -52,7 +52,7 @@ export default class OrderAdminClass extends Component {
       return <Slide direction="up" ref={ref} {...props} />;
     });
     date=new Date(this.props.item.sendAt);
-    statusClass=''
+    statusclassName=''
     dateString=this.date.getDate()+'/'+(this.date.getMonth()+1)+'/'+this.date.getFullYear();
     handelChangeStatusSelect(e)
       {
@@ -68,11 +68,17 @@ export default class OrderAdminClass extends Component {
   
         if(e.target.value==='בוצע')
         this.setState({statusClass:'done'})
+
+        if(e.target.value==='בוטל')
+        this.setState({statusClass:'Canceled'})
         const postData = {
           status: e.target.value,
        
   
         };
+    
+       
+
         axios.post(Config.getServerPath() + 'order/updateAdmin/'+this.props.item._id, postData)
         .then( async res => {
           if (res.data.status === 400) {
@@ -107,7 +113,8 @@ export default class OrderAdminClass extends Component {
 
       if(this.props.item.status==='בוצע')
       this.setState({statusClass:'done'})
-
+ if(this.props.item.status==='בוטל')
+      this.setState({statusClass:'Canceled'})
     }
     clearValid() {
       this.setState({ dNameE: false })
@@ -290,7 +297,7 @@ export default class OrderAdminClass extends Component {
       <div className='Ordermy'>
         {this.sendMailDialog()}
         <div className={this.state.openOrder?'ordermy ordermy-select':'ordermy'} onClick={()=>this.setState({openOrder:!this.state.openOrder})}>
-          <span class="iconify" id='ordermy-arrow' data-icon="bi:arrow-down-square-fill"></span>
+          <span className="iconify" id='ordermy-arrow' data-icon="bi:arrow-down-square-fill"></span>
           <p> {this.dateString} </p>
           <p>{this.props.item.name}</p>
           <p>{this.props.item.phone}</p>
@@ -313,6 +320,8 @@ id={this.state.statusClass}
 <MenuItem id='orderAdmin-MenuItem' value="אושר">אושר</MenuItem>
 <MenuItem id='orderAdmin-MenuItem' value="שולם">שולם</MenuItem>
 <MenuItem id='orderAdmin-MenuItem' value="בוצע">בוצע</MenuItem>
+<MenuItem id='orderAdmin-MenuItem' value="בוטל">בוטל</MenuItem>
+
 </Select>
 </FormControl>
 </div>
@@ -332,8 +341,8 @@ id={this.state.statusClass}
 </div>     
 {/* <button className='myorder-change-btn'hidden={!this.state.openOrder} onClick={()=>this.setState({openSend:true})} >שלח מייל  */}
  <div  hidden={!this.state.openOrder} className='myorder-send-btns' >
- <a className='myorder-send-btn myorder-mail' hidden={!this.state.openOrder} href={"https://mail.google.com/mail/?view=cm&fs=1&tf=1&to="+this.props.item.mail} target="_blank"> <span class="iconify" id='gmail-black' data-icon="simple-icons:gmail"></span> <span class="iconify" id='gmail-color'data-icon="logos:google-gmail"></span> שלח מייל</a>
- <a className='myorder-send-btn myorder-whatsapp' hidden={!this.state.openOrder} href={"https://api.whatsapp.com/send?phone=' +"+this.state.dPhone} target="_blank"><span class="iconify" data-icon="dashicons:whatsapp"></span> שלח ווסטאפ</a>
+ <a className='myorder-send-btn myorder-mail' hidden={!this.state.openOrder} href={"https://mail.google.com/mail/?view=cm&fs=1&tf=1&to="+this.props.item.mail} target="_blank"> <span className="iconify" id='gmail-black' data-icon="simple-icons:gmail"></span> <span className="iconify" id='gmail-color'data-icon="logos:google-gmail"></span> שלח מייל</a>
+ <a className='myorder-send-btn myorder-whatsapp' hidden={!this.state.openOrder} href={"https://api.whatsapp.com/send?phone=' +"+this.state.dPhone} target="_blank"><span className="iconify" data-icon="dashicons:whatsapp"></span> שלח ווסטאפ</a>
 </div>
 {/* </button> */}
       </div>

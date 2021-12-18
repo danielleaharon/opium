@@ -5,7 +5,7 @@ import { SketchPicker } from 'react-color';
 import FontPicker from "font-picker-react";
 import Draggable from 'react-draggable';
 import ColorPicker from '../colorPicker/colorPicker';
-import ResizableRect from 'react-resizable-rotatable-draggable'
+import ResizableRect from 'react-resizable-rotatable-draggable-touch-v2'
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
 import 'react-alice-carousel/lib/alice-carousel.css';
@@ -84,6 +84,7 @@ this.setBackgroundColor=this.setBackgroundColor.bind(this);
       }
     
       handleDragText (deltaX, deltaY)  {
+        console.log('tohch')
         this.setState({
           leftText: this.state.leftText + deltaX,
           topText: this.state.topText + deltaY
@@ -256,7 +257,7 @@ this.setState({heightText:document.getElementById('textcenter-input'+this.props.
      
     return (
         
-        <div className='Design3' id={this.props.item.getId()}  hidden={this.props.item.getHidden()} style={{zIndex:this.props.item.getZIndex()  ,           position:'absolute',  
+        <div className='Design3' id={this.props.item.getId()} onTouchStart={()=>document.getElementsByClassName(this.props.item.getId())[0].onDrag()}  hidden={this.props.item.getHidden()} style={{zIndex:this.props.item.getZIndex()  ,           position:'absolute',  
         left:this.state.leftText,
         width:this.state.text.length+'ch',
 
@@ -294,9 +295,10 @@ this.setState({heightText:document.getElementById('textcenter-input'+this.props.
             border:'none',
             //  height:this.state.widthText/2,
              top:this.state.topText-10,
-        }} onClick={this.delete} className='txt-element-delete'><i style={{fontSize:'20px'}} class="fa fa-times"></i></button>
+        }} onClick={this.delete} className='txt-element-delete'><i style={{fontSize:'20px'}} className="fa fa-times"></i></button>
              <ResizableRect 
            left={this.state.leftText}
+           className={this.props.item.getId()}
           top={this.state.topText}
           width={this.state.width}
           height={this.state.heightText}

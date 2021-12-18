@@ -1,26 +1,18 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 import 'react-alice-carousel/lib/alice-carousel.css';
 
 import './NotFound.css';
-export default class NotFound extends Component {
-    constructor(props) {
-        super(props);
-        this.state={
-        }
-       
+export default function NotFound(props) {
+
+  return (
+
+    <div className='NotFound'  style={{ height: (window.innerHeight*0.5) + 'px' }}>
+      <p className='NotFound-p'>הדף שחיפשת לא נמצא!</p>
+      <a className='NotFound-a' href='/'>למעבר לעמוד הראשי</a>
+    </div>
  
 
-    }
-  
- 
-      render() {
-    return (
-        
-        <div className='NotFound' style={{height:(this.props.height-540)+'px'}}>
-       <p className='NotFound-p'>הדף שחיפשת לא נמצא!</p>
-      <a className='NotFound-a' href='/'>למעבר לעמוד הראשי</a>
-      </div>
-    );
-  }
+  );
+
 }

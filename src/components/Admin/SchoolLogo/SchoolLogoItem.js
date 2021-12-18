@@ -18,6 +18,8 @@ import SchoolImageSelect from './SchoolImageSelect';
 import SchoolColorSelect from './SchoolColorSelect';
 import Config from '../../../config/config';
 import './SchoolLogo.css';
+import {isAuth} from '../../../actions/auth';
+
 export default class SubcategoryItem extends Component {
     constructor(props) {
         super(props);
@@ -110,7 +112,9 @@ this.deleteColor=this.deleteColor.bind(this);
         school:this.state.school,
         url:this.state.url,
         city:this.state.city,
-        colors:this.state.colors  
+        colors:this.state.colors  ,
+        token:isAuth(),
+
     };
       axios.post(Config.getServerPath()+'school/update/'+this.props.item._id,postData)
       .then(res => {
@@ -137,7 +141,13 @@ this.deleteColor=this.deleteColor.bind(this);
  this.setState({update:true});
     }
     handelDeleteSub(){
-      axios.delete(Config.getServerPath()+'school/delete/'+this.props.item._id)
+      const postData = {
+       
+        token:isAuth(),
+
+     
+    };
+      axios.post(Config.getServerPath()+'school/delete/'+this.props.item._id)
       .then(res => {
   if(res.data.status===400){
     console.log('error')
@@ -190,13 +200,13 @@ closeSchoolLogoDialog()
           <p> צבעים :</p>
         {this.state.colors.map((item,index)=>{
             console.log(item)
-            return <button key={index} onClick={()=>this.deleteColor(index)} id='schoolLogot-color-dit-btn'  style={{backgroundColor:item}} > <span id='schoolLogot-color-dot'  class="iconify" data-icon="feather:x"></span> </button>
+            return <button key={index} onClick={()=>this.deleteColor(index)} id='schoolLogot-color-dit-btn'  style={{backgroundColor:item}} > <span id='schoolLogot-color-dot'  className="iconify" data-icon="feather:x"></span> </button>
           })}
           </div>
           
         {/* <div className='scoolLogo-img'> */}
         
-        {this.state.newColor?( <SchoolColorSelect colors={this.state.colors} addColor={this.addColor} onClose={()=>this.setState({newColor:false})} class='new'/>
+        {this.state.newColor?( <SchoolColorSelect colors={this.state.colors} addColor={this.addColor} onClose={()=>this.setState({newColor:false})} className='new'/>
 ):(
 <button className='school-add-btn' onClick={()=>this.setState({newColor:true})} > הוסף צבע</button>
 )}
@@ -206,7 +216,7 @@ closeSchoolLogoDialog()
 
 {/* <div className='scoolLogo-img' hidden={this.state.url.trim()!==''}> */}
 {this.state.url.trim()===''?(
-this.state.newImg?( <SchoolImageSelect addImg={this.addImg} class='new' onClose={()=>this.setState({newImg:false})}/>):
+this.state.newImg?( <SchoolImageSelect addImg={this.addImg} className='new' onClose={()=>this.setState({newImg:false})}/>):
 (
   <button className='school-add-btn' onClick={()=>this.setState({newImg:true})} > הוסף תמונה</button>
   )
@@ -215,13 +225,13 @@ this.state.newImg?( <SchoolImageSelect addImg={this.addImg} class='new' onClose=
         {/* </div> */}
 
         <div className='scoolLogo-img'  hidden={this.state.url.trim()===''}>
-        <button onClick={()=>{this.setState({url:''})}} className='school-delete-img' > <span class="iconify" data-icon="feather:x"></span></button>
+        <button onClick={()=>{this.setState({url:''})}} className='school-delete-img' > <span className="iconify" data-icon="feather:x"></span></button>
 
 <img src={this.state.url} ></img>
         </div>
         <button hidden={this.state.city.trim()==='' || this.state.school.trim()==='' ||this.state.schoolE||this.state.cityE} onClick={this.handleAddSchoolLogo} id='product-add-new-btn'> עדכן</button>
 </div>
-<button onClick={this.closeSchoolLogoDialog} className='scool-close' > <span class="iconify" data-icon="feather:x"></span></button>
+<button onClick={this.closeSchoolLogoDialog} className='scool-close' > <span className="iconify" data-icon="feather:x"></span></button>
 
 </div>
 
@@ -242,8 +252,8 @@ this.state.newImg?( <SchoolImageSelect addImg={this.addImg} class='new' onClose=
 
 // </FormControl>
 // <div className='subcategory-item-update-btns'>
-// <button onClick={this.handelUpdateX} id='subcategory-item-update-x'><span class="iconify" data-icon="akar-icons:circle-x-fill"></span></button>
-// <button hidden={this.state.newSubcategoryE||this.state.newSubcategory.trim()===this.props.item.school.trim()} onClick={this.handelUpdateV} className='update-v'><span class="iconify" id='ok' data-icon="el:ok-sign"></span></button>
+// <button onClick={this.handelUpdateX} id='subcategory-item-update-x'><span className="iconify" data-icon="akar-icons:circle-x-fill"></span></button>
+// <button hidden={this.state.newSubcategoryE||this.state.newSubcategory.trim()===this.props.item.school.trim()} onClick={this.handelUpdateV} className='update-v'><span className="iconify" id='ok' data-icon="el:ok-sign"></span></button>
 // </div>
 //   </div>
 //   )
@@ -254,7 +264,7 @@ this.state.newImg?( <SchoolImageSelect addImg={this.addImg} class='new' onClose=
 <p className='subcategory-item-name'  hidden={this.props.item.url!==''} > {this.props.item.school} | {this.props.item.city}</p>
 <img hidden={this.props.item.url===''} className='subcategory-item-name' src={this.props.item.url}></img>
 <button hidden={this.state.update} onClick={this.handelUpdateSub} id='subcategory-item-update'>עריכה</button>
-<button hidden={this.state.update} onClick={this.handelDeleteSub} id='subcategory-item-delete'><span class="iconify" data-icon="fluent:delete-dismiss-24-filled"></span></button>
+<button hidden={this.state.update} onClick={this.handelDeleteSub} id='subcategory-item-delete'><span className="iconify" data-icon="fluent:delete-dismiss-24-filled"></span></button>
 
 </div>
   )

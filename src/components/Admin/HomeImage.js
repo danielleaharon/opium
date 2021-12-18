@@ -2,12 +2,11 @@ import React, {Component} from 'react';
 import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
 import Input from '@material-ui/core/Input';
-import FormHelperText from '@material-ui/core/FormHelperText';
-import MenuItem from '@material-ui/core/MenuItem';
-import Select from '@material-ui/core/Select';
+
 import axios from 'axios';
 import HomeImageItem from './HomeImageItem';
 import ImageUploading from '../ImageUploading/SingleFileUploadComponent';
+import {isAuth} from '../../actions/auth';
 
 import Config from '../../config/config';
 import './HomeImage.css';
@@ -35,6 +34,8 @@ export default class HomeImage extends Component {
     handelImgeOrder(){
       const postData = {
         imglist:this.state.photoList,
+        token:isAuth(),
+
      
     };
       axios.post(Config.getServerPath()+'photo/update',postData)
@@ -56,7 +57,9 @@ export default class HomeImage extends Component {
       const postData = {
         src:this.state.newImg,
         position:this.state.photoList.length,
-        url:this.state.url
+        url:this.state.url,
+        token:isAuth(),
+
      
     };
       axios.post(Config.getServerPath()+'photo/create',postData)

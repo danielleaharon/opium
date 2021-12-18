@@ -54,18 +54,37 @@ left: 50px; */
 
     /* padding-left: 45px;
     padding-right: 45px; */
-    width: 62%;
+    width: 22%;
 
-
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer; 
+ 
+    /* display: block; */
+    text-align: center;
+    cursor: pointer; 
+    /* border-radius: 15px; */
+    padding: 5px 0px;
+    margin: 10px 0px;
+    transition: all 0.5s ease-in;
+  }
+  .submit:hover {
+    box-shadow: #4CAF50 600px 0 0 2px inset;
+ 
+    /* box-shadow: #4CAF50 -500px 0 0 2px inset; */
 
   }
+
+
+
   .map{
     margin-right: 30px;
     width: 30%;
     border-radius: 10px;
     margin-bottom: 20px;
     cursor: pointer;
-    
+    transition: all 0.5s ease-in;
+
   }
   .Contact-d{
     direction: rtl;
@@ -90,32 +109,49 @@ left: 50px; */
     background-size: cover;
     position: relative;
     font-family: 'Varela Round', sans-serif;
+    outline: none !important;
+    border:none !important ;
+    
 
   }
+  .MuiOutlinedInput-root fieldset{
+    border-color: #4CAF50 !important;
+    outline-color: #4CAF50;
+    width:100%;
+
+}
+
+.MuiInputLabel-shrink  {
+  color: black !important;
+  border-top: 2px #4CAF50 solid !important;
+  border-left: 2px #4CAF50 solid !important;
+  border-right: 2px #4CAF50 solid !important;
+padding-top: 5px !important;
+  margin-top: -13px !important;
+}
   #lable{
     /* margin-top: -2px; */
     z-index: 10px;
  position: absolute;
  font-family: 'Varela Round', sans-serif;
-
  right:24px;
- width: 30%;
-
+ width: 35%;
+text-align: center;
  background-color: rgb(255, 255, 255);
 }
+
   .map:hover{
     width: 41%;
+    /* transition: all 0.5s ease-in; */
+
   }
   .mesaage{
     color: #4CAF50;
     font-size: 20px;
     font-weight: bold;
-    margin-bottom: 10px;
+    margin-bottom: 10px ;
   }
-  .submit:hover {
-    background-color: #4CAF50;
-    color: white;
-  }
+
   .test-mailing{
       direction: rtl;
   }

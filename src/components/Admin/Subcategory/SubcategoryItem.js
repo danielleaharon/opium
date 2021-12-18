@@ -4,7 +4,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import Input from '@material-ui/core/Input';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import MenuItem from '@material-ui/core/MenuItem';
-import Select from '@material-ui/core/Select';
+import {isAuth} from '../../../actions/auth';
 import axios from 'axios';
 
 
@@ -43,7 +43,13 @@ this.handelUpdateV=this.handelUpdateV.bind(this);
  this.setState({update:true});
     }
     handelDeleteSub(){
-      axios.delete(Config.getServerPath()+'subcategory/delete/'+this.props.item._id)
+      const postData = {
+       
+        token:isAuth(),
+
+     
+    };
+      axios.post(Config.getServerPath()+'subcategory/delete/'+this.props.item._id,postData)
       .then(res => {
   if(res.data.status===400){
     console.log('error')
@@ -64,7 +70,9 @@ this.handelUpdateV=this.handelUpdateV.bind(this);
     }
     handelUpdateV(){
       const postData = {
-        name:this.state.newSubcategory,     
+        name:this.state.newSubcategory, 
+        token:isAuth(),
+    
     };
       axios.post(Config.getServerPath()+'subcategory/update/'+this.props.item._id,postData)
       .then(res => {
@@ -94,8 +102,8 @@ this.handelUpdateV=this.handelUpdateV.bind(this);
 
 </FormControl>
 <div className='subcategory-item-update-btns'>
-<button onClick={this.handelUpdateX} id='subcategory-item-update-x'><span class="iconify" data-icon="akar-icons:circle-x-fill"></span></button>
-<button hidden={this.state.newSubcategoryE||this.state.newSubcategory.trim()===this.props.item.name.trim()} onClick={this.handelUpdateV} className='update-v'><span class="iconify" id='ok' data-icon="el:ok-sign"></span></button>
+<button onClick={this.handelUpdateX} id='subcategory-item-update-x'><span className="iconify" data-icon="akar-icons:circle-x-fill"></span></button>
+<button hidden={this.state.newSubcategoryE||this.state.newSubcategory.trim()===this.props.item.name.trim()} onClick={this.handelUpdateV} className='update-v'><span className="iconify" id='ok' data-icon="el:ok-sign"></span></button>
 </div>
   </div>
   )
@@ -105,7 +113,7 @@ this.handelUpdateV=this.handelUpdateV.bind(this);
   
 <p className='subcategory-item-name'>{this.props.item.name}</p>
 <button hidden={this.state.update} onClick={this.handelUpdateSub} id='subcategory-item-update'>עריכה</button>
-<button hidden={this.state.update} onClick={this.handelDeleteSub} id='subcategory-item-delete'><span class="iconify" data-icon="fluent:delete-dismiss-24-filled"></span></button>
+<button hidden={this.state.update} onClick={this.handelDeleteSub} id='subcategory-item-delete'><span className="iconify" data-icon="fluent:delete-dismiss-24-filled"></span></button>
 
 </div>
   )

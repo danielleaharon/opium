@@ -355,6 +355,7 @@ id="orderAdmin-select"
 <MenuItem id='orderAdmin-MenuItem' value="אושר">אושר</MenuItem>
 <MenuItem id='orderAdmin-MenuItem' value="שולם">שולם</MenuItem>
 <MenuItem id='orderAdmin-MenuItem' value="בוצע">בוצע</MenuItem>
+<MenuItem id='orderAdmin-MenuItem' value="בוטל">בוטל</MenuItem>
 
 
 {/* if(this.props.item.status==='מחכה לאישור')

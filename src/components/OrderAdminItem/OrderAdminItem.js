@@ -115,7 +115,7 @@ this.setState({openPreview:false})
           </DialogContent>
           <DialogActions id='Dialog-buttons-mail'>
             <Button onClick={this.handleClosePreview} id='cart-preview-dailog-btn' color="primary">
-            <span class="iconify" data-icon="bx:bx-x"></span>
+            <span className="iconify" data-icon="bx:bx-x"></span>
             </Button>
          
           </DialogActions>
@@ -136,8 +136,8 @@ this.setState({openPreview:false})
          <div className='dialog-imgs-select'>
          <img className={this.state.itemSide==='front'?'product-dialog-details-imgs select':'product-dialog-details-imgs'} onClick={()=> {this.setState({imgFront:this.state.item.front}); this.setState({itemSide:'front'})}}  src={this.state.item.front} ></img>
          <img hidden={!this.state.hasBack} onClick={()=> {this.setState({imgFront:this.state.item.back}); this.setState({itemSide:'back'})}} className={this.state.itemSide==='back'?'product-dialog-details-imgs select':'product-dialog-details-imgs'} src={this.state.item.back} ></img>
-         <button className='OrderAdminDesign-download'   onClick={this.downloadFront}  > הורד עיצוב קדימה  <span class="iconify" data-icon="bi:cloud-arrow-down"></span></button>
-<button className='OrderAdminDesign-download'   onClick={this.downloadBack}  > הורד עיצוב אחורה  <span class="iconify" data-icon="bi:cloud-arrow-down"></span></button>
+         <button className='OrderAdminDesign-download'   onClick={this.downloadFront}  > הורד עיצוב קדימה  <span className="iconify" data-icon="bi:cloud-arrow-down"></span></button>
+<button className='OrderAdminDesign-download'   onClick={this.downloadBack}  > הורד עיצוב אחורה  <span className="iconify" data-icon="bi:cloud-arrow-down"></span></button>
 
          </div>
        <img className='product-dialog-details-img' src={this.state.imgFront} ></img>
@@ -185,7 +185,7 @@ this.setState({openPreview:false})
 
      
          {/* <p className='product-dialog-color'>צבע </p>
-           <span  class="dot-product-dialog" id='dot-product-select' style={{ backgroundColor: this.state.item.color }}></span> */}
+           <span  className="dot-product-dialog" id='dot-product-select' style={{ backgroundColor: this.state.item.color }}></span> */}
 
        
     
@@ -204,7 +204,7 @@ this.setState({openPreview:false})
        /> */}
 
      <DialogActions>
-       <button id='product-dialog-cancel' onClick={this.handleClosePreview}><span class="iconify" data-icon="iconoir:cancel"></span></button>
+       <button id='product-dialog-cancel' onClick={this.handleClosePreview}><span className="iconify" data-icon="iconoir:cancel"></span></button>
      </DialogActions>
      </div>
   
@@ -289,7 +289,7 @@ this.setState({openPreview:false})
                 // helperText={this.state.dMailEmsg}
   
               />
-              <button onClick={this.changePrice} hidden={this.state.price===''} className='orderAdmin-addprice-send'><span class="iconify" data-icon="fluent:send-28-filled"></span></button>
+              <button onClick={this.changePrice} hidden={this.state.price===''} className='orderAdmin-addprice-send'><span className="iconify" data-icon="fluent:send-28-filled"></span></button>
      </div>
      </div>
       </div>

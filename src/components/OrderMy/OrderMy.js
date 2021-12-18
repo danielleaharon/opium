@@ -48,7 +48,7 @@ export default class OrderMy extends Component {
       return <Slide direction="up" ref={ref} {...props} />;
     });
     date=new Date(this.props.item.sendAt);
-    statusClass=''
+    statusclassName=''
     dateString=this.date.getDate()+'/'+(this.date.getMonth()+1)+'/'+this.date.getFullYear();
     componentDidMount(){
       if(this.props.item.status==='מחכה לאישור')
@@ -61,7 +61,8 @@ export default class OrderMy extends Component {
 
       if(this.props.item.status==='בוצע')
       this.setState({statusClass:'done'})
-
+      if(this.props.item.status==='בוטל')
+      this.setState({statusClass:'Canceled'})
     }
     clearValid() {
       this.setState({ dNameE: false })
@@ -242,7 +243,7 @@ export default class OrderMy extends Component {
       <div className='Ordermy'>
         {this.changeOrderDialog()}
         <div className={this.state.openOrder?'ordermy ordermy-select':'ordermy'} onClick={()=>this.setState({openOrder:!this.state.openOrder})}>
-          <span class="iconify" id='ordermy-arrow' data-icon="bi:arrow-down-square-fill"></span>
+          <span className="iconify" id='ordermy-arrow' data-icon="bi:arrow-down-square-fill"></span>
           <p> {this.dateString} </p>
           <p>{this.props.item.name}</p>
           <p>{this.props.item.phone}</p>
@@ -264,8 +265,8 @@ export default class OrderMy extends Component {
 })}
 </div>
 <div  hidden={!this.state.openOrder} className='myorder-send-btns-right' >
- <a className='myorder-send-btn myorder-mail' hidden={!this.state.openOrder} href={"https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=dda180@gmail.com"} target="_blank"> <span class="iconify" id='gmail-black' data-icon="simple-icons:gmail"></span> <span class="iconify" id='gmail-color'data-icon="logos:google-gmail"></span> שלח מייל</a>
- <a className='myorder-send-btn myorder-whatsapp' hidden={!this.state.openOrder} href={"https://api.whatsapp.com/send?phone='+972549900099"} target="_blank"><span class="iconify" data-icon="dashicons:whatsapp"></span> שלח ווסטאפ</a>
+ <a className='myorder-send-btn myorder-mail' hidden={!this.state.openOrder} href={"https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=dda180@gmail.com"} target="_blank"> <span className="iconify" id='gmail-black' data-icon="simple-icons:gmail"></span> <span className="iconify" id='gmail-color'data-icon="logos:google-gmail"></span> שלח מייל</a>
+ <a className='myorder-send-btn myorder-whatsapp' hidden={!this.state.openOrder} href={"https://api.whatsapp.com/send?phone='+972549900099"} target="_blank"><span className="iconify" data-icon="dashicons:whatsapp"></span> שלח ווסטאפ</a>
 </div>
 <button className='myorder-change-btn'hidden={!this.state.openOrder} onClick={()=>this.setState({openChange:true})} >עדכן את פרטי המזמין</button>
       </div>
@@ -276,10 +277,10 @@ else{
     <div className='Ordermy-mobile'>
       {this.changeOrderDialog()}
       <div className={this.state.openOrder?'ordermy-mobile ordermy-select':'ordermy-mobile'}>
-      <span class="iconify" id='ordermy-arrow-mobile' data-icon="bi:arrow-down-square-fill"></span>
+      <span className="iconify" id='ordermy-arrow-mobile' data-icon="bi:arrow-down-square-fill"></span>
 
       <div className='ordermy-details-mobile' onClick={()=>this.setState({openOrder:!this.state.openOrder})}>
-        {/* <span class="iconify" id='ordermy-arrow' data-icon="bi:arrow-down-square-fill"></span> */}
+        {/* <span className="iconify" id='ordermy-arrow' data-icon="bi:arrow-down-square-fill"></span> */}
         <p className='ordermy-date-mobile'> {this.dateString} </p>
         <p>שם המזמין: {this.props.item.name}</p>
         <p>טלפון: {this.props.item.phone}</p>
@@ -296,8 +297,8 @@ return <OrderItem width={this.props.width} item={item} key={item._id}/>
 })}
 </div>
 {/* <div  hidden={!this.state.openOrder} className='myorder-send-btns-right' >
-<a className='myorder-send-btn myorder-mail' hidden={!this.state.openOrder} href={"https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=dda180@gmail.com"} target="_blank"> <span class="iconify" id='gmail-black' data-icon="simple-icons:gmail"></span> <span class="iconify" id='gmail-color'data-icon="logos:google-gmail"></span> שלח מייל</a>
-<a className='myorder-send-btn myorder-whatsapp' hidden={!this.state.openOrder} href={"https://api.whatsapp.com/send?phone='+972549900099"} target="_blank"><span class="iconify" data-icon="dashicons:whatsapp"></span> שלח ווסטאפ</a>
+<a className='myorder-send-btn myorder-mail' hidden={!this.state.openOrder} href={"https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=dda180@gmail.com"} target="_blank"> <span className="iconify" id='gmail-black' data-icon="simple-icons:gmail"></span> <span className="iconify" id='gmail-color'data-icon="logos:google-gmail"></span> שלח מייל</a>
+<a className='myorder-send-btn myorder-whatsapp' hidden={!this.state.openOrder} href={"https://api.whatsapp.com/send?phone='+972549900099"} target="_blank"><span className="iconify" data-icon="dashicons:whatsapp"></span> שלח ווסטאפ</a>
 </div> */}
 <button className='myorder-change-btn-mobile'hidden={!this.state.openOrder} onClick={()=>this.setState({openChange:true})} >עדכן את פרטי המזמין</button>
     </div>

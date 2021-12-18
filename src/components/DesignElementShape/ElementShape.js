@@ -141,11 +141,11 @@ this.getLeft=this.getLeft.bind(this);
       getView(){
    
         return <div className='elementshape-view'>
-          <span id='elementshape-view-icon' class="iconify" data-icon="bx:bx-shape-square"></span>
+          <span id='elementshape-view-icon' className="iconify" data-icon="bx:bx-shape-square"></span>
 
         <Icon color={this.getColorFill()} width={28} icon={this.data.fill}  style={{position:'absolute',top:'6px'}} />
                <Icon color={this.getColorBorder()} width={28}  icon={this.data.nofill}  style={{position:'absolute',top:'6px'}} />
-               <button onClick={this.setHidden} id={this.hidden?'elementtext-view-eye-true':'elementtext-view-eye-false'}> <span class="iconify" data-icon="ant-design:eye-filled"></span></button>
+               <button onClick={this.setHidden} id={this.hidden?'elementtext-view-eye-true':'elementtext-view-eye-false'}> <span className="iconify" data-icon="ant-design:eye-filled"></span></button>
 
         </div>
         }

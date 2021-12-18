@@ -80,17 +80,24 @@ margin-top: 5px;
     /* margin-left: 5px; */
 }
 #paid{
-    background-color: #38ae6357;
+    background-color: #3875ae57;
     padding: 20px 0px;
     margin-top: 5px;
     /* margin-left: 5px; */
 }
 #done{
+    background-color: #38ae6357;
+    padding: 20px 0px;
+    margin-top: 5px;
+    /* margin-left: 5px; */
+}
+#Canceled{
     background-color: #bd3f3f57;
     padding: 20px 0px;
     margin-top: 5px;
     /* margin-left: 5px; */
 }
+
 #ordermy-arrow{
     position: absolute;
     right: 20px;

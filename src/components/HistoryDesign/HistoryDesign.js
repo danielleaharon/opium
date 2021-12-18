@@ -1,15 +1,5 @@
 import React, { Component } from 'react';
 
-import Button from '@material-ui/core/Button';
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import { TextField } from "@material-ui/core";
-import Slide from '@material-ui/core/Slide';
-import Logo from '../../Image/opiumLogo3.png';
-import Products from '../Products/Products';
 import './HistoryDesign.css';
 
 export default class HistoryDesign extends Component {
@@ -69,17 +59,17 @@ export default class HistoryDesign extends Component {
                 <br />
                 <p className='historyDesign-date'> {this.props.item.date} </p>
                 <div className='historyDesign-btns'>
-                <button onClick={this.handelDeleteDesign} className='historyDesign-btn'><span class="iconify" data-icon="fluent:delete-20-filled"></span>
+                <button onClick={this.handelDeleteDesign} className='historyDesign-btn'><span className="iconify" data-icon="fluent:delete-20-filled"></span>
                 <span className='historyDesign-btn-toolip'>מחק</span>
                 </button>
-                <button onClick={this.handelLoadDesign} className='historyDesign-btn'><span class="iconify" data-icon="fluent:select-object-skew-edit-20-filled"></span>
+                <button onClick={this.handelLoadDesign} className='historyDesign-btn'><span className="iconify" data-icon="fluent:select-object-skew-edit-20-filled"></span>
                 <span className='historyDesign-btn-toolip'>טען</span>
 </button>
 
                 </div>
                 <div className='historyDesign-btns-left' hidden={!this.state.changeBtn}>
                
-<button onClick={this.handelChangeNameClick} className='historyDesign-btn '><span class="iconify" data-icon="fluent:save-edit-24-filled"></span>
+<button onClick={this.handelChangeNameClick} className='historyDesign-btn '><span className="iconify" data-icon="fluent:save-edit-24-filled"></span>
                 <span className='historyDesign-btn-toolip historyDesign-save'>שמור שינוי שם</span>
 </button>
                 </div>

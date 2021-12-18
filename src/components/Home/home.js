@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import Logo from '../../Image/opiumLogo3.png'
 import LogoPic from '../../Image/logoPic.png'
 import LogoPicWithe from '../../Image/logowhite.png'
 import Contact from '../Contact/Contact';
@@ -9,7 +8,6 @@ import About from '../About/About';
 import axios from 'axios';
 import Config from '../../config/config';
 
-import Cups from '../../Image/Slider/cups2.png'
 import AliceCarousel from 'react-alice-carousel';
 import 'react-alice-carousel/lib/alice-carousel.css';
 

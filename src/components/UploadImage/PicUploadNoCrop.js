@@ -187,7 +187,7 @@ class PicUploadNoCrop extends Component {
 >
     
 <div className="drop-message">
-    <div className="upload-icon"><span class="iconify" data-icon="bi:cloud-upload-fill" data-inline="false"></span></div>
+    <div className="upload-icon"><span className="iconify" data-icon="bi:cloud-upload-fill" data-inline="false"></span></div>
     Drag & Drop files here or click to upload
     <p> {this.state.error}</p>
 
@@ -202,8 +202,8 @@ class PicUploadNoCrop extends Component {
                 onChange={this.handleFile}  />
      <div className='upload_btn' hidden={!src}>
 
-<button className='upload_btn_right'  ><span class="iconify" data-icon="el:ok" data-inline="false"></span></button>
-<button className='upload_btn_left' onClick={()=>this.setState({src:null})}><span class="iconify" data-icon="topcoat:cancel" data-inline="false"></span></button>
+<button className='upload_btn_right'  ><span className="iconify" data-icon="el:ok" data-inline="false"></span></button>
+<button className='upload_btn_left' onClick={()=>this.setState({src:null})}><span className="iconify" data-icon="topcoat:cancel" data-inline="false"></span></button>
 
 </div>
                 {src && 

@@ -4,7 +4,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import Input from '@material-ui/core/Input';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import MenuItem from '@material-ui/core/MenuItem';
-import Select from '@material-ui/core/Select';
+import {isAuth} from '../../../actions/auth';
 import axios from 'axios';
 import SubcategoryItem from './SubcategoryItem';
 
@@ -39,7 +39,9 @@ export default class Subcategory extends Component {
 
      
       const postData = {
-        name:this.state.newSubcategory,     
+        name:this.state.newSubcategory,   
+        token:isAuth(),
+  
     };
       axios.post(Config.getServerPath()+'subcategory/create',postData)
       .then(res => {

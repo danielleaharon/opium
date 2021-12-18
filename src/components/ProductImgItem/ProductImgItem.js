@@ -32,7 +32,7 @@ this.handelDeleteImg=this.handelDeleteImg.bind(this);
     return (
         
       <div className='img-product' id={this.props.classId}>
-        <button onClick={this.handelDeleteImg} id='img-product-item-delete'><span class="iconify" data-icon="fluent:delete-dismiss-24-filled"></span></button>
+        <button onClick={this.handelDeleteImg} id='img-product-item-delete'><span className="iconify" data-icon="fluent:delete-dismiss-24-filled"></span></button>
         <p id={this.props.classId+'-dot-color'} style={{backgroundColor:this.props.item.color}}></p>
       <img id='img-product-item' src={this.props.item.front} ></img>
       <img id='img-product-item' src={this.props.item.back} ></img>

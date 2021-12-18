@@ -10,9 +10,9 @@ class Navbar1 extends React.Component {
 
     render() {
         return (
-            <div id={'menu-wrapper-id'} className={'menu-wrapper-nav ' + this.getClassNameWithSuffix('menu-wrapper')}
+            <div id={'menu-wrapper-nav'} className={'menu-wrapper-nav ' + this.getClassNameWithSuffix('menu-wrapper-nav')}
                  onClick={(e) => this.onBackGroundClick(e.target.id)}>
-                <div className={'menu-white ' + generalUtils.getLangClass(this.getClassNameWithSuffix('menu-white'), 1)}>
+                <div className={'menu-white-nav ' + generalUtils.getLangClass(this.getClassNameWithSuffix('menu-white-nav'), 1)}>
                 <a href='/' className={'menu-logo'}><img src={Logo} /></a>
                     { this.getMenuItems() }
                 </div>
