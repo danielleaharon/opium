@@ -1,11 +1,12 @@
 import coockie from 'js-cookie'
 import axios from 'axios';
+import Config from '../config/config';
 
 
 
 
 export const signin= (password, next,nextError) =>{
-    axios('http://127.0.0.1:8081/admin/signin',{
+    axios(Config.getServerPath()+'/admin/signin',{
         method: 'POST',
         headers:{
             Accept:'application/json',

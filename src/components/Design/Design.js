@@ -1037,7 +1037,6 @@ this.setState({zIndex:zIndex})
 
     return (
       <div>
-          {/* {console.log(this.firebase)} */}
 
         <Dialog
           id='Dialog-send'

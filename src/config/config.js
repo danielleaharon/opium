@@ -4,7 +4,8 @@ const serverPaths = 'http://danielle.local:8081/';
 
 
 function getServerPath() {
-    return serverPaths;
+    return 'https://opium-print.herokuapp.com/';
+    // return serverPaths;
 }
 
 

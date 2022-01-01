@@ -17,13 +17,17 @@ import ToggleButton from '@material-ui/lab/ToggleButton';
 import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
 import ColorPicker from '../colorPicker/colorPicker';
 import FormatColorTextIcon from '@mui/icons-material/FormatColorText';
+import { height, width } from '@mui/system';
 const useStyles = makeStyles((theme) => ({
   paper: {
-    display: 'flex',
+    // display: 'flex',
     // border: `1px solid ${theme.palette.divider}`,
-    backgroundColor:'transparent',
-    flexWrap: 'wrap',
-    marginRight:'9rem',
+    // backgroundColor: 'transparent',
+    // flexWrap: 'wrap',
+    // marginRight: '9rem',
+    // overflow:'scroll',
+    // height:'auto',
+    zIndex: '50',
   },
   divider: {
     margin: theme.spacing(1, 0.5),
@@ -53,7 +57,7 @@ const StyledToggleButtonGroup = withStyles((theme) => ({
 }))(ToggleButtonGroup);
 
 export default function CustomizedDividers(props) {
-  
+
   const [alignment, setAlignment] = React.useState('');
   const [formats, setFormats] = React.useState(props.formats);
   const [activeFontFamily, setActiveFontFamily] = React.useState(props.getFont());
@@ -63,40 +67,39 @@ export default function CustomizedDividers(props) {
     props.setFormats(newFormats)
   };
 
- 
- 
+
+
 
   const handleAlignment = (event, newAlignment) => {
     setAlignment(newAlignment);
   };
-  const changeFont=(nextFont)=>{
-    setActiveFontFamily( nextFont.family)
-  
-  props.changeFont(nextFont)
+  const changeFont = (nextFont) => {
+    console.log('changr font')
+    setActiveFontFamily(nextFont.family)
+
+    props.changeFont(nextFont)
   }
-  const getFont=()=>{
-    
-    return activeFontFamily;
-  }
+
   const classes = useStyles();
- 
 
 
 
 
- return (
- 
 
-    <div className='TextToolbar2' >
-     
-      <Paper elevation={0} className={classes.paper}>
-       
+  return (
+
+
+    <div className='Toolbar' >
+      <Paper elevation={0} id='paper1' className={classes.paper}>
+
         <Divider flexItem orientation="vertical" className={classes.divider} />
         <StyledToggleButtonGroup
           size="small"
           value={formats}
           onChange={handleFormat}
+          orientation="horizontal"
           aria-label="text formatting"
+          id='StyledToggleButtonGroup'
         >
           <ToggleButton onClick={props.bold} value="bold" aria-label="bold">
             <FormatBoldIcon />
@@ -107,54 +110,46 @@ export default function CustomizedDividers(props) {
           <ToggleButton value="underlined" onClick={props.underline} aria-label="underlined">
             <FormatUnderlinedIcon />
           </ToggleButton>
-          {/* <ColorPicker setPaint={props.setPaint} color={props.textColor}/> */}
-          </StyledToggleButtonGroup>
-          <StyledToggleButtonGroup
-          size="small"
-          value={formats}
-          // onChange={handleFormat}
-          aria-label="text formatting"
-        >
-  
-          <ToggleButton  value="color" aria-label="color" >
-          <ColorPicker setPaint={props.setBackgroundColor} textcolor={'black'} color={props.backgroundColor} icon={<FormatColorFillIcon/>}/>
-            <ArrowDropDownIcon />
-          </ToggleButton>
-        
-          <ToggleButton  value="color-text" aria-label="color-text" >
-          <ColorPicker setPaint={props.setPaint} textcolor={'whitesmoke'} color={props.textColor} icon={<FormatColorTextIcon/>}/>
-            <ArrowDropDownIcon />
-          </ToggleButton>
-          <ToggleButton  value="color-text" aria-label="color-text" >
-          <ColorPicker setPaint={props.setBorderColor} textcolor={'black'} color={props.BorderColor} icon={<BorderColorIcon/>}/>
+
+
+          <ToggleButton  value="color" aria-label="color-text" >
+            <ColorPicker setPaint={props.setBackgroundColor} textcolor={'black'} color={props.backgroundColor} icon={<FormatColorFillIcon />} />
             <ArrowDropDownIcon />
           </ToggleButton>
 
-          <ToggleButton  value="font-text" aria-label="font-text" >
-         
-          {/* <div id="font-picker"></div> */}
-          {/* <FontPicker 
+          <ToggleButton value="color-text" aria-label="color-text" >
+            <ColorPicker setPaint={props.setPaint} textcolor={'whitesmoke'} color={props.textColor} icon={<FormatColorTextIcon />} />
+            <ArrowDropDownIcon />
+          </ToggleButton>
+          <ToggleButton value="color-text" aria-label="color-text" >
+            <ColorPicker setPaint={props.setBorderColor} textcolor={'black'} color={props.BorderColor} icon={<BorderColorIcon />} />
+            <ArrowDropDownIcon />
+          </ToggleButton>
 
-apiKey="AIzaSyCVj4V2gUXgoVEDxpepWR1bFP85HvywOSU"
+          <div id="font-picker">
 
-activeFontFamily={getFont()}
-onChange={(nextFont) =>
-    changeFont(nextFont)
-}
-/>   */}
-          <FontPicker 
-          
-          families={['Bona Nova','Varela Round','Advent Pro','Amatic SC','Arimo','Carter One','Cinzel','Cutive','Emilys Candy','Ephesis','Heebo','Indie Flower','Monoton','Mukta','Oleo Script','Oswald','Pacifico','Quattrocento','Sigmar One','Suez One']}
-apiKey="AIzaSyCVj4V2gUXgoVEDxpepWR1bFP85HvywOSU"
+            <FontPicker
 
-activeFontFamily={getFont()}
-onChange={(nextFont) =>
-    changeFont(nextFont)
-}
-/>  
-        </ToggleButton>
-          </StyledToggleButtonGroup>
+              families={['Bona Nova', 'Varela Round', 'Advent Pro', 'Amatic SC', 'Arimo', 'Carter One', 'Cinzel', 'Cutive', 'Emilys Candy', 'Ephesis', 'Heebo', 'Indie Flower', 'Monoton', 'Mukta', 'Oleo Script', 'Oswald', 'Pacifico', 'Quattrocento', 'Sigmar One', 'Suez One']}
+              apiKey="AIzaSyCVj4V2gUXgoVEDxpepWR1bFP85HvywOSU"
+
+              activeFontFamily={activeFontFamily}
+
+              onChange={(nextFont) => {
+                console.log('changr dont 1');
+                changeFont(nextFont)
+              }
+              }
+            />
+
+            <ArrowDropDownIcon />
+
+          </div>
+
+        </StyledToggleButtonGroup>
+
       </Paper>
+
     </div>
   );
 }

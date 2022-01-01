@@ -12,7 +12,7 @@ import './ProductsMobile.css';
 export default function ProductsMobileHooks(props) {
 
   const [state, setState] = React.useState({
-  
+
     menuStatus: 0,
     openMenu: false,
     // selectCategory: null,
@@ -29,10 +29,10 @@ export default function ProductsMobileHooks(props) {
 
   })
 
- 
+
   const handleClick = (categorySelect) => {
 
-  
+
     props.HistoryReplace(categorySelect, null)
 
   }
@@ -71,6 +71,8 @@ export default function ProductsMobileHooks(props) {
       ,
 
       <div className='row2  border-red-pink-mobile ' id={props.state.category === 'גאדגטים ואלקטרוניקה' ? 'clicked-redpink' : ''}>
+        <div id="mask-border-red-pink"></div>
+
         <div className='text-mobile-all'>
           <span onClick={() => { handleClick('גאדגטים ואלקטרוניקה'); setMenuSelect(1) }} > גאדגטים ואלקטרוניקה <span className="iconify" id='icon-category' data-icon="fa-solid:headphones"></span></span>
 
@@ -139,10 +141,12 @@ export default function ProductsMobileHooks(props) {
 
 
       <div className='row5 border-bluepurple-mobile'>
+        <div id="mask-border-bluepurple"></div>
+
         <div id={props.state.category === 'כובעים ומוצרי טקסטיל' ? 'clicked-bluepurple' : ''} className='text-mobile-all '>
           <span onClick={() => { handleClick('כובעים ומוצרי טקסטיל'); setMenuSelect(4) }}  >  כובעים ומוצרי טקסטיל <span className="iconify" id='icon-category' data-icon="fa-solid:hat-cowboy"></span></span>
 
-          <button hidden={props.state.listHat.length === 0} className='open-more-btn' onClick={() =>{ console.log('clicke'); setState({ ...state, bluepurple: !state.bluepurple })}} > <span className="iconify" data-icon="fluent:add-square-multiple-16-filled"></span></button>
+          <button hidden={props.state.listHat.length === 0} className='open-more-btn' onClick={() => { console.log('clicke'); setState({ ...state, bluepurple: !state.bluepurple }) }} > <span className="iconify" data-icon="fluent:add-square-multiple-16-filled"></span></button>
         </div>
 
         <div hidden={!state.bluepurple} className='category-mobile-dropdown dropdown-bluepurple'>
@@ -209,6 +213,8 @@ export default function ProductsMobileHooks(props) {
 
 
       <div className='row8 border-greenorange-mobile'>
+        <div id="mask-border-greenorange"></div>
+
         <div className='text-mobile-all ' id={props.state.category === 'הדפסת תמונות מעוצבות' ? 'clicked-greenorange' : ''}>
           <span onClick={() => { handleClick('הדפסת תמונות מעוצבות'); setMenuSelect(7) }}>  הדפסת תמונות מעוצבות <span className="iconify" id='icon-category' data-icon="bi:file-earmark-image-fill"></span></span>
 
@@ -247,7 +253,7 @@ export default function ProductsMobileHooks(props) {
 
   }
   const setMenuSelect = (item) => {
-  
+
     closeMenu()
 
 
@@ -295,8 +301,8 @@ export default function ProductsMobileHooks(props) {
         <div className='mobile-cubeC-print'>
           <span ><span className="iconify" id='productsItem-arrow' data-icon="bx:bx-down-arrow"></span>
           </span>
-          <div className='print-category2-p'>{props.state.category!=='all'?props.state.category+' ':'כל המוצרים'}
-          {props.state.subCategory!==null&&<span><span className="iconify" data-icon="bx:bxs-left-arrow-alt"></span> {props.state.subCategory}</span>}
+          <div className='print-category2-p'>{props.state.category !== 'all' ? props.state.category + ' ' : 'כל המוצרים'}
+            {props.state.subCategory !== null && <span><span className="iconify" data-icon="bx:bxs-left-arrow-alt"></span> {props.state.subCategory}</span>}
           </div>
           {/* { state.subCategory!==null? state.subCategory:''} */}
         </div>

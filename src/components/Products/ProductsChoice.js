@@ -137,7 +137,9 @@ export default function ProductsChoice (props) {
       update();
     },[window.location.pathname])
     const UpdateHerf= async (state)=>{
-  
+  // console.log(window.location.pathname)
+  var windowsPath=window.location.pathname.split('/');
+  if(windowsPath.length===4){
       const categoryHerf=window.location.pathname.split('/')[2].toLowerCase();
       const subCategoryHerf=window.location.pathname.split('/')[3].toLowerCase();
  
@@ -263,6 +265,7 @@ export default function ProductsChoice (props) {
         }
       }
     }
+    }
   
   
      const HistoryReplace=(categorySelect,subCategorySelect)=>{
@@ -270,25 +273,34 @@ export default function ProductsChoice (props) {
       if(categorySelect==='הלבשה'){
         if(subCategorySelect!==null){
          const index= state.listClothing.indexOf(subCategorySelect)
-        History.replace('/Products/shirt/'+index)
+       if(props.Ondesign) History.replace('/Design/shirt/'+index)
+       else History.replace('/Products/shirt/'+index)
         }
         else{
-          History.replace('/Products/shirt/all')
+          if(props.Ondesign) History.replace('/Design/shirt/all')
+
+         else History.replace('/Products/shirt/all')
   
         }
   
       }
       if(categorySelect==='all'){
-        History.replace('/Products/All/all')
+        if(props.Ondesign) History.replace('/Design/All/all')
+
+       else History.replace('/Products/All/all')
   
       }  
       if(categorySelect==='גאדגטים ואלקטרוניקה'){
         if(subCategorySelect!==null){
           const index= state.listElectronics.indexOf(subCategorySelect)
-         History.replace('/Products/electronic/'+index)
+          if(props.Ondesign) History.replace('/Design/electronic/'+index)
+
+        else History.replace('/Products/electronic/'+index)
          }
          else{
-          History.replace('/Products/electronic/all')
+          if(props.Ondesign) History.replace('/Design/electronic/all')
+
+         else History.replace('/Products/electronic/all')
    
          }
   
@@ -296,10 +308,14 @@ export default function ProductsChoice (props) {
       if(categorySelect==='מתנות בעיצוב'){
         if(subCategorySelect!==null){
           const index= state.listGift.indexOf(subCategorySelect)
-         History.replace('/Products/gift/'+index)
+          if(props.Ondesign) History.replace('/Design/gift/'+index)
+
+        else History.replace('/Products/gift/'+index)
          }
          else{
-          History.replace('/Products/gift/all')
+          if(props.Ondesign) History.replace('/Design/gift/all')
+
+         else History.replace('/Products/gift/all')
    
          }
   
@@ -307,20 +323,27 @@ export default function ProductsChoice (props) {
       if(categorySelect==='כוסות ספלים ובקבוקים'){
         if(subCategorySelect!==null){
           const index= state.listCup.indexOf(subCategorySelect)
-         History.replace('/Products/cups/'+index)
+          if(props.Ondesign) History.replace('/Design/cups/'+index)
+
+        else History.replace('/Products/cups/'+index)
          }
          else{
-          History.replace('/Products/cups/all')
+          if(props.Ondesign) History.replace('/Design/cups/all')
+
+          else History.replace('/Products/cups/all')
    
          }
       }
       if(categorySelect==='כובעים ומוצרי טקסטיל'){
         if(subCategorySelect!==null){
           const index= state.listHat.indexOf(subCategorySelect)
-         History.replace('/Products/caps/'+index)
+          if(props.Ondesign) History.replace('/Design/caps/'+index)
+
+        else History.replace('/Products/caps/'+index)
          }
          else{
-          History.replace('/Products/caps/all')
+          if(props.Ondesign) History.replace('/Design/caps/all')
+          else History.replace('/Products/caps/all')
    
          }
   
@@ -328,10 +351,14 @@ export default function ProductsChoice (props) {
       if(categorySelect==='תיקים ומוצרים למשרד'){
         if(subCategorySelect!==null){
           const index= state.listBags.indexOf(subCategorySelect)
-         History.replace('/Products/bags/'+index)
+          if(props.Ondesign) History.replace('/Design/bags/'+index)
+
+        else History.replace('/Products/bags/'+index)
          }
          else{
-          History.replace('/Products/bags/all')
+          if(props.Ondesign) History.replace('/Design/bags/all')
+
+         else History.replace('/Products/bags/all')
    
          }
   
@@ -339,10 +366,14 @@ export default function ProductsChoice (props) {
       if(categorySelect==='מוצרי מטבח ואירוח לבית'){
         if(subCategorySelect!==null){
           const index= state.listKitchen.indexOf(subCategorySelect)
-         History.replace('/Products/kitchen/'+index)
+          if(props.Ondesign) History.replace('/Design/kitchen/'+index)
+
+        else History.replace('/Products/kitchen/'+index)
          }
          else{
-          History.replace('/Products/kitchen/all')
+          if(props.Ondesign) History.replace('/Design/kitchen/all')
+
+         else History.replace('/Products/kitchen/all')
    
          }
   
@@ -350,10 +381,14 @@ export default function ProductsChoice (props) {
       if(categorySelect==='הדפסת תמונות מעוצבות'){
         if(subCategorySelect!==null){
           const index= state.listImageProduct.indexOf(subCategorySelect)
-         History.replace('/Products/image/'+index)
+          if(props.Ondesign) History.replace('/Design/image/'+index)
+
+        else History.replace('/Products/image/'+index)
          }
          else{
-          History.replace('/Products/image/all')
+          if(props.Ondesign) History.replace('/Design/image/all')
+
+         else History.replace('/Products/image/all')
    
          }
   

@@ -239,7 +239,7 @@ function App(props) {
                 deleteFromCart={deleteFromCart}
               />} />
 
-          {width <= 800 ? <Route path={'/Design'} exact
+          {width <= 800 ? <Route path={'/Design/*'} exact
             render={(props) =>
               // <NotFoundDesign height={height} />
               <DesignMobile {...props}
@@ -257,7 +257,7 @@ function App(props) {
 
             />
             } />
-            : <Route path={'/Design'} exact
+            : <Route path={'/Design/*'} exact
               render={(props) =>
 
                 <Design {...props}

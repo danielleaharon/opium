@@ -36,21 +36,23 @@ class Navbar1 extends React.Component {
     }
 
     getMenuItems() {
-        return this.props.options.map(item => this.getMenuItem(item));
+        return this.props.options.map((item,key) => this.getMenuItem(item,key));
     }
 
-    getMenuItem(item) {
-        if (item.link != null) {
+    getMenuItem(item,key) {
+        if (item.link !== null) {
             if (item.internal) {
+
                 return (
                    
-                     <a href={item.link} key={'menu-item-' + item.name} >
+                     <a  href={item.link} key={'menu-item-' + item.name} >
                      { this.getItemDiv(item) }
                  </a>
                 );
             } else {
+
                 return (
-                    <a href={item.link} key={'menu-item-' + item.name} target={'_blank'}>
+                    <a  href={item.link} key={'menu-item-' + item.name} target={'_blank'}>
                         { this.getItemDiv(item) }
                     </a>
                 );

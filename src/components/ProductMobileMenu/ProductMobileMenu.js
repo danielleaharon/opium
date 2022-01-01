@@ -54,12 +54,12 @@ constructor(props){
     }
 
     getMenuItems() {
-        return this.props.options.map(item => this.getMenuItem(item));
+        return this.props.options.map((item,index) => this.getMenuItem(item,index));
     }
 
-    getMenuItem(item) {
+    getMenuItem(item,index) {
 
-       return <div className='mobile-cubeC'  >
+       return <div key={index} className='mobile-cubeC'  >
        {item}
        </div>
     }

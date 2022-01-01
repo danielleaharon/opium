@@ -90,7 +90,7 @@ this.setState({openPreview:false})
    }
       render() {
         if(this.state.goDesign)
-        return <Redirect to={'/Design'}/>;
+        return <Redirect to={'/Design/'}/>;
         if(this.props.width>800){
         return (
 <div className='cart-item'>  

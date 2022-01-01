@@ -70,7 +70,6 @@ color: rgb(208, 75, 75);
 .drop-container {
   display: flex;
   margin-top: 50px;
-/* margin-right: 20px; */
   align-items: center;
   justify-content: center;
   width: 100%;
@@ -103,3 +102,20 @@ html,body{
   font-family: 'Varela Round', sans-serif;
 
 }
+@media only screen and (max-width: 768px) {
+  .drop-message {
+    text-align: center;
+    color: #4aa1f3;
+    font-family: 'Varela Round', sans-serif;
+    font-size: 16px;
+    margin: auto;
+  }
+  .drop-container {
+      display: flex;
+      margin: auto;
+      width: 90%;
+      height: 180px;
+      padding: 15px;
+      border: 4px dashed #4aa1f3;
+    }
+  }

@@ -106,6 +106,7 @@ class colorPicker extends React.Component {
           // boxShadow: '0 0 0 1px rgba(0,0,0,.1)',
           display: 'inline-block',
           cursor: 'pointer',
+
         },
         popover: {
           position: 'absolute',

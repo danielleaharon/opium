@@ -39,6 +39,7 @@
     padding: 12px ;
     font-size: 1rem;
     cursor: pointer;
+    color:black;
     /* height: 100%; */
     /* display: flex;
     justify-content: center;
@@ -193,13 +194,10 @@
     padding: 12px;
     border-radius: 3px;
     border: 2px  rgba(94, 148, 210, 0.757) solid ;
-    /* background-color: rgba(94, 148, 210, 0.757); */
     width: 80%;
     justify-content: center;
     justify-items: center;
-    /* margin: 10px; */
     font-weight: bold;
-    /* margin-right: 25%; */
     position: relative;
 }
 .span_blue{
@@ -214,6 +212,7 @@
 }
 .close-details-btn{
     border: none;
+    color:black;
     background-color: transparent;
     position: absolute;
     top: 5px;

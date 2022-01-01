@@ -149,7 +149,7 @@ export default function Contact(props) {
             label="טלפון"
             id="name"
             name='phone'
-            type='name'
+            type='tel'
             variant="outlined"
 
             error={errors.phoneE}
@@ -168,7 +168,7 @@ export default function Contact(props) {
             label="מייל"
             id="name"
             name='mail'
-            type='name'
+            type='email'
             variant="outlined"
             error={errors.mailE}
 

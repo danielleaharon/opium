@@ -1,31 +1,24 @@
 import React, { Component, Fragment } from 'react';
-import BackMan from '../../Image/Design/men_back.png'
-import FrontMan from '../../Image/Design/men_front.png'
+
 import getFirebase from "../../Firebase";
 import { TextField } from "@material-ui/core";
 import Upload from '../UploadImage/PicUploadNoCrop';
 import axios from 'axios';
 import Config from '../../config/config';
-import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
 import 'react-alice-carousel/lib/alice-carousel.css';
-import BackWomen from '../../Image/Design/women_back.png';
-import FrontWomen from '../../Image/Design/women_front.png';
-import BackCup from '../../Image/Design/cup_back.png';
-import FrontCup from '../../Image/Design/cup_front.png';
-import FrontHat from '../../Image/Design/hat_front.png';
+
 import LogoPic from '../../Image/logoPic.png';
-import BackManBlue from '../../Image/Design/men_back_blue.png';
 import { Redirect } from 'react-router-dom';
 import ElementText from '../DesignElementTextMobile/DesignElementTextMobile';
 import ElementTextItem from '../DesignElementText/ElementText';
 
 import HistoryDesign from '../HistoryDesign/HistoryDesign';
 
-import ElementImg from '../DesignElementImg/DesignElementImg';
+import ElementImg from '../DesignElementImgMobile/DesignElementImgMobile';
 import ElementImgItem from '../DesignElementImg/ElementImg';
 
-import ElementShape from '../DesignElementShape/DesignElementShape';
+import ElementShape from '../DesignElementShapeMobile/DesignElementShapeMobile';
 import ElementShapeItem from '../DesignElementShape/ElementShape';
 
 import DesignPopUpProduct from '../DesignPopUpProduct/DesignPopUpProduct';
@@ -39,13 +32,8 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import Slide from '@material-ui/core/Slide';
 import { saveAs } from 'file-saver';
 import domtoimage from 'dom-to-image';
-import * as htmlToImage from 'html-to-image';
-import { toPng, toJpeg, toBlob, toPixelData, toSvg } from 'html-to-image';
-import html2canvas from 'html2canvas'
-
 import Logo from '../../Image/opiumLogo3.png';
 import Icons from '../Icons/Icons';
-import { Icon } from '@iconify/react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 
 
@@ -58,7 +46,7 @@ export default class Design extends Component {
     this.state = {
       exit: false,
       popUpProduct: false,
-      openEdit:false,
+      openEdit: false,
       // text: 'אופיום הלבשה',
       // textToggel: false,
       // imageToggel: false,
@@ -87,10 +75,10 @@ export default class Design extends Component {
       dPhoneEmsg: '',
       dCount: 1,
       dCountE: false,
-      previewBack:'',
+      previewBack: '',
 
-      previewFront:'',
-      loading:false,
+      previewFront: '',
+      loading: false,
       // selectProderctColor: '',
       // // options:['חולצה גברים', 'חולצה נשים','כובע', 'כוס'],
       // options: [{ value: this.man, label: 'חולצה גברים' }, { value: this.women, label: 'חולצה נשים' }
@@ -104,7 +92,7 @@ export default class Design extends Component {
       textToolbar: '',
       // showSlider: false,
       download: false,
-      downloadDesign:false,
+      downloadDesign: false,
       zIndex: 0,
       openExit: false,
       openNext: false,
@@ -167,7 +155,7 @@ export default class Design extends Component {
     this.deleteDesignToHistory = this.deleteDesignToHistory.bind(this);
     this.loadDesignHistory = this.loadDesignHistory.bind(this);
     this.updateDesignToHistory = this.updateDesignToHistory.bind(this);
-    
+
     this.DownloadForFireBase = this.DownloadForFireBase.bind(this);
     this.addCartDesign = this.addCartDesign.bind(this);
     this.Loading = this.Loading.bind(this);
@@ -199,10 +187,10 @@ export default class Design extends Component {
 
     if (this.props.productDesign !== undefined && this.props.productDesign !== null) {
       this.setState({ ShirtItem: this.props.productDesign.imgItem })
-      if(this.props.productDesign.design.url.front!==''){
+      if (this.props.productDesign.design.url.front !== '') {
         this.loadDesignHistory(this.props.productDesign.design.arrayDesign)
-       
-     
+
+
 
       }
 
@@ -212,79 +200,79 @@ export default class Design extends Component {
     }
   }
   loadDesignHistory(design) {
-    const arrTextF=[];
-    const arrShapeF=[];
-    const arrImgF=[];
+    const arrTextF = [];
+    const arrShapeF = [];
+    const arrImgF = [];
 
-    const arrTextB=[];
-    const arrShapeB=[];
-    const arrImgB=[];
+    const arrTextB = [];
+    const arrShapeB = [];
+    const arrImgB = [];
 
-    const arrAllF=[];
-    const arrAllB=[];
+    const arrAllF = [];
+    const arrAllB = [];
 
-    var zIndex=1;
-    design.arrays.ImageArrayFront.map((item,index)=>{
+    var zIndex = 1;
+    design.arrays.ImageArrayFront.map((item, index) => {
 
       const itemImg = new ElementImgItem(item);
-if(item.zIndex>zIndex)
-zIndex=item.zIndex
-       arrImgF.push(itemImg)
-       arrAllF.push(itemImg)
-    
+      if (item.zIndex > zIndex)
+        zIndex = item.zIndex
+      arrImgF.push(itemImg)
+      arrAllF.push(itemImg)
+
     })
-    design.arrays.ImageArrayBack.map((item,index)=>{
-      if(item.zIndex>zIndex)
-      zIndex=item.zIndex
+    design.arrays.ImageArrayBack.map((item, index) => {
+      if (item.zIndex > zIndex)
+        zIndex = item.zIndex
       const itemImg = new ElementImgItem(item);
 
-       arrImgB.push(itemImg)
-       arrAllB.push(itemImg)
-    
+      arrImgB.push(itemImg)
+      arrAllB.push(itemImg)
+
     })
     this.setState({ ImageArrayBack: arrImgB })
     this.setState({ ImageArrayFront: arrImgF })
 
-    design.arrays.ShapeArrayFront.map((item,index)=>{
+    design.arrays.ShapeArrayFront.map((item, index) => {
 
       const itemShape = new ElementShapeItem(item);
-      if(item.zIndex>zIndex)
-zIndex=item.zIndex
-       arrShapeF.push(itemShape)
-       arrAllF.push(itemShape)
-    
+      if (item.zIndex > zIndex)
+        zIndex = item.zIndex
+      arrShapeF.push(itemShape)
+      arrAllF.push(itemShape)
+
     })
-    design.arrays.ShapeArrayBack.map((item,index)=>{
+    design.arrays.ShapeArrayBack.map((item, index) => {
 
       const itemShape = new ElementShapeItem(item);
-      if(item.zIndex>zIndex)
-zIndex=item.zIndex
+      if (item.zIndex > zIndex)
+        zIndex = item.zIndex
       arrShapeB.push(itemShape)
-       arrAllB.push(itemShape)
-    
+      arrAllB.push(itemShape)
+
     })
     this.setState({ ShapeArrayBack: arrShapeB })
     this.setState({ ShapeArrayFront: arrShapeF })
 
-design.arrays.itemArrayFront.map((item,index)=>{
+    design.arrays.itemArrayFront.map((item, index) => {
 
-  const itemText = new ElementTextItem(item);
-  if(item.zIndex>zIndex)
-zIndex=item.zIndex
-   arrTextF.push(itemText)
-   arrAllF.push(itemText)
+      const itemText = new ElementTextItem(item);
+      if (item.zIndex > zIndex)
+        zIndex = item.zIndex
+      arrTextF.push(itemText)
+      arrAllF.push(itemText)
 
-})
-design.arrays.itemArrayBack.map((item,index)=>{
+    })
+    design.arrays.itemArrayBack.map((item, index) => {
 
-  const itemText = new ElementTextItem(item);
-  if(item.zIndex>zIndex)
-zIndex=item.zIndex
-   arrTextB.push(itemText)
-   arrAllB.push(itemText)
+      const itemText = new ElementTextItem(item);
+      if (item.zIndex > zIndex)
+        zIndex = item.zIndex
+      arrTextB.push(itemText)
+      arrAllB.push(itemText)
 
-})
-this.setState({zIndex:zIndex})
+    })
+    this.setState({ zIndex: zIndex })
     this.setState({ itemArrayFront: arrTextF })
     this.setState({ itemArrayBack: arrTextB })
 
@@ -298,10 +286,10 @@ this.setState({zIndex:zIndex})
     localStorage.setItem("HistoryDesign", JSON.stringify(historyArr));
 
   }
-  updateDesignToHistory(index,name){
+  updateDesignToHistory(index, name) {
     const historyArr = this.state.HistoryDesignList
-    historyArr[index].name=name;
-    this.setState({HistoryDesignList:historyArr})
+    historyArr[index].name = name;
+    this.setState({ HistoryDesignList: historyArr })
     localStorage.setItem("HistoryDesign", JSON.stringify(historyArr));
 
   }
@@ -319,8 +307,8 @@ this.setState({zIndex:zIndex})
     }
     historyArr.push({ name, date, arrays })
     localStorage.setItem("HistoryDesign", JSON.stringify(historyArr));
-    return await this.setState({ HistoryDesignList: historyArr },()=>{
-      return  true;
+    return await this.setState({ HistoryDesignList: historyArr }, () => {
+      return true;
     })
 
   }
@@ -380,7 +368,7 @@ this.setState({zIndex:zIndex})
       const r = await storageRef.child(ImgName).put(blob, metadata);
 
       console.log(r.ref)
-    return await  r.ref.getDownloadURL().then((url) => {
+      return await r.ref.getDownloadURL().then((url) => {
         this.setState({ url: url })
         return url
 
@@ -409,6 +397,7 @@ this.setState({zIndex:zIndex})
   // degree = 100 / this.characters.length;
   // Download1 = false
   handleClickOpen() {
+    console.log('close')
     this.setState({ openExit: true });
   };
   handleOpenNext() {
@@ -472,72 +461,72 @@ this.setState({zIndex:zIndex})
 
 
   }
-  async DownloadForFireBase(){
+  async DownloadForFireBase() {
 
-    const imgs=  await domtoimage.toBlob(document.getElementById('Design-cube2'))
+    const imgs = await domtoimage.toBlob(document.getElementById('Design-cube2'))
       .then(async (blob) => {
 
         var img1 = new File([blob], 'opium.png', {
           type: "image/png",
           lastModified: Date.now()
         })
-        this.setState({downloadDesign:true})
+        this.setState({ downloadDesign: true })
 
-        var allFront= await domtoimage.toBlob(document.getElementById('Design-cube2'))
-        .then( async (blob) => {
-  
-          var img3 = new File([blob], 'opium3.png', {
-            type: "image/png",
-            lastModified: Date.now()
-          })
-        
-          this.setState({downloadDesign:false})
+        var allFront = await domtoimage.toBlob(document.getElementById('Design-cube2'))
+          .then(async (blob) => {
 
-          return  this.UploadFirebbase(img3);
-  
-         })
-        var back=''
-        var allBack=''
-     if(this.props.productDesign.imgItem.back !== ''){
-          this.setState({front:!this.state.front})
-     
-           back= await domtoimage.toBlob(document.getElementById('Design-cube2'))
-         .then( async (blob) => {
-   
-           var img = new File([blob], 'opium2.png', {
-             type: "image/png",
-             lastModified: Date.now()
-           })
-         
-           this.setState({downloadDesign:true})
-           allBack= await domtoimage.toBlob(document.getElementById('Design-cube2'))
-          .then( async (blob) => {
-    
-            var img4 = new File([blob], 'opium4.png', {
+            var img3 = new File([blob], 'opium3.png', {
               type: "image/png",
               lastModified: Date.now()
             })
-            this.setState({downloadDesign:false})
- 
-         
-            return  this.UploadFirebbase(img4);
-    
-           })
-           return  this.UploadFirebbase(img);
-   
-          })
-    
-        }
-        
-       
-         console.log(back)
-         const front= await  this.UploadFirebbase(img1);
 
-        
-         return {front:front,back:back,allFront:allFront,allBack:allBack};
+            this.setState({ downloadDesign: false })
+
+            return this.UploadFirebbase(img3);
+
+          })
+        var back = ''
+        var allBack = ''
+        if (this.props.productDesign.imgItem.back !== '') {
+          this.setState({ front: !this.state.front })
+
+          back = await domtoimage.toBlob(document.getElementById('Design-cube2'))
+            .then(async (blob) => {
+
+              var img = new File([blob], 'opium2.png', {
+                type: "image/png",
+                lastModified: Date.now()
+              })
+
+              this.setState({ downloadDesign: true })
+              allBack = await domtoimage.toBlob(document.getElementById('Design-cube2'))
+                .then(async (blob) => {
+
+                  var img4 = new File([blob], 'opium4.png', {
+                    type: "image/png",
+                    lastModified: Date.now()
+                  })
+                  this.setState({ downloadDesign: false })
+
+
+                  return this.UploadFirebbase(img4);
+
+                })
+              return this.UploadFirebbase(img);
+
+            })
+
+        }
+
+
+        console.log(back)
+        const front = await this.UploadFirebbase(img1);
+
+
+        return { front: front, back: back, allFront: allFront, allBack: allBack };
 
       })
-      return imgs;
+    return imgs;
 
   }
   Download3() {
@@ -551,52 +540,52 @@ this.setState({zIndex:zIndex})
     //       lastModified: Date.now()
     //     })
 
-     
+
     //        this.UploadFirebbase(img);
 
 
 
     //   })
-      domtoimage.toPng(document.getElementById('Design-cube2'))
+    domtoimage.toPng(document.getElementById('Design-cube2'))
       .then((png) => {
 
-    
-        this.setState({previewFront:png})
-        if(this.props.productDesign.imgItem.back !== ''){
 
-        this.setState({front:!this.state.front},()=>{
-          domtoimage.toPng(document.getElementById('Design-cube2'))
-          .then((png) => {
-    
-        
-            this.setState({previewBack:png})
-            this.setState({front:!this.state.front})
-    
-    
+        this.setState({ previewFront: png })
+        if (this.props.productDesign.imgItem.back !== '') {
+
+          this.setState({ front: !this.state.front }, () => {
+            domtoimage.toPng(document.getElementById('Design-cube2'))
+              .then((png) => {
+
+
+                this.setState({ previewBack: png })
+                this.setState({ front: !this.state.front })
+
+
+              })
           })
-        })
-      }
+        }
 
       })
-    
-      
+
+
 
   }
   Download2() {
 
     // this.setState({downloadDesign:true},()=>{
-      domtoimage.toBlob(document.getElementById('Design-cube2'))
+    domtoimage.toBlob(document.getElementById('Design-cube2'))
       .then((blob) => {
 
-         saveAs(blob, 'opium.png');
-         this.setState({download:false})
+        saveAs(blob, 'opium.png');
+        this.setState({ download: false })
         //  this.setState({downloadDesign:false})
 
 
 
       })
     // })
-  
+
 
   }
 
@@ -618,13 +607,13 @@ this.setState({zIndex:zIndex})
       const Italic = 'normal'
       const borderColor = ''
       const underline = 'none'
-      const textColor='black'
-      const top=50
-      const left= 50
-      const rotateAngle= 0;
+      const textColor = 'black'
+      const top = 50
+      const left = 50
+      const rotateAngle = 0;
       const backgroundColor = ''
       const activeFontFamily = "Bona Nova"
-      const item = new ElementTextItem({ data, size,left,rotateAngle,backgroundColor,activeFontFamily, zIndex, id ,bold,Italic,borderColor,underline,textColor,top});
+      const item = new ElementTextItem({ data, size, left, rotateAngle, backgroundColor, activeFontFamily, zIndex, id, bold, Italic, borderColor, underline, textColor, top });
       itemArr.push(item)
       items.push(item)
       this.setState({ AllItemsArrayFront: items })
@@ -640,13 +629,13 @@ this.setState({zIndex:zIndex})
       const Italic = 'normal'
       const borderColor = ''
       const underline = 'none'
-      const textColor='black'
-      const top=115
-      const left= 170
-      const rotateAngle= 0;
+      const textColor = 'black'
+      const top = 115
+      const left = 170
+      const rotateAngle = 0;
       const backgroundColor = ''
       const activeFontFamily = "Bona Nova"
-      const item = new ElementTextItem({ data, size,left,rotateAngle,backgroundColor,activeFontFamily, zIndex, id ,bold,Italic,borderColor,underline,textColor,top});
+      const item = new ElementTextItem({ data, size, left, rotateAngle, backgroundColor, activeFontFamily, zIndex, id, bold, Italic, borderColor, underline, textColor, top });
       itemArr.push(item)
       items.push(item)
       this.setState({ AllItemsArrayBack: items })
@@ -661,14 +650,14 @@ this.setState({zIndex:zIndex})
 
       const zIndex = this.getZIndex();
       const id = zIndex + '';
-      const titel='square-border'
-      const width= 300
-      const height= 80
-      const top=175
-      const left= 240
-      const rotateAngle= 0;
-      const  borderColor='transparent'
-      const item = new ElementImgItem({ data, zIndex, id,titel,width,height, top,left,rotateAngle,borderColor});
+      const titel = 'square-border'
+      const width = 300
+      const height = 80
+      const top = 175
+      const left = 240
+      const rotateAngle = 0;
+      const borderColor = 'transparent'
+      const item = new ElementImgItem({ data, zIndex, id, titel, width, height, top, left, rotateAngle, borderColor });
       itemArr.push(item)
       items.push(item)
       this.setState({ AllItemsArrayFront: items })
@@ -679,15 +668,15 @@ this.setState({zIndex:zIndex})
 
       const zIndex = this.getZIndex();
       const id = zIndex + '';
-      const titel='square-border'
-      const width= 300
-      const height= 80
-      const top=175
-      const left= 240
-      const rotateAngle= 0;
-      const  borderColor='transparent'
+      const titel = 'square-border'
+      const width = 300
+      const height = 80
+      const top = 175
+      const left = 240
+      const rotateAngle = 0;
+      const borderColor = 'transparent'
 
-      const item = new ElementImgItem({ data, zIndex, id,titel,width,height, top,left,rotateAngle,borderColor});
+      const item = new ElementImgItem({ data, zIndex, id, titel, width, height, top, left, rotateAngle, borderColor });
       itemArr.push(item)
       items.push(item)
       this.setState({ AllItemsArrayBack: items })
@@ -809,13 +798,13 @@ this.setState({zIndex:zIndex})
       const items = this.state.AllItemsArrayFront;
       const zIndex = this.getZIndex();
       const id = zIndex + '';
-      const data={fill:fill, nofill:nofill}
-      const width= 100
-      const height= 100
-      const top=175
-      const left= 240
-      const rotateAngle= 0;
-      const item = new ElementShapeItem({ data, colorFill, colorBorder, zIndex, id ,width,height, top,left,rotateAngle});
+      const data = { fill: fill, nofill: nofill }
+      const width = 100
+      const height = 100
+      const top = 175
+      const left = 240
+      const rotateAngle = 0;
+      const item = new ElementShapeItem({ data, colorFill, colorBorder, zIndex, id, width, height, top, left, rotateAngle });
 
       itemArr.push(item)
       items.push(item)
@@ -828,13 +817,13 @@ this.setState({zIndex:zIndex})
       const items = this.state.AllItemsArrayBack;
       const zIndex = this.getZIndex();
       const id = zIndex + '';
-      const data={fill:fill, nofill:nofill}
-      const width= 100
-      const height= 100
-      const top=175
-      const left= 240
-      const rotateAngle= 0;
-      const item = new ElementShapeItem({ data, colorFill, colorBorder, zIndex, id ,width,height, top,left,rotateAngle});
+      const data = { fill: fill, nofill: nofill }
+      const width = 100
+      const height = 100
+      const top = 175
+      const left = 240
+      const rotateAngle = 0;
+      const item = new ElementShapeItem({ data, colorFill, colorBorder, zIndex, id, width, height, top, left, rotateAngle });
 
       itemArr.push(item)
       items.push(item)
@@ -865,20 +854,20 @@ this.setState({zIndex:zIndex})
     this.setState({ front: !this.state.front })
 
   }
- 
+
   onUpload(file) {
     this.setState({ img: file })
     this.addImg(file);
     // this.setState({imgSize:file.size})
 
   }
-   async addCartDesign(){
-     this.setState({loading:true})
+  async addCartDesign() {
+    this.setState({ loading: true })
     await this.saveDesignToHistory();
-    const url= await this.DownloadForFireBase()
+    const url = await this.DownloadForFireBase()
     // console.log(url)
-    this.props.updateCartDesign(this.props.productDesign,{url:url, arrayDesign:this.state.HistoryDesignList[this.state.HistoryDesignList.length-1]})
-    this.setState({loading:false})
+    this.props.updateCartDesign(this.props.productDesign, { url: url, arrayDesign: this.state.HistoryDesignList[this.state.HistoryDesignList.length - 1] })
+    this.setState({ loading: false })
 
     this.handleCloseNext();
     this.handleCloseAndExit()
@@ -1064,7 +1053,7 @@ this.setState({zIndex:zIndex})
 
     return (
       <div>
-          {/* {console.log(this.firebase)} */}
+        {/* {console.log(this.firebase)} */}
 
         <Dialog
           id='Dialog-send'
@@ -1079,26 +1068,26 @@ this.setState({zIndex:zIndex})
           <img className='dialog-design-img' src={Logo} />
           <DialogContent id='preview-dailog-context' >
             <DialogContentText id='send-dialog-design-description'>
-העיצוב יתווסף למוצר בסל הקניות, שם ניתן לשלוח לקבלת הצעת מחיר
+              העיצוב יתווסף למוצר בסל הקניות, שם ניתן לשלוח לקבלת הצעת מחיר
             </DialogContentText>
-           <div className='preview-dailog-context-div'>
-             <p><b>מוצר: </b> {this.props.productDesign.item.name}</p>
-             <p><b>מידה: </b>{this.props.productDesign.size}</p>
-             <p><b>תצוגה מקדימה: </b></p>
-             <div className='preview-dailog-context-imgs'>
-             <img className='preview-dailog-context-img' src={this.state.previewFront} alt='design'/>
-             <img className='preview-dailog-context-img' hidden={this.props.productDesign.imgItem.back === ''} src={this.state.previewBack} alt='design'/>
-</div>
-             <p>*העיצוב נשמר ב״עיצובים שלי״ כך שתוכל להשתמש בו שם בפעם הבאה</p>
-             {this.Loading()}
+            <div className='preview-dailog-context-div'>
+              <p><b>מוצר: </b> {this.props.productDesign.item.name}</p>
+              <p><b>מידה: </b>{this.props.productDesign.size}</p>
+              <p><b>תצוגה מקדימה: </b></p>
+              <div className='preview-dailog-context-imgs'>
+                <img className='preview-dailog-context-img' src={this.state.previewFront} alt='design' />
+                <img className='preview-dailog-context-img' hidden={this.props.productDesign.imgItem.back === ''} src={this.state.previewBack} alt='design' />
+              </div>
+              <p>*העיצוב נשמר ב״עיצובים שלי״ כך שתוכל להשתמש בו שם בפעם הבאה</p>
+              {this.Loading()}
 
-           </div>
+            </div>
           </DialogContent>
           <DialogActions id='Dialog-buttons-mail'>
             <Button onClick={this.handleCloseNext} id='dialog-btn-design' color="primary">
               ביטול
             </Button>
-            <Button onClick={ this.addCartDesign} id='dialog-btn-design' color="primary">
+            <Button onClick={this.addCartDesign} id='dialog-btn-design' color="primary">
               בסדר
             </Button>
           </DialogActions>
@@ -1131,12 +1120,12 @@ this.setState({zIndex:zIndex})
     return z;
 
   }
-  Loading(){
-    return(
+  Loading() {
+    return (
       // <div className="loader loading-design">Loading...</div>
-      <div className='loading-design'hidden={!this.state.loading} >
-        <p  className='loading-design-p'>מעדכן.. </p>
-        <img  hidden={!this.state.loading} className='loading-design-img' src={LogoPic}></img>
+      <div className='loading-design' hidden={!this.state.loading} >
+        <p className='loading-design-p'>מעדכן.. </p>
+        <img hidden={!this.state.loading} className='loading-design-img' src={LogoPic}></img>
 
       </div>
     )
@@ -1152,7 +1141,7 @@ this.setState({zIndex:zIndex})
     //   }
 
     if (this.state.popUpProduct) {
-      return <DesignPopUpProduct Ondesign={this.props.Ondesign} deleteFromCart={this.props.deleteFromCart} addToCart={this.props.addToCart} pickProduct={this.pickProduct} open={this.state.popUpProduct} handleClose={() => { if (this.props.productDesign === null) this.setState({ exit: true }); this.setState({ popUpProduct: false })  }}{...this.props} />
+      return <DesignPopUpProduct Ondesign={this.props.Ondesign} deleteFromCart={this.props.deleteFromCart} addToCart={this.props.addToCart} pickProduct={this.pickProduct} open={this.state.popUpProduct} handleClose={() => { if (this.props.productDesign === null) this.setState({ exit: true }); this.setState({ popUpProduct: false }) }}{...this.props} />
     }
     if (this.state.exit) {
       this.props.setOnDesign(false)
@@ -1160,10 +1149,10 @@ this.setState({zIndex:zIndex})
     }
     return (
 
-      <div className='Design-mobile' draggable={false} style={{maxWidth:this.props.width ,minHeight:this.props.height}}>
-        {/* {this.ExitDialog()}
-        {this.nextDesignDialog()} */}
-        {/* {this.Loading()} */}
+      <div className='Design-mobile' draggable={false} style={{ maxWidth: this.props.width, minHeight: this.props.height }}>
+        {this.ExitDialog()}
+        {this.nextDesignDialog()}
+        {this.Loading()}
 
         <div id='menu-design-mobile'>
           <div className='menur'>
@@ -1173,183 +1162,175 @@ this.setState({zIndex:zIndex})
 
 
           </div>
-          <div className='menuc'>
-            <p className='shirt-design-ditails'>  {this.props.productDesign.size}  {this.props.productDesign.item.name}  </p>
+          <div className='menuc-mobile'>
+            <p className='shirt-design-ditails-mobile'>  {this.props.productDesign.size}  {this.props.productDesign.item.name}  </p>
           </div>
           <div className='menul'>
             <button onClick={this.handleOpenNext} className='continued' ><i className="fa fa-arrow-circle-left"></i>   המשך </button>
           </div>
         </div>
-        {/* <h3><b>עצב בעצמך</b></h3> */}
-        {/* <div className='Design-cube-mobile' style={{height:(window.innerHeight-100)+'px', maxHeight:window.innerHeight}} > */}
-
-
-<button className='open-edit-mobile'  onClick={()=>this.setState({openEdit:!this.state.openEdit})} ><span class="iconify" data-icon="eva:edit-fill"></span> </button>
-          <div hidden={!this.state.openEdit} style={{height:window.innerHeight, maxHeight:window.innerHeight}} className='Design-cube1-mobile' >
-            <div className='buttons'>
-
-
-              <button className={this.state.editNow === 'text' ? ('buttonEditPick') : 'buttonEdit'} onClick={() => this.setState({ editNow: 'text' })}> <i style={{ fontSize: '27px' }} className="fa fa-font"></i> <br /> הוסף טקסט  </button><br />
-              <button className={this.state.editNow === 'img' ? ('buttonEditPick') : 'buttonEdit'} onClick={() => this.setState({ editNow: 'img' })}> <i style={{ fontSize: '27px' }} className="fa fa-cloud-upload"></i> <br />הוסף תמונה</button><br />
-              <button className={this.state.editNow === 'shape' ? ('buttonEditPick') : 'buttonEdit'} onClick={() => this.setState({ editNow: 'shape' })}><span style={{ fontSize: '27px', marginBottom: '5px' }} className="iconify" data-icon="fa-solid:shapes" data-inline="false"></span> <br />הוסף צורה</button><br />
-              <button className={this.state.editNow === 'product' ? ('buttonEditPick') : 'buttonEdit'} onClick={() => this.setState({ editNow: 'product' })}> <i style={{ fontSize: '27px' }} className="fa fa-barcode"></i> <br />בחר מוצר</button><br />
-              {(this.state.front ? this.state.AllItemsArrayFront.length !== 0 : this.state.AllItemsArrayBack.length !== 0) ? <button className={this.state.editNow === 'zIndex' ? ('buttonEditPick') : 'buttonEdit'} onClick={() => this.setState({ editNow: 'zIndex' })}> <span style={{ fontSize: '27px' }} className="iconify" data-icon="entypo:layers"></span> <br />שכבות עיצוב</button> : ''}
-              <button className={this.state.editNow === 'history' ? ('buttonEditPick') : 'buttonEdit'} onClick={() => this.setState({ editNow: 'history' })}> <span style={{ fontSize: '27px' }} className="iconify" data-icon="fluent:history-16-filled"></span> <br />העיצובים שלי</button><br />
 
 
 
-            </div>
-            <div>
-              {this.state.editNow === 'text' ? (
-                <div className='edits-mobile' id='editsText'>
-                  <div className='div-info'>
-                    <button id='info'><span className="iconify" data-icon="clarity:info-solid" data-inline="false"></span></button>
-                    <p className='info'>בחר כותרת, לכל טקסט יפתח לך סרגל כלים שתוכל בעזרתו לשנות את הצבע, הגופן, גודל ומלל</p>
-                  </div>
-                  <p className='titleEdit'>לחץ כדי להוסיף טקסט</p>
-                  <h1 className='titleEdit' id='h1-title' onClick={() => this.addText(300)}>הוסף כותרת</h1>
-                  <h3 className='titleEdit' onClick={() => this.addText(180)}>הוסף טקסט בינוני</h3>
-                  <p className='titleEdit' onClick={() => this.addText(100)}>הוסף טקסט קטן</p>
+        {!this.state.openEdit&& <button className='open-edit-mobile' onClick={() => this.setState({ openEdit: !this.state.openEdit })} ><span class="iconify" id='edit-icon' data-icon="bi:arrow-left-circle"></span></button>}
+        {this.state.openEdit&&<button className='open-edit-mobile' onClick={() => this.setState({ openEdit: !this.state.openEdit })} ><span class="iconify" id='edit-icon' data-icon="bi:arrow-right-circle"></span></button>}
+
+        <div hidden={!this.state.openEdit} style={{ height: window.innerHeight, maxHeight: window.innerHeight }} className='Design-cube1-mobile' >
+          <div className='buttons-mobile'>
 
 
-                </div>
+            <button style={{'--color':"#F3D5AA"}} className={this.state.editNow === 'text' ? ('buttonEditPick-mobile') : 'buttonEdit-mobile'} onClick={() => this.setState({ editNow: 'text' })}> <i style={{ fontSize: '27px' }} className="fa fa-font"></i> <br /> הוסף טקסט  </button><br />
+            <button style={{'--color':"#E0A7D1"}} className={this.state.editNow === 'img' ? ('buttonEditPick-mobile') : 'buttonEdit-mobile'} onClick={() => this.setState({ editNow: 'img' })}> <i style={{ fontSize: '27px' }} className="fa fa-cloud-upload"></i> <br />הוסף תמונה</button><br />
+            <button  style={{'--color':"#C7A8D9"}}className={this.state.editNow === 'shape' ? ('buttonEditPick-mobile') : 'buttonEdit-mobile'} onClick={() => this.setState({ editNow: 'shape' })}><span style={{ fontSize: '27px', marginBottom: '5px' }} className="iconify" data-icon="fa-solid:shapes" data-inline="false"></span> <br />הוסף צורה</button><br />
+            <button style={{'--color':"#93AECC"}} className={this.state.editNow === 'product' ? ('buttonEditPick-mobile') : 'buttonEdit-mobile'} onClick={() => this.setState({ editNow: 'product' })}> <i style={{ fontSize: '27px' }} className="fa fa-barcode"></i> <br />בחר מוצר</button><br />
+            {(this.state.front ? this.state.AllItemsArrayFront.length !== 0 : this.state.AllItemsArrayBack.length !== 0) ? <button style={{'--color':"#BEE4A6"}} className={this.state.editNow === 'zIndex' ? ('buttonEditPick-mobile') : 'buttonEdit-mobile'} onClick={() => this.setState({ editNow: 'zIndex' })}> <span style={{ fontSize: '27px' }} className="iconify" data-icon="entypo:layers"></span> <br />שכבות עיצוב</button> : ''}
+            <button style={{'--color':"#F49B9B"}} className={this.state.editNow === 'history' ? ('buttonEditPick-mobile') : 'buttonEdit-mobile'} onClick={() => this.setState({ editNow: 'history' })}> <span style={{ fontSize: '27px' }} className="iconify" data-icon="fluent:history-16-filled"></span> <br />העיצובים שלי</button><br />
 
-              ) : this.state.editNow === 'img' ? (<div className='edits-mobile'>
-                <div className='div-info'>
-                  <button id='info'><span className="iconify" data-icon="clarity:info-solid" data-inline="false"></span></button>
-                  <p className='info'>העלאה את התמונה הרצויה או ע״י גרירה או לחיצה ובחירה מהמכשיר, בעזרת סרגל הכלים ניתן לחתוך את התמונה, להקטין ולהגדיל</p>
-                </div>
-
-                <Upload onUpload={this.onUpload} />
-                <div className='img-item-toolbar-grid'>
-                  {(this.state.front ? this.state.ImageArrayFront : this.state.ImageArrayBack).map((item, index) => {
-                    return <ElementImgItem key={index} img={item.getData()} deleteImg={this.deleteImg} index={index} />
-
-
-                  })}
-                </div>
-              </div>) : this.state.editNow === 'product' ? (
-                <div className='edits-mobile'>
-                  {/* <Dropdown options={this.state.options} onChange={this.onSelect} value={this.state.defaultOption} placeholder="Select an option" /> */}
-                  <p style={{ marginTop: '10px' }}>המוצר קיים בצבעים הבאים: (לחץ כדי להחליף צבע)</p>
-                  {this.props.productDesign.item.productImage.map((item, index) => {
-                    return <span key={index} onClick={() => this.handelChangeColorShirt(item)} className="dot-product-dialog" id={this.state.ShirtItem.color === item.color ? 'dot-product-select' : ''} style={{ backgroundColor: item.color }}></span>
-
-                  })}
-                  <br />
-                  <button className='product-chang-btn' onClick={() => this.setState({ popUpProduct: true })}>החלפה מוצר</button>
-
-
-
-
-
-
-                </div>
-              ) : this.state.editNow === 'shape' ? (
-                <div className='edits-mobile'>
-                  <div className='div-info'>
-                    <button id='info'><span className="iconify" data-icon="clarity:info-solid" data-inline="false"></span></button>
-                    <p className='info'>בחר צורה, ניתן בעזרת סרגל הכלים לשנות את הצבע, להגדיל להקטין ולסבוב.</p>
-                  </div>
-                  {/* <div className='shape'> */}
-                  <Icons addShape={this.addShape} />
-
-
-                  {/* </div> */}
-
-                </div>
-              ) : this.state.editNow === 'zIndex' ? (
-                <div className='edits' id='editsText'>
-                  <div className='div-info'>
-                    <button id='info'><span className="iconify" data-icon="clarity:info-solid" data-inline="false"></span></button>
-                    <p className='info'>שכבות העיצוב שבחרת למוצר, ניתן לשחק בין השכבות ועלות שכבה אחת על האחרת</p>
-                  </div>
-                  <p className='titleEdit'>גרור על מנת לשנות את סדר השכבות</p>
-                  {/* {(this.state.front? this.state.AllItemsArrayFront.length!==0:this.state.AllItemsArrayBack.length!==0)?'': */}
-                  <DragDropContext onDragEnd={this.handleOnDragEnd}>
-                    <Droppable droppableId="layers">
-                      {(provided) => (
-                        <ul className="layers" {...provided.droppableProps} ref={provided.innerRef}>
-                          {(this.state.front ? this.state.AllItemsArrayFront : this.state.AllItemsArrayBack).sort((a, b) => b.getZIndex() - a.getZIndex()).map((item, index) => {
-
-                            return (
-                              <Draggable key={item.getId()} draggableId={item.getId()} index={index}>
-                                {(provided) => (
-                                  <div className='layers-item' ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
-
-                                    {item.getView()}
-
-
-
-
-                                  </div>
-                                )}
-                              </Draggable>
-                            );
-                          })}
-                        </ul>
-                      )}
-                    </Droppable>
-                  </DragDropContext>
-
-
-                </div>) : this.state.editNow === 'history' ? (
-                  <div className='edits-mobile'>
-                    <div className='div-info'>
-                      <button id='info'><span className="iconify" data-icon="clarity:info-solid" data-inline="false"></span></button>
-                      <p className='info'>היסטורית העיצובים שלך, ניתן לטעון מחדש עיצובים ישנים, להעתיק ולערוך</p>
-                    </div>
-                    {this.state.HistoryDesignList.map((item, index) => {
-                      return <HistoryDesign key={index} index={index} item={item} changeName={this.updateDesignToHistory} load={this.loadDesignHistory} delete={this.deleteDesignToHistory} />
-                    })}
-
-                    <button className='design-adddesign-btn' onClick={this.saveDesignToHistory} >שמור את העיצוב  </button>
-
-                  </div>) : ''}
-              <br />
-            </div>
-          </div>
-          <div hidden={this.state.openEdit} className='Design-cube2-mobile' draggable={false} id='Design-cube2' style={{maxWidth:this.props.width,  backgroundColor:this.state.downloadDesign?'transparent':'white'}} >
-            <img hidden={this.state.downloadDesign} id='logo-down' src={Logo} alt='logo' />
-
-
-
-            {/* fontSize:this.state.fontSize+'px' */}
-            {/* <button className='buttonEdit' id='back-front'onClick={this.chengeShirt}>{this.state.front?('אחורה'):('קדימה')}</button> */}
-            {this.props.productDesign.imgItem.back !== '' && !this.state.download ? (<button className='buttonEdit' id='back-front' onClick={this.chengeShirt}>{this.state.front ? ('אחורה') : ('קדימה')}</button>) : ''}
-
-            {/* {this.state.textToolbar} */}
             
-            <img hidden={this.state.downloadDesign} draggable={false} onClick={() => { this.datgnow(0) }} className='shirt-mobile' id='shirt' src={this.state.front ? (this.props.productDesign.imgItem.front) : (this.props.productDesign.imgItem.back)}></img>
-            {/* <img draggable={false} onClick={() => { this.datgnow(0) }} className='shirt' id='shirt' src={this.state.d}></img> */}
+
+          </div>
+            {this.state.editNow === 'text' ? (
+              <div className='edits-mobile' style={{'--color':"#F3D5AA"}}  id='editsText'>
+                <div className='div-info'>
+                  <button id='info-mobile'><span className="iconify" data-icon="clarity:info-solid" data-inline="false"></span></button>
+                  <p className='info'>בחר כותרת, לכל טקסט יפתח לך סרגל כלים שתוכל בעזרתו לשנות את הצבע, הגופן, גודל ומלל</p>
+                </div>
+                <p className='titleEdit'>לחץ כדי להוסיף טקסט</p>
+                <h1 className='titleEdit' id='h1-title' onClick={() => {this.addText(300); this.setState({ openEdit: !this.state.openEdit })}}>הוסף כותרת</h1>
+                <h3 className='titleEdit' onClick={() => {this.addText(180); this.setState({ openEdit: !this.state.openEdit })}}>הוסף טקסט בינוני</h3>
+                <p className='titleEdit' onClick={() => {this.addText(100);this.setState({ openEdit: !this.state.openEdit })}}>הוסף טקסט קטן</p>
+
+              </div>
+
+            ) : this.state.editNow === 'img' ? (<div className='edits-mobile' style={{'--color':"#E0A7D1"}} >
+              <div className='div-info'>
+                <button id='info-mobile'><span className="iconify" data-icon="clarity:info-solid" data-inline="false"></span></button>
+                <p className='info'>העלאה את התמונה הרצויה או ע״י גרירה או לחיצה ובחירה מהמכשיר, בעזרת סרגל הכלים ניתן לחתוך את התמונה, להקטין ולהגדיל</p>
+              </div>
+
+              <Upload onUpload={this.onUpload} />
+              <div className='img-item-toolbar-grid'>
+                {(this.state.front ? this.state.ImageArrayFront : this.state.ImageArrayBack).map((item, index) => {
+                  return <ElementImgItem key={index} img={item.getData()} deleteImg={this.deleteImg} index={index} />
+
+
+                })}
+              </div>
+            </div>) : this.state.editNow === 'product' ? (
+              <div className='edits-mobile' style={{'--color':"#93AECC"}}>
+                {/* <Dropdown options={this.state.options} onChange={this.onSelect} value={this.state.defaultOption} placeholder="Select an option" /> */}
+                <p style={{ marginTop: '10px' }}>המוצר קיים בצבעים הבאים: (לחץ כדי להחליף צבע)</p>
+                {this.props.productDesign.item.productImage.map((item, index) => {
+                  return <span key={index} onClick={() => this.handelChangeColorShirt(item)} className="dot-product-dialog" id={this.state.ShirtItem.color === item.color ? 'dot-product-select' : ''} style={{ backgroundColor: item.color }}></span>
+
+                })}
+                <br />
+                <button className='product-chang-btn' onClick={() => this.setState({ popUpProduct: true })}>החלפה מוצר</button>
 
 
 
-            {/* <div id='all'> */}
-              <p></p>
-            {(this.state.front ? this.state.itemArrayFront : this.state.itemArrayBack).map((item, index) => {
-              // return <ElementText key={index} zIndex={item.zIndex}  showSlider={this.state.showSlider} setShowSlider={this.showSlider} getTextToolbar={this.setTextToolbar} onDrag={this.datgnow} fontFamily={this.state.activeFontFamily} widthText={item.size} text={this.state.text} drag={this.state.howDrag} myIndex={index + 1} />
-              return <ElementText key={item.getId()} item={item} getTextToolbar={this.setTextToolbar} onDrag={this.datgnow} deleteText={this.deleteText} fontFamily={this.state.activeFontFamily} text={this.state.text} drag={this.state.howDrag} myIndex={index + 1} />
-
-              // <div className="box1"  key={index}>
-              // <ElementText key={index} zIndex={this.getZIndex}  showSlider={this.state.showSlider} setShowSlider={this.showSlider} getTextToolbar={this.setTextToolbar} onDrag={this.datgnow} fontFamily={this.state.activeFontFamily} widthText={item.size} text={this.state.text} drag={this.state.howDrag} myIndex={index + 1} />
-              // </div>
-
-            })}
-            {(this.state.front ? this.state.ImageArrayFront : this.state.ImageArrayBack).map((item, index) => {
-              return <ElementImg key={item.getId()} item={item} onDrag={this.datgnow} getTextToolbar={this.setTextToolbar} drag={this.state.howDrag} myIndex={(index + 1) * 5} deleteImg={this.deleteImg} index={index} />
 
 
-            })}
-            {(this.state.front ? this.state.ShapeArrayFront : this.state.ShapeArrayBack).map((item, index) => {
-              console.log(item.fill)
-              return <ElementShape key={item.getId()} item={item} colorFill={item.getColorFill()} colorBorder={item.getColorBorder()} shapefill={item.getData().fill} shapeborder={item.getData().nofill} deleteShape={this.deleteShape} onDrag={this.datgnow} getTextToolbar={this.setTextToolbar} drag={this.state.howDrag} myIndex={(index + 1) * 10} />
 
-            })}
-            </div>
+              </div>
+            ) : this.state.editNow === 'shape' ? (
+              <div className='edits-mobile' style={{'--color':"#C7A8D9"}}>
+                <div className='div-info'>
+                  <button id='info-mobile'><span className="iconify" data-icon="clarity:info-solid" data-inline="false"></span></button>
+                  <p className='info'>בחר צורה, ניתן בעזרת סרגל הכלים לשנות את הצבע, להגדיל להקטין ולסבוב.</p>
+                </div>
+                {/* <div className='shape'> */}
+                <Icons addShape={this.addShape} />
 
-          {/* </div> */}
+
+                {/* </div> */}
+
+              </div>
+            ) : this.state.editNow === 'zIndex' ? (
+              <div className='edits-mobile' id='editsText' style={{'--color':"#BEE4A6"}}>
+                <div className='div-info'>
+                  <button id='info-mobile'><span className="iconify" data-icon="clarity:info-solid" data-inline="false"></span></button>
+                  <p className='info'>שכבות העיצוב שבחרת למוצר, ניתן לשחק בין השכבות ועלות שכבה אחת על האחרת</p>
+                </div>
+                <p className='titleEdit'>גרור על מנת לשנות את סדר השכבות</p>
+                {/* {(this.state.front? this.state.AllItemsArrayFront.length!==0:this.state.AllItemsArrayBack.length!==0)?'': */}
+                <DragDropContext onDragEnd={this.handleOnDragEnd}>
+                  <Droppable droppableId="layers-mobile">
+                    {(provided) => (
+                      <ul className="layers-mobile" {...provided.droppableProps} ref={provided.innerRef}>
+                        {(this.state.front ? this.state.AllItemsArrayFront : this.state.AllItemsArrayBack).sort((a, b) => b.getZIndex() - a.getZIndex()).map((item, index) => {
+
+                          return (
+                            <Draggable key={item.getId()} draggableId={item.getId()} index={index}>
+                              {(provided) => (
+                                <div className='layers-item-mobile' ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
+
+                                  {item.getView()}
+
+
+
+
+                                </div>
+                              )}
+                            </Draggable>
+                          );
+                        })}
+                      </ul>
+                    )}
+                  </Droppable>
+                </DragDropContext>
+
+
+              </div>) : this.state.editNow === 'history' ? (
+                <div className='edits-mobile' style={{'--color':"#F49B9B"}}>
+                  <div className='div-info'>
+                    <button id='info'><span className="iconify" data-icon="clarity:info-solid" data-inline="false"></span></button>
+                    <p className='info'>היסטורית העיצובים שלך, ניתן לטעון מחדש עיצובים ישנים, להעתיק ולערוך</p>
+                  </div>
+                  {this.state.HistoryDesignList.map((item, index) => {
+                    return <HistoryDesign key={index} index={index} item={item} changeName={this.updateDesignToHistory} load={this.loadDesignHistory} delete={this.deleteDesignToHistory} />
+                  })}
+
+                  <button className='design-adddesign-btn' onClick={this.saveDesignToHistory} >שמור את העיצוב  </button>
+
+                </div>) : ''}
+            <br />
         </div>
+        <div hidden={this.state.openEdit} className='Design-cube2-mobile' draggable={false} id='Design-cube2' style={{ maxWidth: this.props.width, backgroundColor: this.state.downloadDesign ? 'transparent' : 'white' }} >
+          <img hidden={this.state.downloadDesign} id='logo-down-mobile' src={Logo} alt='logo' />
+
+
+
+          {/* fontSize:this.state.fontSize+'px' */}
+          {/* <button className='buttonEdit' id='back-front'onClick={this.chengeShirt}>{this.state.front?('אחורה'):('קדימה')}</button> */}
+          {this.props.productDesign.imgItem.back !== '' && !this.state.download ? (<button className='buttonEdit' id='back-front' onClick={this.chengeShirt}>{this.state.front ? ('אחורה') : ('קדימה')}</button>) : ''}
+
+
+          <img hidden={this.state.downloadDesign} draggable={false} onClick={() => { this.datgnow(0) }} className='shirt-mobile' id='shirt' src={this.state.front ? (this.props.productDesign.imgItem.front) : (this.props.productDesign.imgItem.back)}></img>
+
+
+
+          {/* <div id='all'> */}
+          <p></p>
+          {(this.state.front ? this.state.itemArrayFront : this.state.itemArrayBack).map((item, index) => {
+            return <ElementText key={item.getId()} item={item} getTextToolbar={this.setTextToolbar} onDrag={this.datgnow} deleteText={this.deleteText} fontFamily={this.state.activeFontFamily} text={this.state.text} drag={this.state.howDrag} myIndex={index + 1} />
+
+          })}
+          {(this.state.front ? this.state.ImageArrayFront : this.state.ImageArrayBack).map((item, index) => {
+            return <ElementImg key={item.getId()} item={item} onDrag={this.datgnow} getTextToolbar={this.setTextToolbar} drag={this.state.howDrag} myIndex={(index + 1) * 5} deleteImg={this.deleteImg} index={index} />
+
+
+          })}
+          {(this.state.front ? this.state.ShapeArrayFront : this.state.ShapeArrayBack).map((item, index) => {
+            console.log(item.fill)
+            return <ElementShape key={item.getId()} item={item} colorFill={item.getColorFill()} colorBorder={item.getColorBorder()} shapefill={item.getData().fill} shapeborder={item.getData().nofill} deleteShape={this.deleteShape} onDrag={this.datgnow} getTextToolbar={this.setTextToolbar} drag={this.state.howDrag} myIndex={(index + 1) * 10} />
+
+          })}
+        </div>
+        {!this.state.openEdit && this.state.textToolbar}
+
+        {/* </div> */}
+      </div>
       // </div>
     );
   }
