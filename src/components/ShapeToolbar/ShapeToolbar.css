@@ -294,7 +294,11 @@ div.menur
 
   }
   
-
+#paper{
+  background-color: whitesmoke;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 8px #03030333;
+}
 
 p:focus{
   outline: 0;

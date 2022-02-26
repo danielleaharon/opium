@@ -5,8 +5,7 @@ import Input from '@material-ui/core/Input';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
-import ImageUploading from '../../ImageUploading/SingleFileUploadComponent';
-import axios from 'axios';
+
 import '../Admin.css';
 export default class SchoolImageSelect extends Component {
     constructor(props) {
@@ -57,7 +56,7 @@ export default class SchoolImageSelect extends Component {
           this.setState({pSelectColorEmsg:'חסר צבע'})
           error=true
         }
-        if(this.props.colors.some((a)=>a==this.state.pSelectColorOther)){
+        if(this.props.colors.some((a)=>a===this.state.pSelectColorOther)){
         this.setState({pSelectColorE:true})
         this.setState({pSelectColorEmsg:' הצבע קיים'})
         error=true;
@@ -76,7 +75,7 @@ export default class SchoolImageSelect extends Component {
     }
     handelChangeOtherColor(e){
       this.ClearError();
-      if(this.props.colors.some((a)=>a==e.target.value)){
+      if(this.props.colors.some((a)=>a===e.target.value)){
       this.setState({pSelectColorE:true})
       this.setState({pSelectColorEmsg:' הצבע קיים'}) }
        this.setState({ pSelectColorOther: e.target.value })
@@ -92,7 +91,7 @@ export default class SchoolImageSelect extends Component {
 
       if(this.state.pSelectColor.match('other')){
         if(this.state.pSelectColorOther.trim()!==''){
-        if(this.state.pSelectColorOther.charAt(0)!='#') 
+        if(this.state.pSelectColorOther.charAt(0)!=='#') 
       this.props.addColor('#'+this.state.pSelectColorOther)
       else       this.props.addColor(this.state.pSelectColorOther)
 
@@ -141,7 +140,7 @@ export default class SchoolImageSelect extends Component {
 <InputLabel id={"school-label-"+this.props.class}>קוד מספר</InputLabel>
 
 <Input aria-describedby="helper"  error={this.state.pSelectColorE} required type='text' id="product-input" value={this.state.pSelectColorOther} onChange={this.handelChangeOtherColor} />
-<p className={"product-color-helper-"+this.props.class +' school-color-helper'} hidden={this.state.pSelectColorOther===''} style={{backgroundColor:this.state.pSelectColorOther.at(0)=='#'?this.state.pSelectColorOther:'#'+this.state.pSelectColorOther}}></p>
+<p className={"product-color-helper-"+this.props.class +' school-color-helper'} hidden={this.state.pSelectColorOther===''} style={{backgroundColor:this.state.pSelectColorOther.at(0)=== '#'?this.state.pSelectColorOther:'#'+this.state.pSelectColorOther}}></p>
 
   <FormHelperText hidden={!this.state.pSelectColorE} error={this.state.pSelectColorE} id="helper">{this.state.pSelectColorEmsg}</FormHelperText>
 

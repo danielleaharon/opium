@@ -17,6 +17,16 @@
   width: 100%;
   
 }
+.overflow-shirt{
+  overflow: hidden;
+  width: 50%;
+  height: 100%;
+  position: absolute;
+  top: 10%;
+  right: 24%;
+  z-index: 11;
+}
+
 .layers-item{
   border-bottom: rgb(187, 187, 187) 1px solid;
   margin-bottom: 10px;
@@ -143,35 +153,35 @@ div.menur
 
   
 }
-#back-front{
-  position: absolute;
-  margin-top: 10px;
-margin-right: 73%; 
+#back-front1{
+  /* position: absolute;
+  margin-top: 10px; */
+/* margin-right: 73%;  */
 padding-top: 5px;
 padding-bottom: 5px;
-font-size: 12px;
+font-size: 15px;
 border-radius: 3px;
 color: black;
 background-color: rgba(255, 255, 255, 0.605);
 border: black 1px solid;
-  width: 15%;
+  /* width: 15%; */
 }
-#back-front:hover{
+#back-front1:hover{
   background-color: black;
   color: whitesmoke;
  
 }
 #logo-down{
-  position: absolute;
+  /* position: absolute;
   top: 50px;
-  left:5% ;
-padding-top: 5px;
+  left:5% ; */
+/* padding-top: 5px;
 padding-bottom: 5px;
-border-radius: 3px;
+border-radius: 3px; */
 opacity: 0.6;
-color: black;
+/* color: black; */
 
-  width: 15%;
+  /* width: 15%; */
 }
 .titleEdit{
   margin-top: 10px;
@@ -235,18 +245,13 @@ width: 30%;
     padding-top: 15px;
     padding-bottom: 15px;
     font-family: 'Varela Round', sans-serif;
-    font-size: 13px;
+    font-size: 17px;
     border-top-right-radius: 50px;
     border-bottom-right-radius: 50px;
 
     width: 100%;
   }
-  .box1{
-    /* position: absolute;
-    top:0;
-    left: 0; */
-    /* width: 110%; */
-  }
+
  
   .buttonEdit{
     background-color: black; 
@@ -255,7 +260,8 @@ width: 30%;
     padding-top: 15px;
     padding-bottom: 15px;
     font-family: 'Varela Round', sans-serif;
-    font-size: 13px;
+    font-size: 15px;
+    margin: 5px 0px;
 
     width: 100%;
   }
@@ -449,13 +455,13 @@ width: 30%;
 
   }
   
-  .Design-cube2{
-    margin-right: 8%;
+  .Design-cube22{
+    /* margin-right: 8%; */
     /* padding-left: 100px;
     padding-right: 100px; */
 position: relative;
 /* height: auto; */
-width: 70%;
+/* width: 70%; */
 /* width: 950px; */
   }
   .Design-cube2-imgelemnt{

@@ -1,18 +1,5 @@
-import React, {Component, Fragment} from 'react';
-import FormControl from '@material-ui/core/FormControl';
+import React, {Component} from 'react';
 
-import { Redirect } from "react-router-dom";
-import MenuItem from '@material-ui/core/MenuItem';
-import Select from '@material-ui/core/Select';
-import Logo from '../../Image/opiumLogo3.png';
-
-import Button from '@material-ui/core/Button';
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import Slide from '@material-ui/core/Slide';
 import './OrderAdminItem.css';
 export default class OrderAdminDesignText extends Component {
     constructor(props) {

@@ -5,7 +5,6 @@ import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Slide from '@material-ui/core/Slide';
 import Logo from '../../Image/opiumLogo3.png';
@@ -14,11 +13,9 @@ import axios from 'axios';
 import Config from '../../config/config';
 import FormControl from '@material-ui/core/FormControl';
 
-import { Redirect } from "react-router-dom";
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import './OrderAdminClass.css';
-import { ButtonOr } from 'semantic-ui-react';
 export default class OrderAdminClass extends Component {
     constructor(props) {
         super(props);
@@ -173,21 +170,21 @@ export default class OrderAdminClass extends Component {
       this.clearValid();
       var error = false;
   
-      if (this.state.dName == '') {
+      if (this.state.dName==='') {
         this.setState({ dNameE: true })
         error = true;
       }
-      if (this.state.dPhone == '') {
+      if (this.state.dPhone==='') {
         this.setState({ dPhoneE: true })
         this.setState({ dPhoneEmsg: 'חסר מספר טלפון' })
         error = true;
       }
-      else if (this.state.dPhone.length != 10) {
+      else if (this.state.dPhone.length !== 10) {
         this.setState({ dPhoneE: true })
         this.setState({ dPhoneEmsg: ' מספר טלפון לא תקין' })
         error = true;
       }
-      if (this.state.dMail == '') {
+      if (this.state.dMail==='') {
         this.setState({ dMailE: true })
         this.setState({ dMailEmsg: ' חסר מייל ' })
   
@@ -221,7 +218,7 @@ export default class OrderAdminClass extends Component {
             aria-describedby="alert-dialog-slide-description"
           >
             <DialogTitle className="send-dialog-orderAdmin-title" ><p >שליחת מייל ל{this.props.item.name}</p></DialogTitle>
-            <img className='dialog-design-img' src={Logo} />
+            <img className='dialog-design-img' src={Logo} alt='logo' />
             <DialogContent id='orderAdmin-send-dailog-context' >
               {/* <DialogContentText id='send-dialog-design-description'>
 שים לב שפרטיך נכונים לפני השליחה, אחרת לא נוכל ליצור עמך קשר.
@@ -341,8 +338,8 @@ id={this.state.statusClass}
 </div>     
 {/* <button className='myorder-change-btn'hidden={!this.state.openOrder} onClick={()=>this.setState({openSend:true})} >שלח מייל  */}
  <div  hidden={!this.state.openOrder} className='myorder-send-btns' >
- <a className='myorder-send-btn myorder-mail' hidden={!this.state.openOrder} href={"https://mail.google.com/mail/?view=cm&fs=1&tf=1&to="+this.props.item.mail} target="_blank"> <span className="iconify" id='gmail-black' data-icon="simple-icons:gmail"></span> <span className="iconify" id='gmail-color'data-icon="logos:google-gmail"></span> שלח מייל</a>
- <a className='myorder-send-btn myorder-whatsapp' hidden={!this.state.openOrder} href={"https://api.whatsapp.com/send?phone=' +"+this.state.dPhone} target="_blank"><span className="iconify" data-icon="dashicons:whatsapp"></span> שלח ווסטאפ</a>
+ <a className='myorder-send-btn myorder-mail' hidden={!this.state.openOrder} href={"https://mail.google.com/mail/?view=cm&fs=1&tf=1&to="+this.props.item.mail} target="_blank" rel="noopener noreferrer"> <span className="iconify" id='gmail-black' data-icon="simple-icons:gmail"></span> <span className="iconify" id='gmail-color'data-icon="logos:google-gmail"></span> שלח מייל</a>
+ <a className='myorder-send-btn myorder-whatsapp' hidden={!this.state.openOrder} href={"https://api.whatsapp.com/send?phone=' +"+this.state.dPhone} target="_blank" rel="noopener noreferrer"><span className="iconify" data-icon="dashicons:whatsapp"></span> שלח ווסטאפ</a>
 </div>
 {/* </button> */}
       </div>

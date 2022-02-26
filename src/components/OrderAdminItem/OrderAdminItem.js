@@ -1,11 +1,8 @@
-import React, {Component, Fragment} from 'react';
-import FormControl from '@material-ui/core/FormControl';
+import React, {Component} from 'react';
 import axios from 'axios';
 import Config from '../../config/config';
-import { Redirect } from "react-router-dom";
 import { TextField } from "@material-ui/core";
-import Select from '@material-ui/core/Select';
-import Logo from '../../Image/opiumLogo3.png';
+
 import OrderAdminDesignText from './OrderAdminDesignText';
 import OrderAdminDesignShape from './OrderAdminDesignShape';
 import OrderAdminDesignImg from './OrderAdminDesignImg';
@@ -15,8 +12,7 @@ import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogTitle from '@material-ui/core/DialogTitle';
+
 import Slide from '@material-ui/core/Slide';
 import './OrderAdminItem.css';
 export default class OrderAdminItem extends Component {
@@ -127,20 +123,20 @@ this.setState({openPreview:false})
     return <Dialog maxWidth='lg' fullWidth  id='product-dialog' open={this.state.openPreview} onClose={this.handleClosePreview}>
      {/* <DialogTitle>{this.props.item.name}</DialogTitle> */}
      <div   id='OrderAdmin-img-design'  > 
-  <img hidden={!this.state.downloadFront} src={this.state.item.allFront} />
-  <img hidden={!this.state.downloadBack} src={this.state.item.allBack} />
+  <img hidden={!this.state.downloadFront} src={this.state.item.allFront}  alt='front'/>
+  <img hidden={!this.state.downloadBack} src={this.state.item.allBack} alt='back' />
 
   </div>
      <DialogContent id='product-dialog-DialogContent' >
        <div id='product-dialog-details'>
          <div className='dialog-imgs-select'>
-         <img className={this.state.itemSide==='front'?'product-dialog-details-imgs select':'product-dialog-details-imgs'} onClick={()=> {this.setState({imgFront:this.state.item.front}); this.setState({itemSide:'front'})}}  src={this.state.item.front} ></img>
-         <img hidden={!this.state.hasBack} onClick={()=> {this.setState({imgFront:this.state.item.back}); this.setState({itemSide:'back'})}} className={this.state.itemSide==='back'?'product-dialog-details-imgs select':'product-dialog-details-imgs'} src={this.state.item.back} ></img>
+         <img className={this.state.itemSide==='front'?'product-dialog-details-imgs select':'product-dialog-details-imgs'} onClick={()=> {this.setState({imgFront:this.state.item.front}); this.setState({itemSide:'front'})}}  src={this.state.item.front}alt='front' ></img>
+         <img hidden={!this.state.hasBack} onClick={()=> {this.setState({imgFront:this.state.item.back}); this.setState({itemSide:'back'})}} className={this.state.itemSide==='back'?'product-dialog-details-imgs select':'product-dialog-details-imgs'} src={this.state.item.back}  alt='back'></img>
          <button className='OrderAdminDesign-download'   onClick={this.downloadFront}  > הורד עיצוב קדימה  <span className="iconify" data-icon="bi:cloud-arrow-down"></span></button>
 <button className='OrderAdminDesign-download'   onClick={this.downloadBack}  > הורד עיצוב אחורה  <span className="iconify" data-icon="bi:cloud-arrow-down"></span></button>
 
          </div>
-       <img className='product-dialog-details-img' src={this.state.imgFront} ></img>
+       <img className='product-dialog-details-img' src={this.state.imgFront} alt='front' ></img>
        <div className='orderItem-dialog-details-txt'>
          <p id='orderItem-dialog-details-txt-title'> נתוני עיצוב מוצר</p>
        {this.state.itemSide==='front'?<div>
@@ -270,7 +266,7 @@ this.setState({openPreview:false})
     <p>{this.props.item.size}</p>
     <p>{this.props.item.count}</p>
 
-    {this.props.item.designItems.url.front!==''?  <div className='order-preview-imgs' > <button onClick={()=>this.setState({openPreview:true})} id='order-preview-big'></button>  <img src={this.props.item.designItems.url.front}/> <img src={this.props.item.designItems.url.back}></img></div>:      <img className='order-img' src={this.props.item.productColor.front}></img>}
+    {this.props.item.designItems.url.front!==''?  <div className='order-preview-imgs' > <button onClick={()=>this.setState({openPreview:true})} id='order-preview-big'></button>  <img src={this.props.item.designItems.url.front} alt='front'/> <img src={this.props.item.designItems.url.back} alt='back'></img></div>:      <img className='order-img' src={this.props.item.productColor.front} alt='front'></img>}
      <div className='orderAdmin-addprice'>
      <button  onClick={()=>{this.setState({addPrice:!this.state.addPrice})}} className='orderAdmin-addprice-btn'>הוסף הצעת מחיר</button>
      <div className='orderAdmin-addprice-div' hidden={!this.state.addPrice}>

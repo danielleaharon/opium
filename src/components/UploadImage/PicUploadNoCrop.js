@@ -1,6 +1,5 @@
-import React, { Component, Fragment, useRef } from 'react'
+import React, { Component, Fragment } from 'react'
 import { Form } from 'semantic-ui-react'
-import { connect } from 'react-redux'
 import ReactCrop from 'react-image-crop'
 import 'react-image-crop/dist/ReactCrop.css'
 import './UploadImage.module.css';
@@ -52,12 +51,11 @@ class PicUploadNoCrop extends Component {
 
     handleSubmit = async e => {
         e.preventDefault()
-        const formData = new FormData()
         if (!this.firebase) return;
 
         const uploadedFile = this.state.croppedImage;
         if (!uploadedFile) return;
-        const ImgName = await Math.random().toString(36).substr(2, 10);
+        const ImgName = Math.random().toString(36).substr(2, 10);
 
         const storage = this.firebase.storage();
         const storageRef = storage.ref("ImageUsers");

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 import ResizableRect from 'react-resizable-rotatable-draggable'
 import 'react-dropdown/style.css';
-import 'react-alice-carousel/lib/alice-carousel.css';
 import ImgToolbar2 from '../ImgToolbar/ImgToolbar2';
 
 
@@ -135,7 +134,7 @@ export default class DesignElementImg extends Component {
             //  transform: `rotate(${this.state.rotateAngle}deg)`,
 
             width: this.state.width - 10, height: this.state.width - 10
-          }} src={this.props.item.getData()} className={this.state.imgClip.titel} ></img>
+          }} src={this.props.item.getData()} className={this.state.imgClip.titel}  alt='imgClip'></img>
         </div>
         <div>
           {this.props.drag === this.props.item.getId() ? (
@@ -146,7 +145,6 @@ export default class DesignElementImg extends Component {
                 zIndex: '10',
                 backgroundColor: 'transparent',
                 border: 'none',
-                position: 'absolute',
                 //  height:this.state.widthText/2,
                 top: this.state.top - 10,
               }} onClick={this.delete}><i style={{ fontSize: '20px' }} className="fa fa-times"></i></button>

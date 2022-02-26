@@ -1,14 +1,5 @@
-import React, {Component, Fragment} from 'react';
-import FormControl from '@material-ui/core/FormControl';
+import React, {Component} from 'react';
 
-import { Redirect } from "react-router-dom";
-import MenuItem from '@material-ui/core/MenuItem';
-import Select from '@material-ui/core/Select';
-import Logo from '../../Image/opiumLogo3.png';
-
-import Button from '@material-ui/core/Button';
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
 import {saveAs} from 'file-saver'
 import domtoimage from 'dom-to-image';
 import { Icon } from '@iconify/react';

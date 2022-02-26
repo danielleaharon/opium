@@ -5,7 +5,6 @@
 
 
 .background-anim-dot{
-    /* border-bottom: 2px solid transparent; */
     padding:0 18px ;
     height: 105%;
     position: relative;
@@ -18,7 +17,6 @@ font-size: 25px;
     border: 0.5px solid #8e8e8ec9;
     border-top:none ;
 
-    /* border-bottom: 2px solid rgba(245, 245, 245, 0.856); */
 
 }
 
@@ -26,20 +24,17 @@ font-size: 25px;
     display: flex;
     justify-self: end;
     position: relative;
-    /* bottom: 0; */
-    /* width: 100%; */
-    /* margin-right: 50px; */
+   
     cursor: pointer;
     font-weight: bold;
     font-size: 18px;
     height: 120px;
     visibility: visible;
-    /* margin-top: 23px; */
-    /* background-color: #12121292; */
-    /* padding-bottom: -10px; */
+
     background-color: white;
     border-bottom: #8e8e8ec9 0.5px solid;
 z-index: 10;
+justify-content: center;
     /* transition: all 300ms cubic-bezier(0.075, 0.82, 0.165, 1); */
 
     font-family: 'Varela Round', sans-serif;
@@ -105,10 +100,7 @@ width: 20%;
 
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
-    /* padding-right: 7px;
-    padding-left: 7px; */
-    /* padding-top: 3px;
-    padding-bottom: 2px; */
+
     position: absolute;
     left: 5px;
     top: 0px;
@@ -126,19 +118,19 @@ width: 20%;
     position: relative;
 }
 .menu {
-    display: grid;
-    grid-template-columns:130px auto auto ;
+    /* display: grid;
+    grid-template-columns:130px auto auto ; */
     /* grid-column-gap:185px; */
 
     /* grid-template-rows: repeat(1,100%); */
     /* flex-direction: column;    */
      direction: rtl;
     /* justify-content: right; */
-    padding: 0px 190px;
+    /* padding: 0px 190px; */
 /* align-items: center; */
     /* padding-top: 30px; */
 
-    cursor: pointer;
+    /* cursor: pointer; */
     font-weight: bold;
     font-size: 18px;
     /* color: #02064f; */
@@ -153,12 +145,6 @@ a:link, a:visited {
     text-decoration: none;
     display: inline-block;
   }
-.logo{
-    /* width: 28%; */
-    margin-top: 20px;
-    /* padding-left: 53px;
-    margin-left: 50px; */
-}
 
 .menu-item1 div {
     /* padding: 0 15px; */
@@ -201,8 +187,6 @@ a:link, a:visited {
     height: fit-content;
     position: relative;
 
-    /* background-image:url('../../Image/logopicopti.png') ; */
-    /* background-size: cover; */
 
 
 }
@@ -210,10 +194,7 @@ a:link, a:visited {
     background-color: black;
     color: white;
 }
-#shopCart-icon{
-    /* padding-top: 60px;
-    font-size: 90px; */
-}
+
 #background-cart .dot-nav{
     right: 28px;
     top: 48px;
@@ -278,8 +259,8 @@ font-size: 25px;
  .icon-nav{
      direction: ltr;
      display: flex;
-     margin-top: 35px;
-     height: 100%;
+     /* margin-top: 35px;
+     height: 100%; */
      justify-content: center;
      justify-items: center;
      background-color: transparent;
@@ -322,11 +303,11 @@ font-size: 25px;
  .menu-root{
      direction: rtl;
  }
- #Hamburger{
-    position: absolute;
+ #Hamburger-nav{
+    /* position: absolute;
     top: 25px;
     right: 30px;
-    direction: rtl;
+    direction: rtl; */
     z-index: 35;
 }
 /* .menu {
@@ -341,7 +322,6 @@ font-size: 25px;
 
 
 .menu-item1 a {
-    /* border: 2px solid transparent; */
     border-bottom: 2px solid transparent;
     padding:0 18px ;
     height: 102%;
@@ -349,14 +329,11 @@ font-size: 25px;
     justify-self: center;
     padding-top: 40px;
     position: relative;
-    /* border-bottom: #8e8e8ec9 0.5px solid; */
 
-    /* background-color: #3C5A99; */
     transition:  border 0.3s ease;
   }
   
   .menu-item1 a:hover {
-    /* background-color:#3C5A99; */
     background-color: #F6F6F6;
 
     border-top: 0.5px solid transparent;
@@ -372,12 +349,5 @@ font-size: 25px;
 
     }
   
-    .logo{
-        width: 30%;
-        padding-left: 2px;
-        margin-left: 2px;
-        position: absolute;
-        left: 20px;
-        /* z-index: 10; */
-    }
+ 
 }

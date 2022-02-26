@@ -24,51 +24,38 @@
     
 
 }
-.print{
-    align-items: center;
-    text-align: center;
-    display: grid;
-    max-width: 100%;
-    grid-template-columns: repeat(6,12vw);
-    justify-content: center;
-    width: 100%;
-    /* margin-top: 10px; */
 
-}
 .cube-colors{
-    padding: 12px ;
     font-size: 1rem;
     cursor: pointer;
     color:black;
-    /* height: 100%; */
-    /* display: flex;
-    justify-content: center;
-    align-items: center; */
     border: none;
 }
+.cube-colors:hover{
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;}
  .cube-red{
-     /* padding: 12px; */
+     padding: 12px;
      background-color: rgba(234, 75, 75, 0.757);
 
-     width: 100%;
+     /* width: 100%; */
      font-weight: bold;
  }
  .cube-pink{
-    /* padding: 12px; */
+    padding: 12px;
     background-color: rgba(199, 97, 173, 0.757);
-    width: 100%;
+    /* width: 100%; */
     font-weight: bold;
 }
 .cube-purple{
-    /* padding: 12px ; */
+    padding: 12px ;
     background-color: rgba(155, 99, 188, 0.757);
-    width: 100%;
+    /* width: 100%; */
     font-weight: bold;
 }
 .cube-orange{
-    /* padding: 12px; */
+    padding: 12px;
     background-color: rgba(232, 178, 103, 0.757);
-    width: 100%;
+    /* width: 100%; */
     font-weight: bold;
     border-top-right-radius:4px ;
     border-bottom-right-radius:4px ;
@@ -76,16 +63,16 @@
 .cube-green{
     /* padding: 12px ; */
     background-color: rgba(140, 207, 95, 0.757);
-    width: 100%;
+    /* width: 100%; */
     font-weight: bold;
     border-top-left-radius:4px ;
     border-bottom-left-radius:4px ;
 
 }
 .cube-blue{
-    /* padding: 12px ; */
+    padding: 12px ;
     background-color: rgba(94, 148, 210, 0.757);
-    width: 100%;
+    /* width: 100%; */
     font-weight: bold;
 }
 .cube-purple_d{
@@ -95,7 +82,7 @@
     border-radius: 3px;
     border: 2px  rgba(155, 99, 188, 0.757) solid ;
     /* background-color: rgba(94, 148, 210, 0.757); */
-    width: 80%;
+    /* width: 80%; */
     justify-content: center;
     justify-items: center;
     /* margin: 10px; */
@@ -113,6 +100,11 @@
     font-size: 16px;
  
 }
+#shadow-cube{
+    height: 100%;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+
+}
 .cube-red_d{
     align-items: center;
     text-align: center;
@@ -120,15 +112,17 @@
     border-radius: 3px;
     border: 2px   rgba(234, 75, 75, 0.757) solid ;
     /* background-color: rgba(94, 148, 210, 0.757); */
-    width: 80%;
+    /* width: 80%; */
     justify-content: center;
     justify-items: center;
     /* margin: 10px; */
     font-weight: bold;
     /* margin-right: 25%; */
     position: relative;
+    box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
+
 }
-.span_red{
+    .span_red{
     color: rgba(234, 75, 75, 0.757) ;
     font-weight: bold;
 }
@@ -145,12 +139,12 @@
     border-radius: 3px;
     border: 2px  rgba(199, 97, 173, 0.757) solid ;
     /* background-color: rgba(94, 148, 210, 0.757); */
-    width: 80%;
+    /* width: 80%; */
     justify-content: center;
     justify-items: center;
     /* margin: 10px; */
     font-weight: bold;
-    /* margin-right: 25%; */
+    box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
     position: relative;
 }
 .span_pink{
@@ -170,7 +164,7 @@
     border-radius: 3px;
     border: 2px  rgba(232, 178, 103, 0.757) solid ;
     /* background-color: rgba(94, 148, 210, 0.757); */
-    width: 80%;
+    box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
     justify-content: center;
     justify-items: center;
     /* margin: 10px; */
@@ -191,10 +185,10 @@
 .cube-blue_d{
     align-items: center;
     text-align: center;
-    padding: 12px;
+    padding: 12px ;
     border-radius: 3px;
     border: 2px  rgba(94, 148, 210, 0.757) solid ;
-    width: 80%;
+    box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
     justify-content: center;
     justify-items: center;
     font-weight: bold;
@@ -235,7 +229,7 @@
     .cube-colors{
 
         font-size: 12px;
-        width: 100%;
+        /* width: 100%; */
 
     }
     .cube-pink{
@@ -250,7 +244,7 @@
     .cube-blue_d{
    
         /* background-color: rgba(94, 148, 210, 0.757); */
-        width: 95%;
+        /* width: 95%; */
         margin-right: 0%;
         margin: 2%;
         font-size: 12px;
@@ -258,7 +252,7 @@
     .cube-purple_d{
    
         /* background-color: rgba(94, 148, 210, 0.757); */
-        width: 95%;
+        /* width: 95%; */
         margin-right: 0%;
         margin: 2%;
         font-size: 12px;
@@ -266,7 +260,7 @@
     .cube-pink_d{
    
         /* background-color: rgba(94, 148, 210, 0.757); */
-        width: 95%;
+        /* width: 95%; */
         margin-right: 0%;
         margin: 2%;
         font-size: 12px;
@@ -274,7 +268,7 @@
     .cube-red_d{
    
         /* background-color: rgba(94, 148, 210, 0.757); */
-        width: 95%;
+        /* width: 95%; */
         margin-right: 0%;
         margin: 2%;
         font-size: 12px;
@@ -282,7 +276,7 @@
     .cube-orange_d{
    
         /* background-color: rgba(94, 148, 210, 0.757); */
-        width: 95%;
+        /* width: 95%; */
         margin-right: 0%;
         margin: 2%;
         font-size: 12px;

@@ -3,7 +3,6 @@ import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
 import Input from '@material-ui/core/Input';
 import FormHelperText from '@material-ui/core/FormHelperText';
-import MenuItem from '@material-ui/core/MenuItem';
 import {isAuth} from '../../../actions/auth';
 import axios from 'axios';
 
@@ -80,7 +79,7 @@ this.handelUpdateV=this.handelUpdateV.bind(this);
     console.log('error')
   return
   }
-  this.props.updateSubcategoryList(res.data.subcategoryList,true)
+  this.props.updateSubcategoryList(res.data.subcategoryList)
   this.setState({update:false});
 
 

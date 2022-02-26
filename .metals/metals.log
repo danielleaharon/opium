@@ -8,3 +8,4 @@ INFO: Unsupported notification method: $/setTrace
 INFO: Unsupported notification method: $/setTrace
 דצמ׳ 18, 2021 3:50:35 אחה״צ org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
 INFO: Unsupported notification method: $/setTrace
+[0m2022.02.18 11:20:03 INFO  shutting down Metals[0m

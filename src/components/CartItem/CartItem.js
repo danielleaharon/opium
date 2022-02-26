@@ -1,17 +1,15 @@
-import React, {Component, Fragment} from 'react';
+import React, {Component} from 'react';
 import FormControl from '@material-ui/core/FormControl';
 
 import { Redirect } from "react-router-dom";
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
-import Logo from '../../Image/opiumLogo3.png';
 
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogTitle from '@material-ui/core/DialogTitle';
+
 import Slide from '@material-ui/core/Slide';
 import './CartItem.css';
 export default class CartItem extends Component {
@@ -124,7 +122,7 @@ this.setState({openPreview:false})
       {/* <img src={this.props.item.imgItem.front}></img>
 
     <img src={this.props.item.design.url}></img> */}
-    {this.props.item.design.url.front!==''?  <div className='cart-preview-imgs' > <button onClick={()=>this.setState({openPreview:true})} id='cart-preview-big'></button>  <img src={this.props.item.design.url.front}/> <img src={this.props.item.design.url.back}></img></div>:      <img className='cart-img' src={this.props.item.imgItem.front}></img>}
+    {this.props.item.design.url.front!==''?  <div className='cart-preview-imgs' > <button onClick={()=>this.setState({openPreview:true})} id='cart-preview-big'></button>  <img src={this.props.item.design.url.front} alt='front'/> <img src={this.props.item.design.url.back} alt='back'></img></div>:      <img className='cart-img' src={this.props.item.imgItem.front} alt='front'></img>}
 <button onClick={()=>this.props.deleteFromCart(this.props.item)} className='cartItem-delete'><span className="iconify" data-icon="fluent:delete-48-filled"></span></button>
       </div>
       <hr/>
@@ -136,7 +134,7 @@ this.setState({openPreview:false})
       <div className='cart-item-mobile'>  
       {this.openDesignPreview()} 
       <div className='cartItem-mobile-right'>
-      {this.props.item.design.url.front!==''?  <div className='cart-preview-imgs' onClick={()=>this.setState({openPreview:true})} >   <img src={this.props.item.design.url.front}/> <img src={this.props.item.design.url.back}></img></div>:      <img className='cart-img' src={this.props.item.imgItem.front}></img>}
+      {this.props.item.design.url.front!==''?  <div className='cart-preview-imgs' onClick={()=>this.setState({openPreview:true})} >   <img src={this.props.item.design.url.front} alt='front'/> <img src={this.props.item.design.url.back} alt='back'></img></div>:      <img className='cart-img' src={this.props.item.imgItem.front} alt='front'></img>}
       <p> ₪ {this.props.item.item.price}</p>
 
       </div>

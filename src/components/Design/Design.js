@@ -1,21 +1,14 @@
-import React, { Component, Fragment } from 'react';
-import BackMan from '../../Image/Design/men_back.png'
-import FrontMan from '../../Image/Design/men_front.png'
+import React, { Component } from 'react';
+
 import getFirebase from "../../Firebase";
 import { TextField } from "@material-ui/core";
 import Upload from '../UploadImage/PicUploadNoCrop';
 import axios from 'axios';
 import Config from '../../config/config';
-import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
 import 'react-alice-carousel/lib/alice-carousel.css';
-import BackWomen from '../../Image/Design/women_back.png';
-import FrontWomen from '../../Image/Design/women_front.png';
-import BackCup from '../../Image/Design/cup_back.png';
-import FrontCup from '../../Image/Design/cup_front.png';
-import FrontHat from '../../Image/Design/hat_front.png';
+
 import LogoPic from '../../Image/logoPic.png';
-import BackManBlue from '../../Image/Design/men_back_blue.png';
 import { Redirect } from 'react-router-dom';
 import ElementText from '../DesignElementText/DesignElementText';
 import ElementTextItem from '../DesignElementText/ElementText';
@@ -39,13 +32,8 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import Slide from '@material-ui/core/Slide';
 import { saveAs } from 'file-saver';
 import domtoimage from 'dom-to-image';
-import * as htmlToImage from 'html-to-image';
-import { toPng, toJpeg, toBlob, toPixelData, toSvg } from 'html-to-image';
-import html2canvas from 'html2canvas'
-
 import Logo from '../../Image/opiumLogo3.png';
 import Icons from '../Icons/Icons';
-import { Icon } from '@iconify/react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 
 
@@ -223,7 +211,7 @@ export default class Design extends Component {
     const arrAllB=[];
 
     var zIndex=1;
-    design.arrays.ImageArrayFront.map((item,index)=>{
+    design.arrays.ImageArrayFront.forEach((item,index)=>{
 
       const itemImg = new ElementImgItem(item);
 if(item.zIndex>zIndex)
@@ -232,7 +220,7 @@ zIndex=item.zIndex
        arrAllF.push(itemImg)
     
     })
-    design.arrays.ImageArrayBack.map((item,index)=>{
+    design.arrays.ImageArrayBack.forEach((item,index)=>{
       if(item.zIndex>zIndex)
       zIndex=item.zIndex
       const itemImg = new ElementImgItem(item);
@@ -244,7 +232,7 @@ zIndex=item.zIndex
     this.setState({ ImageArrayBack: arrImgB })
     this.setState({ ImageArrayFront: arrImgF })
 
-    design.arrays.ShapeArrayFront.map((item,index)=>{
+    design.arrays.ShapeArrayFront.forEach((item,index)=>{
 
       const itemShape = new ElementShapeItem(item);
       if(item.zIndex>zIndex)
@@ -253,7 +241,7 @@ zIndex=item.zIndex
        arrAllF.push(itemShape)
     
     })
-    design.arrays.ShapeArrayBack.map((item,index)=>{
+    design.arrays.ShapeArrayBack.forEach((item,index)=>{
 
       const itemShape = new ElementShapeItem(item);
       if(item.zIndex>zIndex)
@@ -265,7 +253,7 @@ zIndex=item.zIndex
     this.setState({ ShapeArrayBack: arrShapeB })
     this.setState({ ShapeArrayFront: arrShapeF })
 
-design.arrays.itemArrayFront.map((item,index)=>{
+design.arrays.itemArrayFront.forEach((item,index)=>{
 
   const itemText = new ElementTextItem(item);
   if(item.zIndex>zIndex)
@@ -274,7 +262,7 @@ zIndex=item.zIndex
    arrAllF.push(itemText)
 
 })
-design.arrays.itemArrayBack.map((item,index)=>{
+design.arrays.itemArrayBack.forEach((item,index)=>{
 
   const itemText = new ElementTextItem(item);
   if(item.zIndex>zIndex)
@@ -582,18 +570,18 @@ this.setState({zIndex:zIndex})
     if (this.state.front) {
       const itemArr = this.state.itemArrayFront;
       const items = this.state.AllItemsArrayFront;
-
+console.log(Size)
       const size = Size;
       const data = 'אופיום הלבשה';
       const zIndex = this.getZIndex();
       const id = zIndex + '';
       const bold = ''
       const Italic = 'normal'
-      const borderColor = ''
-      const underline = 'none'
-      const textColor='black'
-      const top=115
-      const left= 170
+      const borderColor = '';
+      const underline = 'none';
+      const textColor='black';
+      const top=115;
+      const left= 170;
       const rotateAngle= 0;
       const backgroundColor = ''
       const activeFontFamily = "Bona Nova"
@@ -667,13 +655,17 @@ this.setState({zIndex:zIndex})
     }
   }
   deleteImg(id) {
+    var itemArr;
+
+    var index ;
+    var indexT ;
     if (this.state.front) {
 
-      var itemArr = this.state.ImageArrayFront;
+       itemArr = this.state.ImageArrayFront;
       const items = this.state.AllItemsArrayFront;
 
-      var index = itemArr.findIndex((a) => a.id == id)
-      var indexT = items.findIndex((a) => a.id == id)
+       index = itemArr.findIndex((a) => a.id===id)
+       indexT = items.findIndex((a) => a.id===id)
 
       itemArr.splice(index, 1);
       items.splice(indexT, 1);
@@ -683,11 +675,11 @@ this.setState({zIndex:zIndex})
         this.setState({ editNow: 'text' })
       }
     } else {
-      var itemArr = this.state.ImageArrayBack;
+       itemArr = this.state.ImageArrayBack;
       const items = this.state.AllItemsArrayBack;
 
-      var index = itemArr.findIndex((a) => a.id == id)
-      var indexT = items.findIndex((a) => a.id == id)
+       index = itemArr.findIndex((a) => a.id===id)
+       indexT = items.findIndex((a) => a.id===id)
 
       itemArr.splice(index, 1);
       items.splice(indexT, 1);
@@ -699,13 +691,17 @@ this.setState({zIndex:zIndex})
     }
   }
   deleteText(id) {
+    var itemArr;
+
+    var index ;
+    var indexT ;
     if (this.state.front) {
 
-      const itemArr = this.state.itemArrayFront;
+       itemArr = this.state.itemArrayFront;
       const items = this.state.AllItemsArrayFront;
 
-      const index = itemArr.findIndex((a) => a.getId() === id)
-      const indexT = items.findIndex((a) => a.getId() === id)
+       index = itemArr.findIndex((a) => a.getId() === id)
+       indexT = items.findIndex((a) => a.getId() === id)
 
 
       if (index !== -1)
@@ -721,11 +717,11 @@ this.setState({zIndex:zIndex})
       }
     } else {
 
-      const itemArr = this.state.itemArrayBack;
+       itemArr = this.state.itemArrayBack;
       const items = this.state.AllItemsArrayBack;
 
-      const index = itemArr.findIndex((a) => a.getId() === id)
-      const indexT = items.findIndex((a) => a.getId() === id)
+       index = itemArr.findIndex((a) => a.getId() === id)
+       indexT = items.findIndex((a) => a.getId() === id)
 
 
       if (index !== -1)
@@ -742,13 +738,16 @@ this.setState({zIndex:zIndex})
     }
   }
   async deleteShape(id) {
+    var itemArr;
 
+    var index ;
+    var indexT ;
     if (this.state.front) {
-      var itemArr = this.state.ShapeArrayFront;
+       itemArr = this.state.ShapeArrayFront;
       const items = this.state.AllItemsArrayFront;
 
-      var index = itemArr.findIndex((a) => a.id == id)
-      var indexT = items.findIndex((a) => a.id == id)
+       index = itemArr.findIndex((a) => a.id===id)
+       indexT = items.findIndex((a) => a.id===id)
 
       itemArr.splice(index, 1);
       items.splice(indexT, 1);
@@ -759,11 +758,11 @@ this.setState({zIndex:zIndex})
         this.setState({ editNow: 'text' })
       }
     } else {
-      var itemArr = this.state.ShapeArrayBack;
+       itemArr = this.state.ShapeArrayBack;
       const items = this.state.AllItemsArrayBack;
 
-      var index = itemArr.findIndex((a) => a.id == id)
-      var indexT = items.findIndex((a) => a.id == id)
+       index = itemArr.findIndex((a) => a.id===id);
+       indexT = items.findIndex((a) => a.id===id);
 
       itemArr.splice(index, 1);
       items.splice(indexT, 1);
@@ -859,7 +858,7 @@ this.setState({zIndex:zIndex})
   }
   sendMailDesign() {
     // if (this.cheackValid()) return;
-    while (this.state.url == '');
+    while (this.state.url==='');
     const postData = {
       name: this.state.dName,
       phonenumber: this.state.dPhone,
@@ -904,21 +903,21 @@ this.setState({zIndex:zIndex})
     this.clearValid();
     var error = false;
 
-    if (this.state.dName == '') {
+    if (this.state.dName==='') {
       this.setState({ dNameE: true })
       error = true;
     }
-    if (this.state.dPhone == '') {
+    if (this.state.dPhone==='') {
       this.setState({ dPhoneE: true })
       this.setState({ dPhoneEmsg: 'חסר מספר טלפון' })
       error = true;
     }
-    else if (this.state.dPhone.length != 10) {
+    else if (this.state.dPhone.length !== 10) {
       this.setState({ dPhoneE: true })
       this.setState({ dPhoneEmsg: ' מספר טלפון לא תקין' })
       error = true;
     }
-    if (this.state.dMail == '') {
+    if (this.state.dMail==='') {
       this.setState({ dMailE: true })
       this.setState({ dMailEmsg: ' חסר מייל ' })
 
@@ -930,7 +929,7 @@ this.setState({zIndex:zIndex})
 
       error = true;
     }
-    if (this.state.dCount == '') {
+    if (this.state.dCount==='') {
       this.setState({ dCountE: true })
       error = true;
     }
@@ -951,7 +950,7 @@ this.setState({zIndex:zIndex})
           aria-describedby="alert-dialog-slide-description"
         >
           <DialogTitle className="send-dialog-design-title" ><p >שליחה להצעת מחיר</p></DialogTitle>
-          <img className='dialog-design-img' src={Logo} />
+          <img className='dialog-design-img' src={Logo} alt='logo' />
           <DialogContent id='send-dailog-context' >
             <DialogContentText id='send-dialog-design-description'>
               מוזמנים לשלוח לנו את העיצוב שלכם, אנחנו ניצור אייתכם קשר לגבי הצעת מחיר. תודה צוות אופיום.
@@ -1048,7 +1047,7 @@ this.setState({zIndex:zIndex})
           aria-describedby="alert-dialog-slide-description"
         >
           <DialogTitle className="send-dialog-design-title" ><p > סיום עיצוב מוצר</p></DialogTitle>
-          <img className='dialog-design-img' src={Logo} />
+          <img className='dialog-design-img' src={Logo} alt='logo' />
           <DialogContent id='preview-dailog-context' >
             <DialogContentText id='send-dialog-design-description'>
 העיצוב יתווסף למוצר בסל הקניות, שם ניתן לשלוח לקבלת הצעת מחיר
@@ -1108,7 +1107,7 @@ this.setState({zIndex:zIndex})
       // <div className="loader loading-design">Loading...</div>
       <div className='loading-design'hidden={!this.state.loading} >
         <p  className='loading-design-p'>מעדכן.. </p>
-        <img  hidden={!this.state.loading} className='loading-design-img' src={LogoPic}></img>
+        <img  hidden={!this.state.loading} className='loading-design-img' src={LogoPic} alt='logo loading' ></img>
 
       </div>
     )
@@ -1155,13 +1154,12 @@ this.setState({zIndex:zIndex})
           </div>
         </div>
         {/* <h3><b>עצב בעצמך</b></h3> */}
-        <div className='Design-cube' style={{maxWidth:this.props.width+'px'}}>
+        <div className='Design-cube  row px-0 mx-0' style={{maxWidth:this.props.width+'px'}}>
 
 
 
-          <div className='Design-cube1' >
-            <div className='buttons'>
-
+          <div className='Design-cube1 col-5 px-0' >
+            <div className='buttons col-4 pl-0 '>
 
               <button className={this.state.editNow === 'text' ? ('buttonEditPick') : 'buttonEdit'} onClick={() => this.setState({ editNow: 'text' })}> <i style={{ fontSize: '27px' }} className="fa fa-font"></i> <br /> הוסף טקסט  </button><br />
               <button className={this.state.editNow === 'img' ? ('buttonEditPick') : 'buttonEdit'} onClick={() => this.setState({ editNow: 'img' })}> <i style={{ fontSize: '27px' }} className="fa fa-cloud-upload"></i> <br />הוסף תמונה</button><br />
@@ -1175,15 +1173,15 @@ this.setState({zIndex:zIndex})
             </div>
             {/* <div> */}
               {this.state.editNow === 'text' ? (
-                <div className='edits'  id='editsText'>
+                <div className='edits col-8'  id='editsText'>
                   <div className='div-info'>
                     <button id='info'><span className="iconify" data-icon="clarity:info-solid" data-inline="false"></span></button>
                     <p className='info'>בחר כותרת, לכל טקסט יפתח לך סרגל כלים שתוכל בעזרתו לשנות את הצבע, הגופן, גודל ומלל</p>
                   </div>
                   <p className='titleEdit'>לחץ כדי להוסיף טקסט</p>
-                  <h1 className='titleEdit' id='h1-title' onClick={() => this.addText(300)}>הוסף כותרת</h1>
-                  <h3 className='titleEdit' onClick={() => this.addText(180)}>הוסף טקסט בינוני</h3>
-                  <p className='titleEdit' onClick={() => this.addText(100)}>הוסף טקסט קטן</p>
+                  <h1 className='titleEdit' id='h1-title' onClick={() => this.addText(84)}>הוסף כותרת</h1>
+                  <h3 className='titleEdit' onClick={() => this.addText(50)}>הוסף טקסט בינוני</h3>
+                  <p className='titleEdit' onClick={() => this.addText(30)}>הוסף טקסט קטן</p>
 
 
                 </div>
@@ -1287,20 +1285,18 @@ this.setState({zIndex:zIndex})
               <br />
             {/* </div> */}
           </div>
-          <div className='Design-cube2'  id='Design-cube2' style={{maxWidth:this.props.width, maxHeight:this.props.height,height:this.props.height+'px', backgroundColor:this.state.downloadDesign?'transparent':'white'}} >
-            <img hidden={this.state.downloadDesign} id='logo-down' src={Logo} alt='logo' />
+          <div className='Design-cube22 col-7  px-0'  id='Design-cube2' style={{maxWidth:this.props.width, maxHeight:this.props.height,height:this.props.height+'px', backgroundColor:this.state.downloadDesign?'transparent':'white'}} >
+           <div className='row  justify-content-between'>
+           <div className='col-3 order-1 '>
+           {this.props.productDesign.imgItem.back !== '' && !this.state.download ? (<button className='buttonEdit  col-5 ml-2 mt-2' id='back-front1' onClick={this.chengeShirt}>{this.state.front ? (' עצב אחורה ') : (' עצב קדימה ')}</button>) : ''}
 
-
-
-            {/* fontSize:this.state.fontSize+'px' */}
-            {/* <button className='buttonEdit' id='back-front'onClick={this.chengeShirt}>{this.state.front?('אחורה'):('קדימה')}</button> */}
-            {this.props.productDesign.imgItem.back !== '' && !this.state.download ? (<button className='buttonEdit' id='back-front' onClick={this.chengeShirt}>{this.state.front ? (' עצב אחורה ') : (' עצב קדימה ')}</button>) : ''}
-
+            <img className='col-5 mt-3 ml-1 img-fluid ' hidden={this.state.downloadDesign} id='logo-down' src={Logo} alt='logo' />
+</div>
             {this.state.textToolbar}
-            <div className='Design-cube2-imgelemnt' >
-            <img hidden={this.state.downloadDesign} draggable={false} onClick={() => { this.datgnow(0) }} className='shirt' id='shirt' src={this.state.front ? (this.props.productDesign.imgItem.front) : (this.props.productDesign.imgItem.back)}></img>
+            <div className='Design-cube2-imgelemnt col-9' >
+            <img hidden={this.state.downloadDesign} draggable={false} onClick={() => { this.datgnow(0) }} className='shirt' id='shirt' src={this.state.front ? (this.props.productDesign.imgItem.front) : (this.props.productDesign.imgItem.back)} alt='shirt'></img>
             {/* <img draggable={false} onClick={() => { this.datgnow(0) }} className='shirt' id='shirt' src={this.state.d}></img> */}
-
+<div className='overflow-shirt'>
 
 
             {(this.state.front ? this.state.itemArrayFront : this.state.itemArrayBack).map((item, index) => {
@@ -1321,9 +1317,11 @@ this.setState({zIndex:zIndex})
             </div>
             </div>
 
+            </div>
+            </div>
+            </div>
           {/* </div> */}
         </div>
-      </div>
     );
   }
 }

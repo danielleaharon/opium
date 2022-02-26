@@ -447,7 +447,7 @@ this.setState({openMenu:!this.state.openMenu})
 }
 
 getMenu() {
-if (this.state.menuStatus == 0) {
+if (this.state.menuStatus===0) {
     return null;
 }
 return <ProductMobileMenu handleClick={this.handleClick} setMenuSelect={this.setMenuSelect} options={this.getMenuOptions()}  menuStatus={this.state.menuStatus}

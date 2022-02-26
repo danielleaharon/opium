@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 
 import getFirebase from "../../Firebase";
 import { TextField } from "@material-ui/core";
@@ -212,7 +212,7 @@ export default class Design extends Component {
     const arrAllB = [];
 
     var zIndex = 1;
-    design.arrays.ImageArrayFront.map((item, index) => {
+    design.arrays.ImageArrayFront.forEach((item, index) => {
 
       const itemImg = new ElementImgItem(item);
       if (item.zIndex > zIndex)
@@ -221,7 +221,7 @@ export default class Design extends Component {
       arrAllF.push(itemImg)
 
     })
-    design.arrays.ImageArrayBack.map((item, index) => {
+    design.arrays.ImageArrayBack.forEach((item, index) => {
       if (item.zIndex > zIndex)
         zIndex = item.zIndex
       const itemImg = new ElementImgItem(item);
@@ -233,7 +233,7 @@ export default class Design extends Component {
     this.setState({ ImageArrayBack: arrImgB })
     this.setState({ ImageArrayFront: arrImgF })
 
-    design.arrays.ShapeArrayFront.map((item, index) => {
+    design.arrays.ShapeArrayFront.forEach((item, index) => {
 
       const itemShape = new ElementShapeItem(item);
       if (item.zIndex > zIndex)
@@ -242,7 +242,7 @@ export default class Design extends Component {
       arrAllF.push(itemShape)
 
     })
-    design.arrays.ShapeArrayBack.map((item, index) => {
+    design.arrays.ShapeArrayBack.forEach((item, index) => {
 
       const itemShape = new ElementShapeItem(item);
       if (item.zIndex > zIndex)
@@ -254,7 +254,7 @@ export default class Design extends Component {
     this.setState({ ShapeArrayBack: arrShapeB })
     this.setState({ ShapeArrayFront: arrShapeF })
 
-    design.arrays.itemArrayFront.map((item, index) => {
+    design.arrays.itemArrayFront.forEach((item, index) => {
 
       const itemText = new ElementTextItem(item);
       if (item.zIndex > zIndex)
@@ -263,7 +263,7 @@ export default class Design extends Component {
       arrAllF.push(itemText)
 
     })
-    design.arrays.itemArrayBack.map((item, index) => {
+    design.arrays.itemArrayBack.forEach((item, index) => {
 
       const itemText = new ElementTextItem(item);
       if (item.zIndex > zIndex)
@@ -683,13 +683,17 @@ export default class Design extends Component {
     }
   }
   deleteImg(id) {
+    var itemArr;
+
+    var index ;
+    var indexT ;
     if (this.state.front) {
 
-      var itemArr = this.state.ImageArrayFront;
+       itemArr = this.state.ImageArrayFront;
       const items = this.state.AllItemsArrayFront;
 
-      var index = itemArr.findIndex((a) => a.id == id)
-      var indexT = items.findIndex((a) => a.id == id)
+       index = itemArr.findIndex((a) => a.id===id)
+       indexT = items.findIndex((a) => a.id===id)
 
       itemArr.splice(index, 1);
       items.splice(indexT, 1);
@@ -699,11 +703,11 @@ export default class Design extends Component {
         this.setState({ editNow: 'text' })
       }
     } else {
-      var itemArr = this.state.ImageArrayBack;
+       itemArr = this.state.ImageArrayBack;
       const items = this.state.AllItemsArrayBack;
 
-      var index = itemArr.findIndex((a) => a.id == id)
-      var indexT = items.findIndex((a) => a.id == id)
+       index = itemArr.findIndex((a) => a.id===id)
+       indexT = items.findIndex((a) => a.id===id)
 
       itemArr.splice(index, 1);
       items.splice(indexT, 1);
@@ -715,13 +719,17 @@ export default class Design extends Component {
     }
   }
   deleteText(id) {
+    var itemArr;
+
+    var index ;
+    var indexT ;
     if (this.state.front) {
 
-      const itemArr = this.state.itemArrayFront;
+       itemArr = this.state.itemArrayFront;
       const items = this.state.AllItemsArrayFront;
 
-      const index = itemArr.findIndex((a) => a.getId() === id)
-      const indexT = items.findIndex((a) => a.getId() === id)
+       index = itemArr.findIndex((a) => a.getId() === id)
+       indexT = items.findIndex((a) => a.getId() === id)
 
 
       if (index !== -1)
@@ -737,11 +745,11 @@ export default class Design extends Component {
       }
     } else {
 
-      const itemArr = this.state.itemArrayBack;
+       itemArr = this.state.itemArrayBack;
       const items = this.state.AllItemsArrayBack;
 
-      const index = itemArr.findIndex((a) => a.getId() === id)
-      const indexT = items.findIndex((a) => a.getId() === id)
+       index = itemArr.findIndex((a) => a.getId() === id)
+       indexT = items.findIndex((a) => a.getId() === id)
 
 
       if (index !== -1)
@@ -758,13 +766,16 @@ export default class Design extends Component {
     }
   }
   async deleteShape(id) {
+    var itemArr;
 
+    var index ;
+    var indexT ;
     if (this.state.front) {
-      var itemArr = this.state.ShapeArrayFront;
+       itemArr = this.state.ShapeArrayFront;
       const items = this.state.AllItemsArrayFront;
 
-      var index = itemArr.findIndex((a) => a.id == id)
-      var indexT = items.findIndex((a) => a.id == id)
+       index = itemArr.findIndex((a) => a.id===id)
+       indexT = items.findIndex((a) => a.id===id)
 
       itemArr.splice(index, 1);
       items.splice(indexT, 1);
@@ -775,11 +786,11 @@ export default class Design extends Component {
         this.setState({ editNow: 'text' })
       }
     } else {
-      var itemArr = this.state.ShapeArrayBack;
+       itemArr = this.state.ShapeArrayBack;
       const items = this.state.AllItemsArrayBack;
 
-      var index = itemArr.findIndex((a) => a.id == id)
-      var indexT = items.findIndex((a) => a.id == id)
+       index = itemArr.findIndex((a) => a.id===id)
+       indexT = items.findIndex((a) => a.id===id)
 
       itemArr.splice(index, 1);
       items.splice(indexT, 1);
@@ -875,7 +886,7 @@ export default class Design extends Component {
   }
   sendMailDesign() {
     // if (this.cheackValid()) return;
-    while (this.state.url == '');
+    while (this.state.url==='');
     const postData = {
       name: this.state.dName,
       phonenumber: this.state.dPhone,
@@ -920,21 +931,21 @@ export default class Design extends Component {
     this.clearValid();
     var error = false;
 
-    if (this.state.dName == '') {
+    if (this.state.dName==='') {
       this.setState({ dNameE: true })
       error = true;
     }
-    if (this.state.dPhone == '') {
+    if (this.state.dPhone==='') {
       this.setState({ dPhoneE: true })
       this.setState({ dPhoneEmsg: 'חסר מספר טלפון' })
       error = true;
     }
-    else if (this.state.dPhone.length != 10) {
+    else if (this.state.dPhone.length !== 10) {
       this.setState({ dPhoneE: true })
       this.setState({ dPhoneEmsg: ' מספר טלפון לא תקין' })
       error = true;
     }
-    if (this.state.dMail == '') {
+    if (this.state.dMail==='') {
       this.setState({ dMailE: true })
       this.setState({ dMailEmsg: ' חסר מייל ' })
 
@@ -946,7 +957,7 @@ export default class Design extends Component {
 
       error = true;
     }
-    if (this.state.dCount == '') {
+    if (this.state.dCount==='') {
       this.setState({ dCountE: true })
       error = true;
     }
@@ -967,7 +978,7 @@ export default class Design extends Component {
           aria-describedby="alert-dialog-slide-description"
         >
           <DialogTitle className="send-dialog-design-title" ><p >שליחה להצעת מחיר</p></DialogTitle>
-          <img className='dialog-design-img' src={Logo} />
+          <img className='dialog-design-img' src={Logo} alt='logo' />
           <DialogContent id='send-dailog-context' >
             <DialogContentText id='send-dialog-design-description'>
               מוזמנים לשלוח לנו את העיצוב שלכם, אנחנו ניצור אייתכם קשר לגבי הצעת מחיר. תודה צוות אופיום.
@@ -1065,7 +1076,7 @@ export default class Design extends Component {
           aria-describedby="alert-dialog-slide-description"
         >
           <DialogTitle className="send-dialog-design-title" ><p > סיום עיצוב מוצר</p></DialogTitle>
-          <img className='dialog-design-img' src={Logo} />
+          <img className='dialog-design-img' src={Logo}  alt='logo'/>
           <DialogContent id='preview-dailog-context' >
             <DialogContentText id='send-dialog-design-description'>
               העיצוב יתווסף למוצר בסל הקניות, שם ניתן לשלוח לקבלת הצעת מחיר
@@ -1125,7 +1136,7 @@ export default class Design extends Component {
       // <div className="loader loading-design">Loading...</div>
       <div className='loading-design' hidden={!this.state.loading} >
         <p className='loading-design-p'>מעדכן.. </p>
-        <img hidden={!this.state.loading} className='loading-design-img' src={LogoPic}></img>
+        <img hidden={!this.state.loading} className='loading-design-img' src={LogoPic} alt='logo loading'></img>
 
       </div>
     )
@@ -1196,9 +1207,9 @@ export default class Design extends Component {
                   <p className='info'>בחר כותרת, לכל טקסט יפתח לך סרגל כלים שתוכל בעזרתו לשנות את הצבע, הגופן, גודל ומלל</p>
                 </div>
                 <p className='titleEdit'>לחץ כדי להוסיף טקסט</p>
-                <h1 className='titleEdit' id='h1-title' onClick={() => {this.addText(300); this.setState({ openEdit: !this.state.openEdit })}}>הוסף כותרת</h1>
-                <h3 className='titleEdit' onClick={() => {this.addText(180); this.setState({ openEdit: !this.state.openEdit })}}>הוסף טקסט בינוני</h3>
-                <p className='titleEdit' onClick={() => {this.addText(100);this.setState({ openEdit: !this.state.openEdit })}}>הוסף טקסט קטן</p>
+                <h1 className='titleEdit' id='h1-title' onClick={() => {this.addText(84); this.setState({ openEdit: !this.state.openEdit })}}>הוסף כותרת</h1>
+                <h3 className='titleEdit' onClick={() => {this.addText(50); this.setState({ openEdit: !this.state.openEdit })}}>הוסף טקסט בינוני</h3>
+                <p className='titleEdit' onClick={() => {this.addText(30);this.setState({ openEdit: !this.state.openEdit })}}>הוסף טקסט קטן</p>
 
               </div>
 
@@ -1306,7 +1317,7 @@ export default class Design extends Component {
           {this.props.productDesign.imgItem.back !== '' && !this.state.download ? (<button className='buttonEdit' id='back-front' onClick={this.chengeShirt}>{this.state.front ? ('אחורה') : ('קדימה')}</button>) : ''}
 
 
-          <img hidden={this.state.downloadDesign} draggable={false} onClick={() => { this.datgnow(0) }} className='shirt-mobile' id='shirt' src={this.state.front ? (this.props.productDesign.imgItem.front) : (this.props.productDesign.imgItem.back)}></img>
+          <img hidden={this.state.downloadDesign} draggable={false} onClick={() => { this.datgnow(0) }} className='shirt-mobile' id='shirt' src={this.state.front ? (this.props.productDesign.imgItem.front) : (this.props.productDesign.imgItem.back)} alt='shirt'></img>
 
 
 

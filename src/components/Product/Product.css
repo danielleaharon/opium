@@ -1,28 +1,31 @@
 .Product-p{
 
-    padding-top: 60px;
+    /* padding-top: 60px;
      font-family: 'Varela Round', sans-serif;
 display: flex;
-/* width: 30%; */
 align-items: center;
 justify-content: center;
 direction: rtl;
-width: 100%;
+width: 100%; */
 
 
  
      
  }
- .Product-t{
+ .Product-row{
 
-    padding-top: 30px;
+    padding-top: 60px;
      font-family: 'Varela Round', sans-serif;
      align-items: center;
      text-align: center;
      direction: rtl;
 color: black;
+max-width: 100%;
      background-color: rgba(245, 245, 245, 0.856);
-     width: 100%;
+     /* width: 100%; */
+     /* gap:20px ; */
+     /* margin-right: 15%; */
+
 
  
  
@@ -147,11 +150,12 @@ color: black;
 }
 .product-dialog-details-txt{
     direction: rtl;
-    padding-right: 20px;
+    /* padding-right: 20px; */
     /* padding-left: 50px; */
-    width: 100%;
+    /* width: 100%; */
     /* width: 100%; */
     background-color: whitesmoke;
+    position: relative;
     /* padding: 60px; */
     /* width: 200%; */
 }
@@ -168,9 +172,9 @@ color: black;
 }
 #product-dialog-details-txt-title{
     font-size: 28px;
-    margin-top: 50px;
+    /* margin-top: 50px; */
     font-weight: bold;
-    margin-left: 10px;
+    /* margin-left: 10px; */
 
 
 }
@@ -191,12 +195,12 @@ color: black;
 
 }
 .product-dialog-size-msg{
-    color:red
+    color:red;
+    font-size: 18px;
+    
 }
-.product-dialog-details-img{
-    width: 65%;
-    /* height: fit-content; */
-}
+
+
 .procduct-cart-btn{
     margin-left: 5px;
 
@@ -224,24 +228,12 @@ color: black;
     font-size: 5px;
     padding: 10px;
 }
-.school-logo{
+/* .school-logo{
     margin-bottom: 50px;
     margin-top: 20px;
-}
-.product-details-txt{
-    position: absolute;
-right: 20px;
-top: 10px;
-}
-.product-name{
-    font-size: 1rem;
-font-weight: bold;
-    line-height: 0.4;
-/* position: absolute;
-right: 20px;
-top: 5px; */
+} */
 
-}
+
 #product-dialog-cancel{
     position: absolute;
     top: 0;
@@ -253,9 +245,11 @@ top: 5px; */
 }
 #product-dialog-addCart{
     border: none;
-    background-color: transparent;
     font-size: 18px;
-    margin-top: 60px;
+    position: absolute;
+    bottom: 3%;
+    right: 5%;
+    /* margin-top: 60px; */
     background-color: #BEE4A6;
     border-radius: 10px;
     padding: 5px 15px;
@@ -264,15 +258,9 @@ top: 5px; */
     
 }
 
-.product-colors{
 
-    position: absolute;
-    left: 20px;
-    top: 7px;
-    display: flex;
-    }
 .product-price{
-    line-height: 0.4;
+    /* line-height: 0.4; */
     font-size: 1rem;
 
     }
@@ -290,35 +278,40 @@ top: 5px; */
     }
     .product-details-div
 {
+    font-size: 12px;
     align-items: center;
-    justify-items: center;
-    position: relative;
-    height: auto;
+    /* justify-items: center;
+    justify-content: center; */
+    /* position: relative; */
+    /* height: 100%; */
+    /* background-color: rgb(14, 132, 250); */
+    
+
 
     
     /* border: 1px white solid; */
 
 }
+.product-details-div:hover .product-details{
+    /* background-color: #608c45; */
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;}
 .product-img{
 
     /* height:84%; */
     width: auto;
     max-width: 100%;
-    max-height: 84%;
-}
-.product-img-div{
-    height: 100%;
-    /* position: absolute;
-    top: 0; */
-    padding: auto 0px;
-background-color: rgba(242, 248, 254, 0.817);
-    align-items: center;
-    position: relative;
+    max-height: 300px !important;
+    min-height: 300px !important;
 
+    /* height: auto; */
+}
+img{
+    font-size: 12px !important;
+    text-align: center;
 }
 .procduct-cart{
     position: absolute;
-    bottom: 16%;
+    bottom: 0%;
     right: 0px;
     border: none;
     display: grid;
@@ -330,30 +323,10 @@ background-color: rgba(242, 248, 254, 0.817);
     background-color: rgba(148, 148, 148, 0.397);
     font-size: 30px;
 }
-.product-details-p{
-    display: flex;
-    position: relative;
-   
-    border: 3px white solid;
-    height: 40px;
-    width: 100%;
-    /* margin-right: 5%; */
 
 
-}
 
 
-.product-details-p2{
-    /* display: flex; */
-    position: absolute;
-   bottom: 0px;
-    border: 3px white solid;
-    height: 16%;
-    width: 100%;
-    /* margin-right: 5%; */
-
-
-}
 .dot-product-dialog {
     margin: 5px;
     height: 30px;
@@ -380,14 +353,14 @@ background-color: rgba(242, 248, 254, 0.817);
     border: 1px solid black;
     /* display: flex; */
   }
-  .product-dialog-size-title{
+  /* .product-dialog-size-title{
       margin-top: 20px;
-  }
+  } */
   .product-dialog-size{
       display: flex;
       font-size: 18px;
-      margin-left: 100px;
-      margin-right: -10px;
+      /* margin-left: 100px;
+      margin-right: -10px; */
 
       cursor: pointer;
   }
@@ -418,13 +391,13 @@ background-color: rgba(242, 248, 254, 0.817);
     font-family: 'Varela Round', sans-serif;
     display: flex;
     align-items: center;
-    text-align: center;
-    justify-items: center;
+    /* text-align: center; */
+    /* justify-items: center; */
     font-size: 14px;
 
   }
   .product-schoollogo-p{
-      margin-right: 5px;
+      /* margin-right: 5px; */
       justify-content: center;
       /* display: inline; */
   }
@@ -438,8 +411,31 @@ background-color: rgba(242, 248, 254, 0.817);
     font-size: 12px;
 
 }
+@media only screen and (min-width: 800.01px) {
+    .product-name{
+        font-size: 1rem;
+    font-weight: bold;
+        line-height: 0.4;
+    
+    
+    }
+    .product-details{
 
+        border: 3px white solid;
+        height: 60px;
+
+    }
+}
   @media only screen and (max-width: 800px) {
+    .product-details{
+      
+        border: 3px white solid;
+        height: 63px;
+        align-items: center;
+        justify-content: center;
+    
+    
+    }
     .row-p{
         width: 90%;
         /* margin-right: 20%; */
@@ -450,25 +446,10 @@ background-color: rgba(242, 248, 254, 0.817);
     
         grid-template-columns:repeat(2, 44%);
     }
-    .Product-p{
-
-        padding-top: 0px;
-         font-family: 'Varela Round', sans-serif;
-    display: flex;
-    /* width: 30%; */
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    justify-items: center;
-    direction: rtl;
-    width: 100%;
+  
+     .Product-row{
     
-     
-         
-     }
-     .Product-t{
-    
-        padding-top: 30px;
+        padding-top: 40px;
          font-family: 'Varela Round', sans-serif;
          align-items: center;
          text-align: center;
@@ -480,41 +461,40 @@ background-color: rgba(242, 248, 254, 0.817);
      
          
      }
+     .product-img{
+
+        width: auto;
+        max-height: 150px !important;
+        min-height: 150px !important;
+    }
      .product-details-div
      {
          align-items: center;
-         justify-items: center;
+         /* justify-items: center; */
          position: relative;
-         max-height: 88%;
-         width:auto;
-         max-width: 100%;
-
-     
-         
+         /* max-height: 88%;
+         min-height: 80%; */
+         /* width:auto; */
+         /* max-width: 100%; */
          /* border: 1px white solid; */
      
      }
+    
      .product-name{
         font-size: 13px;
+        font-weight: bold;
+        /* max-width: 40%; */
+        line-height: 1.2 !important;
     }
-    .product-colors{
-
-        left: 7px;
-        top: 22px;
-        }
+   
     .product-price{
         font-size: 13px;
-        float: left;
-        position: absolute;
-        left: 10%;
+        /* float: left; */
+        /* position: absolute;
+        left: 10%; */
     
         }
-        .product-details-txt{
-        right: 5px;
-        top: 7px;
-        display: flex;
-        width: 100%;
-        }
+       
         .dot-product {
           
             height: 18px;
@@ -535,14 +515,12 @@ background-color: rgba(242, 248, 254, 0.817);
          
         
         }
-        .product-dialog-details-img{
+        /* .product-dialog-details-img{
             width: fit-content;
             max-width: 100%;
             margin-top: 0px;
-            /* height: min-content; */
             max-height: 100%;
-            /* height: fit-content; */
-        }
+        } */
         .product-dialog-details-price{
             font-size: 12px;
             font-weight: bold;
@@ -582,10 +560,8 @@ background-color: rgba(242, 248, 254, 0.817);
         
             
         }
-        .product-dialog-color{
-            margin-left: 15px;
+        .fs-13{
             font-size: 13px;
-            line-height: 0;
         
         }
         .product-dialog-size-title{

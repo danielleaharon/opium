@@ -1,8 +1,8 @@
 import React from 'react';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
-import FormatAlignLeftIcon from '@material-ui/icons/FormatAlignLeft';
-import WebFont from 'webfontloader';
+
 // import FontPicker from "font-picker";
+import './TextToolbar.css';
 
 import FontPicker from "font-picker-react";
 import BorderColorIcon from '@mui/icons-material/BorderColor';
@@ -17,7 +17,6 @@ import ToggleButton from '@material-ui/lab/ToggleButton';
 import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
 import ColorPicker from '../colorPicker/colorPicker';
 import FormatColorTextIcon from '@mui/icons-material/FormatColorText';
-import { height, width } from '@mui/system';
 const useStyles = makeStyles((theme) => ({
   paper: {
     // display: 'flex',

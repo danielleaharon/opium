@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 
 import OrderItem from '../OrderItem/OrderItem';
-import CartItem from '../CartItem/CartItem';
 
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
@@ -14,9 +13,7 @@ import Logo from '../../Image/opiumLogo3.png';
 import { TextField } from "@material-ui/core";
 import axios from 'axios';
 import Config from '../../config/config';
-
 import './OrderMy.css';
-import { ButtonOr } from 'semantic-ui-react';
 export default class OrderMy extends Component {
     constructor(props) {
         super(props);
@@ -121,21 +118,21 @@ export default class OrderMy extends Component {
       this.clearValid();
       var error = false;
   
-      if (this.state.dName == '') {
+      if (this.state.dName==='') {
         this.setState({ dNameE: true })
         error = true;
       }
-      if (this.state.dPhone == '') {
+      if (this.state.dPhone==='') {
         this.setState({ dPhoneE: true })
         this.setState({ dPhoneEmsg: 'חסר מספר טלפון' })
         error = true;
       }
-      else if (this.state.dPhone.length != 10) {
+      else if (this.state.dPhone.length !== 10) {
         this.setState({ dPhoneE: true })
         this.setState({ dPhoneEmsg: ' מספר טלפון לא תקין' })
         error = true;
       }
-      if (this.state.dMail == '') {
+      if (this.state.dMail==='') {
         this.setState({ dMailE: true })
         this.setState({ dMailEmsg: ' חסר מייל ' })
   
@@ -169,7 +166,7 @@ export default class OrderMy extends Component {
             aria-describedby="alert-dialog-slide-description"
           >
             <DialogTitle className="send-dialog-design-title" ><p >עדכון פרטי הזמנה</p></DialogTitle>
-            <img className='dialog-design-img' src={Logo} />
+            <img className='dialog-design-img' src={Logo} alt='logo' />
             <DialogContent id='send-dailog-context' >
               <DialogContentText id='send-dialog-design-description'>
 שים לב שפרטיך נכונים לפני השליחה, אחרת לא נוכל ליצור עמך קשר.
@@ -265,8 +262,8 @@ export default class OrderMy extends Component {
 })}
 </div>
 <div  hidden={!this.state.openOrder} className='myorder-send-btns-right' >
- <a className='myorder-send-btn myorder-mail' hidden={!this.state.openOrder} href={"https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=dda180@gmail.com"} target="_blank"> <span className="iconify" id='gmail-black' data-icon="simple-icons:gmail"></span> <span className="iconify" id='gmail-color'data-icon="logos:google-gmail"></span> שלח מייל</a>
- <a className='myorder-send-btn myorder-whatsapp' hidden={!this.state.openOrder} href={"https://api.whatsapp.com/send?phone='+972549900099"} target="_blank"><span className="iconify" data-icon="dashicons:whatsapp"></span> שלח ווסטאפ</a>
+ <a className='myorder-send-btn myorder-mail' hidden={!this.state.openOrder} href={"https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=dda180@gmail.com"} target="_blank" rel="noopener noreferrer"> <span className="iconify" id='gmail-black' data-icon="simple-icons:gmail"></span> <span className="iconify" id='gmail-color'data-icon="logos:google-gmail"></span> שלח מייל</a>
+ <a className='myorder-send-btn myorder-whatsapp' hidden={!this.state.openOrder} href={"https://api.whatsapp.com/send?phone='+972549900099"} target="_blank" rel="noopener noreferrer"><span className="iconify" data-icon="dashicons:whatsapp"></span> שלח ווסטאפ</a>
 </div>
 <button className='myorder-change-btn'hidden={!this.state.openOrder} onClick={()=>this.setState({openChange:true})} >עדכן את פרטי המזמין</button>
       </div>

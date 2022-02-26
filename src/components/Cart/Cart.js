@@ -109,21 +109,21 @@ export default class Cart extends Component {
       this.clearValid();
       var error = false;
   
-      if (this.state.dName == '') {
+      if (this.state.dName==='') {
         this.setState({ dNameE: true })
         error = true;
       }
-      if (this.state.dPhone == '') {
+      if (this.state.dPhone==='') {
         this.setState({ dPhoneE: true })
         this.setState({ dPhoneEmsg: 'חסר מספר טלפון' })
         error = true;
       }
-      else if (this.state.dPhone.length != 10) {
+      else if (this.state.dPhone.length !== 10) {
         this.setState({ dPhoneE: true })
         this.setState({ dPhoneEmsg: ' מספר טלפון לא תקין' })
         error = true;
       }
-      if (this.state.dMail == '') {
+      if (this.state.dMail==='') {
         this.setState({ dMailE: true })
         this.setState({ dMailEmsg: ' חסר מייל ' })
   
@@ -157,7 +157,7 @@ export default class Cart extends Component {
             aria-describedby="alert-dialog-slide-description"
           >
             <DialogTitle className="send-dialog-design-title" ><p >שליחה להצעת מחיר</p></DialogTitle>
-            <img className='dialog-design-img' src={Logo} />
+            <img className='dialog-design-img' src={Logo}  alt='logo' />
             <DialogContent id='send-dailog-context' >
               <DialogContentText id='send-dialog-design-description'>
 המוצרים שבחרת יחד עם העיצוב היחודי שלכם מועברים אלינו לקבלת הצעת מחיר בשכלול של העיצוב וכמות הפריטים.<br/> אנחנו ניצור איתכם קשר בהקדם, תודה צוות אופיום.              </DialogContentText>

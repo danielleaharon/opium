@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import 'react-dropdown/style.css';
 import 'react-alice-carousel/lib/alice-carousel.css';
 import ShapeToolbar from '../ShapeToolbar/ShapeToolbar';
-import { TextField } from "@material-ui/core";
 import { Rnd } from "react-rnd";
 import { Icon } from '@iconify/react';
 
@@ -136,10 +135,6 @@ export default class DesignElementShapeMobile extends Component {
         left: this.state.left,
         top: this.state.top,
         backgroundColor: '#000000',
-
-        position: 'absolute',
-
-
         transform: `rotate(${this.state.rotateAngle}deg)`,
       }}  >
         <Icon color={this.state.backgroundColor} width={this.state.width} icon={this.props.shapefill} style={{ position: 'absolute', top: '0' }} />

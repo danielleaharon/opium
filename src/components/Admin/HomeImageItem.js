@@ -1,13 +1,7 @@
 import React, {Component} from 'react';
-import FormControl from '@material-ui/core/FormControl';
-import InputLabel from '@material-ui/core/InputLabel';
-import Input from '@material-ui/core/Input';
-import FormHelperText from '@material-ui/core/FormHelperText';
-import MenuItem from '@material-ui/core/MenuItem';
-import Select from '@material-ui/core/Select';
+
 import axios from 'axios';
-import ProductImageSelect from './productImageSelect';
-import ProductImgItem from '../ProductImgItem/ProductImgItem';
+
 import {isAuth} from '../../actions/auth';
 
 import Config from '../../config/config';
@@ -58,7 +52,7 @@ this.handelDeleteImg=this.handelDeleteImg.bind(this);
       onDragStart={this.props.handleDrag}
       onDrop={this.props.handleDrop}
 >
-<img src={this.props.item.src} ></img>
+<img src={this.props.item.src} alt='home' ></img>
 <p className='img-position'>{this.props.position}</p>
 <button onClick={this.handelDeleteImg} id='home-img-item-delete'><span className="iconify" data-icon="fluent:delete-dismiss-24-filled"></span></button>
 </div>

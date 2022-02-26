@@ -1,15 +1,7 @@
-import React, { Component, Fragment } from 'react';
-import Cover from '../../Image/heartcover.png'
-import FrontMan from '../../Image/Design/men_front.png'
-import { SketchPicker } from 'react-color';
-import FontPicker from "font-picker-react";
-import Draggable from 'react-draggable';
-import ColorPicker from '../colorPicker/colorPicker';
+import React, { Component } from 'react';
+
 import ResizableRect from 'react-resizable-rotatable-draggable'
-import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
-import 'react-alice-carousel/lib/alice-carousel.css';
-import { Slider } from '@material-ui/core';
 import ShapeToolbar from '../ShapeToolbar/ShapeToolbar';
 import { Icon } from '@iconify/react';
 
@@ -159,7 +151,6 @@ export default class DesignElementText extends Component {
                 zIndex: '10',
                 backgroundColor: 'transparent',
                 border: 'none',
-                position: 'absolute',
                 //  height:this.state.widthText/2,
                 top: this.state.top - 10,
               }} onClick={this.delete}><i style={{ fontSize: '20px' }} className="fa fa-times"></i></button>

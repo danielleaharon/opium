@@ -32,11 +32,11 @@ export default class Categories extends Component {
        
        <h3>על מה אנחנו מדפיסים?</h3>
        <div className='print-category-home'>
-       <button  onClick={()=>  this.handelClick('cups')} className='cube-orange-category cube-category'>כוסות ספלים ובקבוקים<br/><img src={CupCat}></img></button>
-       <button onClick={()=>  this.handelClick('caps')} className='cube-red-category cube-category'>כובעים ומוצרים טקסטיל<br/><img src={CapCat}></img></button>
-       <button onClick={()=>  this.handelClick('shirt')}  className='cube-pink-category cube-category'>הלבשה<br/><img src={ShirtCat}></img></button>
-       <button onClick={()=>  this.handelClick('kitchen')}  className='cube-purple-category cube-category'>מוצרי למטבח ולבית<br/><img src={CakeCat}></img></button>
-       <button onClick={()=>  this.handelClick('gift')}  className='cube-blue-category cube-category'>מתנות בעיצוב <br/><img src={KeyCat}></img></button>
+       <button  onClick={()=>  this.handelClick('cups')} className='cube-orange-category cube-category'>כוסות ספלים ובקבוקים<br/><img src={CupCat} alt='Cup'></img></button>
+       <button onClick={()=>  this.handelClick('caps')} className='cube-red-category cube-category'>כובעים ומוצרים טקסטיל<br/><img src={CapCat} alt='cap'></img></button>
+       <button onClick={()=>  this.handelClick('shirt')}  className='cube-pink-category cube-category'>הלבשה<br/><img src={ShirtCat} alt='shirt'></img></button>
+       <button onClick={()=>  this.handelClick('kitchen')}  className='cube-purple-category cube-category'>מוצרי למטבח ולבית<br/><img src={CakeCat} alt='cake'></img></button>
+       <button onClick={()=>  this.handelClick('gift')}  className='cube-blue-category cube-category'>מתנות בעיצוב <br/><img src={KeyCat} alt='key'></img></button>
        <button onClick={()=>  this.handelClick('all')}  className='cube-green-category cube-category'>לכל המוצרים</button>
     
        </div>

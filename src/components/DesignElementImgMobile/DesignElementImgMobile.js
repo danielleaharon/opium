@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 
 import 'react-dropdown/style.css';
 import 'react-alice-carousel/lib/alice-carousel.css';
-import { TextField } from "@material-ui/core";
 import { Rnd } from "react-rnd";
-import { Icon } from '@iconify/react';
 import ImgToolbar2 from '../ImgToolbar/ImgToolbar2';
 
 
@@ -119,14 +117,14 @@ export default class DesignElementImgMobile extends Component {
     return (
 
       <div className='Design3' id={this.props.item.getId()} hidden={this.props.item.getHidden()} onClick={this.click}  style={{
-        zIndex: this.props.item.getZIndex(), position: 'absolute',
+        zIndex: this.props.item.getZIndex(), 
+        position: 'absolute',
         width: this.state.width,
         height: this.state.width,
         left: this.state.left,
         top: this.state.top,
         // backgroundColor:this.state.backgroundColorHex,
         // backgroundColor: this.state.BorderColor,
-        position: 'absolute',
         transform: `rotate(${this.state.rotateAngle}deg)`,
       }}  >
         {console.log(this.state.imgClip)}
@@ -146,7 +144,7 @@ export default class DesignElementImgMobile extends Component {
             //  transform: `rotate(${this.state.rotateAngle}deg)`,
 
             width: this.state.width - 10, height: this.state.width - 10
-          }} src={this.props.item.getData()} className={this.state.imgClip.titel} ></img>
+          }} src={this.props.item.getData()} className={this.state.imgClip.titel} alt='imgClip' ></img>
         </div>
 
        

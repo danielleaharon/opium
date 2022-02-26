@@ -40,7 +40,7 @@ export default class Home extends Component {
       console.log(item.url)
 
       this.galleryItems.push( 
-     <a className='gallery-image' href={item.url}><img className='gallery-image' src={item.src}></img></a> 
+     <a className='gallery-image' href={item.url}><img className='gallery-image' src={item.src} alt='gallery'></img></a> 
       )
       this.setState({galleryItems:this.state.galleryItems})
       // console.log(this.state.galleryItems)
@@ -67,7 +67,7 @@ export default class Home extends Component {
 };
 
  renderDotsItem = ({ isActive }) => {
- return isActive ? <img className='logoSlider' src={LogoPic}></img> : <img className='logoSlider' src={LogoPicWithe}></img>;
+ return isActive ? <img className='logoSlider' src={LogoPic} alt='LogoPic'></img> : <img className='logoSlider' src={LogoPicWithe} alt='LogoPic'></img>;
 };
 
  renderPrevButton = ({ isDisabled }) => {

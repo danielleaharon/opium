@@ -2,11 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import ProductImageSelect from './components/Admin/productImageSelect';
 
-import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import 'react-slideshow-image/dist/styles.css'
+// import 'react-slideshow-image/dist/styles.css'
 
 ReactDOM.render(
 

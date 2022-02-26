@@ -2,9 +2,6 @@
 
     font-family: 'Varela Round', sans-serif;
     justify-content: right;
-
-    /* align-items: center; */
-    /* text-align: center; */
     background-color: rgba(245, 245, 245, 0.856);
 
     
@@ -21,16 +18,10 @@
   box-sizing: initial;
   border-style: none;
   outline: none;
-
-
-
-
 }
 .MuiSelect-standard:focus{
   box-sizing: none;
   border-style: none;
-
-
 }
 
 .shapeImg{
@@ -349,16 +340,7 @@ width: 950px;
 
 
 }
-.textcenter:focus{
-border: hidden;
-color: black;
-}
-.shirt{
-  width: 100%;
-  height: 100%;
-  border-radius: 9px;
 
-}
 p:focus{
   outline: 0;
   /* border: none; */

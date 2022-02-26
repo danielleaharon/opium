@@ -96,7 +96,7 @@ class UploadImage extends React.Component {
     }
 
     getCropperWidth() {
-        if (this.state.cropImage == null) {
+        if (this.state.cropImage===null) {
             return 0;
         }
         let maxWidth = 500;
@@ -115,7 +115,7 @@ class UploadImage extends React.Component {
     }
 
     getEffectiveResizeRatio() {
-        if (this.state.cropImage == null) {
+        if (this.state.cropImage===null) {
             return;
         }
 

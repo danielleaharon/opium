@@ -195,7 +195,7 @@ this.state.newImg?( <SchoolImageSelect addImg={this.addImg} className='new' onCl
         <div className='scoolLogo-img'  hidden={this.state.url.trim()===''}>
         <button onClick={()=>{this.setState({url:''})}} className='school-delete-img' > <span className="iconify" data-icon="feather:x"></span></button>
 
-<img src={this.state.url} ></img>
+<img src={this.state.url} alt='scholl'></img>
         </div>
         <button hidden={this.state.city.trim()==='' || this.state.school.trim()==='' ||this.state.schoolE||this.state.cityE} onClick={this.handleAddSchoolLogo} id='product-add-new-btn'> הוסף</button>
 </div>

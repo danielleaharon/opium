@@ -1,6 +1,5 @@
-import React, {Component} from 'react';
+import React from 'react';
 
-import 'react-alice-carousel/lib/alice-carousel.css';
 
 import './NotFoundDesign.css';
 export default function NotFoundDesign(props) {

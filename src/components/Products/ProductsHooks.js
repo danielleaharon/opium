@@ -10,7 +10,7 @@ import './Products.css';
 
 export default function Products(props) {
 
- 
+
 
   const handleClick = (categorySelect) => {
 
@@ -26,14 +26,13 @@ export default function Products(props) {
 
   return (
 
-    <div className='Products'>
-      <div className='Products-location'>{props.state.category !== 'all' ? props.state.category + ' ' : 'כל המוצרים'}
+    <div className='Products container-fluid '>
+
+      <div className='Products-location '>{props.state.category !== 'all' ? props.state.category + ' ' : 'כל המוצרים'}
         {props.state.subCategory !== null && <span><span className="iconify" data-icon="bx:bxs-left-arrow-alt"></span> {props.state.subCategory}</span>}
       </div>
-      <div className='print-category' >
+      <div className='print-category col-3' >
         <div className='cubeC' >
-
-
           <div className='row-menu' >
             <span className='text-all border-red' id={props.state.category === 'הלבשה' ? 'clicked-red' : ''} onClick={() => handleClick('הלבשה')}>הלבשה  <span className="iconify" id='icon-category' data-icon="ion:shirt-sharp"></span> </span>
             <div className='category-dropdown dropdown-red'>
@@ -62,7 +61,7 @@ export default function Products(props) {
               {
                 props.state.listElectronics.map((item, index) => {
 
-                  return <button key={index} className='dropdown-btn' onClick={() => handleClickSubCategory('גאדגטים ואלקטרוניקה', item)}>{item}</button>
+                  return <button key={index} className='dropdown-btn' onClick={() => handleClickSubCategory('גאדגטים ואלקטרוניקה', item)}>{item}<hr /></button>
 
 
                 })}
@@ -80,7 +79,7 @@ export default function Products(props) {
               <div id="mask"></div>
               {
                 props.state.listGift.map((item, index) => {
-                  return <button key={index} className='dropdown-btn' onClick={() => handleClickSubCategory('מתנות בעיצוב ', item)}>{item}</button>
+                  return <button key={index} className='dropdown-btn' onClick={() => handleClickSubCategory('מתנות בעיצוב', item)}>{item}<hr /></button>
                 })}
 
 
@@ -98,7 +97,7 @@ export default function Products(props) {
               <div id="mask"></div>
               {
                 props.state.listCup.map((item, index) => {
-                  return <button key={index} className='dropdown-btn' onClick={() => handleClickSubCategory('כוסות ספלים ובקבוקים', item)}>{item}</button>
+                  return <button key={index} className='dropdown-btn' onClick={() => handleClickSubCategory('כוסות ספלים ובקבוקים', item)}>{item}<hr /></button>
 
 
                 })}
@@ -110,14 +109,14 @@ export default function Products(props) {
         <div className='cubeC'>
 
           <div className='row-menu'>
-            <span id={props.state.category === 'כובעים ומוצרי טקסטיל' ? 'clicked-bluepurple' : ''} onClick={() => handleClick('כובעים ומוצרי טקסטיל')} className='text-all border-bluepurple'  >  כובעים ומוצרי טקסטיל <span className="iconify" id='icon-category' data-icon="fa-solid:hat-cowboy"></span>
+            <span id={props.state.category === 'כובעים ומוצרי טקסטיל' ? 'clicked-bluepurple1' : ''} onClick={() => handleClick('כובעים ומוצרי טקסטיל')} className='text-all border-bluepurple'  >  כובעים ומוצרי טקסטיל <span className="iconify" id='icon-category' data-icon="fa-solid:hat-cowboy"></span>
               <div id="mask-border-bluepurple"></div>
             </span>
             <div className='category-dropdown dropdown-bluepurple'>
               <div id="mask"></div>
               {
                 props.state.listHat.map((item, index) => {
-                  return <button key={index} className='dropdown-btn' onClick={() => handleClickSubCategory('כובעים ומוצרי טקסטיל', item)}>{item}</button>
+                  return <button key={index} className='dropdown-btn' onClick={() => handleClickSubCategory('כובעים ומוצרי טקסטיל', item)}>{item}<hr /></button>
 
 
                 })}
@@ -135,7 +134,7 @@ export default function Products(props) {
               <div id="mask"></div>
               {
                 props.state.listBags.map((item, index) => {
-                  return <button key={index} className='dropdown-btn' onClick={() => handleClickSubCategory('תיקים ומוצרים למשרד', item)}>{item}</button>
+                  return <button key={index} className='dropdown-btn' onClick={() => handleClickSubCategory('תיקים ומוצרים למשרד', item)}>{item}<hr /></button>
 
 
                 })}
@@ -153,7 +152,7 @@ export default function Products(props) {
               <div id="mask"></div>
               {
                 props.state.listKitchen.map((item, index) => {
-                  return <button key={index} className='dropdown-btn' onClick={() => handleClickSubCategory('מוצרי מטבח ואירוח לבית', item)}>{item}</button>
+                  return <button key={index} className='dropdown-btn' onClick={() => handleClickSubCategory('מוצרי מטבח ואירוח לבית', item)}>{item}<hr /></button>
 
 
                 })}
@@ -172,8 +171,8 @@ export default function Products(props) {
             <div className='category-dropdown dropdown-greenorange'>
               <div id="mask"></div>
               {
-                props.state.listGift.map((item, index) => {
-                  return <button key={index} className='dropdown-btn' onClick={() => handleClickSubCategory('הדפסת תמונות מעוצבות', item)}>{item}</button>
+                props.state.listImageProduct.map((item, index) => {
+                  return <button key={index} className='dropdown-btn' onClick={() => handleClickSubCategory('הדפסת תמונות מעוצבות', item)}>{item}<hr /></button>
 
 
                 })}
@@ -192,12 +191,12 @@ export default function Products(props) {
         </div>
 
       </div>
-      <div className='product-details'>
-        {props.Ondesign ?
-          <Product productList={props.state.productList} width={props.width} Ondesign={props.Ondesign} pickProduct={props.pickProduct} category={props.state.category} subCategory={props.state.subCategory} addToCart={props.addToCart}
-            deleteFromCart={props.deleteFromCart} /> :
-          <Product productList={props.state.productList} width={props.width} Ondesign={props.Ondesign} category={props.state.category} subCategory={props.state.subCategory} addToCart={props.addToCart}
-            deleteFromCart={props.deleteFromCart} />}
+      <div className='products-details col-10'>
+      {props.Ondesign ?
+        <Product productList={props.state.productList} width={props.width} Ondesign={props.Ondesign} pickProduct={props.pickProduct} category={props.state.category} subCategory={props.state.subCategory} addToCart={props.addToCart}
+          deleteFromCart={props.deleteFromCart} /> :
+        <Product productList={props.state.productList} width={props.width} Ondesign={props.Ondesign} category={props.state.category} subCategory={props.state.subCategory} addToCart={props.addToCart}
+          deleteFromCart={props.deleteFromCart} />}
       </div>
     </div>
 

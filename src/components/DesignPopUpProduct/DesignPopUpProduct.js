@@ -15,14 +15,14 @@ export default function DesignPopUpProduct (props) {
 
 React.useEffect(()=>{
   History.replace('/Design/all/all')
-},[])
+},[History])
 
     return (
       <div
         id='Dialog-pop-product'
       >
         <div id="popProduct-dialog-design-title" ><p >מוצרים לבחירה</p></div>
-        <img className='popProduct-dialog-design-img' src={Logo} />
+        <img className='popProduct-dialog-design-img' src={Logo} alt='logo' />
         <div id='popProduct-dailog-context' >
           <div id='popProduct-dialog-design-description'>
             על מנת לעצב מוצר , עלייך לבחור מוצר

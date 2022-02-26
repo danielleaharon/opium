@@ -1,6 +1,5 @@
 import React from 'react';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
-import FormatAlignLeftIcon from '@material-ui/icons/FormatAlignLeft';
 import CircleOutlinedIcon from '@mui/icons-material/CircleOutlined';
 import './ImgToolbar.css';
 
@@ -16,7 +15,6 @@ import Paper from '@material-ui/core/Paper';
 import ToggleButton from '@material-ui/lab/ToggleButton';
 import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
 import ColorPicker from '../colorPicker/colorPicker';
-import FormatColorTextIcon from '@mui/icons-material/FormatColorText';
 import cloudIcon from '@iconify/icons-bi/cloud';
 import { Icon } from '@iconify/react';
 import polygonIcon from '@iconify/icons-uil/polygon';

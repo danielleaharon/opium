@@ -1,4 +1,4 @@
-import React, {Component, Fragment} from 'react';
+import React, {Component} from 'react';
 import './DesignElementShape.css';
 import { Icon } from '@iconify/react';
 
@@ -153,7 +153,7 @@ this.getLeft=this.getLeft.bind(this);
  
       render() {
        
-     {this.getView()}
+    //  {this.getView()}
     return (
         
         <div className='elemet'>

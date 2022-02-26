@@ -1,4 +1,4 @@
-import React, {Component, Fragment} from 'react';
+import React, {Component} from 'react';
 import { Icon } from '@iconify/react';
 //star icons
 import starFill from '@iconify/icons-bi/star-fill';

@@ -15,6 +15,7 @@
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
     "axios": "^0.21.4",
+    "blueimp-load-image": "^5.16.0",
     "bootstrap": "^5.0.2",
     "crypto-random-string": "^4.0.0",
     "dom-to-image": "^2.6.0",
@@ -37,6 +38,7 @@
     "react-draggable": "^4.4.3",
     "react-dropdown": "^1.9.2",
     "react-image-crop": "^8.6.12",
+    "react-image-file-resizer": "^0.4.7",
     "react-redux": "^7.2.4",
     "react-resizable-rotatable-draggable": "^0.2.0",
     "react-resizable-rotatable-draggable-touch-v2": "^2.0.2",
@@ -97,5 +99,4 @@
     "@iconify/icons-whh": "^1.1.0",
     "@iconify/react": "^1.1.4"
   }
-
 }

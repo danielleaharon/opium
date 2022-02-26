@@ -4,16 +4,10 @@ import InputLabel from '@material-ui/core/InputLabel';
 import Input from '@material-ui/core/Input';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import Logo from '../../../Image/opiumLogo3.png';
-import { TextField } from "@material-ui/core";
-import Button from '@material-ui/core/Button';
 import axios from 'axios';
 import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Slide from '@material-ui/core/Slide';
-import SchoolLogo from './SchoolLogo';
 import SchoolImageSelect from './SchoolImageSelect';
 import SchoolColorSelect from './SchoolColorSelect';
 import Config from '../../../config/config';
@@ -147,7 +141,7 @@ this.deleteColor=this.deleteColor.bind(this);
 
      
     };
-      axios.post(Config.getServerPath()+'school/delete/'+this.props.item._id)
+      axios.post(Config.getServerPath()+'school/delete/'+this.props.item._id,postData)
       .then(res => {
   if(res.data.status===400){
     console.log('error')
@@ -173,7 +167,7 @@ closeSchoolLogoDialog()
         <div>
         <Dialog maxWidth='sm' fullWidth  className="school-dialog" open={this.state.update} onClose={this.closeSchoolLogoDialog}>
             <DialogTitle className="school-dialog-title" ><p >עדכון סמל:  {this.props.item.school} | {this.props.item.city}</p></DialogTitle>
-            <img className='dialog-design-img' src={Logo} />
+            <img className='dialog-design-img' src={Logo} alt='logo' />
             {/* <DialogContent id='send-dailog-context' > */}
              
              <div id='card-gallary-item'>
@@ -227,7 +221,7 @@ this.state.newImg?( <SchoolImageSelect addImg={this.addImg} className='new' onCl
         <div className='scoolLogo-img'  hidden={this.state.url.trim()===''}>
         <button onClick={()=>{this.setState({url:''})}} className='school-delete-img' > <span className="iconify" data-icon="feather:x"></span></button>
 
-<img src={this.state.url} ></img>
+<img src={this.state.url}   alt='logo'></img>
         </div>
         <button hidden={this.state.city.trim()==='' || this.state.school.trim()==='' ||this.state.schoolE||this.state.cityE} onClick={this.handleAddSchoolLogo} id='product-add-new-btn'> עדכן</button>
 </div>
@@ -262,7 +256,7 @@ this.state.newImg?( <SchoolImageSelect addImg={this.addImg} className='new' onCl
     <div className='schoolLogo-item'>
 {this.updtaeSchoolLogoDialog()}
 <p className='subcategory-item-name'  hidden={this.props.item.url!==''} > {this.props.item.school} | {this.props.item.city}</p>
-<img hidden={this.props.item.url===''} className='subcategory-item-name' src={this.props.item.url}></img>
+<img hidden={this.props.item.url===''} className='subcategory-item-name' src={this.props.item.url}  alt='school-logo'></img>
 <button hidden={this.state.update} onClick={this.handelUpdateSub} id='subcategory-item-update'>עריכה</button>
 <button hidden={this.state.update} onClick={this.handelDeleteSub} id='subcategory-item-delete'><span className="iconify" data-icon="fluent:delete-dismiss-24-filled"></span></button>
 

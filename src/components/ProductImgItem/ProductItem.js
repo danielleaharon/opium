@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import ProductImgItem from './ProductImgItem';
+import DialogDelete from './deleteProdcutDialog';
+import TextField from '@material-ui/core/TextField';
+
 import Config from '../../config/config';
 import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
@@ -12,8 +15,7 @@ import ProductImageSelect from '../Admin/productImageSelect';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
-import FormLabel from '@mui/material/FormLabel';
-import {isAuth} from '../../actions/auth';
+import { isAuth } from '../../actions/auth';
 
 import './ProductImgItem.css';
 export default class ProductItem extends Component {
@@ -36,7 +38,8 @@ export default class ProductItem extends Component {
       inStockE: false,
       imgs: this.props.productImage,
       addImg: false,
-      size: this.props.item.size
+      size: this.props.item.size,
+      openDelete: false,
     }
 
 
@@ -48,7 +51,6 @@ export default class ProductItem extends Component {
     this.handelDiscriptionChange = this.handelDiscriptionChange.bind(this);
     this.handelCategoryChange = this.handelCategoryChange.bind(this);
     this.handelUpdateChanges = this.handelUpdateChanges.bind(this);
-    this.handelDeleteImg = this.handelDeleteImg.bind(this);
     this.handelAddImg = this.handelAddImg.bind(this);
     this.handelSubcategoryChange = this.handelSubcategoryChange.bind(this);
 
@@ -62,7 +64,7 @@ export default class ProductItem extends Component {
       front: front,
       back: back,
       color: color,
-      token:isAuth()
+      token: isAuth()
 
     };
     axios.post(Config.getServerPath() + 'product/addimg/' + this.props.item._id, postData)
@@ -80,13 +82,7 @@ export default class ProductItem extends Component {
       });
 
   }
-  handelDeleteImg(img) {
-    const index = this.state.imgs.indexOf(img);
-    if (index !== -1) {
-      this.state.imgs.splice(index, 1);
-      // this.setState({imgs:this.state.imgs})
-    }
-  }
+
   handelSizeChange(e) {
     e.preventDefault();
     this.setState({ size: e.target.value }, () => {
@@ -112,6 +108,7 @@ export default class ProductItem extends Component {
   }
   handelSubcategoryChange(e) {
     e.preventDefault();
+
     this.setState({ subcategory: e.target.value }, () => {
       if (this.state.subcategory === '')
         this.setState({ subcategoryE: true })
@@ -141,7 +138,7 @@ export default class ProductItem extends Component {
   handelPriceChange(e) {
     e.preventDefault();
     this.setState({ price: e.target.value }, () => {
-      if (new String(this.state.price).trim() === '')
+      if (this.state.price.toString().trim() === '')
         this.setState({ priceE: true })
       else {
         this.handelUpdateChanges()
@@ -184,23 +181,22 @@ export default class ProductItem extends Component {
   handelUpdateChanges() {
     this.setState({ update: false })
 
-    if (this.state.name.trim() !== this.props.item.name.trim()) {
+    if (this.state.name !== this.props.item.name) {
       this.setState({ update: true })
     }
-    if (new String(this.state.price).trim() !== new String(this.props.item.price).trim()) {
+    if (this.state.price.toString() !== this.props.item.price.toString()) {
       this.setState({ update: true })
     }
-    // if(this.state.discription.trim()!==this.props.item.discription.trim()){
-    //   this.setState({ update: true})
-    // } 
-    if (this.state.category.trim() !== this.props.item.category.trim()) {
+    if (this.state.discription !== this.props.item.discription) {
       this.setState({ update: true })
     }
-    console.log(this.state.subcategory.name)
-    if (this.state.subcategory.name.trim() !== this.props.item.Subcategory.name.trim()) {
+    if (this.state.category !== this.props.item.category) {
       this.setState({ update: true })
     }
-    if (new String(this.state.inStock).trim() !== new String(this.props.item.InStock).trim()) {
+    if (this.state.subcategory!==null&& this.props.item.Subcategory!==null&&this.state.subcategory.name !== this.props.item.Subcategory.name) {
+      this.setState({ update: true })
+    }
+    if (this.state.inStock.toString() !== this.props.item.InStock.toString()) {
       this.setState({ update: true })
     }
 
@@ -219,8 +215,7 @@ export default class ProductItem extends Component {
       subcategory: this.state.subcategory,
       size: this.state.size,
       InStock: this.state.inStock,
-      size: this.state.size,
-      token:isAuth(),
+      token: isAuth(),
 
     };
     axios.post(Config.getServerPath() + 'product/update/' + this.props.item._id, postData)
@@ -240,17 +235,18 @@ export default class ProductItem extends Component {
   }
   handelDelete() {
     const postData = {
-   
-      token:isAuth(),
+
+      token: isAuth(),
 
     };
-    axios.post(Config.getServerPath() + 'product/delete/' + this.props.item._id,postData)
+    axios.post(Config.getServerPath() + 'product/delete/' + this.props.item._id, postData)
       .then(res => {
         if (res.data.status === 400) {
           console.log('error')
           return
         }
         this.props.updateProductList(res.data.productList);
+        this.setState({ ...this.state, openDelete: false })
 
 
       })
@@ -261,9 +257,10 @@ export default class ProductItem extends Component {
   render() {
     return (
       <>
+        {this.state.openDelete && <DialogDelete handelDelete={this.handelDelete} item={this.props.item} openDelete={this.state.openDelete} handelClose={() => { this.setState({ ...this.state, openDelete: false }) }} />}
         <div className='product-btns'>
           <button className='product-open' style={this.state.open ? { borderRadius: '5px' } : {}} onClick={this.handelOpen}>{this.props.item.name}</button>
-          <button className='product-delete' onClick={this.handelDelete}><span className="iconify" data-icon="fluent:delete-dismiss-28-filled"></span></button>
+          <button className='product-delete' onClick={() => { this.setState({ ...this.state, openDelete: true }) }}><span className="iconify" data-icon="fluent:delete-28-regular"></span></button>
           <button className='product-update' hidden={!this.state.update} onClick={this.handelUpdate}><span className="iconify" data-icon="akar-icons:edit"></span></button>
 
         </div>
@@ -282,8 +279,9 @@ export default class ProductItem extends Component {
                 {this.state.priceE ? <FormHelperText error={this.state.priceE} id="helper">חסר מחיר </FormHelperText> : ''}
               </FormControl>
               <FormControl className='form'>
-                <InputLabel id="product-lable" htmlFor="product">תיאור</InputLabel>
-                <Input aria-describedby="helper" error={this.state.discriptionE} required type='text' id="product" value={this.state.discription} onChange={this.handelDiscriptionChange} />
+                {/* <InputLabel id="product-lable" htmlFor="product-discription">תיאור</InputLabel> */}
+                <TextField multiline label='תיאור' 
+                  aria-describedby="helper" error={this.state.discriptionE} type='text' id="product-discription" value={this.state.discription} onChange={this.handelDiscriptionChange} />
                 {this.state.discriptionE ? <FormHelperText error={this.state.discriptionE} id="helper">חסר תיאור </FormHelperText> : ''}
               </FormControl>
               <FormControl variant="standard" id='select-time-start'>
@@ -291,11 +289,10 @@ export default class ProductItem extends Component {
 
                 <Select
                   required
-                  labelId="demo-simple-select-placeholder-label-label"
+                  labelId="product-label"
                   id="demo-simple-select-placeholder-label"
                   value={this.state.category}
                   onChange={this.handelCategoryChange}
-                  displayEmpty
                 >
                   <MenuItem id='val' value="הלבשה">הלבשה</MenuItem>
                   <MenuItem id='val' value='גאדגטים ואלקטרוניקה'>גאדגטים ואלקטרוניקה</MenuItem>
@@ -317,16 +314,16 @@ export default class ProductItem extends Component {
 
                 <Select
                   required
-                  labelId="demo-simple-select-placeholder-label-label"
+                  labelId="product-label"
                   id="demo-simple-select-placeholder-label"
-                  value={this.props.item.Subcategory}
+                  value={this.state.subcategory}
                   onChange={this.handelSubcategoryChange}
                   displayEmpty
                 >
-                  <MenuItem id='val' value={this.props.item.Subcategory}>{this.props.item.Subcategory.name}</MenuItem>
+                 {this.state.subcategory!==null && <MenuItem id='val' value={this.state.subcategory}>{this.state.subcategory.name}</MenuItem>}
                   {this.props.subcategoryList.map((item, index) => {
-                    if (this.props.item.Subcategory.name.trim() !== item.name.trim())
-                      return <MenuItem id='val' value={item}>{item.name}</MenuItem>
+                    // if (this.state.subcategory.name!== item.name)
+                      return <MenuItem key={index} id='val' value={item}>{item.name}</MenuItem>
 
                   })}
 
@@ -336,11 +333,11 @@ export default class ProductItem extends Component {
                 </Select>
               </FormControl>
               <FormControl variant="standard" id='select-time-start'>
-                <InputLabel id="product-label" error={this.state.categoryE} shrink >מידות </InputLabel>
+                <InputLabel id="product-label" shrink >מידות </InputLabel>
 
                 <Select
                   required
-                  labelId="demo-simple-select-placeholder-label-label"
+                  labelId="product-label"
                   id="demo-simple-select-placeholder-label"
                   value={this.state.size}
                   onChange={this.handelSizeChange}
@@ -359,10 +356,6 @@ export default class ProductItem extends Component {
                   <MenuItem id='val' value="XL">XL</MenuItem>
                   <MenuItem id='val' value="XXL">XXL</MenuItem>
                   <MenuItem id='val' value="ONE SIZE">ONE SIZE</MenuItem>
-
-
-
-
 
                 </Select>
               </FormControl>
@@ -386,12 +379,16 @@ export default class ProductItem extends Component {
               {/* <div className='div-item-img'> */}
             </div>
             {this.props.item.productImage.map((item, index) => {
-              return (<ProductImgItem item={item} updateProductList={this.props.updateProductList} key={index} classId='img-color-All-product' />)
+              return (<ProductImgItem list={this.props.item.productImage} index={index} key={item._id + this.props.item.mainImage._id} item={item} prodId={this.props.item._id} mainImage={this.props.item.mainImage} updateProductList={this.props.updateProductList}classId='img-color-All-product' />)
             })}
             {/* </div> */}
 
-            <button onClick={() => { this.setState({ addImg: !this.state.addImg }) }} id='add-img-btn'> <span className="iconify" id='iconify-add-img' data-icon="entypo:add-to-list"></span></button>
-            {this.state.addImg ? (<ProductImageSelect addImg={this.handelAddImg} className='old' />) : ''}
+         {this.state.addImg&& <button onClick={() => { this.setState({ addImg: !this.state.addImg }) }} className='add-img-btn-close'><span class="iconify" id='iconify-add-img'data-icon="eva:close-outline"></span> </button>}
+         {!this.state.addImg && <button onClick={() => { this.setState({ addImg: !this.state.addImg }) }} id='add-img-btn'> <span className="iconify" id='iconify-add-img' data-icon="entypo:add-to-list">  </span>
+
+            <span className='bottom-toolip'> הוספת צבע חדש <i></i> </span>
+            </button>}
+            {this.state.addImg ? (<ProductImageSelect addImg={this.handelAddImg} className='product-add-img-old' />) : ''}
           </div>
         </div>
 

@@ -1,14 +1,8 @@
-import React, {Component, Fragment} from 'react';
-import BackMan from '../../Image/Design/men_back.png'
-import FrontMan from '../../Image/Design/men_front.png'
-import { SketchPicker } from 'react-color';
-import FontPicker from "font-picker-react";
-import Draggable from 'react-draggable';
+import React, {Component} from 'react';
+
 import ColorPicker from '../colorPicker/colorPicker';
-import ResizableRect from 'react-resizable-rotatable-draggable'
-import Dropdown from 'react-dropdown';
+
 import 'react-dropdown/style.css';
-import 'react-alice-carousel/lib/alice-carousel.css';
 import { Slider } from '@material-ui/core';
 
 

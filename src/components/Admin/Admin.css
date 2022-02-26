@@ -22,7 +22,7 @@
  #list1{
     display: flex;
     flex-direction: column;
-    width: 60%;
+    width: 80%;
 
     /* grid-column-gap:10px;
     grid-row-gap: 10px;
@@ -42,7 +42,7 @@
      position: absolute;
      direction: rtl;
      right:0px;
-     width: 20%; 
+     width: 30%; 
     }
     #product-label-old{
         position: absolute;
@@ -60,25 +60,22 @@
 
     }
 #card-product-new{
-    position: relative;
 
-    background-color: white;
-    border-radius: 20px;
-    width: 50%;
-    padding: 20px;
+  
+    margin: 50px;
     margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
 
 }
 #form-product-new{
     font-family: 'Varela Round', sans-serif;
     display: grid;
-    justify-self: center;
-    justify-content: center;
-    text-align: right;
     width: 100%;  
-    grid-column-gap:20px;
       grid-row-gap: 10px;
-    grid-template-columns:repeat(1,60%);
+    grid-template-columns:repeat(1,100%);
 
 }
 
@@ -105,10 +102,41 @@
     position: relative;
 
 }
+.product-add-img-old{
+    font-family: 'Varela Round', sans-serif;
+    display: grid;
+    justify-self: center;
+    justify-content: center;
+    text-align: right;
+    width: 45%;    
+    grid-row-gap: 0px;
+    grid-template-rows: 15% auto auto;
+    /* grid-template-columns:repeat(1,90%); */
+    background-color: rgba(219, 218, 218, 0.529);
+    border-radius: 10px;
+    box-sizing: border-box;
+    padding: 25px 15px;
+    margin: 15px;
+    margin-right: 0px;
+    border: 4px solid lightblue;
+    position: relative;  
+    box-shadow:0 1px 8px rgba(0,0,0,0.5);
+
+}
 
 .product-add-img-input{
     display: flex;
     flex-direction: row;
+}
+.product-add-img-old-input{
+    display: flex;
+    flex-direction: row;
+}
+.product-add-img-old-input .img-title{
+    margin: 0px !important;
+    padding: 0% !important;
+    display: inline;
+    font-size: 12px;
 }
 .product-add-img-btn{
     border: none;
@@ -117,10 +145,17 @@
     border-radius: 10px;
     margin-bottom: 10px;
 }
+.product-add-img-old-btn{
+    border: none;
+    background-color: rgb(194, 194, 194);
+    width: 80%;
+    max-height: 40px;
+    border-radius: 10px;
+}
 #form-event{
     position: relative;
 }
-.product-color-helper-new{
+/* .product-color-helper-new{
     display: inline-block;
     width: 20px;
     height: 20px;
@@ -131,13 +166,11 @@
 }
 .product-color-helper-old{
     display: inline-block;
-    /* width: 5px;
-    height: 5px; */
+
     border-radius: 100%;
     position: absolute;
     left: 0;
-}
-
+} */
 
 .password-admin-div{
     padding: 200px 0px;
@@ -198,6 +231,34 @@ padding:  0px 7px;
     border-radius: 4px;
 
 }
+#DialogNewProduct{
+    position: relative;
+    direction: rtl;
+    text-align: center;
+    font-family: 'Varela Round', sans-serif !important;
+
+}
+.dialog-close-btn{
+    background-color: transparent;
+    font-size: 18px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border: none;
+}
+#dialog-newProduct-title{
+    background-color: rgb(236, 236, 236);
+    text-align: center;
+    font-family: 'Varela Round', sans-serif !important;
+/* box-shadow: 0px 2px 4px #03030333; */
+box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+
+}
+#dialog-newProduct-title h2{
+    font-family: 'Varela Round', sans-serif !important;
+
+}
+
 @media only screen and (max-width: 768px) {
     
 }

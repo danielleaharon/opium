@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './imageUploading.css';
 import getFirebase from "../../Firebase";
+import {resizeImage} from "./resizeImage";
+import loadImage from "blueimp-load-image";
 
 export default class SingleFileUploadComponent extends Component {
 
@@ -14,7 +16,8 @@ export default class SingleFileUploadComponent extends Component {
         }
         this.fileUpload = this.fileUpload.bind(this)
         this.uploadImage = this.uploadImage.bind(this)
-        
+        this.removeBackgrounnd = this.removeBackgrounnd.bind(this)
+
     }
      firebase = getFirebase();
 
@@ -24,24 +27,69 @@ export default class SingleFileUploadComponent extends Component {
         })
     }
 
+     async removeBackgrounnd(image){
+        const resizedImage = await loadImage(image, {
+             // resize before sending to Remove.bg for performance
+             maxWidth: 1500,
+             maxHeight: 1500,
+             canvas: true,
+         });
+        //  var blob = null;
+         return new Promise((resolve) => {
+
+         resizedImage.image.toBlob(async function (inputBlob) {
+
+             const formData = new FormData();
+             formData.append("image_file", inputBlob);
+
+             return fetch("https://api.remove.bg/v1.0/removebg", {
+                 method: "POST",
+                 headers: {
+                     "X-Api-Key": "Ssmd81jGzdntmTVNs1MP3ujn",
+                 },
+                 body: formData,
+             }).then(async (response) => {
+
+
+                 const outputBlob = await response.blob();
+                 // const outputBlob2 = await response.png();
+                 // console.log(outputBlob2)
+                //  blob = outputBlob;
+                //  console.log('outputBlob');
+                //  console.log(outputBlob);
+                //  blob = URL.createObjectURL(outputBlob);
+                 resolve( outputBlob);
+             });
+         })
+        });
+    }
     async uploadImage(event) {
         event.preventDefault()
         if (!this.firebase) return;
 
         const uploadedFile = event.target.files[0];
         if (!uploadedFile) return;
-    
+
+        resizeImage(uploadedFile).then( async(uploadedFile3)=>{
+            console.log(uploadedFile3)
+           await  this.removeBackgrounnd(uploadedFile3).then(async(uploadedFile2)=>{
+
+        
+        // const uploadedFile2=await this.removeBackgrounnd(uploadedFile3);
+
+        console.log(uploadedFile2)
+
+        const uploadedFileName=uploadedFile.name.split('.')[0]+'.png'
+
         const storage = this.firebase.storage();
         const ref=this.props.category.trim();
         const storageRef = storage.ref(ref);
-    console.log(storage)
     var metadata = {
-        contentType: uploadedFile.type,
+        contentType: uploadedFile3.type,
       };
         try {
-          const r= await storageRef.child(uploadedFile.name).put(uploadedFile,metadata);
+          const r= await storageRef.child(uploadedFileName).put(uploadedFile2,metadata);
 
-          console.log(r.ref)
           r.ref.getDownloadURL().then((url)=>{
             this.props.setImage(url)
             this.setState({url:url})
@@ -52,15 +100,16 @@ export default class SingleFileUploadComponent extends Component {
         } catch (error) {
           console.log("error", error);
         }
-        console.log(this.state.file)
+    });
+
+});
     }
 
     render() {
         let preview;
-        console.log(this.state.url)
         if (this.props.url) {
             
-            preview = <img className='preview' src={this.props.url} alt='' />;
+            preview = <img id="imageResult" className='preview' src={this.props.url} alt='' />;
         }
         return (
             <form className='image-form'>

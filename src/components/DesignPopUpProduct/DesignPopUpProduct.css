@@ -18,10 +18,10 @@
 }
 .popProduct-dialog-design-img{
     position: absolute;
-    top: 10px;
+    top: 0px;
     left: 10px;
-    width: 10%;
     opacity: 0.7;
+    max-width: 100%;
 }
 #popProduct-dialog-design-description{
     font-family: 'Varela Round', sans-serif;
@@ -38,14 +38,41 @@
     height: 100%;
     /* margin-top: 50px; */
 }
-#Dialog-buttons-popProduct{
-    position: absolute;
-    top: 15px;
-    right: 20px;
 
 
+@media only screen and (min-width: 800px) {
+    .popProduct-dialog-design-img{
+ 
+        width: 9%;
+     
+    }
+    #Dialog-buttons-popProduct{
+        position: absolute;
+        top: 15px;
+        right: 20px;
+    
+    
+    }
+    #dialog-btn-design-popProduct{
+        font-size: 20px;
+        font-weight: bold;
+    }
 }
-#dialog-btn-design-popProduct{
-    font-size: 20px;
-    font-weight: bold;
+@media only screen and (max-width: 800px) {
+    .popProduct-dialog-design-img{
+
+        width: 20%;
+     
+    }
+    #Dialog-buttons-popProduct{
+        position: absolute;
+        top: 0px;
+        right: 5px;
+    
+    
+    }
+    #dialog-btn-design-popProduct{
+        font-size: 18px;
+        font-weight: bold;
+    }
 }

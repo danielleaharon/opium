@@ -2,9 +2,7 @@ import React from 'react'
 import reactCSS from 'reactcss'
 import { SketchPicker } from 'react-color'
 import './colorPicker.css';
-import { color } from '@mui/system';
 import { Icon } from '@iconify/react';
-import starIcon from '@iconify/icons-bi/star';
 
 class colorPicker extends React.Component {
   constructor(props)
@@ -21,9 +19,9 @@ class colorPicker extends React.Component {
     var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(this.props.color);
     if(result){
         var r= parseInt(result[1], 16);
-        var g= parseInt(result[2], 16);
-        var b= parseInt(result[3], 16);
-        const rgb= r+","+g+","+b;//return 23,14,45 -> reformat if needed 
+        // var g= parseInt(result[2], 16);
+        // var b= parseInt(result[3], 16);
+        // const rgb= r+","+g+","+b;
         if(255-r<20)
         {
           this.setState({textcolor:'#000000b5'})
@@ -86,7 +84,6 @@ class colorPicker extends React.Component {
         colorShape: {
           // width: '25px',
           // height: '25px',
-          borderRadius: '2px',
           padding:'5px',
           // fontSize:'20px',
           // background: 'url(https://api.iconify.design/teenyicons:paintbucket-solid.svg?color='+'red'+') no-repeat center center / contain',

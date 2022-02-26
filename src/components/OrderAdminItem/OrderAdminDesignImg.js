@@ -1,23 +1,7 @@
-import React, {Component, Fragment} from 'react';
-import FormControl from '@material-ui/core/FormControl';
-
-import { Redirect } from "react-router-dom";
-import MenuItem from '@material-ui/core/MenuItem';
-import Select from '@material-ui/core/Select';
-import Logo from '../../Image/opiumLogo3.png';
-
-import Button from '@material-ui/core/Button';
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import { Icon } from '@iconify/react';
-import getFirebase from "../../Firebase";
+import React, {Component} from 'react';
 import {saveAs} from 'file-saver'
 import domtoimage from 'dom-to-image';
 import './OrderAdminItem.css';
-import { Fastfood } from '@material-ui/icons';
 export default class OrderAdminDesignImg extends Component {
     constructor(props) {
         super(props);
@@ -67,7 +51,7 @@ handelOpen(){
 <div className='OrderAdminDesign'>  
 
 <button className='OrderAdminDesign-btn OrderAdminDesign-shape'  onClick={this.handelOpen}>
-<img className={this.props.item.titel +' OrderAdminDesign-view-img'}  src={this.props.item.data} />
+<img className={this.props.item.titel +' OrderAdminDesign-view-img'}  src={this.props.item.data} alt='front' />
 
          </button>
 <div hidden={!this.state.openDetails} className='OrderAdminDesign-details-img'>
@@ -87,8 +71,8 @@ handelOpen(){
 
 </div>
 <div   id='OrderAdminDesign-img-design'  > 
-  <img  hidden={!this.state.downloadSlice} className={this.props.item.titel}src={this.props.item.data} />
-  <img  hidden={!this.state.download} src={this.props.item.data} />
+  <img  hidden={!this.state.downloadSlice} className={this.props.item.titel}src={this.props.item.data} alt='front' />
+  <img  hidden={!this.state.download} src={this.props.item.data} alt='front' />
 
   </div>
       </div>  

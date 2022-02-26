@@ -1,12 +1,5 @@
 import React, {Component} from 'react';
-import FormControl from '@material-ui/core/FormControl';
-import InputLabel from '@material-ui/core/InputLabel';
-import Input from '@material-ui/core/Input';
-import FormHelperText from '@material-ui/core/FormHelperText';
-import MenuItem from '@material-ui/core/MenuItem';
-import Select from '@material-ui/core/Select';
 import ImageUploading from '../../ImageUploading/SingleFileUploadComponent';
-import axios from 'axios';
 import '../Admin.css';
 export default class SchoolImageSelect extends Component {
     constructor(props) {
@@ -39,7 +32,7 @@ export default class SchoolImageSelect extends Component {
       this.ClearError();
       let error=false;
   
-      if(this.state.pImage==''){
+      if(this.state.pImage===''){
         this.setState({pImageE:true})
         error=true
       }

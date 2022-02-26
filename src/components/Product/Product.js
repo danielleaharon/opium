@@ -1,40 +1,34 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-import 'react-alice-carousel/lib/alice-carousel.css';
 import ProductShopItem from './ProductShopItem'
 
 import './Product.css';
-export default class Product extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-
-    }
-
-  }
+export default function Product (props){
 
 
-  render() {
+
     return (
-      <div className='Product-t'>
+      <div className='Product-row row  justify-content-start' >
+        {/* <div className='container'> */}
 
-
-        <div className='Product-p'>
-
-          <div className='row-p'>
-
-            {this.props.productList.filter(x => x.category === this.props.category && (x.Subcategory.name === this.props.subCategory || this.props.subCategory === null) || this.props.category === 'all').filter(x => x.InStock).map((item, index) => {
-              if (this.props.Ondesign)
-                return <ProductShopItem width={this.props.width} Ondesign={this.props.Ondesign} pickProduct={this.props.pickProduct} item={item} key={item._id} addToCart={this.props.addToCart}
-                  deleteFromCart={this.props.deleteFromCart} />
-              else return <ProductShopItem width={this.props.width} Ondesign={this.props.Ondesign} item={item} key={item._id} addToCart={this.props.addToCart}
-                deleteFromCart={this.props.deleteFromCart} />
+          {/* <div className='row '> */}
+            {props.productList.filter(x => (x.category === props.category || props.category === 'all') && (x.Subcategory.name === props.subCategory ||  props.subCategory === null) ).filter(x => x.InStock).map((item, index) => {
+              if (props.Ondesign)
+                return <div className='col-5 col-xl-2 ml-xl-4 mr-xl-2 mr-4'>
+                <ProductShopItem width={ props.width} Ondesign={ props.Ondesign} pickProduct={ props.pickProduct} item={item} key={item._id} addToCart={ props.addToCart}
+                  deleteFromCart={ props.deleteFromCart} />
+                  </div>
+              else return <div className='col-5 col-xl-2 ml-xl-4 mr-xl-2 mr-4' >
+               <ProductShopItem width={ props.width} Ondesign={ props.Ondesign} item={item} key={item._id} addToCart={ props.addToCart}
+                deleteFromCart={ props.deleteFromCart} />
+                </div>
 
             })}
+            
 
 
-          </div>
-        </div>
+          {/* </div> */}
+        {/* </div> */}
 
       </div>
 
@@ -46,5 +40,5 @@ export default class Product extends Component {
 
 
     );
-  }
+  
 }

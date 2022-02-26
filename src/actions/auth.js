@@ -6,7 +6,7 @@ import Config from '../config/config';
 
 
 export const signin= (password, next,nextError) =>{
-    axios(Config.getServerPath()+'/admin/signin',{
+    axios(Config.getServerPath()+'admin/signin',{
         method: 'POST',
         headers:{
             Accept:'application/json',

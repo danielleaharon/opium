@@ -1,10 +1,6 @@
 import React from 'react';
 import './ProductMobileMenu.css';
 import generalUtils from "../../common/generalUtils";
-import Logo from '../../Image/opiumLogo3.png'
-
-import {Link} from 'react-router-dom';
-
 
 class ProductMobileMenu extends React.Component {
 constructor(props){
@@ -39,16 +35,16 @@ constructor(props){
     }
    
     onBackGroundClick(targetId) {
-        if (targetId == 'menu-wrapper-id') {
+        if (targetId==='menu-wrapper-id') {
             this.props.onClose();
         }
     }
 
     getClassNameWithSuffix(className) {
-        if (this.props.menuStatus == 1) {
+        if (this.props.menuStatus===1) {
             return className + '-opening';
         }
-        if (this.props.menuStatus == 3) {
+        if (this.props.menuStatus===3) {
             return className + '-closing';
         }
     }

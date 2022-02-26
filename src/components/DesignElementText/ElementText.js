@@ -1,23 +1,6 @@
-import React, { Component, Fragment } from 'react';
-import BackMan from '../../Image/Design/men_back.png'
-import FrontMan from '../../Image/Design/men_front.png'
-import { SketchPicker } from 'react-color';
-import FontPicker from "font-picker-react";
-import Draggable from 'react-draggable';
-import ColorPicker from '../colorPicker/colorPicker';
-import ResizableRect from 'react-resizable-rotatable-draggable'
-import Dropdown from 'react-dropdown';
+import React, { Component } from 'react';
+
 import 'react-dropdown/style.css';
-import 'react-alice-carousel/lib/alice-carousel.css';
-import { Slider } from '@material-ui/core';
-import TextToolbar from '../TextToolbar/TextToolbar';
-import TextToolbar2 from '../TextToolbar/TextToolbar2';
-import styled from 'styled-components'
-import heart from '../../Image/heart.png';
-
-
-
-
 import './DesignElementText.css';
 export default class DesignElementText extends Component {
   constructor(props) {

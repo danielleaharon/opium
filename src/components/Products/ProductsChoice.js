@@ -1,7 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom'
 
-import { Redirect } from "react-router-dom";
+
 // import Products from './Products'
 import ProductsMobile from './ProductsMobileHooks';
 import Products from './ProductsHooks';
@@ -43,7 +43,7 @@ export default function ProductsChoice (props) {
           const ListBags = [];
           const ListKitchen = [];
           const ListImageProduct = [];
-          res.data.productList.map((item, index) => {
+          res.data.productList.forEach((item, index) => {
             if (item.category === 'הלבשה') {
               if (ListClothing.indexOf(item.Subcategory.name) === -1) {
                 ListClothing.push(item.Subcategory.name)
@@ -395,10 +395,12 @@ export default function ProductsChoice (props) {
       }
     }
 
-   
       
-        if(props.width>800)
+        if(props.width>800){
+        
+
         return <Products {...props} HistoryReplace={HistoryReplace} state={state} />
+        }
         else{
           // return ''
           return <ProductsMobile {...props} HistoryReplace={HistoryReplace} state={state}  />

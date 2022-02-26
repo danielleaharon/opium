@@ -1,7 +1,6 @@
 import React from 'react';
 import Map from '../../Image/map.png'
 
-import 'react-alice-carousel/lib/alice-carousel.css';
 import axios from 'axios';
 import Config from '../../config/config';
 
@@ -55,13 +54,7 @@ export default function Contact(props) {
         console.log('send')
       });
   }
-  const defaultProps = {
-    center: {
-      lat: 32.16744668349592,
-      lng: 34.8471588018455
-    },
-    zoom: 11
-  };
+
   const showInMapClicked = () => {
     window.open("https://maps.google.com?q=" + '32.16744668349592, 34.8471588018455');
   };
@@ -209,7 +202,7 @@ export default function Contact(props) {
       </div>
 
       <div className='map_grid'>
-        <img onClick={showInMapClicked} className='map' src={Map} ></img>
+        <img onClick={showInMapClicked} className='map' src={Map} alt='map loction' ></img>
 
         <div style={{ display: 'flow' }}>
 

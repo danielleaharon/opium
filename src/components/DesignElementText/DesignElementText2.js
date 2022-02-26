@@ -1,18 +1,15 @@
 import React, { Component } from 'react';
 
+import ResizableRect from 'react-resizable-rotatable-draggable-touch-v2'
 import 'react-dropdown/style.css';
-import 'react-alice-carousel/lib/alice-carousel.css';
-
 import TextToolbar2 from '../TextToolbar/TextToolbar2';
-import { TextField } from "@material-ui/core";
-import { Rnd } from "react-rnd";
 
 
 
 
-import './DesignElementTextMobile.css';
 
-export default class DesignElementTextMobile extends Component {
+import './DesignElementText.css';
+export default class DesignElementText extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -30,6 +27,7 @@ export default class DesignElementTextMobile extends Component {
       topText: this.props.item.getTop(),
       leftText: this.props.item.getLeft(),
       rotateAngleText: this.props.item.getRotateAngleText(),
+      dragText: false,
       bold: this.props.item.getBold(),
       toggelPaint: false,
       Italic: this.props.item.getItalic(),
@@ -59,17 +57,14 @@ export default class DesignElementTextMobile extends Component {
     this.getZIndex = this.getZIndex.bind(this);
     this.underline = this.underline.bind(this);
     this.handleChangeText = this.handleChangeText.bind(this);
-    this.handleChangeText = this.handleChangeText.bind(this);
 
     this.setBackgroundColor = this.setBackgroundColor.bind(this);
-
   }
   componentDidMount() {
 
-
   }
 
- 
+
 
   handleRotateText(rotateAngleText) {
     this.setState({
@@ -77,8 +72,9 @@ export default class DesignElementTextMobile extends Component {
     })
   }
 
-  handleDragText(deltaX, deltaY) {
-    console.log('tohch')
+  handleDragText(delta) {
+    const {deltaX, deltaY}=delta;
+    console.log(deltaY)
     this.setState({
       leftText: this.state.leftText + deltaX,
       topText: this.state.topText + deltaY
@@ -89,26 +85,32 @@ export default class DesignElementTextMobile extends Component {
 
 
   }
-  handleResizeText(style, delta, type) {
+  handleResizeText(data) {
     // type is a string and it shows which resize-handler you clicked
     // e.g. if you clicked top-right handler, then type is 'tr'
-    let { x, y } = style
-    let { width, height } = delta
-
-    let topText = this.state.topText + y
-    let leftText = this.state.leftText + x
+    const {style, isShiftKey, type}=data;
+    console.log(style)
+    let { top, left, width, height } = style
+    top = Math.round(top)
+    left = Math.round(left)
+    width = Math.round(width)
+    height = Math.round(height)
+    let topText = top
+    let leftText = left
     let widthText = width
     let heightText = height
 
 
+    //  this.handleChangeText('fff','fff')
     this.setState({
-      // topText,
-      // leftText,
+      topText,
+      leftText,
       widthText,
-      // width,
+
       // heightText
     }, () => {
-
+      this.props.item.setTop(this.state.topText)
+      this.props.item.setLeft(this.state.leftText)
       this.props.item.setSize(this.state.widthText)
       this.setState({ width: document.getElementById('textcenter-input' + this.props.item.getId()).clientWidth })
       this.setState({ heightText: document.getElementById('textcenter-input' + this.props.item.getId()).clientHeight })
@@ -127,11 +129,10 @@ export default class DesignElementTextMobile extends Component {
 
   };
   handelClick() {
+    console.log(this.state.toggelPaint)
     this.setState({ toggelPaint: !this.state.toggelPaint })
   }
   handleChangeText(e) {
-
-
     this.setState({ text: e.target.value }, () => {
       this.setState({ width: document.getElementById('textcenter-input' + this.props.item.getId()).clientWidth })
       this.props.item.setData(this.state.text);
@@ -154,7 +155,7 @@ export default class DesignElementTextMobile extends Component {
 
   }
   bold() {
-    if (this.state.bold !== '') {
+    if (this.state.bold != '') {
       this.setState({ bold: '' })
       this.props.item.setBold('')
 
@@ -177,7 +178,7 @@ export default class DesignElementTextMobile extends Component {
     return this.state.activeFontFamily;
   }
   Italic() {
-    if (this.state.Italic !== 'normal') {
+    if (this.state.Italic != 'normal') {
       this.setState({ Italic: 'normal' })
       this.props.item.setItalic('normal')
 
@@ -189,13 +190,13 @@ export default class DesignElementTextMobile extends Component {
     }
   }
   underline() {
-    if (this.state.underline !== 'underline') {
+    if (this.state.underline != 'underline') {
       this.setState({ underline: 'underline' })
       this.props.item.setUnderline('underline')
 
     }
     else {
-      this.setState({ underline: 'none' })
+      this.setState({ Italic: 'none' })
       this.props.item.setUnderline('none')
 
 
@@ -219,8 +220,7 @@ export default class DesignElementTextMobile extends Component {
   };
   click(e) {
     this.props.onDrag(this.props.item.getId())
-    document.getElementById('textcenter-input' + this.props.item.getId()).focus()
-    this.props.getTextToolbar(<TextToolbar2 key={this.props.item.getId()} setFormats={this.props.item.setFormats} formats={this.props.item.getFormats()} underline={this.underline} setBorderColor={this.setBorderColor} BorderColor={this.state.borderColor} setRadios={this.setRadios} Radios={this.state.backgroundRadius} setPaint={this.setTextColor} textColor={this.state.textColor} setBackgroundColor={this.setBackgroundColor} backgroundColor={this.state.backgroundColor} bold={this.bold} Italic={this.Italic} setShowSlider={this.props.setShowSlider} changeFont={this.changeFont} getFont={this.getFont} />)
+    this.props.getTextToolbar(<TextToolbar2 key={this.props.item.getId()} setFormats={this.props.item.setFormats} formats={this.props.item.getFormats()} zIndex={this.getZIndex} underline={this.underline} setBorderColor={this.setBorderColor} BorderColor={this.state.borderColor} setRadios={this.setRadios} Radios={this.state.backgroundRadius} setPaint={this.setTextColor} textColor={this.state.textColor} setBackgroundColor={this.setBackgroundColor} backgroundColor={this.state.backgroundColor} bold={this.bold} Italic={this.Italic} setShowSlider={this.props.setShowSlider} changeFont={this.changeFont} getFont={this.getFont} />)
   }
 
   delete(e) {
@@ -243,72 +243,44 @@ export default class DesignElementTextMobile extends Component {
     // const z= this.props.zIndex();
     // this.setState({zIndex:z});
   }
-
   render() {
     if (this.state.delete)
       return '';
-
-
 
     return (
 
       <div className='Design3' id={this.props.item.getId()} hidden={this.props.item.getHidden()} style={{
         zIndex: this.props.item.getZIndex(), position: 'absolute',
         left: this.state.leftText,
-        height: this.state.heightText + 'px',
-        width: Math.max(this.state.text.length * 22, this.state.width) + 'px',
-        backgroundColor: this.state.backgroundColor,
-        fontFamily: this.state.activeFontFamily,
-        // color:this.state.textColor ,
-        borderRadius: this.state.backgroundRadius + 'px',
-
-
-        // width:this.state.width,
-        // width:this.state.width,
-
+        width: this.state.text.length + 'ch',
 
         top: this.state.topText,
       }}  >
-        <TextField
-
-          name='name'
-          type='name'
-          autoComplete='off'
-          variant="outlined"
-          required
-          inputProps={{
-            id: 'textcenter-input' + this.props.item.getId(),
-            style: {
-              "--size": this.state.widthText + '%', "--family": this.state.activeFontFamily,
-              color: this.state.textColor,
-              fontStyle: this.state.Italic,
-              fontWeight: this.state.bold,
-              textDecoration: this.state.underline,
-
-            }
-          }}
-          onClick={this.click}
-          className='textcenter-input' id={'textcenter-input' + this.props.item.getId()} onChange={this.handleChangeText} value={this.state.text}
-          style={{
-
-            maxWidth: '100%',
-            width: '100%',
-            textAlign: 'center',
-            position: 'absolute',
-            left: 0,
-            top: 0,
-            WebkitTextStroke: '2px ' + this.state.borderColor,
-            transform: `rotate(${this.state.rotateAngleText}deg)`,
-          }}
-
-
-        />
-       
+        <input type='text' style={{
+          fontSize: this.state.widthText + '%',
+          //  width:this.state.widthText,
+          //  height:this.state.heightText,
+          // padding:'5px',
+          width: this.state.text.length + 'ch',
+          alignItems: 'center',
+          textAlign: 'center',
+          position: 'absolute',
+          left: this.state.leftText,
+          top: this.state.topText,
+          webkitTextStroke: '2px' + this.state.borderColor, /* width and color */
+          fontStyle: this.state.Italic,
+          fontWeight: this.state.bold,
+          textDecoration: this.state.underline,
+          borderRadius: this.state.backgroundRadius + 'px',
+          backgroundColor: this.state.backgroundColor,
+          transform: `rotate(${this.state.rotateAngleText}deg)`,
+          color: this.state.textColor, fontFamily: this.state.activeFontFamily
+        }} onClick={this.click} className='textcenter-input' id={'textcenter-input' + this.props.item.getId()} onChange={this.handleChangeText} value={this.state.text}></input>
         {this.props.drag === this.props.item.getId() ? (
           <div className='div2'>
             <button style={{
               position: 'absolute',
-              left: -16,
+              left: this.state.leftText - 12,
               // transform: `rotate(${this.state.rotateAngleText}deg)`,
 
 
@@ -318,30 +290,33 @@ export default class DesignElementTextMobile extends Component {
               textAlign: 'left',
               border: 'none',
               //  height:this.state.widthText/2,
-              top: -15,
-            }} onClick={this.delete} className='txt-element-delete-mobile'><i style={{ fontSize: '20px' }} className="fa fa-times"></i></button>
-            <Rnd
-              className='rnd'
-              resizeHandleClasses={({
-                bottom: 'rnd-resize-bottom',
-                bottomLeft: "rnd-resize-btn",
-                bottomRight: "rnd-resize-btn",
-                left: "rnd-resize-left",
-                right: "rnd-resize-right",
-                top: "rnd-resize-up",
-                topLeft: "",
-                topRight: "rnd-resize-btn",
-              })}
-              size={{ width: '100%', height: '100%' }}
-              position={{ x: 0, y: 0 }}
-              onDragStop={(e, d) => { this.handleDragText(d.x, d.y) }}
-              onResizeStop={(e, direction, ref, delta, position) => {
+              top: this.state.topText - 10,
+            }} onClick={this.delete} className='txt-element-delete'><i style={{ fontSize: '20px' }} className="fa fa-times"></i></button>
+            <ResizableRect
+              left={this.state.leftText}
+              className={this.props.item.getId()}
+              top={this.state.topText}
+              width={this.state.width}
+              height={this.state.heightText}
+              rotateAngle={this.state.rotateAngleText}
+              // aspectRatio={false}
+              // minWidth={10}
+              // minHeight={10}
+              zoomable='n, w, s, e, nw, ne, se, sw'
+              // rotatable={true}
+              // onRotateStart={this.handleRotateStart}
+              onRotate={this.handleRotateText}
+              // onRotateEnd={this.handleRotateEnd}
+              // onResizeStart={this.handleResizeStart}
+              onResize={this.handleResizeText}
+              // onResizeEnd={this.handleUp}
+              // onDragStart={this.handleDragStart}
+              onDrag={this.handleDragText}
+            //  onDragEnd={this.handleChangeDrag}
+            >
 
-                this.handleResizeText(position, { width: ref.offsetWidth, height: ref.offsetHeight })
-              }}
-            ></Rnd>
-          
-          </div>) : ''}
+
+            </ResizableRect>    </div>) : ''}
       </div>
 
     );

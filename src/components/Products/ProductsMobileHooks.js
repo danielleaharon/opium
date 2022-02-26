@@ -1,13 +1,6 @@
-import React, { Component } from 'react';
-
+import React from 'react';
 import Product from '../Product/Product'
-import axios from 'axios';
-import Config from '../../config/config';
 import ProductMobileMenu from '../ProductMobileMenu/ProductMobileMenu';
-
-import 'react-alice-carousel/lib/alice-carousel.css';
-import { useHistory } from 'react-router-dom'
-
 import './ProductsMobile.css';
 export default function ProductsMobileHooks(props) {
 
@@ -84,7 +77,7 @@ export default function ProductsMobileHooks(props) {
           {
             props.state.listElectronics.map((item, index) => {
 
-              return <button key={index} className='dropdown-btn' onClick={() => { handleClickSubCategory('גאדגטים ואלקטרוניקה', item, 1); setState({ ...state, redpink: !state.redpink }) }}>{item}</button>
+              return <button key={index} className='dropdown-btn' onClick={() => { handleClickSubCategory('גאדגטים ואלקטרוניקה', item, 1); setState({ ...state, redpink: !state.redpink }) }}>{item}<hr /></button>
 
             })}
 
@@ -104,7 +97,7 @@ export default function ProductsMobileHooks(props) {
           <div id="mask"></div>
           {
             props.state.listGift.map((item, index) => {
-              return <button className='dropdown-btn' onClick={() => { setState({ ...state, pink: !state.pink }); handleClickSubCategory('מתנות בעיצוב ', item, 2) }}>{item}</button>
+              return <button className='dropdown-btn' onClick={() => { setState({ ...state, pink: !state.pink }); handleClickSubCategory('מתנות בעיצוב', item, 2) }}>{item}<hr /></button>
 
 
             })}
@@ -129,7 +122,7 @@ export default function ProductsMobileHooks(props) {
           <div id="mask"></div>
           {
             props.state.listCup.map((item, index) => {
-              return <button className='dropdown-btn' onClick={() => { setState({ ...state, purple: !state.purple }); handleClickSubCategory('כוסות ספלים ובקבוקים', item, 3) }}>{item}</button>
+              return <button className='dropdown-btn' onClick={() => { setState({ ...state, purple: !state.purple }); handleClickSubCategory('כוסות ספלים ובקבוקים', item, 3) }}>{item}<hr /></button>
 
 
             })}
@@ -154,7 +147,7 @@ export default function ProductsMobileHooks(props) {
           {
             props.state.listHat.map((item, index) => {
               console.log(item)
-              return <button className='dropdown-btn' onClick={() => { setState({ ...state, bluepurple: !state.bluepurple }); handleClickSubCategory('כובעים ומוצרי טקסטיל', item, 4) }}>{item}</button>
+              return <button className='dropdown-btn' onClick={() => { setState({ ...state, bluepurple: !state.bluepurple }); handleClickSubCategory('כובעים ומוצרי טקסטיל', item, 4) }}>{item}<hr /></button>
 
 
             })}
@@ -177,7 +170,7 @@ export default function ProductsMobileHooks(props) {
           <div id="mask"></div>
           {
             props.state.listBags.map((item, index) => {
-              return <button className='dropdown-btn' onClick={() => { setState({ ...state, blue: !state.blue }); handleClickSubCategory('תיקים ומוצרים למשרד', item, 5) }}>{item}</button>
+              return <button className='dropdown-btn' onClick={() => { setState({ ...state, blue: !state.blue }); handleClickSubCategory('תיקים ומוצרים למשרד', item, 5) }}>{item}<hr /></button>
 
 
             })}
@@ -200,7 +193,7 @@ export default function ProductsMobileHooks(props) {
           <div id="mask"></div>
           {
             props.state.listKitchen.map((item, index) => {
-              return <button className='dropdown-btn' onClick={() => { setState({ ...state, green: !state.green }); handleClickSubCategory('מוצרי מטבח ואירוח לבית', item, 6) }}>{item}</button>
+              return <button className='dropdown-btn' onClick={() => { setState({ ...state, green: !state.green }); handleClickSubCategory('מוצרי מטבח ואירוח לבית', item, 6) }}>{item}<hr /></button>
 
 
             })}
@@ -225,7 +218,7 @@ export default function ProductsMobileHooks(props) {
           <div id="mask"></div>
           {
             props.state.listImageProduct.map((item, index) => {
-              return <button className='dropdown-btn' onClick={() => { setState({ ...state, greenorange: !state.greenorange }); handleClickSubCategory('הדפסת תמונות מעוצבות', item, 7) }}>{item}</button>
+              return <button className='dropdown-btn' onClick={() => { setState({ ...state, greenorange: !state.greenorange }); handleClickSubCategory('הדפסת תמונות מעוצבות', item, 7) }}>{item}<hr /></button>
 
 
             })}
@@ -284,7 +277,7 @@ export default function ProductsMobileHooks(props) {
   }
 
   const getMenu = () => {
-    if (state.menuStatus == 0) {
+    if (state.menuStatus===0) {
       return null;
     }
     return <ProductMobileMenu handleClick={handleClick} setMenuSelect={setMenuSelect} options={getMenuOptions()} menuStatus={state.menuStatus}
@@ -294,21 +287,23 @@ export default function ProductsMobileHooks(props) {
 
 
   return (
+<>
+<h3 className='products-h3' hidden={props.Ondesign}  >מוצרים</h3>
 
-    <div className='Products-mobile' style={{ width: window.innerWidth + 'px' }}>
+    <div className='Products-mobile container-fluid px-0 mx-0' >
+
       {getMenu()}
-      <div className='print-category2' style={{ width: window.innerWidth + 'px' }} onClick={openMenu} >
+      <div className='print-category2 row  mx-0 w-100'  onClick={openMenu} >
         <div className='mobile-cubeC-print'>
           <span ><span className="iconify" id='productsItem-arrow' data-icon="bx:bx-down-arrow"></span>
           </span>
-          <div className='print-category2-p'>{props.state.category !== 'all' ? props.state.category + ' ' : 'כל המוצרים'}
+          <div className='print-category2-p '>{props.state.category !== 'all' ? props.state.category + ' ' : 'כל המוצרים'}
             {props.state.subCategory !== null && <span><span className="iconify" data-icon="bx:bxs-left-arrow-alt"></span> {props.state.subCategory}</span>}
           </div>
           {/* { state.subCategory!==null? state.subCategory:''} */}
         </div>
       </div>
-      {console.log(props.state.productList)}
-      <div className='product-details'>
+      <div className='products-details col-12 '>
         {props.Ondesign ?
           <Product {...props} productList={props.state.productList} category={props.state.category} subCategory={props.state.subCategory}
           /> :
@@ -316,7 +311,7 @@ export default function ProductsMobileHooks(props) {
           />}
       </div>
     </div>
-
+</>
   );
 
 }

@@ -1,31 +1,21 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Logo from '../../Image/opiumLogo3.png'
 import './navbar.css';
-import { Nav, NavItem, NavLink } from 'reactstrap';
-import { Link } from 'react-router-dom';
-// import { Divide as Hamburger } from 'hamburger-react'
 import { Squash as Hamburger } from 'hamburger-react'
+// import Config from '../../config/config';
 
 import Navbar1 from '../Navbar1/Navbar1';
 
-export default class Navbar extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      menuStatus: 0,
-      openMenu: false,
+
+export default function Navbar(props) {
+
+  const [menuStatus, setMenuStatus] = React.useState(0);
+  const [openMenu, setOpenMenu] = React.useState(false)
+  // const [imgLogo, setImgLogo] = React.useState("")
 
 
-    }
-    this.getMenuOptions = this.getMenuOptions.bind(this);
-    this.setMenuStatus = this.setMenuStatus.bind(this);
-    this.closeMenu = this.closeMenu.bind(this);
-    this.openMenu = this.openMenu.bind(this);
-    this.getMenu = this.getMenu.bind(this);
-  }
 
-
-  getMenuOptions() {
+  const getMenuOptions = () => {
     return [
       {
         name: 'מוצרים',
@@ -57,97 +47,88 @@ export default class Navbar extends Component {
         internal: true
 
       },
-      this.props.orderSize !== 0 && {
+      props.orderSize !== 0 && {
         name: 'ההזמנות שלי',
         link: '/Order',
         internal: true
 
       }
 
-
-
-
-
-
-
-
     ];
 
   }
 
-  setMenuStatus(status) {
-    this.setState({ menuStatus: status });
-  }
-  closeMenu() {
-    this.setMenuStatus(3);
-    this.setState({ openMenu: false })
 
-    setTimeout(() => this.setMenuStatus(0), 200);
+  const closeMenu = () => {
+    setMenuStatus(3);
+    setOpenMenu(false)
+
+    setTimeout(() => setMenuStatus(0)
+      , 200);
   }
-  openMenu() {
-    if (!this.state.openMenu) {
-      this.setMenuStatus(1);
-      setTimeout(() => this.setMenuStatus(2), 200);
+  const onOpenMenu = () => {
+    if (!openMenu) {
+      setMenuStatus(1);
+      setTimeout(() => setMenuStatus(2)
+        , 200);
     }
     else {
-      this.closeMenu();
+      closeMenu();
     }
 
-
-    this.setState({ openMenu: !this.state.openMenu })
+    setOpenMenu(!openMenu)
 
 
   }
 
-  getMenu() {
-    if (this.state.menuStatus == 0) {
+  const getMenu = () => {
+    if (menuStatus === 0) {
       return null;
+    } else {
+      return <Navbar1 options={getMenuOptions()} menuStatus={menuStatus}
+        onClose={closeMenu}
+      />
     }
-    return <Navbar1 options={this.getMenuOptions()} menuStatus={this.state.menuStatus}
-      onClose={this.closeMenu}
-    />
   }
-  render() {
 
-    return (
-      <div className='menu-root' hidden={this.props.hide}>
-        {this.getMenu()}
+  return (
+    <div className='menu-root container-fluid' hidden={props.hide}>
+      {getMenu()}
 
-        <div className='menu'>
-          <div id='Hamburger'>
-            <Hamburger color='black' rounded direction="left" toggled={this.state.openMenu} toggle={this.openMenu} />
-          </div>
-          <a href='/'><img className='logo' src={Logo}></img></a>
-
-          {/* <span className='background-anim-dot'></span> */}
-          <div className='menu-item1'>
-            <a href='/Products/All/all' className={window.location.pathname.includes('/Products') ? 'background-anim-dot' : ''}><div   > מוצרים </div></a>
-            <a href='http://www.giftlogo.co.il/' target='_blank' ><div > קטלוג </div></a>
-            <a href='/Design/' ><div > עצב בעצמך </div></a>
-            <a href='/Contact' className={window.location.pathname === '/Contact' ? 'background-anim-dot' : ''} ><div  > צור קשר </div></a>
-
-          </div>
-          <div className='icon-nav'>
-            {/* <span  className="dot-nav" >{this.props.cartSize}</span> */}
-
-            <a hidden={this.props.orderSize === 0} id={window.location.pathname === '/Order' ? 'background-cart' : 'order'} href='/Order'><span className="iconify" id='shopCart-icon' data-icon="icon-park-outline:transaction-order"></span>  <span className="dot-nav dot-order" >{this.props.orderSize}</span>
-
-              <span className='myCart'>ההזמנות שלי</span>
-            </a>
-            <a id={window.location.pathname === '/Cart' ? 'background-cart' : 'shoping'} href='/Cart'><span className="iconify" id='shopCart-icon' data-icon="ph:shopping-cart-fill" data-inline="false"></span>      <span className="dot-nav dot-shoping" >{this.props.cartSize}</span>
-
-              <span className='myCart'>המוצרים שלי</span>
-            </a>
-            <a href='https://www.facebook.com/swqwlb.hrzlyh' rel="noreferrer" target='_blank' className='facebook-nav'>   <i className="fa fa-facebook-f" style={{ fontSize: '15px' }}></i></a>
-            <a href='https://www.instagram.com/opium_print/' rel="noreferrer" target='_blank' className='insta-nav' >   <i className="fa fa-instagram" style={{ fontSize: '15px' }}></i></a>
-            <a href='https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=dda180@gmail.com' rel="noreferrer" target='_blank' className='email-nav'>   <i className="fa fa-envelope" style={{ fontSize: '15px' }}></i></a>
-            {/* <l className='search'><span className="iconify" id='search-icon'data-icon="fluent:search-32-filled" data-inline="false"></span><input id='search-input' type='text' placeholder='חיפוש..' ></input></l>  */}
-
-          </div>
+      <div className='menu row  align-items-center '>
+        <div id='Hamburger-nav' className='col-auto '>
+          <Hamburger color='black' rounded direction="left" toggled={openMenu} toggle={onOpenMenu} />
         </div>
+        <div className='col-1 pt-3'>
+          <a href='/'><img className='img-fluid' src={Logo} alt='logo'></img></a>
+        </div>
+        <div className='menu-item1 col-8 pr-5  align-self-start '>
+          <a href='/Products/All/all' className={window.location.pathname.includes('/Products') ? 'background-anim-dot' : ''}><div   > מוצרים </div></a>
+          <a href='http://www.giftlogo.co.il/' target='_blank' rel="noopener noreferrer" ><div > קטלוג </div></a>
+          <a href='/Design/' ><div > עצב בעצמך </div></a>
+          <a href='/Contact' className={window.location.pathname === '/Contact' ? 'background-anim-dot' : ''} ><div  > צור קשר </div></a>
 
+        </div>
+        <div className='icon-nav col-2'>
 
+          <a hidden={props.orderSize === 0} id={window.location.pathname === '/Order' ? 'background-cart' : 'order'} href='/Order'><span className="iconify" id='shopCart-icon' data-icon="icon-park-outline:transaction-order"></span>  <span className="dot-nav dot-order" >{props.orderSize}</span>
+
+            <span className='myCart'>ההזמנות שלי</span>
+          </a>
+          <a id={window.location.pathname === '/Cart' ? 'background-cart' : 'shoping'} href='/Cart'><span className="iconify" id='shopCart-icon' data-icon="ph:shopping-cart-fill" data-inline="false"></span>      <span className="dot-nav dot-shoping" >{props.cartSize}</span>
+
+            <span className='myCart'>המוצרים שלי</span>
+          </a>
+          <a href='https://www.facebook.com/swqwlb.hrzlyh' rel="noreferrer" target='_blank' className='facebook-nav'>   <i className="fa fa-facebook-f" style={{ fontSize: '15px' }}></i></a>
+          <a href='https://www.instagram.com/opium_print/' rel="noreferrer" target='_blank' className='insta-nav' >   <i className="fa fa-instagram" style={{ fontSize: '15px' }}></i></a>
+          <a href='https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=dda180@gmail.com' rel="noreferrer" target='_blank' className='email-nav'>   <i className="fa fa-envelope" style={{ fontSize: '15px' }}></i></a>
+          {/* <l className='search'><span className="iconify" id='search-icon'data-icon="fluent:search-32-filled" data-inline="false"></span><input id='search-input' type='text' placeholder='חיפוש..' ></input></l>  */}
+
+        </div>
       </div>
-    );
-  }
+
+
+    </div>
+  );
+
 }
